@@ -58,19 +58,41 @@
                 </button>
                 <div class="collapse navbar-collapse fs-6" id="mainnavbar">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item me-3"><a class="nav-link" aria-current="page" href="/">Home</a></li>
                         <li class="nav-item me-3 dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Courses</a>
                             <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">
                                 <div class="list-group list-group-flush">
-                                    <a href="/logout" class="list-group-item list-group-item-action" aria-current="true">
+                                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1 color-900">Logout</h6>
+                                            <h6 class="mb-1 color-900">PSC Coaching</h6>
                                         </div>
+                                        <p class="mb-1 text-muted small">LP/UP, Police, etc..</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item me-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Student</a>
+                            <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">
+                                <div class="list-group list-group-flush">
+                                    <a href="/register" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Register</h6>
+                                        </div>
+                                        <p class="mb-1 text-muted small">Register as a student</p>
+                                    </a>
+                                    <a href="/signin" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Sign In</h6>
+                                        </div>
+                                        <p class="mb-1 text-muted small">Sign In as a Student</p>
                                     </a>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <a href="/signin" class="btn px-4 rounded-pill btn-primary">Admin</a>
                 </div>
             </div>
         </nav>
