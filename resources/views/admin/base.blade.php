@@ -9,12 +9,15 @@
     <title>Acharya E-Learning</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
 
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}"> 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/css/al.style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/al.education.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -59,6 +62,33 @@
                 <div class="collapse navbar-collapse fs-6" id="mainnavbar">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item me-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Exam</a>
+                            <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">
+                                <div class="list-group list-group-flush">
+                                    <a href="/admin/subject" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Subject Register</h6>
+                                        </div>
+                                    </a>
+                                    <a href="/admin/level" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Subject Level Register</h6>
+                                        </div>
+                                    </a>
+                                    <a href="/admin/question" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Question Register</h6>
+                                        </div>
+                                    </a>
+                                    <a href="/admin/exam" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Exam Register</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item me-3 dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin</a>
                             <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">
                                 <div class="list-group list-group-flush">
@@ -74,6 +104,22 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
         @yield("content")
     </div>
     <div id="preloader"></div>
@@ -90,6 +136,8 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/setting.js') }}"></script>
+  <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
+  <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 </html>

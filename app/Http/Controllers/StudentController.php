@@ -81,9 +81,9 @@ class StudentController extends Controller
             $user = Auth::getProvider()->retrieveByCredentials($credentials);
             Auth::login($user, $request->get('remember'));
             if($user->role == 'Admin'):
-                return redirect()->route('admin.dash')->with("success", "Logged in successfully!");
+                return redirect()->route('admin.dash')->with("success", "User logged in successfully!");
             else:
-                return redirect()->route('student.dash')->with("success", "Logged in successfully!");
+                return redirect()->route('student.dash')->with("success", "User logged in successfully!");
             endif;
         endif;  
         return redirect()->back()->with('error', 'Login details are not valid')->withInput($request->all());
