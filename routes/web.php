@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectLevelController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/level/edit/{id}', [SubjectLevelController::class, 'edit'])->name('level.edit');
     Route::put('/admin/level/edit/{id}', [SubjectLevelController::class, 'update'])->name('level.update');
     Route::delete('/admin/level/{id}', [SubjectLevelController::class, 'destroy'])->name('level.delete');
+
+    Route::get('/admin/question', [QuestionController::class, 'index'])->name('question');
+    Route::get('/admin/question/create', [QuestionController::class, 'create'])->name('question.create');
+    Route::post('/admin/question/create', [QuestionController::class, 'store'])->name('question.save');
+    Route::get('/admin/question/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
+    Route::put('/admin/question/edit/{id}', [QuestionController::class, 'update'])->name('question.update');
+    Route::delete('/admin/question/{id}', [QuestionController::class, 'destroy'])->name('question.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function(){

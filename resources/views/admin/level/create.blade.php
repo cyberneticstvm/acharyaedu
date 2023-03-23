@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col"><h5 class="text-primary">Create Subject Level</h5></div>
                     </div>
-                    <form method="post" action="{{ route('level.create') }}">
+                    <form method="post" action="{{ route('level.save') }}">
                         @csrf
                         <div class="row g-2">
                             <div class="col-md-12">
