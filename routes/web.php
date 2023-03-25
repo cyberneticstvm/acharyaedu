@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamQuestionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectLevelController;
 use App\Http\Controllers\QuestionController;
@@ -63,6 +65,15 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/question/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
     Route::put('/admin/question/edit/{id}', [QuestionController::class, 'update'])->name('question.update');
     Route::delete('/admin/question/{id}', [QuestionController::class, 'destroy'])->name('question.delete');
+
+    Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
+    Route::get('/admin/exam/create', [ExamController::class, 'create'])->name('exam.create');
+    Route::post('/admin/exam/create', [ExamController::class, 'store'])->name('exam.save');
+    Route::get('/admin/exam/edit/{id}', [ExamController::class, 'edit'])->name('exam.edit');
+    Route::put('/admin/exam/edit/{id}', [ExamController::class, 'update'])->name('exam.update');
+    Route::delete('/admin/exam/{id}', [ExamController::class, 'destroy'])->name('exam.delete');
+
+    Route::get('/admin/eq', [ExamQuestionController::class, 'index'])->name('eq');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function(){

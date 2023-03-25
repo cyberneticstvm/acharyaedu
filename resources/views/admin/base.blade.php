@@ -9,14 +9,16 @@
     <title>Acharya E-Learning</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
 
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}"> 
+     
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/css/al.style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/al.education.min.css') }}" rel="stylesheet">
+    
 
 </head>
 
@@ -88,6 +90,11 @@
                                     <a href="/admin/exam" class="list-group-item list-group-item-action" aria-current="true">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h6 class="mb-1 color-900">Exam Register</h6>
+                                        </div>
+                                    </a>
+                                    <a href="/admin/eq" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Exam Questions</h6>
                                         </div>
                                     </a>
                                 </div>
