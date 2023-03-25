@@ -28,6 +28,21 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
+                                    <label class="req mb-1">Topic Name</label>
+                                    <select class="form-control" name="topic_id">
+                                        <option value="">Select</option>
+                                        @forelse($topics as $key => $topic)
+                                            <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>                                  
+                                </div>
+                                @error('topic_id')
+                                    <small class="text-danger">{{ $errors->first('topic_id') }}</small>
+                                @enderror
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
                                     <label class="req mb-1">Level Name</label>
                                     <select class="form-control" name="level_id">
                                         <option value="">Select</option>

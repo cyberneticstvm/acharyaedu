@@ -12,6 +12,7 @@ class Question extends Model
     protected $fillable = [
         'question',
         'subject_id',
+        'topic_id',
         'level_id',
         'correct_option',
         'available_for_free',
@@ -30,6 +31,10 @@ class Question extends Model
 
     public function subject(){
         return $this->hasOne(Subject::class, 'subject_id', 'id');
+    }
+
+    public function topic(){
+        return $this->hasOne(Topic::class, 'topic_id', 'id');
     }
 
     public function level(){

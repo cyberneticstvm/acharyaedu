@@ -8,6 +8,7 @@ use App\Models\QuestionCourse;
 use App\Models\QuestionOption;
 use App\Models\Subject;
 use App\Models\SubjectLevel;
+use App\Models\Topic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -39,8 +40,9 @@ class QuestionController extends Controller
         $subjects = Subject::all();
         $levels = SubjectLevel::all();
         $courses = Course::all();
+        $topics = Topic::all();
         $option_count = $this->settings->option_count;
-        return view('admin.question.create', compact('subjects', 'levels', 'courses', 'option_count'));
+        return view('admin.question.create', compact('subjects', 'topics', 'levels', 'courses', 'option_count'));
     }
 
     /**
@@ -57,6 +59,7 @@ class QuestionController extends Controller
             'available_for_free' => 'required',
             'level_id' => 'required',
             'subject_id' => 'required',
+            'topic_id' => 'required',
         ]);
         $input = $request->all();
         $input['created_by'] = $request->user()->id;
@@ -108,7 +111,8 @@ class QuestionController extends Controller
         $levels = SubjectLevel::all();
         $courses = Course::all();
         $question = Question::find($id);
-        return view('admin.question.edit', compact('subjects', 'levels', 'courses', 'question'));
+        $topics = Topic::all();
+        return view('admin.question.edit', compact('subjects', 'topics', 'levels', 'courses', 'question'));
     }
 
     /**
@@ -125,6 +129,7 @@ class QuestionController extends Controller
             'available_for_free' => 'required',
             'level_id' => 'required',
             'subject_id' => 'required',
+            'topic_id' => 'required',
         ]);
         $input = $request->all();
         $input['updated_by'] = $request->user()->id;
