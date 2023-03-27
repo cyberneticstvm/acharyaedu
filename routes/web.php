@@ -74,6 +74,11 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::delete('/admin/exam/{id}', [ExamController::class, 'destroy'])->name('exam.delete');
 
     Route::get('/admin/eq', [ExamQuestionController::class, 'index'])->name('eq');
+    Route::get('/admin/eq/create/{id}', [ExamQuestionController::class, 'show'])->name('eq.show');
+    Route::post('/admin/eq/create/{id}', [ExamQuestionController::class, 'create'])->name('eq.create');
+    Route::get('/admin/eq/question', [ExamQuestionController::class, 'store'])->name('eq.question');
+    Route::post('/admin/eq/question', [ExamQuestionController::class, 'store'])->name('eq.save');
+    Route::delete('/admin/eq/delete/{id}', [ExamQuestionController::class, 'destroy'])->name('eq.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function(){

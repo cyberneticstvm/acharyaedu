@@ -17,10 +17,10 @@ class ExamQuestion extends Model
     ];
 
     public function exam(){
-        return $this->hasOne(Exam::class, 'exam_id', 'id');
+        return $this->hasOne(Exam::class, 'id', 'exam_id');
     }
 
     public function question(){
-        return $this->hasOne(question::class, 'question_id', 'id');
+        return $this->hasOne(question::class, 'id', 'question_id');
     }
 }
