@@ -14,7 +14,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="req mb-1">Subject Name</label>
-                                    <select class="form-control" name="subject_id">
+                                    <select class="form-control subject" name="subject_id">
                                         <option value="">Select</option>
                                         @forelse($subjects as $key => $subject)
                                             <option value="{{ $subject->id }}">{{ $subject->name }}</option>
@@ -28,13 +28,10 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="req mb-1">Topic Name</label>
-                                    <select class="form-control" name="topic_id">
+                                    <label class="req mb-1">Module Name</label>
+                                    <select class="form-control module" name="topic_id">
                                         <option value="">Select</option>
-                                        @forelse($topics as $key => $topic)
-                                            <option value="{{ $topic->id }}">{{ $topic->name }}</option>
-                                        @empty
-                                        @endforelse
+                                        
                                     </select>                                  
                                 </div>
                                 @error('topic_id')

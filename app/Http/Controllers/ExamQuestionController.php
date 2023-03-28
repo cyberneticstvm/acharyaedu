@@ -38,7 +38,7 @@ class ExamQuestionController extends Controller
         if($questions->isEmpty()):
             return redirect("/admin/eq/create/$id")->with('error', 'No records found')->withInput($request->all());
         else:
-            $exam = Exam::find($id);
+            $exam = Exam::find($id);            
             return view('admin.exam-question.question', compact('questions', 'exam'));
         endif;
     }
@@ -74,7 +74,8 @@ class ExamQuestionController extends Controller
         $subjects = Subject::all();
         $topics = Topic::all();
         $levels = SubjectLevel::all();
-        return view('admin.exam-question.create', compact('exam', 'subjects', 'topics', 'levels'));
+        $qcount = ExamQuestion::where('exam_id', $id)->count('id'); $max = $exam->question_count - $qcount;
+        return view('admin.exam-question.create', compact('exam', 'subjects', 'topics', 'levels', 'max'));
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExamQuestionController;
+use App\Http\Controllers\HelperController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectLevelController;
 use App\Http\Controllers\QuestionController;
@@ -36,6 +37,8 @@ Route::post('/signin', [StudentController::class, 'signin'])->name('signin');
 Route::get('/logout', [StudentController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
+    Route::get('/helper/module/{sid}', [HelperController::class, 'module'])->name('helper.module');
+
     Route::get('/admin/dash', [AdminController::class, 'dash'])->name('admin.dash');
 
     Route::get('/admin/subject', [SubjectController::class, 'index'])->name('subject');

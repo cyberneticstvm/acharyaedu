@@ -6,14 +6,14 @@
             <div class="card">
                 <div class="card-body table-responsive table-sm table-striped">
                     <div class="row">
-                        <div class="col"><h5 class="text-primary">Create Topic</h5></div>
+                        <div class="col"><h5 class="text-primary">Create Module</h5></div>
                     </div>
                     <form method="post" action="{{ route('topic.save') }}">
                         @csrf
                         <div class="row g-2">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="req mb-1">Topic Name</label>
+                                    <label class="req mb-1">Module Name</label>
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Topic Name">                                    
                                 </div>
                                 @error('name')

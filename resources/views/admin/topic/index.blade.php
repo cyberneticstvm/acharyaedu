@@ -6,12 +6,12 @@
             <div class="card">
                 <div class="card-body table-responsive table-sm table-striped">
                     <div class="row">
-                        <div class="col"><h5 class="text-primary">Topic Register</h5></div>
+                        <div class="col"><h5 class="text-primary">Module Register</h5></div>
                         <div class="col text-end"><a href="/admin/topic/create"><i class="fa fa-plus fw-bold fa-lg text-primary"></i></a></div>
                     </div>
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-bordered">
-                        <thead><tr><th>SL No</th><th>Topic Name</th><th>Subject</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
                         @forelse($topics as $key => $topic)
                             <tr>
                                 <td>{{ $slno++ }}</td>
