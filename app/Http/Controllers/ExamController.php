@@ -40,6 +40,7 @@ class ExamController extends Controller
             'cut_off_mark' => 'required',
             'question_count' => 'required',
             'exam_date' => 'required',
+            'duration' => 'required',
         ]);
         $input = $request->all();
         $input['created_by'] = $request->user()->id;               
@@ -82,6 +83,7 @@ class ExamController extends Controller
             'cut_off_mark' => 'required',
             'question_count' => 'required',
             'exam_date' => 'required',
+            'duration' => 'required',
         ]);
         $input = $request->all();             
         $input['updated_by'] = $request->user()->id;

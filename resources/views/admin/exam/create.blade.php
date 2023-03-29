@@ -55,6 +55,15 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
+                                    <label class="req mb-1">Exam Duration (In Minutes)</label>
+                                    <input type="number" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="0">                                    
+                                </div>
+                                @error('duration')
+                                    <small class="text-danger">{{ $errors->first('duration') }}</small>
+                                @enderror
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
                                     <label class="req mb-1">Exam Date</label>
                                     <input type="date" class="form-control" name="exam_date" value="{{ old('exam_date') }}">                                    
                                 </div>

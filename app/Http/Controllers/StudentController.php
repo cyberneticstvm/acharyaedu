@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exam;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use DB;
 use Hash;
@@ -137,5 +139,11 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function activeexams(){
+        $student = Student::where('email', Auth::user()->email)->first();
+        $exams = Exam::whereIn('batch_id', $student->batches->pluck('batch'))->whereDate('exam_date', '>=', Carbon::today())->get();
+        return view('student.active-exams', compact('exams', 'student'));
     }
 }

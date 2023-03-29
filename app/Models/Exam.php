@@ -15,6 +15,7 @@ class Exam extends Model
         'cut_off_mark',
         'question_count',
         'exam_date',
+        'duration',
         'created_by',
         'updated_by',
     ];

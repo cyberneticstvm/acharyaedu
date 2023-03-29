@@ -9,6 +9,9 @@
     <title>Acharya E-Learning</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
 
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css') }}">
+    
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/css/al.style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
@@ -67,6 +70,16 @@
                                             <h6 class="mb-1 color-900">Logout</h6>
                                         </div>
                                     </a>
+                                    <a href="/student/active-exams" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Active Exams</h6>
+                                        </div>
+                                    </a>
+                                    <a href="/student/performance" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">My Performance</h6>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -90,6 +103,8 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/setting.js') }}"></script>
+  <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
+  <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 </html>
