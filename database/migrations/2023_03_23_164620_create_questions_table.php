@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->longText('question')->nullable();
             $table->unsignedBigInteger('subject_id')->references('id')->on('subjects');
-            $table->unsignedBigInteger('level_id')->references('id')->on('subject_levels');
             $table->integer('correct_option')->default(0);
             $table->boolean('available_for_free')->comment('1-yes, 0-no')->default(0);
             $table->boolean('status')->comment('1-active, 0-inactive')->default(1);

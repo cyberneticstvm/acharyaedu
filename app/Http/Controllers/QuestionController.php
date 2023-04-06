@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Question;
 use App\Models\QuestionCourse;
+use App\Models\QuestionLevel;
 use App\Models\QuestionOption;
 use App\Models\Subject;
 use App\Models\SubjectLevel;
@@ -57,7 +58,7 @@ class QuestionController extends Controller
             'question' => 'required',
             'status' => 'required',
             'available_for_free' => 'required',
-            'level_id' => 'required',
+            'levels' => 'array|present',
             'subject_id' => 'required',
             'topic_id' => 'required',
         ]);
@@ -66,7 +67,7 @@ class QuestionController extends Controller
         $input['updated_by'] = $request->user()->id;
         try{
             DB::transaction(function() use ($request, $input) {
-                $options = []; $courses = [];
+                $options = []; $courses = []; $levels = [];
                 $question = Question::create($input);
                 foreach($request->options as $key => $option):
                     $options[] = [
@@ -85,8 +86,17 @@ class QuestionController extends Controller
                         'updated_at' => Carbon::now(),
                     ];
                 endforeach;
+                foreach($request->levels as $key => $level):
+                    $levels[] = [
+                        'question_id' => $question->id,
+                        'level_id' => $level,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                endforeach;
                 QuestionOption::insert($options);
                 QuestionCourse::insert($courses);
+                QuestionLevel::insert($levels);
             });
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
@@ -127,7 +137,7 @@ class QuestionController extends Controller
             'question' => 'required',
             'status' => 'required',
             'available_for_free' => 'required',
-            'level_id' => 'required',
+            'levels' => 'array|present',
             'subject_id' => 'required',
             'topic_id' => 'required',
         ]);
@@ -135,7 +145,7 @@ class QuestionController extends Controller
         $input['updated_by'] = $request->user()->id;
         try{
             DB::transaction(function() use ($request, $input, $id) {
-                $options = []; $courses = [];
+                $options = []; $courses = []; $levels = [];
                 $question = Question::find($id);
                 $question->update($input);
                 foreach($request->options as $key => $option):
@@ -155,10 +165,20 @@ class QuestionController extends Controller
                         'updated_at' => Carbon::now(),
                     ];
                 endforeach;
+                foreach($request->levels as $key => $level):
+                    $levels[] = [
+                        'question_id' => $question->id,
+                        'level_id' => $level,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                endforeach;
                 QuestionOption::where('question_id', $question->id)->delete();
                 QuestionCourse::where('question_id', $question->id)->delete();
+                QuestionLevel::where('question_id', $question->id)->delete();
                 QuestionOption::insert($options);
                 QuestionCourse::insert($courses);
+                QuestionLevel::insert($levels);
             });
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());

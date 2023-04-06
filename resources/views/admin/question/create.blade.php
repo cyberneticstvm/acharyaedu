@@ -38,19 +38,18 @@
                                     <small class="text-danger">{{ $errors->first('topic_id') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="req mb-1">Level Name</label>
-                                    <select class="form-control" name="level_id">
-                                        <option value="">Select</option>
+                                    <select class="form-control select2" name="levels[]" data-placeholder="Select Multiple if required" multiple>
                                         @forelse($levels as $key => $level)
                                             <option value="{{ $level->id }}">{{ $level->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>                                  
                                 </div>
-                                @error('level_id')
-                                    <small class="text-danger">{{ $errors->first('level_id') }}</small>
+                                @error('levels')
+                                    <small class="text-danger">{{ $errors->first('levels') }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-3">

@@ -42,19 +42,13 @@
                                     <small class="text-danger">{{ $errors->first('topic_id') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="req mb-1">Level Name</label>
-                                    <select class="form-control" name="level_id">
-                                        <option value="">Select</option>
-                                        @forelse($levels as $key => $level)
-                                            <option value="{{ $level->id }}" {{ ($question->level_id == $level->id) ? 'selected' : '' }}>{{ $level->name }}</option>
-                                        @empty
-                                        @endforelse
-                                    </select>                                  
+                                    <label class="req mb-1">Courses</label>
+                                    {!! Form::select('levels[]', $levels->pluck('name', 'id')->all(),  $question->levels()->pluck('level_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}                                  
                                 </div>
-                                @error('level_id')
-                                    <small class="text-danger">{{ $errors->first('level_id') }}</small>
+                                @error('levels')
+                                    <small class="text-danger">{{ $errors->first('levels') }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-3">

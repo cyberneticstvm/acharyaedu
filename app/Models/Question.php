@@ -13,7 +13,6 @@ class Question extends Model
         'question',
         'subject_id',
         'topic_id',
-        'level_id',
         'correct_option',
         'available_for_free',
         'status',
@@ -37,7 +36,7 @@ class Question extends Model
         return $this->hasOne(Topic::class, 'topic_id', 'id');
     }
 
-    public function level(){
-        return $this->hasOne(SubjectLevel::class, 'level_id', 'id');
+    public function levels(){
+        return $this->hasMany(QuestionLevel::class, 'question_id', 'id');
     }
 }
