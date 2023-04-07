@@ -90,7 +90,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="req mb-1">Option {{ $option->option_id }}</label>
-                                        <textarea class="form-control" name="options[]" placeholder="Option {{ $option->option_id }}" required>{{ $option->where('option_id', $option->option_id)->value('option_name') }}</textarea>
+                                        <textarea class="form-control" name="options[]" placeholder="Option {{ $option->option_id }}" required>{{ $option->where('option_id', $option->option_id)->where('question_id', $question->id)->value('option_name') }}</textarea>
                                         <input type="hidden" name="option_id[]" value="{{ $option->option_id }}">                               
                                     </div>
                                 </div>
