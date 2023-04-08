@@ -15,10 +15,10 @@ class QuestionLevel extends Model
     ];
 
     public function question(){
-        return $this->hasOne(Question::class, 'question_id', 'id');
+        return $this->belongsTo(Question::class, 'question_id', 'id');
     }
 
-    public function levels(){
+    public function level(){
         return $this->belongsTo(SubjectLevel::class, 'level_id', 'id');
     }
 }

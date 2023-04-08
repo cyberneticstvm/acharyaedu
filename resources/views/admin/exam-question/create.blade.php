@@ -39,10 +39,10 @@
                                     <small class="text-danger">{{ $errors->first('topic_id') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="req mb-1">Level Name</label>
-                                    <select class="form-control" name="level_id">
+                                    <select class="form-control select2" name="level_id[]" multiple data-placeholder="Select">
                                         <option value="">Select</option>
                                         @forelse($levels as $key => $level)
                                             <option value="{{ $level->id }}" {{ ($level->id == old('level_id')) ? 'selected' : '' }}>{{ $level->name }}</option>

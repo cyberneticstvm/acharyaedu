@@ -35,7 +35,7 @@ class ExamQuestionController extends Controller
             'number_of_questions' => 'required'
         ]);
         $input = $request->all();        
-        $questions = Question::where('subject_id', $request->subject_id)->whereIn('question_id', QuestionLevel::where('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
         if($questions->isEmpty()):
             return redirect("/admin/eq/create/$id")->with('error', 'No records found')->withInput($request->all());
         else:
