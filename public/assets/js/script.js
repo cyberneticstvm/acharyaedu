@@ -33,6 +33,17 @@ $(function(){
             $(".module").html(options);
         });
     });
+
+    $('#smartwizard').smartWizard({
+        selected: 0,
+        toolbar: {
+            extraHtml: `<button class="btn btn-success" onclick="onFinish()">Complete</button>
+                              <button class="btn btn-secondary" onclick="onCancel($('#smartwizard2'))">Cancel</button>`
+        },
+        anchor: {
+            enableNavigation: false,
+        },
+    });
 });
 
 setTimeout(function () {

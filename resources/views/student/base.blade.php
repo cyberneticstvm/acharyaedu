@@ -7,7 +7,7 @@
     <meta name="description" content="Acharya">
     <meta name="keywords" content="Acharya">
     <title>Acharya E-Learning</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"> <!-- Favicon-->
 
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css') }}">
@@ -15,6 +15,8 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/css/al.style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugin/smart-wizard/css/smart_wizard_all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugin/smart-wizard/css/demo.css') }}" rel="stylesheet">
     
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/al.education.min.css') }}" rel="stylesheet">
@@ -105,6 +107,8 @@
   <script src="{{ asset('assets/js/setting.js') }}"></script>
   <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
   <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
+  <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
+  <script src="{{ asset('assets/plugin/smart-wizard/js/demo.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 </html>

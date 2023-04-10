@@ -86,6 +86,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/active-exams', [StudentController::class, 'activeexams'])->name('student.active.exams');
+    Route::get('/student/exam/{id}', [StudentController::class, 'exam'])->name('student.exam');
     
     Route::get('/student/dash', [StudentController::class, 'dash'])->name('student.dash');
 });

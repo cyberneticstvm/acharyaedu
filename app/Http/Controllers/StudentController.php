@@ -146,4 +146,9 @@ class StudentController extends Controller
         $exams = Exam::whereIn('batch_id', $student->batches->pluck('batch'))->whereDate('exam_date', '>=', Carbon::today())->get();
         return view('student.active-exams', compact('exams', 'student'));
     }
+
+    public function exam($id){
+        $exam = Exam::find($id);
+        return view('student.exam', compact('exam'));
+    }
 }

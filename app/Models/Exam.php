@@ -20,9 +20,13 @@ class Exam extends Model
         'updated_by',
     ];
 
-    protected $casts = ['exam_date' => 'datetime'];
-
     public function batch(){
         return $this->hasOne(Batch::class, 'id', 'batch_id');
     }
+
+    public function questions(){
+        return $this->hasMany(ExamQuestion::class, 'exam_id', 'id');
+    }
+
+    protected $casts = ['exam_date' => 'datetime'];
 }

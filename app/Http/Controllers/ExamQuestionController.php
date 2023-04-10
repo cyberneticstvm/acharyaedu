@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\Exam;
 use App\Models\ExamQuestion;
 use App\Models\Question;
+use App\Models\QuestionCourse;
 use App\Models\QuestionLevel;
 use App\Models\Subject;
 use App\Models\SubjectLevel;
@@ -36,6 +38,7 @@ class ExamQuestionController extends Controller
         ]);
         $input = $request->all();        
         $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        //->whereIn('id', QuestionCourse::whereIn('course_id', Batch::whereIn('id', Exam::where('id', $id)->pluck('batch_id'))->pluck('course'))->pluck('question_id'));
         if($questions->isEmpty()):
             return redirect("/admin/eq/create/$id")->with('error', 'No records found')->withInput($request->all());
         else:
