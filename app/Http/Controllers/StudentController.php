@@ -56,7 +56,7 @@ class StudentController extends Controller
         $input = $request->all();
         $input['created_by'] = 0;        
         $input['updated_by'] = 0;
-        $input['branch'] = 0;
+        $input['branch'] = 1;
         $input['role'] = 'Student';
         $input['status'] = 'Active';  
         $input['password'] = Hash::make($request->password);
