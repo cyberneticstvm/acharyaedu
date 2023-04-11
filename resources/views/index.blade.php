@@ -7,7 +7,7 @@
             <div class="col-xl-6 col-lg-7 col-md-12 text-center">
                 <!--<h4>Become Master</h4>
                 <h2 class="bg-text color-900">A better <span class="text-gradient fw-bold">learning</span> future starts here</h2>-->
-                <img src="{{ asset('assets/images/logo/acharya-blue.png') }}" class="img-fluid" alt="Acharya"/>
+                <img src="{{ asset('assets/images/logo/acharya-blue.png') }}" class="img-fluid" alt="Acharya" width="75%" />
                 <!--<p class="color-500 lead mb-4">Build a better and beautiful career with Acharya Educations by learning from our industry expert faculties.</p>-->
                 <a href="/register" class="btn px-4 py-3 lift btn-primary text-uppercase rounded-pill">Register</a>
                 <a href="/signin" class="btn px-4 py-3 lift btn-dark text-uppercase rounded-pill">Sign In</a>
