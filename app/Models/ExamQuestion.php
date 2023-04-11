@@ -21,6 +21,6 @@ class ExamQuestion extends Model
     }
 
     public function question(){
-        return $this->hasOne(question::class, 'id', 'question_id');
+        return $this->hasOne(Question::class, 'id', 'question_id');
     }
 }

@@ -52,7 +52,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light py-3">
             <div class="container">
-                <a class="navbar-brand p-0 m-0" href="/"><img src="{{ asset('assets/images/logo/b.png') }}" class="img-fluid" width="25%" alt="Acharya"/></a>
+                <a class="navbar-brand p-0 m-0" href="/"><img src="{{ asset('assets/images/logo/acharya-black.png') }}" class="img-fluid" width="25%" alt="Acharya"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainnavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
