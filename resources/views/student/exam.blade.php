@@ -10,7 +10,7 @@
                         <div class="col-md-4"><h5 class="text-primary text-center">{{ $exam->name }}</h5></div>
                         <div class="col-md-4"><h5 class="text-primary text-end">Time Remaining: {{ $exam->duration }} / <span class="text-danger" id="time-remain">{{ $exam->duration }}</span> Minutes</h5></div>
                     </div>
-                    <form method="post" action="{{ route('student.exam.save', $exam->id) }}">
+                    <form method="post" action="{{ route('student.exam.save', $exam->id) }}" id="frmExam">
                         @csrf
                         <input type="hidden" id="exam-time-duration" value="{{ $exam->duration }}" />
                         <div class="row mt-3">

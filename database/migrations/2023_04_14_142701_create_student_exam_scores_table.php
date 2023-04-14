@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('student_exam_id');
             $table->unsignedBigInteger('question_id')->references('id')->on('questions');
             $table->unsignedBigInteger('subject_id')->references('id')->on('subjects');
-            $table->smallInteger('correct_option');
-            $table->smallInteger('selected_option');
+            $table->smallInteger('correct_option')->default(0);
+            $table->smallInteger('selected_option')->nullable();
             $table->boolean('answer')->comment('1-correct, 0-wrong, null-not attended')->nullable();
             $table->foreign('student_exam_id')->references('id')->on('student_exams')->onDelete('cascade');
             $table->timestamps();

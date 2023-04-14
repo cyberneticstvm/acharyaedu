@@ -50,6 +50,8 @@ var timeleft = parseInt($("#exam-time-duration").val());
 var examTimer = setInterval(function(){
     if(timeleft <= 0){
       clearInterval(examTimer);
+      alert("Your time has over.");
+      $("#frmExam").submit();
     }
     document.getElementById("time-remain").innerHTML = timeleft;
     timeleft -= 1;
