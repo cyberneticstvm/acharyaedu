@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\StudentExam;
+use App\Models\StudentExamScore;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -150,5 +153,51 @@ class StudentController extends Controller
     public function exam($id){
         $exam = Exam::find($id);
         return view('student.exam', compact('exam'));
+    }
+
+    public function saveexam(Request $request, $id){
+        $exam = Exam::find($id);
+        $input = $request->all();
+        try{
+            $arr = [];
+            foreach($exam->questions as $key => $quest):
+                $question = Question::find($quest->question_id);
+                $answer = (isset($input['rad_'.$quest->id])) ? $input['rad_'.$quest->id] : NULL;
+                $arr [] = [
+                    'answer' => ($question->correct_option == $answer) ? 1 : 0,
+                ];
+            endforeach;
+            $op = array_count_values(array_column($arr, 'answer'));
+            $input['wrong_answer_count'] = (!empty($op['0'])) ? $op['0'] : 0;
+            $input['correct_answer_count'] = (!empty($op['1'])) ? $op['1'] : 0;
+            $input['total_mark'] = $input['correct_answer_count'];
+            $input['cutoff_mark'] = ceil(0.33*$input['wrong_answer_count']);
+            $input['total_mark_after_cutoff'] = $input['correct_answer_count'] - $input['cutoff_mark'];
+            $input['student_id'] = $request->user()->id;
+            $input['exam_id'] = $exam->id;
+            $input['grade'] = 0;
+            DB::transaction(function() use ($input, $exam) {
+                $se = StudentExam::create($input);
+                $data = [];
+                foreach($exam->questions as $key => $quest):
+                    $question = Question::find($quest->question_id);
+                    $answer = (isset($input['rad_'.$quest->id])) ? $input['rad_'.$quest->id] : NULL;
+                    $data [] = [
+                        'student_exam_id' => $se->id,
+                        'question_id' => $question->id,
+                        'subject_id' => $question->subject_id,
+                        'correct_option' => $question->correct_option,
+                        'selected_option' => $answer,
+                        'answer' => ($question->correct_option == $answer) ? 1 : 0,     
+                        'created_at' => Carbon::now(),               
+                        'updated_at' => Carbon::now(),               
+                    ];
+                endforeach;
+                StudentExamScore::insert($data);
+            });
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+        return redirect()->route('student.active.exams')->with('success', "Congratulations! You have successfully completed your exam.");
     }
 }

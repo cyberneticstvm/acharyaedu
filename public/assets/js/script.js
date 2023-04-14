@@ -37,7 +37,7 @@ $(function(){
     $('#smartwizard').smartWizard({
         selected: 0,
         toolbar: {
-            extraHtml: `<button class="btn btn-success" onclick="onFinish()">Complete</button>
+            extraHtml: `<button class="btn btn-success btn-submit" type="submit">Complete</button>
                               <button class="btn btn-secondary" onclick="onCancel($('#smartwizard2'))">Cancel</button>`
         },
         anchor: {
@@ -45,6 +45,15 @@ $(function(){
         },
     });
 });
+
+var timeleft = parseInt($("#exam-time-duration").val());
+var examTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(examTimer);
+    }
+    document.getElementById("time-remain").innerHTML = timeleft;
+    timeleft -= 1;
+}, 60000);
 
 setTimeout(function () {
     $(".alert").hide('slow');

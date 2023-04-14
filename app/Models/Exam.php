@@ -28,5 +28,9 @@ class Exam extends Model
         return $this->hasMany(ExamQuestion::class, 'exam_id', 'id');
     }
 
+    public function studentexam(){
+        return $this->hasOne(StudentExam::class, 'exam_id', 'id');
+    }
+
     protected $casts = ['exam_date' => 'datetime'];
 }
