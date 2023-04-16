@@ -15,7 +15,7 @@
                         @forelse($questions as $key => $question)
                             <tr>
                                 <td>{{ $slno++ }}</td>
-                                <td>{{ $question->question }}</td>
+                                <td>{{ nl2br($question->question) }}</td>
                                 <td class="text-center"><a href="/admin/question/edit/{{$question->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('question.delete', $question->id) }}">
