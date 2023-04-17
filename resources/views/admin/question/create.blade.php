@@ -90,8 +90,8 @@
                             @for($i=1; $i<=$option_count; $i++)
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="req mb-1">Option {{ $i }}</label>
-                                        <textarea class="form-control" name="options[]" placeholder="Option {{ $i }}" required></textarea>
+                                        <label class="req mb-1">Option {{ albhabets()[$i] }}</label>
+                                        <textarea class="form-control" name="options[]" placeholder="Option {{ albhabets()[$i] }}" required></textarea>
                                         <input type="hidden" name="option_id[]" value="{{ $i }}">                               
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                     <select class="form-control" name="correct_option">
                                         <option value="">Select</option>
                                         @for($i=1; $i<=$option_count; $i++)
-                                        <option value="{{ $i }}">{{ $i }}</option>
+                                        <option value="{{ $i }}">{{ albhabets()[$i] }}</option>
                                         @endfor
                                     </select>                                  
                                 </div>

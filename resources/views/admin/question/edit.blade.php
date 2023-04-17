@@ -89,7 +89,7 @@
                             @forelse($question->options as $key => $option)
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="req mb-1">Option {{ $option->option_id }}</label>
+                                        <label class="req mb-1">Option {{ albhabets()[$option->option_id] }}</label>
                                         <textarea class="form-control" name="options[]" placeholder="Option {{ $option->option_id }}" required>{{ $option->where('option_id', $option->option_id)->where('question_id', $question->id)->value('option_name') }}</textarea>
                                         <input type="hidden" name="option_id[]" value="{{ $option->option_id }}">                               
                                     </div>
@@ -111,7 +111,7 @@
                                     <select class="form-control" name="correct_option">
                                         <option value="">Select</option>
                                         @for($i=1; $i<=$question->options()->count(); $i++)
-                                        <option value="{{ $i }}" {{ ($question->correct_option == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                        <option value="{{ $i }}" {{ ($question->correct_option == $i) ? 'selected' : '' }}>{{ albhabets()[$i] }}</option>
                                         @endfor
                                     </select>                                  
                                 </div>
