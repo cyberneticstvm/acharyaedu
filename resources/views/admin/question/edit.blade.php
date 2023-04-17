@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="req mb-1">Topic Name</label>
+                                    <label class="req mb-1">Module Name</label>
                                     <select class="form-control module" name="topic_id">
                                         <option value="">Select</option>
                                         @forelse($topics as $key => $topic)
@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="req mb-1">Courses</label>
+                                    <label class="req mb-1">Exam Levels</label>
                                     {!! Form::select('levels[]', $levels->pluck('name', 'id')->all(),  $question->levels()->pluck('level_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}                                  
                                 </div>
                                 @error('levels')

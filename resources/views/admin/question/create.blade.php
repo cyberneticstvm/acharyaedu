@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="req mb-1">Level Name</label>
+                                    <label class="req mb-1">Exam Levels</label>
                                     <select class="form-control select2" name="levels[]" data-placeholder="Select Multiple if required" multiple>
                                         @forelse($levels as $key => $level)
                                             <option value="{{ $level->id }}">{{ $level->name }}</option>
