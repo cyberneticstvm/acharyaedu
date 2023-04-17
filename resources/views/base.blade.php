@@ -64,10 +64,13 @@
                             <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">
                                 <div class="list-group list-group-flush">
                                     <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                                        @forelse(courseOffers() as $key => $course)
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1 color-900">PSC Coaching</h6>
+                                            <h6 class="mb-1 color-900">{{ $course->name }}</h6>
                                         </div>
-                                        <p class="mb-1 text-muted small">LP/UP, Police, etc..</p>
+                                        <p class="mb-1 text-muted small">{{ $course->name }}</p>
+                                        @empty
+                                        @endforelse
                                     </a>
                                 </div>
                             </div>
