@@ -21,7 +21,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="#step-{{$quest->id}}">
                                                 <div class="num"></div>
-                                                <span class="quest"> {!! nl2br($quest->question->question) !!}</span>
+                                                {{ $quest->question->question }}
                                                 <input type="hidden" name="questions[]" value="{{ $quest->question->id }}" />
                                             </a>
                                         </li>
@@ -31,8 +31,8 @@
                                     <div class="tab-content">
                                         @php $c = 1 @endphp
                                         @forelse($exam->questions as $key => $quest)
-                                        <div id="step-{{$quest->id}}" class="tab-pane" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
-                                            Question {{ $c++.'. '.$quest->question->question }}<br><br>
+                                        <div id="step-{{$quest->id}}" class="tab-pane quest" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
+                                            Question {!! $c++.'. '. nl2br($quest->question->question) !!}<br><br>
                                             @forelse($quest->question->options as $key1 => $option)
                                                 {{$option->option_id}}&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="rad_{{$quest->id}}" value="{{ $option->option_id }}">&nbsp;&nbsp;{{ $option->option_name }}<br><hr>
                                             @empty
