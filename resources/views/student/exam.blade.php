@@ -21,7 +21,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="#step-{{$quest->id}}">
                                                 <div class="num"></div>
-                                                {{ dd($quest) }}
+                                                {{ dd($quest->question) }}
                                                 {{ $quest->question->question }}
                                                 <input type="hidden" name="questions[]" value="{{ $quest->question->id }}" />
                                             </a>
