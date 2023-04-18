@@ -16,7 +16,7 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <div id="smartwizard que">
-                                    <ul class="nav d-none">
+                                    <ul class="nav d-none">{{ dd($exam->questions) }}
                                         @forelse($exam->questions as $key => $quest)
                                         <li class="nav-item">
                                             <a class="nav-link" href="#step-{{$quest->id}}">

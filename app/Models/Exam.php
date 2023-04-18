@@ -25,7 +25,7 @@ class Exam extends Model
     }
 
     public function questions(){
-        return $this->hasMany(ExamQuestion::class, 'id', 'exam_id');
+        return $this->hasMany(ExamQuestion::class, 'exam_id', 'id');
     }
 
     public function studentexam(){
