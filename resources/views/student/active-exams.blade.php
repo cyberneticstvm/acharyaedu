@@ -20,10 +20,10 @@
                                 <td>{{ $exam->question_count }}</td>
                                 <td>{{ $exam->duration }} Minutes</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
-                                @if(!$exam->studentexam && !isStudentAttended($student->id))
+                                @if(!isStudentAttended($student->id, $exam->id))
                                 <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id'>Take Exam</a>" : '' !!}</td>
                                 @else
-                                <td>{{ Auth::user()->student->id }}</td>
+                                <td></td>
                                 @endif
                             </tr>
                         @empty
