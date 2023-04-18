@@ -15,8 +15,8 @@
                         <input type="hidden" id="exam-time-duration" value="{{ $exam->duration }}" />
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <div id="smartwizard que">
-                                    <ul class="nav">
+                                <div id="smartwizard">
+                                    <ul class="nav d-none">
                                         @forelse($exam->questions as $key => $quest)
                                         <li class="nav-item">
                                             <a class="nav-link" href="#step-{{$quest->id}}">
