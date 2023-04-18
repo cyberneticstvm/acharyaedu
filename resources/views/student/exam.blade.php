@@ -16,11 +16,12 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <div id="smartwizard que">
-                                    <ul class="nav d-none">{{ dd($exam->questions) }}
+                                    <ul class="nav d-none">
                                         @forelse($exam->questions as $key => $quest)
                                         <li class="nav-item">
                                             <a class="nav-link" href="#step-{{$quest->id}}">
                                                 <div class="num"></div>
+                                                {{ dd($quest) }}
                                                 {{ $quest->question->question }}
                                                 <input type="hidden" name="questions[]" value="{{ $quest->question->id }}" />
                                             </a>
