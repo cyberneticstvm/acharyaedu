@@ -21,7 +21,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="#step-{{$quest->id}}">
                                                 <div class="num"></div>
-                                                {{ $quest->question->question }}
+                                                <span class="que"> {!! nl2br($quest->question->question) !!}</span>
                                                 <input type="hidden" name="questions[]" value="{{ $quest->question->id }}" />
                                             </a>
                                         </li>
