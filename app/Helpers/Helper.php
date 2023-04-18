@@ -2,7 +2,6 @@
 
 use App\Models\CourseOffer;
 use App\Models\StudentExam;
-use Illuminate\Support\Facades\Auth;
 
 function courseOffers(){
    return CourseOffer::all();
@@ -13,7 +12,7 @@ function albhabets(){
 }
 
 function isStudentAttended($id){
-    $se = StudentExam::where('student_id', $id)->first();
+    $se = StudentExam::where('student_id', $id)->get();
     return ($se->isEmpty()) ? false : true;
 }
 ?>

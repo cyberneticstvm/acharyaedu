@@ -23,7 +23,7 @@
                                 @if(!$exam->studentexam && !isStudentAttended($student->id))
                                 <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id'>Take Exam</a>" : '' !!}</td>
                                 @else
-                                <td></td>
+                                <td>{{ $student->id }}</td>
                                 @endif
                             </tr>
                         @empty
