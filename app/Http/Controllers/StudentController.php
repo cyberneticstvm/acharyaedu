@@ -173,7 +173,7 @@ class StudentController extends Controller
             $input['total_mark'] = $input['correct_answer_count'];
             $input['cutoff_mark'] = ceil(0.33*$input['wrong_answer_count']);
             $input['total_mark_after_cutoff'] = $input['correct_answer_count'] - $input['cutoff_mark'];
-            $input['student_id'] = $request->user()->id;
+            $input['student_id'] = $request->user()->student->id;
             $input['exam_id'] = $exam->id;
             $input['grade'] = 0;
             DB::transaction(function() use ($input, $exam) {
