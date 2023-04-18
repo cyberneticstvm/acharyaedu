@@ -14,6 +14,6 @@ function albhabets(){
 
 function isStudentAttended(){
     $se = StudentExam::where('student_id', Auth::user()->id)->first();
-    return ($se->isEmpty()) ? true : false;
+    return ($se->isEmpty()) ? false : true;
 }
 ?>
