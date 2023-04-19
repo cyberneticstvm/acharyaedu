@@ -145,6 +145,21 @@ class StudentController extends Controller
             return view('error');
         endif;
     }
+
+    public function updatepassword(Request $request){
+        $this->validate($request, [
+            'password' => 'required|confirmed',
+            'email' => 'required',
+        ]);
+        $password = Hash::make($request->password);
+        try{
+            User::where('email', $request->email)->where('id', $request->user_id)->update(['password' => $password]);
+        }catch(Exception $e){
+            throw $e;
+        }
+        return redirect()->back()
+                        ->with('success', "You've successfully updated your password. Please Login to continue.");
+    }
     /**
      * Display the specified resource.
      *

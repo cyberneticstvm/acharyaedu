@@ -20,8 +20,10 @@
                     {{ session()->get('error') }}
                 </div>
             @endif
-            <form method="post" action="{{ route('send.email') }}">
+            <form method="post" action="{{ route('updatepassword') }}">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ $user->id }}" />
+                <input type="hidden" name="email" value="{{ $user->email }}" />
                 <div class="row g-2">
                     <div class="col-md-4">
                         <div class="form-floating">

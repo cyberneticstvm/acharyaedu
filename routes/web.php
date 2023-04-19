@@ -38,6 +38,7 @@ Route::get('/logout', [StudentController::class, 'logout'])->name('logout');
 Route::get('/forgot', [StudentController::class, 'forgot'])->name('forgot');
 Route::post('/forgot', [StudentController::class, 'sendemail'])->name('send.email');
 Route::get('/resetpassword', [StudentController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/updatepassword', [StudentController::class, 'updatepassword'])->name('updatepassword');
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/helper/module/{sid}', [HelperController::class, 'module'])->name('helper.module');
