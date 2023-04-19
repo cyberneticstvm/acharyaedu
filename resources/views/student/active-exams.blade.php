@@ -10,16 +10,18 @@
                     </div>
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-bordered">
-                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Cutoff Mark</th><th>Q. count</th><th>Duration</th><th>Exam Date</th><th class="text-center">Take</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Score</th><th>Grade</th><th class="text-center">Take</th></tr></thead><tbody>
                         @forelse($exams as $key => $exam)
+                            @php $se = getStudentScore($student->id, $exam->id) @endphp
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $exam->name }}</td>
                                 <td>{{ $exam->batch->name }}</td>
-                                <td>{{ $exam->cut_off_mark }}</td>
-                                <td>{{ $exam->question_count }}</td>
-                                <td>{{ $exam->duration }} Minutes</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
+                                <td>{{ ($se) ? $se->correct_answer_count : 0 }}</td>
+                                <td>{{ ($se) ? $se->wrong_answer_count : 0 }}</td>
+                                <td>{{ ($se) ? $se->total_mark_after_cutoff: 0 }}</td>
+                                <td>{{ ($se) ? $se->grade : 0 }}</td>
                                 @if(!isStudentAttended($student->id, $exam->id))
                                 <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id'>Take Exam</a>" : '' !!}</td>
                                 @else

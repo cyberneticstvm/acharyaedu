@@ -58,7 +58,7 @@
                 </button>
                 <div class="collapse navbar-collapse fs-6" id="mainnavbar">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item me-3"><a class="nav-link" aria-current="page" href="/">Home</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" aria-current="page" href="/">Home1</a></li>
                         <li class="nav-item me-3 dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Courses</a>
                             <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">

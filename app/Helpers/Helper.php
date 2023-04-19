@@ -15,4 +15,9 @@ function isStudentAttended($sid, $eid){
     $se = StudentExam::where('student_id', $sid)->where('exam_id', $eid)->get();
     return ($se->isEmpty()) ? false : true;
 }
+
+function getStudentScore($sid, $eid){
+    $se = StudentExam::where('student_id', $sid)->where('exam_id', $eid)->first();
+    return $se;
+}
 ?>
