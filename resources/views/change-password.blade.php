@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="password_confirmation" class="form-control form-control-sm" name="password" placeholder="******">
+                            <input type="password" class="form-control form-control-sm" name="password_confirmation" placeholder="******">
                             <label class="req">Confirm Password</label>
                         </div>
                         @error('password_confirmation')
