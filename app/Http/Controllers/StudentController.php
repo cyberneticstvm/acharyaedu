@@ -146,7 +146,7 @@ class StudentController extends Controller
         endif;
     }
 
-    public function updatepassword(Request $request, $email){
+    public function updatepassword(Request $request){
         $this->validate($request, [
             'password' => 'required|confirmed',
             'email' => 'required',
