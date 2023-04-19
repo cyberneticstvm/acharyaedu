@@ -59,7 +59,7 @@
 
                                 </div>
                                 <div class="col-6 text-center">
-                                    @if(Auth::user()->student->photo)
+                                    @if(Auth::user()->student->photo != '')
                                         <img src="https://app.acharyaedu.in/public/storage/photos/{{ Auth::user()->student->photo }}" height="100%" width="50%" alt="{{ Auth::user()->student->name }}" />
                                     @else
                                         <img src="{{ asset('assets/images/avatar.webp') }}" width="120" height="120" alt="{{ Auth::user()->student->name }}" />

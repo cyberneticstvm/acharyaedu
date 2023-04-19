@@ -36,7 +36,7 @@
                         <a href="/signin">Signin</a>
                     </div>
                     <div class="col-4 mt-3 text-end">
-                        <button type="submit" class="btn btn-lg btn-submit btn-primary text-uppercase fs-6 rounded-pill">Send Email</button>
+                        <button type="submit" class="btn btn-submit btn-primary text-uppercase fs-6 rounded-pill">Send Email</button>
                     </div>
                 </div>
             </form>

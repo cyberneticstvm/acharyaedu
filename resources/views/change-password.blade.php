@@ -47,7 +47,7 @@
                         <a href="/signin">Signin</a>
                     </div>
                     <div class="col-8 mt-3 text-end">
-                        <button type="submit" class="btn btn-lg btn-submit btn-primary text-uppercase fs-6 rounded-pill">Update</button>
+                        <button type="submit" class="btn btn-submit btn-primary text-uppercase fs-6 rounded-pill">Update</button>
                     </div>
                 </div>
             </form>
