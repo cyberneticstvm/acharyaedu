@@ -45,8 +45,9 @@ $(function(){
     });
 });
 
-var timeleft = parseInt($("#exam-time-duration").val());
-var examTimer = setInterval(function(){
+var timeleft = parseInt($("#exam-time-duration").val()); 
+var s = 60;
+/*var examTimer = setInterval(function(){
     if(timeleft <= 0){
       clearInterval(examTimer);
       alert("Your time has over.");
@@ -54,7 +55,22 @@ var examTimer = setInterval(function(){
     }
     document.getElementById("time-remain").innerHTML = timeleft;
     timeleft -= 1;
-}, 60000);
+}, 60000);*/
+
+var examTimerSecs = setInterval(function(){
+    if(s <= 0){
+        s = 60;
+        timeleft -= 1;
+        document.getElementById("time-remain").innerHTML = timeleft;
+    }
+    if(timeleft <= 0){
+        clearInterval(examTimerSecs);
+        alert("Your time has over.");
+        $("#frmExam").submit();
+    }
+    document.getElementById("secs").innerHTML = s;
+    s -= 1;
+}, 1000);
 
 setTimeout(function () {
     $(".alert").hide('slow');
