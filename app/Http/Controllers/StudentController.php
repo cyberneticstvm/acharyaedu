@@ -16,6 +16,7 @@ use Exception;
 use DB;
 use Hash;
 use Session;
+use Mail;
 
 class StudentController extends Controller
 {
@@ -76,6 +77,22 @@ class StudentController extends Controller
         return redirect()->route('register')->with('success', 'Student Registered Successfully!');
     }
 
+    public function profileupdate(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email:filter|unique:students,email,'.$request->user()->student->id,
+            'mobile' => 'required|numeric|digits:10',
+        ]);
+        $input = $request->all();
+        $user = User::find($request->user()->id); $student = Student::find($request->user()->student->id);
+        $input['password'] = ($request->password) ? Hash::make($request->password) : $user->getOriginal('password');
+        DB::transaction(function() use ($input, $user, $student) {                
+            $student->update($input);                
+            $user->update($input);
+        });
+        return redirect()->route('student.dash')->with("success", "Profile updated successfully!");
+    }
+
     public function signin(Request $request){
         $this->validate($request, [
             'email' => 'required|email:filter',
@@ -98,6 +115,35 @@ class StudentController extends Controller
         Session::flush();
         Auth::logout();
         return redirect('/')->with('success','User logged out successfully');
+    }
+
+    public function forgot(){
+        return view('forgot');
+    }
+
+    public function sendemail(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email:filter',
+        ]);
+        $user = User::where('email', $request->email)->first();
+        if($user):
+            Mail::send('password-reset', ['user' => $user], function($message) use($request){
+                $message->to($request->email);
+                $message->subject('Acharya - Password Reset Link');
+            });        
+            return redirect()->route('forgot')->with('success','Password chnage link has been sent to your registered email successfully. Please check your inbox/spam folder and click the password change link.');
+        else:
+            return redirect()->route('forgot')->with('error','Provided email id could not found in the records. Please try with another email id.')->withInput($request->all());
+        endif;
+    }
+
+    public function resetpassword($email){
+        $user = User::where('email', $email)->first();
+        if($user):
+            return view('change-password', compact('user'));
+        else:
+            return view('error');
+        endif;
     }
     /**
      * Display the specified resource.
@@ -171,7 +217,7 @@ class StudentController extends Controller
             $input['wrong_answer_count'] = (!empty($op['0'])) ? $op['0'] : 0;
             $input['correct_answer_count'] = (!empty($op['1'])) ? $op['1'] : 0;
             $input['total_mark'] = $input['correct_answer_count'];
-            $input['cutoff_mark'] = ceil(0.33*$input['wrong_answer_count']);
+            $input['cutoff_mark'] = 0.33*$input['wrong_answer_count'];
             $input['total_mark_after_cutoff'] = $input['correct_answer_count'] - $input['cutoff_mark'];
             $input['student_id'] = $request->user()->student->id;
             $input['exam_id'] = $exam->id;

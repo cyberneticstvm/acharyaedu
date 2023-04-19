@@ -35,6 +35,9 @@ Route::post('/register', [StudentController::class, 'store'])->name('student.sav
 Route::get('/signin', [StudentController::class, 'show'])->name('signin.show');
 Route::post('/signin', [StudentController::class, 'signin'])->name('signin');
 Route::get('/logout', [StudentController::class, 'logout'])->name('logout');
+Route::get('/forgot', [StudentController::class, 'forgot'])->name('forgot');
+Route::post('/forgot', [StudentController::class, 'sendemail'])->name('send.email');
+Route::get('/resetpassword', [StudentController::class, 'resetpassword'])->name('resetpassword');
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/helper/module/{sid}', [HelperController::class, 'module'])->name('helper.module');
@@ -90,6 +93,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::post('/student/exam/{id}', [StudentController::class, 'saveexam'])->name('student.exam.save');
     
     Route::get('/student/dash', [StudentController::class, 'dash'])->name('student.dash');
+    Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
 });
 
 
