@@ -226,13 +226,16 @@ class StudentController extends Controller
                 $answer = (isset($input['rad_'.$quest->id])) ? $input['rad_'.$quest->id] : NULL;
                 $arr [] = [
                     'answer' => ($question->correct_option == $answer) ? 1 : 0,
+                    'unattended' => ($answer == NULL) ? 1 : 0,
                 ];
             endforeach;
             $op = array_count_values(array_column($arr, 'answer'));
+            $op_unattended = array_count_values(array_column($arr, 'unattended'));
             $input['wrong_answer_count'] = (!empty($op['0'])) ? $op['0'] : 0;
             $input['correct_answer_count'] = (!empty($op['1'])) ? $op['1'] : 0;
+            $input['unattended_count'] = (!empty($op_unattended['1'])) ? $op['1'] : 0;
             $input['total_mark'] = $input['correct_answer_count'];
-            $input['cutoff_mark'] = 0.33*$input['wrong_answer_count'];
+            $input['cutoff_mark'] = 0.33*($input['wrong_answer_count']-$input['unattended_count']);
             $input['total_mark_after_cutoff'] = $input['correct_answer_count'] - $input['cutoff_mark'];
             $input['student_id'] = $request->user()->student->id;
             $input['exam_id'] = $exam->id;
@@ -260,5 +263,9 @@ class StudentController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
         return redirect()->route('student.active.exams')->with('success', "Congratulations! You have successfully completed your exam.");
+    }
+
+    public function examresult(){
+
     }
 }

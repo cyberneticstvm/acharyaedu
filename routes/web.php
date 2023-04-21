@@ -95,6 +95,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     
     Route::get('/student/dash', [StudentController::class, 'dash'])->name('student.dash');
     Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
+    Route::get('/student/exam/result/{id}', [StudentController::class, 'examresult'])->name('student.exam.result');
 });
 
 

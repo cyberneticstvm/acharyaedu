@@ -10,7 +10,7 @@
                     </div>
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-bordered">
-                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Score</th><th>Grade</th><th class="text-center">Take</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Score</th><th>Grade</th><th>Details</th><th class="text-center">Take</th></tr></thead><tbody>
                         @forelse($exams as $key => $exam)
                             @php $se = getStudentScore($student->id, $exam->id) @endphp
                             <tr>
@@ -22,6 +22,7 @@
                                 <td>{{ ($se) ? $se->wrong_answer_count : 0 }}</td>
                                 <td>{{ ($se) ? $se->total_mark_after_cutoff: 0 }}</td>
                                 <td>{{ ($se) ? $se->grade : 0 }}</td>
+                                <td class="text-center"><a href="/student/exam/result"><i class="fa fa-eye text-info"></a></td>
                                 @if(!isStudentAttended($student->id, $exam->id))
                                 <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id'>Take Exam</a>" : '' !!}</td>
                                 @else

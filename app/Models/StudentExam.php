@@ -14,6 +14,7 @@ class StudentExam extends Model
         'student_id',
         'correct_answer_count',
         'wrong_answer_count',
+        'unattended_count',
         'total_mark',
         'cutoff_mark',
         'total_mark_after_cutoff',
