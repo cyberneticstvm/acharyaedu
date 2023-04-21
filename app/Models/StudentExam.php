@@ -20,4 +20,12 @@ class StudentExam extends Model
         'total_mark_after_cutoff',
         'grade',
     ];
+
+    public function exam(){
+        return $this->hasOne(Exam::class, 'id', 'exam_id');
+    }
+
+    public function scores(){
+        return $this->hasMany(StudentExamScore::class, 'student_exam_id', 'id');
+    }
 }

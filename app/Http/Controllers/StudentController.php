@@ -265,7 +265,13 @@ class StudentController extends Controller
         return redirect()->route('student.active.exams')->with('success', "Congratulations! You have successfully completed your exam.");
     }
 
-    public function examresult(){
-
+    public function examresult($id){
+        $exam = StudentExam::find($id);
+        if($exam):
+            $student = Auth::user()->student;
+            return view('student.result', compact('exam', 'student'));
+        else:
+            return redirect()->back()->with('error', "No records found.");
+        endif;
     }
 }
