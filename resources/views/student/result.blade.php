@@ -44,7 +44,7 @@
                                         @empty
                                         @endforelse
                                         <div class="expl mt-1 text-success quest">
-                                            Correct Answer: <span class="text-success"> {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->option_name }} </span>
+                                            Correct Answer: <span class="text-success"> {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }} </span>
                                         </div>
                                         <div class="expl mt-3 text-info quest">
                                             <h5>Explanation</h5>
