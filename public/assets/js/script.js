@@ -43,6 +43,7 @@ $(function(){
             enableNavigation: false,
         },
     });
+    $('#smartwizard1').smartWizard();
 });
 
 var timeleft = parseInt($("#exam-time-duration").val()); 

@@ -15,25 +15,43 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <ol class="mt-3">
-                            @forelse($exam->scores as $key => $quest)
-                                <li>
-                                    {!! nl2br($quest->question->question) !!}<br>
-                                    @forelse($quest->question->options as $key1 => $opt)
-                                        @php $color = ""; @endphp
-                                        @if($quest->correct_option == $opt->option_id && $quest->selected_option == $quest->question->correct_option)
-                                            @php $color = "text-success"; @endphp
-                                        @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
-                                            @php $color = "text-danger"; @endphp                                           
-                                        @endif                                        
-                                        <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
-                                        <hr>
+                            <div id="smartwizard1">
+                                <ul class="nav d-none">
+                                    @forelse($exam->scores as $key => $quest)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#step-{{$quest->id}}">
+                                            <div class="num"></div>
+                                            {{ $quest->question->question }}
+                                        </a>
+                                    </li>
                                     @empty
                                     @endforelse
-                                </li>
-                            @empty
-                            @endforelse
-                            </ul>
+                                </ul>                            
+                                <div class="tab-content">
+                                    @php $c = 1 @endphp
+                                    @forelse($exam->scores as $key => $quest)
+                                    <div id="step-{{$quest->id}}" class="tab-pane quest" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
+                                        Question {!! $c++.'. '. nl2br($quest->question->question) !!}<br><br>
+                                        @forelse($quest->question->options as $key1 => $opt)
+                                            @php $color = ""; @endphp
+                                            @if($quest->correct_option == $opt->option_id && $quest->selected_option == $quest->question->correct_option)
+                                                @php $color = "text-success"; @endphp
+                                            @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
+                                                @php $color = "text-danger"; @endphp                                           
+                                            @endif                                        
+                                            <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
+                                            <hr>
+                                        @empty
+                                        @endforelse
+                                    </div>
+                                    @empty
+                                    @endforelse
+                                </div>                            
+                                <!-- Include optional progressbar HTML -->
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
