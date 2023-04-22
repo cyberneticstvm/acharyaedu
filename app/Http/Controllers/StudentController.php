@@ -213,7 +213,11 @@ class StudentController extends Controller
 
     public function exam($id){
         $exam = Exam::find($id);
-        return view('student.exam', compact('exam'));
+        if(!isStudentAttended(Auth::user()->student->id, $id)):
+            return view('student.exam', compact('exam'));
+        else:
+            return redirect()->route('student.active.exams')->with('error', "Exam already attended!");
+        endif;
     }
 
     public function saveexam(Request $request, $id){
