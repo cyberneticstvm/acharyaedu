@@ -43,6 +43,10 @@
                                             <hr>
                                         @empty
                                         @endforelse
+                                        <div class="expl mt-1">
+                                            <h5>Explanation</h5>
+                                            {{ $quest->question->explanation }}
+                                        </div>
                                     </div>
                                     @empty
                                     @endforelse
