@@ -21,7 +21,7 @@ class ExamQuestionController extends Controller
      */
     public function index()
     {
-        $eqs = ExamQuestion::leftJoin('exams as e', 'e.id', 'exam_questions.exam_id')->select('exam_questions.id', 'exam_questions.exam_id', 'exam_questions.question_id')->whereDate('e.exam_date', '>=', Carbon::today())->orderByDesc('exam_questions.exam_id')->get();
+        $eqs = ExamQuestion::leftJoin('exams as e', 'e.id', 'exam_questions.exam_id')->select('exam_questions.id', 'exam_questions.exam_id', 'exam_questions.question_id')->whereDate('e.exam_date', '>=', Carbon::today())->orderByDesc('exam_questions.exam_id')->limit(100)->get();
         return view('admin.exam-question.index', compact('eqs'));
     }
 
