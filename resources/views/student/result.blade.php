@@ -28,12 +28,11 @@
                                     @endforelse
                                 </ul>                            
                                 <div class="tab-content">
-                                    @php $c = 1 @endphp
+                                    @php $c = 1;  $color = ""; @endphp
                                     @forelse($exam->scores as $key => $quest)
                                     <div id="step-{{$quest->id}}" class="tab-pane quest" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
                                         Question {!! $c++.'. '. nl2br($quest->question->question) !!}<br><br>
                                         @forelse($quest->question->options as $key1 => $opt)
-                                            @php $color = ""; @endphp
                                             @if($quest->correct_option == $opt->option_id && $quest->selected_option == $quest->question->correct_option)
                                                 @php $color = "text-success"; @endphp
                                             @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
@@ -43,6 +42,11 @@
                                             <hr>
                                         @empty
                                         @endforelse
+                                        <div class="expl mt-1 text-success quest">
+                                            @if($color != 'text-success')
+                                                Correct Answer: <span class="text-success"> {{ $quest->question->correct_option }} </span>
+                                            @endif
+                                        </div>
                                         <div class="expl mt-1 text-info quest">
                                             <h5>Explanation</h5>
                                             {{ $quest->question->explanation }}
