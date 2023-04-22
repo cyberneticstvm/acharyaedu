@@ -33,6 +33,7 @@
                                     <div id="step-{{$quest->id}}" class="tab-pane quest" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
                                         Question {!! $c++.'. '. nl2br($quest->question->question) !!}<br><br>
                                         @forelse($quest->question->options as $key1 => $opt)
+                                            @php $color = ""; @endphp
                                             @if($quest->correct_option == $opt->option_id && $quest->selected_option == $quest->question->correct_option)
                                                 @php $color = "text-success"; @endphp
                                             @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
@@ -43,9 +44,7 @@
                                         @empty
                                         @endforelse
                                         <div class="expl mt-1 text-success quest">
-                                            @if($color != 'text-success')
-                                                Correct Answer: <span class="text-success"> {{ $quest->question->correct_option }} </span>
-                                            @endif
+                                            Correct Answer: <span class="text-success"> {{ $quest->question->correct_option }} </span>
                                         </div>
                                         <div class="expl mt-1 text-info quest">
                                             <h5>Explanation</h5>
