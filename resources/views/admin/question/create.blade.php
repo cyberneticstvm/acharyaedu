@@ -111,6 +111,12 @@
                                     <small class="text-danger">{{ $errors->first('courses') }}</small>
                                 @enderror
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="mb-1">Explanation</label>
+                                    <textarea class="form-control" rows="5" name="explanation" placeholder="Explanation">{{ old('explanation') }}</textarea>                               
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="req mb-1">Correct Option</label>

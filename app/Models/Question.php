@@ -14,6 +14,7 @@ class Question extends Model
         'subject_id',
         'topic_id',
         'correct_option',
+        'explanation',
         'available_for_free',
         'status',
         'created_by',
