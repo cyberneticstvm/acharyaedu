@@ -278,4 +278,9 @@ class StudentController extends Controller
             return redirect()->back()->with('error', "No records found.");
         endif;
     }
+
+    public function examperformance($id){
+        $exam = StudentExamScore::where('student_exam_id', $id)->first();
+        return view('student.performance', compact('exam'));
+    }
 }

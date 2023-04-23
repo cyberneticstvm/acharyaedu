@@ -57,7 +57,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light py-3">
             <div class="container">
-                <a class="navbar-brand p-0 m-0" href="/"><img src="{{ asset('assets/images/logo/acharya-black.png') }}" class="img-fluid" width="25%" alt="Acharya"/></a>
+                <a class="navbar-brand p-0 m-0" href="/student/dash"><img src="{{ asset('assets/images/logo/acharya-black.png') }}" class="img-fluid" width="25%" alt="Acharya"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainnavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -119,10 +119,8 @@
 
   <!-- Bootstrap JS Files -->
   <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
-
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/bundles/tinyslider.bundle.js') }}"></script>
-
+  <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
+  
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/setting.js') }}"></script>
@@ -131,5 +129,6 @@
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/demo.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
+  <script src="{{ asset('assets/js/chart.js') }}"></script>
 </body>
 </html>

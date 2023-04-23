@@ -25,4 +25,8 @@ class StudentExamScore extends Model
     public function subject(){
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
     }
+
+    public function studentexam(){
+        return $this->hasOne(StudentExam::class, 'id', 'student_exam_id');
+    }
 }
