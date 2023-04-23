@@ -26,7 +26,6 @@ $(function(){
               horizontal: false,
               columnWidth: '55%',
               endingShape: 'rounded',
-              distributed: true
             },
           },
           dataLabels: {
