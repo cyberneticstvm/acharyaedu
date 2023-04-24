@@ -93,11 +93,13 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/exam/{id}', [StudentController::class, 'exam'])->name('student.exam');
     Route::post('/student/exam/{id}', [StudentController::class, 'saveexam'])->name('student.exam.save');
     Route::get('/studentperfchart/{id}', [HelperController::class, 'studentperfchart'])->name('studentperfchart');
+    Route::get('/studentperfchartall', [HelperController::class, 'studentperfchartall'])->name('studentperfchartall');
     
     Route::get('/student/dash', [StudentController::class, 'dash'])->name('student.dash');
     Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
     Route::get('/student/exam/result/{id}', [StudentController::class, 'examresult'])->name('student.exam.result');
     Route::get('/student/exam/performance/{id}', [StudentController::class, 'examperformance'])->name('student.exam.performance');
+    Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');
 });
 
 
