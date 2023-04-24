@@ -43,12 +43,17 @@
                                             <hr>
                                         @empty
                                         @endforelse
-                                        <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>&nbsp;<button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
-                                        <div class="expl text-success quest collapse h-auto" id="correctanswer">
-                                            {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                        <div class="">
+                                            <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>
+                                            <div class="expl text-success quest collapse" id="correctanswer">
+                                                {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                            </div>
                                         </div>
-                                        <div class="expl text-info quest collapse" id="explanation">
-                                            {{ $quest->question->explanation }}
+                                        <div class="mt-1">
+                                            <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
+                                            <div class="expl text-info quest collapse" id="explanation">
+                                                {{ $quest->question->explanation }}
+                                            </div>
                                         </div>
                                     </div>
                                     @empty
