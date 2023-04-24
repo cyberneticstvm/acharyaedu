@@ -64,7 +64,12 @@
                                     @else
                                         <img src="{{ asset('assets/images/avatar.webp') }}" width="120" height="120" alt="{{ Auth::user()->student->name }}" />
                                         <p class="text-center mt-1"><a href="">Upload Photo</a></p>
-                                    @endif 
+                                    @endif
+                                    <div class="mt-5">
+                                        <h5>Payment QR Code</h5>
+                                        <img src="{{ asset('assets/images/qr.png') }}" width="250" height="250" alt="QR" />
+                                        <p>OR ENTER PAYMENT ADDRESS<br><strong>saijusss0951@dlb</strong></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
