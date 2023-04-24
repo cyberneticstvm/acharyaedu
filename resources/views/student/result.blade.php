@@ -43,11 +43,11 @@
                                             <hr>
                                         @empty
                                         @endforelse
-                                        <div class="expl mt-1 text-success quest">
-                                            Correct Answer: <span class="text-success"> {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }} </span>
+                                        <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>&nbsp;<button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
+                                        <div class="expl text-success quest collapse h-auto" id="correctanswer">
+                                            {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
                                         </div>
-                                        <div class="expl mt-3 text-info quest">
-                                            <h5>Explanation</h5>
+                                        <div class="expl text-info quest collapse" id="explanation">
                                             {{ $quest->question->explanation }}
                                         </div>
                                     </div>
