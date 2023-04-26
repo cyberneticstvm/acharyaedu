@@ -71,6 +71,19 @@
                                     <small class="text-danger">{{ $errors->first('exam_date') }}</small>
                                 @enderror
                             </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="req mb-1">Status</label>
+                                    <select class="form-control" name="status">
+                                        <option value="">Select</option>
+                                        <option value="1" {{ (old('status') == 1) ? 'selected' : '' }}>Publish</option>
+                                        <option value="0" {{ (old('status') == 0) ? 'selected' : '' }}>Draft</option>
+                                    </select>                                  
+                                </div>
+                                @error('status')
+                                    <small class="text-danger">{{ $errors->first('status') }}</small>
+                                @enderror
+                            </div>
                             <div class="col-12 mt-3 text-end">
                                 <button type="submit" class="btn btn-submit btn-primary text-uppercase fs-6">Save</button>
                             </div>

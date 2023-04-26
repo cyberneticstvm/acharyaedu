@@ -16,6 +16,7 @@ class Exam extends Model
         'question_count',
         'exam_date',
         'duration',
+        'status',
         'created_by',
         'updated_by',
     ];
