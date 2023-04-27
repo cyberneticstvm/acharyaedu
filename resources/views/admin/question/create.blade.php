@@ -132,8 +132,8 @@
                                 @enderror
                             </div>
                             <div class="col-12 mt-3 text-end">
-                                <button type="submit" class="btn btn-submit btn-primary text-uppercase fs-6">Save</button>
                                 <button type="button" onclick="javascript:window.history.back();" class="btn btn-danger text-uppercase fs-6">Cancel</button>
+                                <button type="submit" class="btn btn-submit btn-primary text-uppercase fs-6">Save</button>                                
                             </div>
                         </div>
                     </form>                    
