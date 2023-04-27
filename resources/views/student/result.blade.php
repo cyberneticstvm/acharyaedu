@@ -45,12 +45,10 @@
                                         @endforelse 
                                         <div class="row">
                                             <div class="col">
-                                                <div>
-                                                    <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary">Show Correct Answer</button>
-                                                </div>
-                                                <div>
-                                                    <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary">Show Explanation</button>
-                                                </div>                                                
+                                                <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary">Show Correct Answer</button>
+                                            </div>
+                                            <div class="col">
+                                                <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary pull-right">Show Explanation</button>                                               
                                             </div>
                                         </div>                                                                               
                                     </div>                                
