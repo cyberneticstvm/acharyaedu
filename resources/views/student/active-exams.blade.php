@@ -10,7 +10,7 @@
                     </div>
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-bordered">
-                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Score</th><th>Grade</th><th class="text-center">Answer</th><th>Performance</th><th class="text-center">Take</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Unattended</th><th>Score</th><th>Grade</th><th class="text-center">Answer</th><th>Performance</th><th class="text-center">Take</th></tr></thead><tbody>
                         @forelse($exams as $key => $exam)
                             @php $se = getStudentScore($student->id, $exam->id) @endphp
                             <tr>
@@ -20,6 +20,7 @@
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
                                 <td>{{ ($se) ? $se->correct_answer_count : 0 }}</td>
                                 <td>{{ ($se) ? $se->wrong_answer_count : 0 }}</td>
+                                <td>{{ ($se) ? $se->unattended_count : 0 }}</td>
                                 <td>{{ ($se) ? $se->total_mark_after_cutoff: 0 }}</td>
                                 <td>{{ ($se) ? $se->grade : 0 }}</td>
                                 <td class="text-center"><a target="_blank" href="/student/exam/result/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-eye text-info"></a></td>

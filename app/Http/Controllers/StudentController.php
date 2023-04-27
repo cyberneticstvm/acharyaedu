@@ -239,8 +239,8 @@ class StudentController extends Controller
             $input['correct_answer_count'] = (!empty($op['1'])) ? $op['1'] : 0;
             $input['unattended_count'] = (!empty($op_unattended['1'])) ? $op['1'] : 0;
             $input['total_mark'] = $input['correct_answer_count'];
-            $input['cutoff_mark'] = 0.33*($input['wrong_answer_count']-$input['unattended_count']);
-            $input['total_mark_after_cutoff'] = $input['correct_answer_count'] - $input['cutoff_mark'];
+            $input['cutoff_mark'] = number_format(0.33*$input['wrong_answer_count'], 2);
+            $input['total_mark_after_cutoff'] = number_format($input['correct_answer_count'] - $input['cutoff_mark'], 2);
             $input['student_id'] = $request->user()->student->id;
             $input['exam_id'] = $exam->id;
             $input['grade'] = 0;
