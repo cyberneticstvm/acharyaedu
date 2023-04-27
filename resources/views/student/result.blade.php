@@ -58,10 +58,10 @@
                                 @forelse($exam->scores as $key => $quest)
                                 <div class="row">
                                     <div class="col">
-                                        <div class="text-success quest collapse mt-1" id="correctanswer{{$quest->id}}">
+                                        <div class="text-success quest collapse mt-1 p-3" id="correctanswer{{$quest->id}}">
                                             {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
                                         </div>
-                                        <div class="text-dark quest collapse mt-1" id="explanation{{$quest->id}}">
+                                        <div class="text-dark quest collapse mt-1 p-3" id="explanation{{$quest->id}}">
                                             {{ ($quest->question->explanation) ? $quest->question->explanation : 'Explanation will be added soon.' }}
                                         </div>
                                     </div>
