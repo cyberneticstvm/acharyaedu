@@ -56,7 +56,7 @@
                                                 <div class="text-end">
                                                     <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
                                                 </div>
-                                                <div class="text-secondary quest collapse mt-1" id="explanation">
+                                                <div class="text-dark quest collapse mt-1" id="explanation">
                                                     {{ $quest->question->explanation }}
                                                 </div>
                                             </div>
