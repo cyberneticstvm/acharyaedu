@@ -45,7 +45,8 @@ $(function(){
     });
     $('#smartwizard1').smartWizard();
     $(".sw-btn-next, .sw-btn-prev").click(function(){
-        $("#explanation, #correctanswer").collapse();
+        alert('sf')
+        $("#smartwizard1 #explanation, #smartwizard1 #correctanswer").collapse('hide');
     });
 });
 
