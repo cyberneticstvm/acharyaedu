@@ -46,11 +46,12 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div>
-                                                    <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>
+                                                    <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary">Show Correct Answer</button>
                                                 </div>
-                                                <div class="text-success quest collapse mt-1" id="correctanswer">
-                                                    {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                                <div class="text-end">
+                                                    <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary">Show Explanation</button>
                                                 </div>
+                                                
                                             </div>
                                         </div>                                                                               
                                     </div>                                
@@ -60,10 +61,10 @@
                                 @forelse($exam->scores as $key => $quest)
                                 <div class="row">
                                     <div class="col">
-                                        <div class="text-end">
-                                            <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
+                                        <div class="text-success quest collapse mt-1" id="correctanswer{{$quest->id}}">
+                                            {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
                                         </div>
-                                        <div class="text-dark quest collapse mt-1" id="explanation">
+                                        <div class="text-dark quest collapse mt-1" id="explanation{{$quest->id}}">
                                             {{ $quest->question->explanation }}
                                         </div>
                                     </div>
