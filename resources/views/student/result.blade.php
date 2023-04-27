@@ -28,6 +28,24 @@
                                     @endforelse
                                 </ul>                            
                                 <div class="tab-content">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>
+                                            </div>
+                                            <div class="text-success quest collapse mt-1" id="correctanswer">
+                                                {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="text-end">
+                                                <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
+                                            </div>
+                                            <div class="text-secondary quest collapse mt-1" id="explanation">
+                                                {{ $quest->question->explanation }}
+                                            </div>
+                                        </div>
+                                    </div>
                                     @php $c = 1;  $color = ""; @endphp
                                     @forelse($exam->scores as $key => $quest)
                                     <div id="step-{{$quest->id}}" class="tab-pane quest" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
@@ -42,25 +60,7 @@
                                             <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
                                             <hr>
                                         @empty
-                                        @endforelse
-                                        <div class="row">
-                                            <div class="col">
-                                                <div>
-                                                    <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>
-                                                </div>
-                                                <div class="text-success quest collapse mt-1" id="correctanswer">
-                                                    {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="text-end">
-                                                    <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
-                                                </div>
-                                                <div class="text-secondary quest collapse mt-1" id="explanation">
-                                                    {{ $quest->question->explanation }}
-                                                </div>
-                                            </div>
-                                        </div>                                        
+                                        @endforelse                                        
                                     </div>
                                     @empty
                                     @endforelse
