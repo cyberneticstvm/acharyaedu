@@ -57,20 +57,20 @@
                                     </div>                                
                                     @empty
                                     @endforelse
-                                    @forelse($exam->scores as $key => $quest)
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="text-success quest collapse mt-1" id="correctanswer{{$quest->id}}">
-                                                {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
-                                            </div>
-                                            <div class="text-dark quest collapse mt-1" id="explanation{{$quest->id}}">
-                                                {{ $quest->question->explanation }}
-                                            </div>
+                                </div>
+                                @forelse($exam->scores as $key => $quest)
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="text-success quest collapse mt-1" id="correctanswer{{$quest->id}}">
+                                            {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                        </div>
+                                        <div class="text-dark quest collapse mt-1" id="explanation{{$quest->id}}">
+                                            {{ $quest->question->explanation }}
                                         </div>
                                     </div>
-                                    @empty
-                                    @endforelse
                                 </div>
+                                @empty
+                                @endforelse
                                 <!-- Include optional progressbar HTML -->
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
