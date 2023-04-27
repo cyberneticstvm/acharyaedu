@@ -44,6 +44,9 @@ $(function(){
         },
     });
     $('#smartwizard1').smartWizard();
+    $(".sw-btn-next, .sw-btn-prev").click(function(){
+        $("#explanation, #correctanswer").collapse();
+    });
 });
 
 var timeleft = parseInt($("#exam-time-duration").val()); 
