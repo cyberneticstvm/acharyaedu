@@ -48,7 +48,7 @@
                                                 <div>
                                                     <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>
                                                 </div>
-                                                <div class="expl text-success quest collapse mt-1" id="correctanswer">
+                                                <div class="expl text-success quest collapse mt-1 h-100 d-inline-block" id="correctanswer">
                                                     {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
                                                 </div>
                                             </div>
@@ -56,7 +56,7 @@
                                                 <div class="text-end">
                                                     <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
                                                 </div>
-                                                <div class="expl text-info quest collapse mt-1" id="explanation">
+                                                <div class="expl text-info quest collapse mt-1 h-100 d-inline-block" id="explanation">
                                                     {{ $quest->question->explanation }}
                                                 </div>
                                             </div>
