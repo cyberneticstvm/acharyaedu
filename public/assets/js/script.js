@@ -43,7 +43,11 @@ $(function(){
             enableNavigation: false,
         },
     });
-    $('#smartwizard1').smartWizard();
+    $('#smartwizard1').smartWizard({
+        toolbar: {
+            extraHtml: `<button class="btn btn-danger" type="button" onclick="javascript: window.history.back();">Cancel</button>`
+        }
+    });
     $(".sw-btn-next, .sw-btn-prev").click(function(){
         $("#smartwizard1 .answer, #smartwizard1 .answer").collapse('hide');
     });
