@@ -20,4 +20,20 @@ function getStudentScore($sid, $eid){
     $se = StudentExam::where('student_id', $sid)->where('exam_id', $eid)->first();
     return $se;
 }
+
+function cutoffMark($wrong_answer_count){
+    $op = 0;
+    if($wrong_answer_count == 0):
+        $op = 0;
+    elseif($wrong_answer_count % 3 == 0):
+        $op = $wrong_answer_count/3;
+    elseif($wrong_answer_count % 3 < 0):
+        $op = $wrong_answer_count*0.33;
+    elseif($wrong_answer_count % 3 == 1):
+        $op = ($wrong_answer_count/3) + 0.33;
+    elseif($wrong_answer_count % 3 == 2):
+        $op = ($wrong_answer_count/3) + 0.66;
+    endif;
+    return $op;
+}
 ?>
