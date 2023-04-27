@@ -41,20 +41,20 @@
                                             @endif                                        
                                             <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
                                             <hr>
-                                            <div class="">
-                                                <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary">Show Correct Answer</button>
-                                                <div class="expl text-success quest collapse mt-1" id="correctanswer{{$quest->id}}">
-                                                    {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
-                                                </div>
-                                            </div>
-                                            <div class="mt-1">
-                                                <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary">Show Explanation</button>
-                                                <div class="expl text-info quest collapse mt-1" id="explanation{{$quest->id}}">
-                                                    {{ $quest->question->explanation }}
-                                                </div>
-                                            </div>
                                         @empty
                                         @endforelse
+                                        <div class="">
+                                            <button data-bs-toggle="collapse" data-bs-target="#correctanswer" class="btn btn-primary">Show Correct Answer</button>
+                                            <div class="expl text-success quest collapse mt-1" id="correctanswer">
+                                                {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                            </div>
+                                        </div>
+                                        <div class="mt-1">
+                                            <button data-bs-toggle="collapse" data-bs-target="#explanation" class="btn btn-primary">Show Explanation</button>
+                                            <div class="expl text-info quest collapse mt-1" id="explanation">
+                                                {{ $quest->question->explanation }}
+                                            </div>
+                                        </div>
                                     </div>
                                     @empty
                                     @endforelse
