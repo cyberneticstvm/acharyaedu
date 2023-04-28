@@ -15,7 +15,7 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $eq->exam->name }}</td>
-                                <td>{{ $eq->question->question }}</td>
+                                <td>{!! $eq->question->question !!}</td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('eq.delete', $eq->id) }}">
                                         @csrf 
