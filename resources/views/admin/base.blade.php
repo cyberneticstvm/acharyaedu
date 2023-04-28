@@ -18,7 +18,6 @@
     
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/al.education.min.css') }}" rel="stylesheet">
-    
 
 </head>
 
@@ -143,13 +142,34 @@
   <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/bundles/tinyslider.bundle.js') }}"></script>
+  <!--<script src="{{ asset('assets/bundles/tinyslider.bundle.js') }}"></script>-->
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/setting.js') }}"></script>
   <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
   <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
+  <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
+  <script>
+    CKEDITOR.replace('question', {
+        toolbarCanCollapse : true,
+    });
+    CKEDITOR.replace('option1', {
+        toolbarCanCollapse : true,
+    });
+    CKEDITOR.replace('option2', {
+        toolbarCanCollapse : true,
+    });
+    CKEDITOR.replace('option3', {
+        toolbarCanCollapse : true,
+    });
+    CKEDITOR.replace('option4', {
+        toolbarCanCollapse : true,
+    });
+    CKEDITOR.replace('explanation', {
+        toolbarCanCollapse : true,
+    });
+  </script>
 </body>
 </html>

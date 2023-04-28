@@ -90,7 +90,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="req mb-1">Option {{ albhabets()[$option->option_id] }}</label>
-                                        <textarea class="form-control" name="options[]" placeholder="Option {{ $option->option_id }}" required>{{ $option->where('option_id', $option->option_id)->where('question_id', $question->id)->value('option_name') }}</textarea>
+                                        <textarea class="form-control" name="options[]" id="option{{$key+1}}" placeholder="Option {{ $option->option_id }}" required>{{ $option->where('option_id', $option->option_id)->where('question_id', $question->id)->value('option_name') }}</textarea>
                                         <input type="hidden" name="option_id[]" value="{{ $option->option_id }}">                               
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="mb-1">Explanation</label>
-                                    <textarea class="form-control" rows="5" name="explanation" placeholder="Explanation">{{ $question->explanation }}</textarea>                               
+                                    <textarea class="form-control" rows="5" name="explanation" id="explanation" placeholder="Explanation">{{ $question->explanation }}</textarea>                               
                                 </div>
                             </div>
                             <div class="col-md-3">

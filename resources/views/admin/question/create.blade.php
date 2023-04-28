@@ -81,7 +81,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="req mb-1">Question</label>
-                                    <textarea class="form-control" rows="10" name="question" placeholder="Question">{{ old('question') }}</textarea>                               
+                                    <textarea class="form-control" rows="10" name="question" id="question" placeholder="Question">{{ old('question') }}</textarea>                               
                                 </div>
                                 @error('question')
                                     <small class="text-danger">{{ $errors->first('question') }}</small>
@@ -91,7 +91,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="req mb-1">Option {{ albhabets()[$i] }}</label>
-                                        <textarea class="form-control" name="options[]" placeholder="Option {{ albhabets()[$i] }}" required></textarea>
+                                        <textarea class="form-control" name="options[]" id="option{{$i}}" placeholder="Option {{ albhabets()[$i] }}" required></textarea>
                                         <input type="hidden" name="option_id[]" value="{{ $i }}">                               
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="mb-1">Explanation</label>
-                                    <textarea class="form-control" rows="5" name="explanation" placeholder="Explanation">{{ old('explanation') }}</textarea>                               
+                                    <textarea class="form-control" rows="5" name="explanation" id="explanation" placeholder="Explanation">{{ old('explanation') }}</textarea>                               
                                 </div>
                             </div>
                             <div class="col-md-3">

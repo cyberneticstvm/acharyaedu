@@ -55,16 +55,6 @@ $(function(){
 
 var timeleft = parseInt($("#exam-time-duration").val()); 
 var s = 60;
-/*var examTimer = setInterval(function(){
-    if(timeleft <= 0){
-      clearInterval(examTimer);
-      alert("Your time has over.");
-      $("#frmExam").submit();
-    }
-    document.getElementById("time-remain").innerHTML = timeleft;
-    timeleft -= 1;
-}, 60000);*/
-
 var examTimerSecs = setInterval(function(){
     if(s <= 0){
         s = 60;
@@ -84,20 +74,6 @@ setTimeout(function () {
     $(".alert").hide('slow');
 }, 5000);
 
-/*function bindDDL(sid){
-    $.ajax({
-        type: 'GET',
-        url: '/helper/module/'+sid
-    }).then(function (data){
-        xdata = $.map(data, function(obj){
-            obj.text = obj.name || obj.id;  
-            return obj;
-        });
-        console.log(xdata)
-        $('.module').val('').trigger('change');        
-        $('.module').select2({data:xdata});
-    });
-}*/
 
 
 
