@@ -34,7 +34,7 @@
                                         <div id="step-{{$quest->id}}" class="tab-pane quest" role="tabpanel" aria-labelledby="step-{{$quest->id}}">
                                             Question {!! $c++.'. '. nl2br($quest->question->question) !!}<br><br>
                                             @forelse($quest->question->options as $key1 => $option)
-                                                {{$option->option_id}}&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="rad_{{$quest->id}}" value="{{ $option->option_id }}">&nbsp;&nbsp;{{ $option->option_name }}<br><hr>
+                                                {{$option->option_id}}&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="rad_{{$quest->id}}" value="{{ $option->option_id }}" class="radanswer" data-chk="rad_{{$quest->id}}" >&nbsp;&nbsp;{{ $option->option_name }}<br><hr>
                                             @empty
                                             @endforelse
                                         </div>

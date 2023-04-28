@@ -37,7 +37,7 @@ $(function(){
     $('#smartwizard').smartWizard({
         selected: 0,
         toolbar: {
-            extraHtml: `<button class="btn btn-success btn-submit" type="submit" onclick="javascript: return confirm('Are you sure want to submit the exam?')">Submit</button>&nbsp;<a href='/student/active-exams' class='btn btn-danger' onclick="javascript: return confirm('Are you sure want to cancel the exam?')">Cancel</a>`
+            extraHtml: `<button class="btn btn-success btn-submit" type="submit" onclick="javascript: return confirm('Are you sure want to submit the exam?')">Submit</button>&nbsp;<a href='/student/active-exams' class='btn btn-danger' onclick="javascript: return confirm('Are you sure want to cancel the exam?')">Cancel</a>&nbsp;<a class='btn btn-warning' href='javascript:void(0)' onclick="clearAnswer($(this));">Clear this Answer</a>`
         },
         anchor: {
             enableNavigation: false,
@@ -52,6 +52,13 @@ $(function(){
         $("#smartwizard1 .answer, #smartwizard1 .answer").collapse('hide');
     });
 });
+
+function clearAnswer(dis){
+    var chk = dis.parent().parent().find(".radanswer").data('chk');
+    $("input[name='"+chk+"']").prop('checked', false);
+    //var radioValue = $("input[name='"+chk+"']:checked").val();
+    //alert(radioValue);
+}
 
 var timeleft = parseInt($("#exam-time-duration").val()); 
 var s = 60;

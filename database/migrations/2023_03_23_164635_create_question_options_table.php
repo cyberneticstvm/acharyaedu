@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('question_id');
             $table->smallInteger('option_id')->default(0);
-            $table->text('option_name')->nullable();
+            $table->longText('option_name')->nullable();
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
