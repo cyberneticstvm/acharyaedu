@@ -273,7 +273,7 @@ class StudentController extends Controller
     public function examresult($id){
         $exam = StudentExam::find($id);
         if($exam):
-            $student = $exam->student_id;
+            $student = Student::find($exam->student_id);
             return view('student.result', compact('exam', 'student'));
         else:
             return redirect()->back()->with('error', "No records found.");
