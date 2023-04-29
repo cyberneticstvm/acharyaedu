@@ -16,7 +16,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::whereDate('exam_date', '>=', Carbon::today())->get();
+        $exams = Exam::orderByDesc('exam_date')->get();
         return view('admin.exam.index', compact('exams'));
     }
 
