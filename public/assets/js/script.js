@@ -37,7 +37,7 @@ $(function(){
     $('#smartwizard').smartWizard({
         selected: 0,
         toolbar: {
-            extraHtml: `<button class="btn btn-success btn-submit" type="submit" onclick="javascript: return confirm('Are you sure want to submit the exam?')">Submit</button>&nbsp;<a href='/student/active-exams' class='btn btn-danger' onclick="javascript: return confirm('Are you sure want to cancel the exam?')">Cancel</a>&nbsp;<a class='btn btn-warning' href='javascript:void(0)' onclick="clearAnswer($(this));">Clear this Answer</a>`
+            extraHtml: `<button class="btn btn-success btn-submit" type="submit" onclick="javascript: return confirm('Are you sure want to submit the exam?')">Submit</button>&nbsp;<a href='/student/active-exams' class='btn btn-danger' onclick="javascript: return confirm('Are you sure want to cancel the exam?')">Cancel</a>&nbsp;<a title='Clear this answer' class='btn btn-warning' href='javascript:void(0)' onclick="clearAnswer($(this));">Clear</a>`
         },
         anchor: {
             enableNavigation: false,
