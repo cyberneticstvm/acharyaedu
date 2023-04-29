@@ -30,4 +30,8 @@ class Batch extends Model
     public function studentbatches(){
         return $this->hasMany(StudentBatch::class, 'batch');
     }
+
+    public function exams(){
+        return $this->hasMany(Exam::class, 'batch_id', 'id')->orderByDesc('exam_date');
+    }
 }

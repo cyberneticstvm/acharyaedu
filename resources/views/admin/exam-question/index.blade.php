@@ -27,6 +27,9 @@
                         @empty
                         @endforelse
                     </tbody></table>
+                    <div class="col-12 mt-3 text-center">
+                        <a type="button" href="/admin/exam" class="btn btn-primary text-uppercase fs-6">Back to Exam Register</a>
+                    </div>
                 </div>
             </div>
         </div>

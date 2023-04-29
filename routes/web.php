@@ -86,6 +86,12 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/eq/question', [ExamQuestionController::class, 'store'])->name('eq.question');
     Route::post('/admin/eq/question', [ExamQuestionController::class, 'store'])->name('eq.save');
     Route::delete('/admin/eq/delete/{id}', [ExamQuestionController::class, 'destroy'])->name('eq.delete');
+
+    Route::get('/admin/module/questions/{id}', [HelperController::class, 'modulequestions'])->name('modulequestions');
+
+    Route::get('/admin/student/performance', [HelperController::class, 'studentperformanceall'])->name('studentperformanceall');    
+    Route::post('/admin/student/performance', [HelperController::class, 'studentperformanceallget'])->name('studentperformanceall.get');
+    Route::get('/admin/student/performance/exam/{id}', [HelperController::class, 'studentperformanceexam'])->name('studentperformanceexam');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function(){
@@ -96,7 +102,10 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/studentperfchartall', [HelperController::class, 'studentperfchartall'])->name('studentperfchartall');
     
     Route::get('/student/dash', [StudentController::class, 'dash'])->name('student.dash');
-    Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
+    Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');    
+});
+
+Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/student/exam/result/{id}', [StudentController::class, 'examresult'])->name('student.exam.result');
     Route::get('/student/exam/performance/{id}', [StudentController::class, 'examperformance'])->name('student.exam.performance');
     Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');

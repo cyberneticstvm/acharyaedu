@@ -19,7 +19,7 @@ class StudentBatch extends Model
         'updated_by',
     ];
 
-    public function student(){
+    public function studentname(){
         return $this->belongsTo(Student::class, 'student');
     }
 

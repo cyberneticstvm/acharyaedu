@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
+use App\Models\Exam;
+use App\Models\Question;
+use App\Models\StudentBatch;
 use App\Models\StudentExamScore;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -22,5 +26,31 @@ class HelperController extends Controller
     public function studentperfchartall(){
         $score = StudentExamScore::leftJoin('student_exams as se', 'se.id', 'student_exam_scores.student_exam_id')->leftJoin('subjects as s', 's.id', 'student_exam_scores.subject_id')->where('se.student_id', Auth::user()->student->id)->selectRaw('student_exam_scores.subject_id, s.name as sname, COUNT(student_exam_scores.id) as qcount, COUNT(CASE WHEN student_exam_scores.answer = 1 THEN student_exam_scores.answer END) AS correct, COUNT(CASE WHEN student_exam_scores.answer = 0 THEN student_exam_scores.answer END) AS wrong, COUNT(CASE WHEN student_exam_scores.answer IS NULL THEN student_exam_scores.answer END) AS unattended')->groupBy('student_exam_scores.subject_id', 's.name')->get();
         return json_encode($score);
+    }
+
+    public function modulequestions($id){
+        $questions = Question::where('topic_id', $id)->get();
+        $module = Topic::find($id);
+        return view('admin.misc.module-questions', compact('questions', 'module'));
+    }
+
+    public function studentperformanceall(){
+        $exams = []; $batches = Batch::all(); $batch = [];
+        return view('admin.reports.student-performance', compact('exams', 'batches', 'batch'));
+    }
+
+    public function studentperformanceallget(Request $request){
+        $this->validate($request, [
+            'batch_id' => 'required',
+        ]);
+        $batch = Batch::find($request->batch_id);
+        $exams = $batch->exams; $batches = Batch::all();
+        return view('admin.reports.student-performance', compact('exams', 'batches', 'batch'));
+    }
+
+    public function studentperformanceexam($id){
+        $exam = Exam::find($id);
+        $students = StudentBatch::where('batch', $exam->batch_id)->get();
+        return view('admin.reports.student-performance-exam', compact('exam', 'students'));
     }
 }

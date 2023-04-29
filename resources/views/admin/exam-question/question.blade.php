@@ -21,7 +21,7 @@
                                 <tr>
                                     <td class="d-none"><input type="hidden" name="questions[]" value="{{ $question->id }}"></td>
                                     <td>{{ $slno++ }}</td>
-                                    <td>{{ $question->question }}</td>
+                                    <td>{!! $question->question !!}</td>
                                     <td class="text-center">
                                         @if($slno != 2)<a href="javascript:void(0)"><i class="fa fa-trash text-danger" onclick="javascript: $(this).closest('tr').remove();"></i></a>@endif
                                     </td>

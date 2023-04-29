@@ -98,6 +98,18 @@
                                     </a>
                                 </div>
                             </div>
+                        </li>                        
+                        <li class="nav-item me-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Reports</a>
+                            <div class="dropdown-menu border-0 shadow dropdown-menu-end p-0">
+                                <div class="list-group list-group-flush">
+                                    <a href="/admin/student/performance" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Student Performance</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item me-3 dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin</a>
