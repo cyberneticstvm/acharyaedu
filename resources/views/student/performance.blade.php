@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h5 class="text-primary text-center">{{ Auth::user()->student->name }}'s Exam Performance ({{ $exam->studentexam->exam->name }})</h5>
+                            <h5 class="text-primary text-center">{{ $student->name }}'s Exam Performance ({{ $exam->studentexam->exam->name }})</h5>
                         </div>
                         <div class="col-md-12 mt-5">
                             <input type="hidden" id="student_exam_id" value="{{ $exam->student_exam_id }}" />

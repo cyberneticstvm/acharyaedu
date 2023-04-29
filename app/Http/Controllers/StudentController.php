@@ -282,8 +282,10 @@ class StudentController extends Controller
 
     public function examperformance($id){
         if($id > 0):
+            $e = StudentExam::find($id);
             $exam = StudentExamScore::where('student_exam_id', $id)->first();
-            return view('student.performance', compact('exam'));
+            $student = Student::find($e->student_id);
+            return view('student.performance', compact('exam', 'student'));
         else:
             return redirect()->back()->with('error', "No result found");
         endif;

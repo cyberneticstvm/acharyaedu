@@ -59,10 +59,10 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="text-success answer quest collapse mt-1 p-3" id="correctanswer{{$quest->id}}">
-                                            {{ $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') }}
+                                            {!! $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') !!}
                                         </div>
                                         <div class="text-dark answer quest collapse mt-1 p-3" id="explanation{{$quest->id}}">
-                                            {{ ($quest->question->explanation) ? $quest->question->explanation : 'Explanation will be added soon.' }}
+                                            {!! ($quest->question->explanation) ? $quest->question->explanation : 'Explanation will be added soon.' !!}
                                         </div>
                                     </div>
                                 </div>
