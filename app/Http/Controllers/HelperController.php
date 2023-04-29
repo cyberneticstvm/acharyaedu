@@ -50,7 +50,7 @@ class HelperController extends Controller
 
     public function studentperformanceexam($id){
         $exam = Exam::find($id);
-        $students = StudentBatch::where('batch', $exam->batch_id)->get();
+        $students = StudentBatch::where('batch', $exam->batch_id)->where('cancelled', 0)->get();
         return view('admin.reports.student-performance-exam', compact('exam', 'students'));
     }
 }
