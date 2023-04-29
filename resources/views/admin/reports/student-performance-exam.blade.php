@@ -12,7 +12,7 @@
                         <thead><tr><th>SL No</th><th>Student Name</th><th>Correct</th><th>Wrong</th><th>Unattended</th><th>Score</th><th>Grade</th><th class="text-center">Answer</th><th>Performance</th></tr></thead><tbody>
                             @php $slno = 1; @endphp
                             @forelse($students as $key => $student)
-                                @php $se = getStudentScore($student->id, $exam->id) @endphp
+                                @php $se = getStudentScore($student->student, $exam->id) @endphp
                                 <tr>
                                     <td>{{ $slno++ }}</td>
                                     <td>{{ $student->studentname->name }}</td>
