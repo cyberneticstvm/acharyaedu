@@ -152,6 +152,7 @@
 
   <!-- Bootstrap JS Files -->
   <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
+  <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
 
   <!-- Vendor JS Files -->
   <!--<script src="{{ asset('assets/bundles/tinyslider.bundle.js') }}"></script>-->
