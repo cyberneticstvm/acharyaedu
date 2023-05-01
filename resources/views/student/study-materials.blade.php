@@ -59,7 +59,7 @@
                             @forelse($questions as $key => $question)
                                 <tr>
                                     <td>{{ $slno++ }}</td>
-                                    <td>{!! $question->question !!}</td>
+                                    <td class="quest">{!! $question->question !!}</td>
                                     <td class="text-center"><a target="_blank" href="/student/question/{{ $question->id }}"><i class="fa fa-eye text-info"></a></td>
                                 </tr>
                             @empty
