@@ -162,8 +162,9 @@
   <script src="{{ asset('assets/js/setting.js') }}"></script>
   <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
   <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
-  <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
+  @if(Route::current()->getName() == 'question.create' || Route::current()->getName() == 'question.edit')
+  <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script>
     CKEDITOR.replace('question', {
         toolbarCanCollapse : true,
@@ -184,5 +185,6 @@
         toolbarCanCollapse : true,
     });
   </script>
+  @endif
 </body>
 </html>
