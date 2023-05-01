@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\StudentExam;
 use App\Models\StudentExamScore;
+use App\Models\Subject;
+use App\Models\Topic;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -289,6 +291,28 @@ class StudentController extends Controller
         else:
             return redirect()->back()->with('error', "No result found");
         endif;
+    }   
+
+    public function studymaterials(){
+        $subjects = Subject::all(); $modules = Topic::all(); $questions = collect();
+        $inputs = [];
+        return view('student.study-materials', compact('subjects', 'modules', 'inputs', 'questions'));
+    }
+
+    public function getstudymaterials(Request $request){
+        $this->validate($request, [
+            'subject_id' => 'required',
+            'module_id' => 'required',
+        ]);
+        $subjects = Subject::all(); $modules = Topic::all();
+        $inputs = array($request->subject_id, $request->module_id);
+        $questions = Question::where('subject_id', $request->subject_id)->where('topic_id', $request->module_id)->where('status', 1)->where('available_for_free', 1)->get();
+        return view('student.study-materials', compact('subjects', 'modules', 'inputs', 'questions'));
+    }
+
+    public function getoptions($id){
+        $question = Question::find($id);
+        return view('student.question-options', compact('question'));
     }
 
     public function studentperformance(){

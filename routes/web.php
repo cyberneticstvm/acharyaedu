@@ -41,8 +41,6 @@ Route::get('/resetpassword/{email}', [StudentController::class, 'resetpassword']
 Route::post('/updatepassword', [StudentController::class, 'updatepassword'])->name('updatepassword');
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
-    Route::get('/helper/module/{sid}', [HelperController::class, 'module'])->name('helper.module');
-
     Route::get('/admin/dash', [AdminController::class, 'dash'])->name('admin.dash');
 
     Route::get('/admin/subject', [SubjectController::class, 'index'])->name('subject');
@@ -108,6 +106,13 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/dash', [StudentController::class, 'dash'])->name('student.dash');
     Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
     Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');    
+    Route::get('/student/studymaterials', [StudentController::class, 'studymaterials'])->name('student.studymaterials');    
+    Route::post('/student/studymaterials', [StudentController::class, 'getstudymaterials'])->name('student.studymaterials.fetch');    
+    Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');    
+});
+
+Route::group(['middleware' => ['web', 'auth']], function(){
+    Route::get('/helper/module/{sid}', [HelperController::class, 'module'])->name('helper.module');
 });
 
 

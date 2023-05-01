@@ -82,6 +82,11 @@
                                             <h6 class="mb-1 color-900">My Performance</h6>
                                         </div>
                                     </a>
+                                    <a href="/student/studymaterials" class="list-group-item list-group-item-action" aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 color-900">Study Materials</h6>
+                                        </div>
+                                    </a>
                                     <a href="/logout" class="list-group-item list-group-item-action" aria-current="true">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h6 class="mb-1 color-900">Logout</h6>
