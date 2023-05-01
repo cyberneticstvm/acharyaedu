@@ -7,6 +7,9 @@ use App\Models\Exam;
 use App\Models\Question;
 use App\Models\StudentBatch;
 use App\Models\StudentExamScore;
+use App\Models\Student;
+use App\Models\StudentExam;
+use App\Models\Subject;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +37,12 @@ class HelperController extends Controller
         return view('admin.misc.module-questions', compact('questions', 'module'));
     }
 
+    public function subjectmodules($id){
+        $modules = Topic::where('subject_id', $id)->orderBy('name')->get();
+        $subject = Subject::find($id);
+        return view('admin.misc.subject-modules', compact('modules', 'subject'));
+    }
+
     public function studentperformanceall(){
         $exams = []; $batches = Batch::all(); $batch = [];
         return view('admin.reports.student-performance', compact('exams', 'batches', 'batch'));
@@ -52,5 +61,26 @@ class HelperController extends Controller
         $exam = Exam::find($id);
         $students = StudentBatch::where('batch', $exam->batch_id)->where('cancelled', 0)->get();
         return view('admin.reports.student-performance-exam', compact('exam', 'students'));
+    }
+
+    public function examresult($id){
+        $exam = StudentExam::find($id);
+        if($exam):
+            $student = Student::find($exam->student_id);
+            return view('admin.student.result', compact('exam', 'student'));
+        else:
+            return redirect()->back()->with('error', "No records found.");
+        endif;
+    }
+
+    public function examperformance($id){
+        if($id > 0):
+            $e = StudentExam::find($id);
+            $exam = StudentExamScore::where('student_exam_id', $id)->first();
+            $student = Student::find($e->student_id);
+            return view('admin.student.performance', compact('exam', 'student'));
+        else:
+            return redirect()->back()->with('error', "No result found");
+        endif;
     }
 }

@@ -6,19 +6,18 @@
             <div class="card">
                 <div class="card-body table-responsive table-sm table-striped">
                     <div class="row">
-                        <div class="col"><h5 class="text-primary">Subject Register</h5></div>
-                        <div class="col text-end"><a href="/admin/subject/create"><i class="fa fa-plus fw-bold fa-lg text-primary"></i></a></div>
+                        <div class="col"><h5 class="text-primary">{{ $subject->name }}'s Module Register</h5></div>
                     </div>
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-bordered">
-                        <thead><tr><th>SL No</th><th>Subject Name</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
-                        @forelse($subjects as $key => $subject)
+                        <thead><tr><th>SL No</th><th>Module</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
+                        @forelse($modules as $key => $module)
                             <tr>
                                 <td>{{ $slno++ }}</td>
-                                <td><a href="/admin/subject/modules/{{$subject->id}}" target="_blank">{{ $subject->name }}</a></td>
-                                <td class="text-center"><a href="/admin/subject/edit/{{$subject->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
+                                <td class="quest">{{ $module->name }}</td>
+                                <td class="text-center"><a href="/admin/topic/edit/{{$module->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                                 <td class="text-center">
-                                    <form method="post" action="{{ route('subject.delete', $subject->id) }}">
+                                    <form method="post" action="{{ route('topic.delete', $module->id) }}">
                                         @csrf 
                                         @method("DELETE")
                                         <button type="submit" class="border no-border" onclick="javascript: return confirm('Are you sure want to delete this record?');"><i class="fa fa-trash text-danger"></i></button>

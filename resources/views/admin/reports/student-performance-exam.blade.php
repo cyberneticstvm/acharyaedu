@@ -21,8 +21,8 @@
                                     <td>{{ ($se) ? $se->unattended_count : 0 }}</td>
                                     <td>{{ ($se) ? $se->total_mark_after_cutoff: 0 }}</td>
                                     <td>{{ ($se) ? $se->grade : 0 }}</td>
-                                    <td class="text-center"><a target="_blank" href="/student/exam/result/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-eye text-info"></a></td>
-                                    <td class="text-center"><a href="/student/exam/performance/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-line-chart text-success"></i></a></td>
+                                    <td class="text-center"><a target="_blank" href="/admin/exam/result/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-eye text-info"></a></td>
+                                    <td class="text-center"><a href="/admin/exam/performance/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-line-chart text-success"></i></a></td>
                                 </tr>
                             @empty
                             @endforelse
