@@ -167,6 +167,7 @@
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/demo.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
+  <script src="{{ asset('assets/js/chart.js') }}"></script>
   @if(Route::current()->getName() == 'question.create' || Route::current()->getName() == 'question.edit')
   <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script>
