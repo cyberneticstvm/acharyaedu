@@ -28,6 +28,6 @@ function cutoffMark($wrong_answer_count){
         $val = fmod($wrong_answer_count, 3);
         $op = ($val == 0) ? $wrong_answer_count/3 : floor($wrong_answer_count/3)+($val*0.33);
     endif;
-   echo $op;
+   return $op;
 }
 ?>
