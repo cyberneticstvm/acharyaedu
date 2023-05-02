@@ -22,18 +22,12 @@ function getStudentScore($sid, $eid){
 }
 
 function cutoffMark($wrong_answer_count){
-    $op = 0;
-    if($wrong_answer_count == 0):
-        $op = 0;
-    elseif($wrong_answer_count % 3 == 0):
-        $op = $wrong_answer_count/3;
-    elseif($wrong_answer_count % 3 < 0):
+    if($wrong_answer_count < 3):
         $op = $wrong_answer_count*0.33;
-    elseif($wrong_answer_count % 3 == 1):
-        $op = ($wrong_answer_count/3) + 0.33;
-    elseif($wrong_answer_count % 3 == 2):
-        $op = ($wrong_answer_count/3) + 0.66;
+    else:
+        $val = fmod($wrong_answer_count, 3);
+        $op = ($val == 0) ? $wrong_answer_count/3 : floor($wrong_answer_count/3)+($val*0.33);
     endif;
-    return $op;
+   echo $op;
 }
 ?>

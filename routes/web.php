@@ -25,6 +25,9 @@ use App\Http\Controllers\TopicController;
 Route::get('/', function () {
     return view('index');
 })->name('login');
+Route::get('/test', function () {
+    return view('test');
+})->name('test');
 
 Route::get('/message', function () {
     return view('message');
