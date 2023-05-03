@@ -27,9 +27,9 @@ $(function(){
             type: 'GET',
             url: '/helper/module',
             data:{'sid': sid, 'random': random}
-        }).then(function (data){
+        }).then(function (response){console.log(response)
             var options = "<option value=''>Select</option>";
-            $.map(data, function(obj){
+            $.map(response, function(obj){
                 options = options + "<option value='"+obj.id+"'>"+obj.name+"</option>";
             });
             $(".module").html(options);

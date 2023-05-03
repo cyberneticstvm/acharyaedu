@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class HelperController extends Controller
 {
-    public function module($sid){
-        $data = Topic::where('subject_id', $sid)->select('id', 'name')->get();
+    public function module(Request $request){
+        $data = Topic::where('subject_id', $request->sid)->select('id', 'name')->inRandomOrder()->when($request->random > 0, function($query) use ($request) {
+            return $query->limit($request->random);
+        })->get();
         return response()->json($data);
     }
 
@@ -37,11 +39,8 @@ class HelperController extends Controller
         return view('admin.misc.module-questions', compact('questions', 'module'));
     }
 
-    public function subjectmodules(Request $request){
-        $id = $request->sid; $random = $request->random;
-        $modules = Topic::where('subject_id', $id)->inRandomOrder()->when($random > 0, function($query) use($request) {
-            return $query->limit($request->random);
-        })->orderBy('name')->get();
+    public function subjectmodules($id){
+        $modules = Topic::where('subject_id', $id)->orderBy('name')->get();
         $subject = Subject::find($id);
         return view('admin.misc.subject-modules', compact('modules', 'subject'));
     }
