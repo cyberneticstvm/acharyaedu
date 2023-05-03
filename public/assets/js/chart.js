@@ -70,7 +70,7 @@ $(function(){
             data: cor
           }],
             chart: {
-            type: 'donut',
+            type: 'bar',
             height: 350
           },
           colors: ['#ff0000', '#228B22'],
