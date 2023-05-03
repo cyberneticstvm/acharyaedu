@@ -99,6 +99,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
+    Route::get('/helper/module', [HelperController::class, 'module'])->name('helper.module');
     Route::get('/studentperfchart/{id}', [HelperController::class, 'studentperfchart'])->name('studentperfchart');
     Route::get('/studentperfchartall', [HelperController::class, 'studentperfchartall'])->name('studentperfchartall');
 });
@@ -117,9 +118,6 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');    
 });
 
-Route::group(['middleware' => ['web', 'auth']], function(){
-    Route::get('/helper/module/{sid}', [HelperController::class, 'module'])->name('helper.module');
-});
 
 
 

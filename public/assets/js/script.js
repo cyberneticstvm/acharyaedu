@@ -22,9 +22,11 @@ $(function(){
 
     $(".subject").change(function(){
         var sid = $(this).val();
+        var random = $(this).data('random');
         $.ajax({
             type: 'GET',
-            url: '/helper/module/'+sid
+            url: '/helper/module',
+            data:{'sid': sid, 'random': random}
         }).then(function (data){
             var options = "<option value=''>Select</option>";
             $.map(data, function(obj){

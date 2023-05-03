@@ -37,8 +37,11 @@ class HelperController extends Controller
         return view('admin.misc.module-questions', compact('questions', 'module'));
     }
 
-    public function subjectmodules($id){
-        $modules = Topic::where('subject_id', $id)->orderBy('name')->get();
+    public function subjectmodules(Request $request){
+        $id = $request->sid; $random = $request->random;
+        $modules = Topic::where('subject_id', $id)->inRandomOrder()->when($random > 0, function($query) use($request) {
+            return $query->limit($request->random);
+        })->orderBy('name')->get();
         $subject = Subject::find($id);
         return view('admin.misc.subject-modules', compact('modules', 'subject'));
     }

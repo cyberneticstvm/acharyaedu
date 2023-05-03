@@ -14,7 +14,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="req mb-1">Subject</label>
-                                    <select class="form-control subject" name="subject_id">
+                                    <select class="form-control subject" data-random="5" name="subject_id">
                                         <option value="">Select</option>
                                         @forelse($subjects as $key => $subject)
                                             <option value="{{ $subject->id }}" {{ ($inputs && $inputs[0] == $subject->id) ? 'selected' : '' }}>{{ $subject->name }}</option>
