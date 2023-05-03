@@ -31,7 +31,7 @@
                                     <label class="req mb-1">Module Name</label>
                                     <select class="form-control module" name="module_id">
                                         <option value="">Select</option>
-                                        @forelse($modules->random(5) as $key => $module)
+                                        @forelse($modules->random(($modules->count() >= 5) ? 5 : $modules->count() ) as $key => $module)
                                             <option value="{{ $module->id }}" {{ ($inputs && $inputs[1] == $module->id) ? 'selected' : '' }}>{{ $module->name }}</option>
                                         @empty
                                         @endforelse
