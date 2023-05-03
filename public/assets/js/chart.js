@@ -1,7 +1,6 @@
 $(function(){
     "use strict"
     var seid = $("#student_exam_id").val();
-    alert(seid)
       $.getJSON('/studentperfchart/'+seid, function(response){
         var cor=[]; var wro=[]; var sub=[];
         for(var i=0; i<response.length; i++){
@@ -51,7 +50,7 @@ $(function(){
             }
           }
         };
-        var chart = new ApexCharts(document.querySelector("#studPerfChart"), options);
+        var chart = new ApexCharts(document.querySelector("#studPerfChart1"), options);
         chart.render();
       });
 
