@@ -269,7 +269,7 @@ class StudentController extends Controller
                 StudentExamScore::insert($data);
             });
         }catch(Exception $e){
-            return redirect()->back()->with('error', $e->getMessage());
+            //return redirect()->back()->with('error', $e->getMessage());
         }
         return redirect()->route('student.active.exams')->with('success', "Congratulations! You have successfully completed your exam.");
     }
