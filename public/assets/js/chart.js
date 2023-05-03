@@ -50,7 +50,7 @@ $(function(){
             }
           }
         };
-        var chart = new ApexCharts(document.querySelector("#studPerfChart1"), options);
+        var chart = new ApexCharts(document.querySelector("#studPerfChart"), options);
         chart.render();
       });
 
