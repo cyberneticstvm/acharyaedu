@@ -306,7 +306,7 @@ class StudentController extends Controller
         ]);
         $subjects = Subject::all(); $modules = Topic::all();
         $inputs = array($request->subject_id, $request->module_id);
-        $questions = Question::where('subject_id', $request->subject_id)->where('topic_id', $request->module_id)->where('status', 1)->where('available_for_free', 1)->get();
+        $questions = Question::where('subject_id', $request->subject_id)->where('topic_id', $request->module_id)->where('status', 1)->where('available_for_free', 1)->inRandomOrder()->limit(20)->get();
         return view('student.study-materials', compact('subjects', 'modules', 'inputs', 'questions'));
     }
 
