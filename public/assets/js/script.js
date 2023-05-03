@@ -50,7 +50,7 @@ $(function(){
     });
     $(".sw-btn-next, .sw-btn-prev").click(function(){
         $("#smartwizard .answer, #smartwizard1 .answer").collapse('hide');
-        $(".tab-content").css('height', 'auto');
+        $(".tab-content").height("100%");
     });
 });
 
