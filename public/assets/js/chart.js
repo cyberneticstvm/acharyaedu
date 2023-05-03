@@ -57,7 +57,7 @@ $(function(){
     $.getJSON('/studentperfchartall', function(response){
       var da = []; var sub=[];
       for(var i=0; i<response.length; i++){
-        da.push(((parseInt(response[i]['correct'])/(parseInt(response[i]['correct'])+parseInt(response[i]['wrong'])))*100).toFixed(2));
+        da.push((parseInt(response[i]['correct'])/(parseInt(response[i]['correct'])+parseInt(response[i]['wrong'])))*100);
         sub.push(response[i]['sname']);
       }
       var options = {
