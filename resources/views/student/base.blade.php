@@ -134,6 +134,6 @@
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/demo.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
-  <script src="{{ asset('assets/js/chart1.js') }}"></script>
+  <script src="{{ asset('assets/js/chart.js') }}"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 $(function(){
     "use strict"
     var seid = $("#student_exam_id").val();
-      $.getJSON('/studentperfchart/'+seid, function(response){
+      $.getJSON('/studentperfchart/'+seid, function(response){ alert(response)
         var cor=[]; var wro=[]; var sub=[];
         for(var i=0; i<response.length; i++){
             cor.push(response[i]['correct']);
@@ -54,7 +54,7 @@ $(function(){
         chart.render();
       });
 
-      $.getJSON('/studentperfchartall', function(response){
+      $.getJSON('/studentperfchartall', function(response){ alert(response)
         var cor=[]; var wro=[]; var sub=[];
         for(var i=0; i<response.length; i++){
             cor.push(response[i]['correct']);
