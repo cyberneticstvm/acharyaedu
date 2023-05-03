@@ -45,7 +45,7 @@
                                         @endforelse 
                                         <div class="row">
                                             <div class="col">
-                                                <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary">Show Correct Answer</button>
+                                                <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary btnshow">Show Correct Answer</button>
                                                 <div class="row">
                                                     <div class="col collapse answer quest mt-1 text-success" id="correctanswer{{$quest->id}}">
                                                         {!! $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') !!}
@@ -53,7 +53,7 @@
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary pull-right">Show Explanation</button>                                               
+                                                <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary btnshow pull-right">Show Explanation</button>                                               
                                             </div>
                                         </div>                                                                               
                                     </div>                                

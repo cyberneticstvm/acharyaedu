@@ -51,6 +51,9 @@ $(function(){
     $(".sw-btn-next, .sw-btn-prev").click(function(){
         $("#smartwizard .answer, #smartwizard1 .answer").collapse('hide');
     });
+    $(".btnshow").click(function(){
+        $(".answer").css({'height': '100px'});
+    })
 });
 
 function clearAnswer(dis){
