@@ -49,7 +49,7 @@ $(function(){
         }
     });
     $(".sw-btn-next, .sw-btn-prev").click(function(){
-        $("#smartwizard1 .answer, #smartwizard1 .answer").collapse('hide');
+        $("#smartwizard .answer, #smartwizard1 .answer").collapse('hide');
     });
 });
 
