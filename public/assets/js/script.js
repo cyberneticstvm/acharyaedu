@@ -44,6 +44,7 @@ $(function(){
         },
     });
     $('#smartwizard1').smartWizard({
+        autoAdjustHeight: false,
         toolbar: {
             extraHtml: `<a class="btn btn-danger" href='/student/active-exams'>Cancel</a>`
         }
