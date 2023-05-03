@@ -50,8 +50,8 @@ $(function(){
             }
           }
         };
-        /*var chart = new ApexCharts(document.querySelector("#studPerfChart"), options);
-        chart.render();*/
+        var chart = new ApexCharts(document.querySelector("#studPerfChart"), options);
+        chart.render();
       });
 
       $.getJSON('/studentperfchartall', function(response){
