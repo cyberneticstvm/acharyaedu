@@ -54,7 +54,7 @@ $(function(){
       chart.render();
     });
 
-    $.getJSON('/studentperfchartall', function(response){alert(response)
+    $.getJSON('/studentperfchartall', function(response){
       var da = []; var sub=[];
       for(var i=0; i<response.length; i++){
         da.push((parseInt(response[i]['correct'])/(parseInt(response[i]['correct'])+parseInt(response[i]['wrong'])))*100);
@@ -64,15 +64,14 @@ $(function(){
           series: da,
           chart: {
           type: 'pie',
-          width: 380
+          width: '100%'
         },
         labels:sub,
-        colors: ['#ff0000', '#228B22'],
         responsive: [{
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: '100%'
             },
             legend: {
               position: 'bottom'
