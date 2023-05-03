@@ -215,7 +215,7 @@ class StudentController extends Controller
 
     public function exam($id){
         $exam = Exam::find($id);
-        if(!isStudentAttended(Auth::user()->student->id, $id)):
+        if(!isStudentAttended(Auth::user()->student->id, $id) && Auth::user()):
             return view('student.exam', compact('exam'));
         else:
             return redirect()->route('student.active.exams')->with('error', "Exam already attended!");
@@ -247,6 +247,8 @@ class StudentController extends Controller
             $input['student_id'] = $request->user()->student->id;
             $input['exam_id'] = $exam->id;
             $input['grade'] = 0;
+            echo $input['correct_answer_count'].'-'.$input['wrong_answer_count'].'-'.$input['unattended_count'];
+            die;
             DB::transaction(function() use ($input, $exam) {
                 $se = StudentExam::create($input);
                 $data = [];

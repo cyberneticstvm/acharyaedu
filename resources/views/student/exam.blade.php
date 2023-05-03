@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4"><h5 class="text-primary">{{ Auth::user()->name }}</h5></div>
+                        <div class="col-md-4"><h5 class="text-primary">{{ (Auth::user()) ? Auth::user()->student->name : '' }}</h5></div>
                         <div class="col-md-4"><h5 class="text-primary">{{ $exam->name }} / Number of Quests. {{ $exam->questions->count('id') }}</h5></div>
                         <div class="col-md-4"><h5 class="text-primary">Time Remaining: {{ $exam->duration }} / <span class="text-danger" id="time-remain">{{ $exam->duration }}</span> (<span id="secs" class="text-success"></span>) Minutes</h5></div>
                     </div>
