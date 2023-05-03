@@ -52,6 +52,8 @@ $(function(){
         };
         var chart = new ApexCharts(document.querySelector("#studPerfChart"), options);
         chart.render();
+        var chart1 = new ApexCharts(document.querySelector("#studPerfChart1"), options);
+        chart1.render();
       });
 
       $.getJSON('/studentperfchartall', function(response){
