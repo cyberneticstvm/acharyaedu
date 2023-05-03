@@ -225,7 +225,7 @@ class StudentController extends Controller
     public function saveexam(Request $request, $id){
         $exam = Exam::find($id);
         $input = $request->all();
-        try{
+        //try{
             $arr = [];
             foreach($exam->questions as $key => $quest):
                 $question = Question::find($quest->question_id);
@@ -249,7 +249,7 @@ class StudentController extends Controller
             $input['grade'] = 0;
             echo $input['correct_answer_count'].'-'.$input['wrong_answer_count'].'-'.$input['unattended_count'];
             die;
-            DB::transaction(function() use ($input, $exam) {
+            /*DB::transaction(function() use ($input, $exam) {
                 $se = StudentExam::create($input);
                 $data = [];
                 foreach($exam->questions as $key => $quest):
@@ -267,10 +267,10 @@ class StudentController extends Controller
                     ];
                 endforeach;
                 StudentExamScore::insert($data);
-            });
-        }catch(Exception $e){
+            });*/
+        //}catch(Exception $e){
             //return redirect()->back()->with('error', $e->getMessage());
-        }
+        //}
         return redirect()->route('student.active.exams')->with('success', "Congratulations! You have successfully completed your exam.");
     }
 
