@@ -55,7 +55,7 @@ $(function(){
 
 function clearAnswer(dis){
     //var chk = dis.parent().find('.quest:visible').find(".radanswer").data('chk');
-    var chk = dis.parent().parent().find('.quest:visible').attr('class');
+    var chk = dis.parent().parent().find('.quest:visible').attr('id');
     alert(chk)
     $("input[name='"+chk+"']").prop('checked', false);
     //var radioValue = $("input[name='"+chk+"']:checked").val();
