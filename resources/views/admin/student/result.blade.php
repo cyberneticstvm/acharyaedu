@@ -46,6 +46,11 @@
                                         <div class="row">
                                             <div class="col">
                                                 <button data-bs-toggle="collapse" data-bs-target="#correctanswer{{$quest->id}}" class="btn btn-primary">Show Correct Answer</button>
+                                                <div class="row">
+                                                    <div class="col" id="correctanswer{{$quest->id}}">
+                                                        {!! $quest->question->options()->where('option_id', $quest->question->correct_option)->value('option_name') !!}
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary pull-right">Show Explanation</button>                                               
