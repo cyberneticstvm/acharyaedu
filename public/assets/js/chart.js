@@ -64,7 +64,7 @@ $(function(){
           series: da,
           chart: {
           type: 'pie',
-          width: '75%'
+          width: '100%'
         },
         labels:sub,
         responsive: [{
