@@ -53,7 +53,12 @@
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary btnshow pull-right">Show Explanation</button>                                               
+                                                <button data-bs-toggle="collapse" data-bs-target="#explanation{{$quest->id}}" class="btn btn-primary btnshow pull-right">Show Explanation</button>
+                                                <div class="row">
+                                                    <div class="col collapse answer quest mt-1 text-success" id="explanation{{$quest->id}}">
+                                                        {!! ($quest->question->explanation) ? $quest->question->explanation : 'Explanation will be added soon.' !!}
+                                                    </div>
+                                                </div>                                               
                                             </div>
                                         </div>                                                                               
                                     </div>                                
