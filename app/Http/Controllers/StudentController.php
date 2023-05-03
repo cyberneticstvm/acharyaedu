@@ -237,11 +237,9 @@ class StudentController extends Controller
             endforeach;
             $op = array_count_values(array_column($arr, 'answer'));
             $op_unattended = array_count_values(array_column($arr, 'unattended'));
-            dd($op_unattended);
-            die;
             //$wrong_unattended = (!empty($op['0'])) ? $op['0'] : 0;
             $input['correct_answer_count'] = (!empty($op['1'])) ? $op['1'] : 0;
-            $input['unattended_count'] = (!empty($op_unattended['1'])) ? $op['1'] : 0;
+            $input['unattended_count'] = (!empty($op_unattended['1'])) ? $op_unattended['1'] : 0;
             $input['wrong_answer_count'] = $exam->question_count-($input['correct_answer_count']+$input['unattended_count']);
             $input['total_mark'] = $input['correct_answer_count'];
             $input['cutoff_mark'] = cutoffMark($input['wrong_answer_count']);
