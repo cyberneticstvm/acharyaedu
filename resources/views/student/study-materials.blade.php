@@ -16,7 +16,7 @@
                                     <label class="req mb-1">Subject</label>
                                     <select class="form-control subject" name="subject_id">
                                         <option value="">Select</option>
-                                        @forelse($subjects->inRandomOrder()->limit(5) as $key => $subject)
+                                        @forelse($subjects as $key => $subject)
                                             <option value="{{ $subject->id }}" {{ ($inputs && $inputs[0] == $subject->id) ? 'selected' : '' }}>{{ $subject->name }}</option>
                                         @empty
                                         @endforelse
@@ -31,7 +31,7 @@
                                     <label class="req mb-1">Module Name</label>
                                     <select class="form-control module" name="module_id">
                                         <option value="">Select</option>
-                                        @forelse($modules as $key => $module)
+                                        @forelse($modules->random(5) as $key => $module)
                                             <option value="{{ $module->id }}" {{ ($inputs && $inputs[1] == $module->id) ? 'selected' : '' }}>{{ $module->name }}</option>
                                         @empty
                                         @endforelse
