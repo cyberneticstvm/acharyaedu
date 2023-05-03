@@ -294,7 +294,7 @@ class StudentController extends Controller
     }   
 
     public function studymaterials(){
-        $subjects = Subject::all(); $modules = Topic::all(); $questions = collect();
+        $subjects = Subject::inRandomOrder()->limit(1)->get(); $modules = Topic::all(); $questions = collect();
         $inputs = [];
         return view('student.study-materials', compact('subjects', 'modules', 'inputs', 'questions'));
     }
