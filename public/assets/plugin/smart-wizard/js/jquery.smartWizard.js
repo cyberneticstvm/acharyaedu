@@ -54,7 +54,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     // Theme for the wizard, related css need to include for other than default theme
     justified: true,
     // Nav menu justification. true/false
-    autoAdjustHeight: false,
+    autoAdjustHeight: true,
     // Automatically adjust content height
     backButtonSupport: true,
     // Enable the back button support
