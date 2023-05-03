@@ -15,9 +15,7 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/css/al.style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugin/smart-wizard/css/smart_wizard_all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugin/smart-wizard/css/demo.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('assets/plugin/smart-wizard/css/smart_wizard_all.min.css') }}" rel="stylesheet">    
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/al.education.min.css') }}" rel="stylesheet">
 </head>
@@ -132,7 +130,6 @@
   <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
   <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
-  <script src="{{ asset('assets/plugin/smart-wizard/js/demo.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
   <script src="{{ asset('assets/js/chart.js') }}"></script>
 </body>
