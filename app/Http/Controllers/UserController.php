@@ -41,7 +41,7 @@ class UserController extends Controller
         return redirect("/")->with('error', 'Login details are not valid')->withInput($request->all());
     }
 
-    public function dash(){
+    /*public function dash(){
         if(Auth::user()->role == 'Admin'):
             $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
             $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
@@ -52,7 +52,7 @@ class UserController extends Controller
         else:
             return view('admin.staff-dash');
         endif;
-    }
+    }*/
 
     public function logout(){
         Session::flush();
