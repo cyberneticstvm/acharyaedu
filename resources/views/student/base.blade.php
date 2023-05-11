@@ -107,7 +107,7 @@
         <!-- inner menu area desktop start -->
         <div class="inner-main-wrapper-desk">
             <div class="thumbnail">
-                <img src="{{ asset('assets/images/logo/d.png') }}" alt="Acharya">
+                <img src="{{ asset('assets/images/logo/acharya-white-small.png') }}" alt="Acharya">
             </div>
         </div>
         <!-- mobile menu area start -->
