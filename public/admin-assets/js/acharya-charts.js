@@ -30,7 +30,6 @@ $(function(){
     });
 
     var ctx5 = document.getElementById("stud-reg-chart").getContext("2d");
-    alert(ctx5)
     $.getJSON('/studentregchart/', function(response){
         new Chart(ctx5, {
             type: "bar",
