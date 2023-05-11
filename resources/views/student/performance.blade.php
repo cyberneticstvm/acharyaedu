@@ -1,13 +1,13 @@
 @extends("student.base")
 @section("content")
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
+<div class="rts-contact-page-form-area rts-section-gapTop">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mian-wrapper-form">
+                <div id="form-messages">
                     <div class="row">
                         <div class="col-md-12">
-                            <h5 class="text-primary text-center">{{ $student->name }}'s Exam Performance ({{ $exam->studentexam->exam->name }})</h5>
+                            <h5 class="text-primary">{{ $student->name }}'s Exam Performance ({{ $exam->studentexam->exam->name }})</h5>
                         </div>
                         <div class="col-md-12 mt-5">
                             <input type="hidden" id="student_exam_id" value="{{ $exam->student_exam_id }}" />

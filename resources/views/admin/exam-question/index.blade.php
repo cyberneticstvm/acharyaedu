@@ -1,15 +1,17 @@
 @extends("admin.base")
 @section("content")
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body table-responsive table-sm table-striped">
-                    <div class="row">
-                        <div class="col"><h5 class="text-primary">Exam Question Register</h5></div>
-                    </div>
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header pb-0 text-left bg-transparent">
+                <div class="row">
+                    <div class="col"><h3 class="font-weight-bolder text-primary text-gradient">Exam Question Register</h3></div>
+                </div>                
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
                     @php $slno = 1; @endphp
-                    <table id="datatable-basic" class="table table-sm table-bordered">
+                    <table id="datatable-basic" class="table table-sm table-striped table-bordered">
                         <thead><tr><th>SL No</th><th>Exam</th><th>Question</th><th>Delete</th></tr></thead><tbody>
                         @forelse($eqs as $key => $eq)
                             <tr>
@@ -27,9 +29,9 @@
                         @empty
                         @endforelse
                     </tbody></table>
-                    <div class="col-12 mt-3 text-center">
-                        <a type="button" href="/admin/exam" class="btn btn-primary text-uppercase fs-6">Back to Exam Register</a>
-                    </div>
+                </div>
+                <div class="text-center">
+                    <a type="button" href="/admin/exam" class="btn bg-gradient-warning mt-4 mb-0">Back to Exam Register</a>
                 </div>
             </div>
         </div>

@@ -1,21 +1,21 @@
 @extends("admin.base")
 @section("content")
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                @php 
-                    $slno = 1;
-                @endphp
-                <div class="card-body table-responsive table-sm table-striped">
-                    <div class="row">
-                        <div class="col"><h5 class="text-primary">Exam Questions</h5></div>
-                        <div class="col text-end">Exam Name: <span class="text-primary">{{ $exam->name }}</span></i></a></div>
-                    </div>                    
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header pb-0 text-left bg-transparent">
+                <div class="row">
+                    <div class="col"><h3 class="font-weight-bolder text-primary text-gradient">Create Exam Questions</h3></div>
+                    <div class="col text-end"><h3 class="font-weight-bolder text-primary text-gradient">Exam Name: {{ $exam->name }}</h3></div>
+                </div>                
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @php $slno = 1; @endphp
                     <form method="post" action="{{ route('eq.save') }}">
                         @csrf
                         <input type="hidden" name="exam_id" value="{{ $exam->id }}" >
-                        <table id="datatable-basic" class="table table-sm table-bordered">
+                        <table id="datatable-basic" class="table table-sm table-striped table-bordered">
                             <thead><tr><th class="d-none"></th><th>SL No</th><th>Question</th><th>Remove</th></tr></thead><tbody>
                             @forelse($questions as $key => $question)
                                 <tr>

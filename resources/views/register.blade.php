@@ -1,107 +1,90 @@
 @extends("base")
 @section("content")
-<div class="section how-it" id="Howitworks">
-    <div class="container">
-        <div class="row g-3 justify-content-between mb-3">
-            <div class="col-lg-8 col-md-12">
-                <div class="section-heading mb-4">
-                    <span class="bg-dark px-2 py-1 color-fff">Student Registration</span>
-                    <h2 class="h1 fw-bold mt-3 color-900">Student Registration</h2>
-                    <p class="lead">Register yourself and access our free question banks and more..</p>
-                </div>
-            </div>
-        </div>
+<div class="rts-contact-page-form-area rts-section-gap mt-5">
+    <div class="container-fluid">
         <div class="row">
-            @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
+            <div class="mian-wrapper-form">
+                <div class="title-mid-wrapper-home-two" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                    <span class="pre">Register</span>
+                    <h2 class="title">Register yourself and access our free exams and more..</h2>
                 </div>
-            @endif
-            @if(session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error') }}
+                <div id="form-messages">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
                 </div>
-            @endif
-            <form method="post" action="{{ route('student.save') }}">
-                @csrf
-                <div class="row g-2">
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-sm" name="name" value="{{ old('name') }}" placeholder="Full Name">
+                <form class="contact-form-contact" method="post" action="{{ route('student.register') }}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-4">
                             <label class="req">Full Name</label>
+                            <input type="text" class="form-control form-control-sm" name="name" value="{{ old('name') }}" placeholder="Full Name">                                
+                            @error('name')
+                                <small class="text-danger">{{ $errors->first('name') }}</small>
+                            @enderror
                         </div>
-                        @error('name')
-                            <small class="text-danger">{{ $errors->first('name') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="email" class="form-control form-control-sm" name="email" value="{{ old('email') }}" placeholder="Email ID">
+                        <div class="col-md-4">
                             <label class="req">Email ID</label>
+                            <input type="email" class="form-control form-control-sm" name="email" value="{{ old('email') }}" placeholder="Email ID">                                
+                            @error('email')
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
+                            @enderror
                         </div>
-                        @error('email')
-                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" placeholder="Mobile Number" name="mobile" value="{{ old('mobile') }}" maxlength="10">
+                        <div class="col-md-4">
                             <label class="req">Mobile Number</label>
+                            <input type="text" class="form-control" placeholder="Mobile Number" name="mobile" value="{{ old('mobile') }}" maxlength="10">                                
+                            @error('mobile')
+                                <small class="text-danger">{{ $errors->first('mobile') }}</small>
+                            @enderror
                         </div>
-                        @error('mobile')
-                            <small class="text-danger">{{ $errors->first('mobile') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="date" class="form-control" name="dob" value="{{ old('dob') }}">
+                        <div class="col-md-4">
                             <label class="req">Date of Birth</label>
+                            <input type="date" class="form-control" name="dob" value="{{ old('dob') }}">
+                            @error('dob')
+                                <small class="text-danger">{{ $errors->first('dob') }}</small>
+                            @enderror
                         </div>
-                        @error('dob')
-                            <small class="text-danger">{{ $errors->first('dob') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" placeholder="Address" name="address" value="{{ old('address') }}">
+                        <div class="col-md-4">
                             <label class="req">Address</label>
+                            <input type="text" class="form-control" placeholder="Address" name="address" value="{{ old('address') }}">                                
+                            @error('address')
+                                <small class="text-danger">{{ $errors->first('address') }}</small>
+                            @enderror
                         </div>
-                        @error('address')
-                            <small class="text-danger">{{ $errors->first('address') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" placeholder="Qualification" name="qualification" value="{{ old('qualification') }}">
+                        <div class="col-md-4">
                             <label class="req">Qualification</label>
+                            <input type="text" class="form-control" placeholder="Qualification" name="qualification" value="{{ old('qualification') }}">                                
+                            @error('qualification')
+                                <small class="text-danger">{{ $errors->first('qualification') }}</small>
+                            @enderror
                         </div>
-                        @error('qualification')
-                            <small class="text-danger">{{ $errors->first('qualification') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" placeholder="******" name="password" >
+                        <div class="col-md-4">
                             <label class="req">Password</label>
+                            <input type="password" class="form-control" placeholder="******" name="password" >
+                            @error('password')
+                                <small class="text-danger">{{ $errors->first('password') }}</small>
+                            @enderror
                         </div>
-                        @error('password')
-                            <small class="text-danger">{{ $errors->first('password') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" placeholder="******" name="password_confirmation" >
+                        <div class="col-md-4">
                             <label class="req">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="******" name="password_confirmation" >
+                            @error('password_confirmation')
+                                <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
+                            @enderror
                         </div>
-                        @error('password_confirmation')
-                            <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
-                        @enderror
+                        <div class="col-md-12">
+                            <button type="submit" class="rts-btn btn-primary btn-submit">Register</button>
+                        </div>
                     </div>
-                    <div class="col-12 mt-3 text-end">
-                        <button type="submit" class="btn btn-lg btn-submit btn-primary text-uppercase fs-6 rounded-pill">Register</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

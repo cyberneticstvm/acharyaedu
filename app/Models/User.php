@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function student(){
         return $this->hasOne(Student::class, 'email', 'email');
     }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class, 'branch');
+    }
 }

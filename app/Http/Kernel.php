@@ -49,6 +49,11 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Admin::class
         ],
 
+        'staff' => [
+            'auth',
+            \App\Http\Middleware\Staff::class
+        ],
+
         'student' => [
             'auth',
             \App\Http\Middleware\Student::class

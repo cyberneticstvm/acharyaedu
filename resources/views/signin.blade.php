@@ -1,55 +1,50 @@
 @extends("base")
 @section("content")
-<div class="section how-it" id="Howitworks">
-    <div class="container">
-        <div class="row g-3 justify-content-between mb-3">
-            <div class="col-lg-8 col-md-12">
-                <div class="section-heading mb-4">
-                    <span class="bg-dark px-2 py-1 color-fff">Sign In</span>
-                    <h2 class="h1 fw-bold mt-3 color-900">Sign In</h2>
-                </div>
-            </div>
-        </div>
+<!-- contact form area strt -->
+<div class="rts-contact-page-form-area rts-section-gap mt-5">
+    <div class="container-fluid">
         <div class="row">
-            @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
+            <div class="mian-wrapper-form">
+                <div class="title-mid-wrapper-home-two" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                    <span class="pre">Signin</span>
+                    <h2 class="title">Sign in and explore our portal</h2>
                 </div>
-            @endif
-            @if(session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error') }}
+                <div id="form-messages">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
                 </div>
-            @endif
-            <form method="post" action="{{ route('signin') }}">
-                @csrf
-                <div class="row g-2">
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="email" class="form-control form-control-sm" name="email" value="{{ old('email') }}" placeholder="Email ID">
+                <form class="contact-form-contact" method="post" action="{{ route('signin') }}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
                             <label class="req">Email ID</label>
+                            <input type="email" class="form-control form-control-sm" name="email" value="{{ old('email') }}" placeholder="Email ID">
+                            @error('email')
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
+                            @enderror
                         </div>
-                        @error('email')
-                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" placeholder="******" name="password" >
+                        <div class="col-md-6">
                             <label class="req">Password</label>
+                            <input type="password" class="form-control form-control-sm" placeholder="******" name="password" >
+                            @error('password')
+                                <small class="text-danger">{{ $errors->first('password') }}</small>
+                            @enderror
                         </div>
-                        @error('password')
-                            <small class="text-danger">{{ $errors->first('password') }}</small>
-                        @enderror
+                        <div class="col-12 mt-3">
+                            <a href="/forgot">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="rts-btn btn-primary btn-submit">Sign In</button>
                     </div>
-                    <div class="col-12 mt-3">
-                        <a href="/forgot">Forgot Password?</a>
-                    </div>
-                    <div class="col-8 mt-3 text-end">
-                        <button type="submit" class="btn btn-lg btn-submit btn-primary text-uppercase fs-6 rounded-pill">Sign In</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

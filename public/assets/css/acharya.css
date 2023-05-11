@@ -1,0 +1,75 @@
+@font-face{
+    font-family: manjari;
+    src : url('/storage/fonts/Manjari-Bold.ttf') format('truetype');
+}
+.form-control, .btn{
+    border-radius: 0 !important;
+}
+.form-control{
+    border: 1px solid #6e777d !important;
+}
+.req::after{
+    content: " *";
+    color: red;
+}
+.alert-danger{
+    background-color: red !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+}
+.alert-success{
+    background-color: green !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+}
+/*.form-floating>.form-control{
+    height: 15px !important;
+}*/
+
+.quest{
+    font-family: manjari !important;
+    font-size: large;
+}
+.rts-banner-main-area-swiper.home-seven .swiper-container-h2 .swiper-wrapper .rts-banner-one.bg_image--1{
+    background: url(../images/bg/img1.webp) !important;
+}
+.rts-banner-main-area-swiper.home-seven .swiper-container-h2 .swiper-wrapper .rts-banner-one.bg_image--2{
+    background: url(../images/bg/img2.webp) !important;
+}
+.rts-banner-main-area-swiper.home-seven .swiper-container-h2 .swiper-wrapper .rts-banner-one.bg_image--3{
+    background: url(../images/bg/img3.webp) !important;
+}
+.sw .toolbar>.sw-btn{
+    padding: 20px 33px !important;
+}
+input[type=checkbox], input[type=radio] {
+    opacity: 1 !important;
+    height: 15px !important;
+}
+.form-group select{
+    height: 50px !important;
+    font-size: inherit !important;
+}
+.sw-btn-success{
+    background-color: green !important;
+    border: 1px solid green !important;
+}
+.sw-btn-warning{
+    background-color: orange !important;
+    border: 1px solid orange !important;
+}
+.sw-btn-danger{
+    background-color: red !important;
+    border: 1px solid red !important;
+}
+.heder-two .header-two-container .header-main-wrapper .logo-area a{
+    padding: 0 !important;
+}
+
+
+@media only screen and (max-width: 767px){
+    .rts-section-gapTop{
+        padding-top: 120px !important;  
+    }
+}
+

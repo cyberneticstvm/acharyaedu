@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
+use App\Models\Branch;
 use App\Models\Exam;
 use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
@@ -27,9 +29,21 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function register()
     {
         return view('register');
+    }
+    public function index()
+    {
+        $students = Student::where('branch', Auth::user()->branch)->orderByDesc('id')->get();
+        $batches = Batch::where('status', 1)->get();
+        $status = DB::table('status')->where('category', 'student')->get();        
+        return view('admin.student.index', compact('students', 'batches', 'status'));
+    }
+    public function create()
+    {
+        $branches = Branch::all();
+        return view('admin.student.create', compact('branches'));
     }
 
     /**
@@ -48,7 +62,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function save(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -79,6 +93,37 @@ class StudentController extends Controller
         return redirect()->route('register')->with('success', 'Student Registered Successfully!');
     }
 
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email:filter|unique:students,email',
+            'mobile' => 'required|numeric|digits:10',
+            'admission_date' => 'required',
+            'address' => 'required',
+            'fee' => 'required',
+            'branch' => 'required',
+        ]);
+        $input = $request->all();
+        if($request->hasFile('photo')):
+            $img = $request->file('photo');
+            $fname = 'photos/'.$img->getClientOriginalName();
+            Storage::disk('public')->putFileAs($fname, $img, '');
+            $input['photo'] = $img->getClientOriginalName();                                 
+        endif;
+        $input['created_by'] = Auth::user()->id;        
+        $input['updated_by'] = Auth::user()->id;
+        $input['status'] = 'Active';
+        $input['branch'] = 1;
+        $input['role'] = 'Student';
+        $input['password'] = Hash::make($request->mobile);
+        DB::transaction(function() use ($input) {
+            Student::create($input);
+            User::create($input);
+        });        
+        return redirect()->route('student')->with('success', 'Student Created Successfully!');
+    }
+
     public function profileupdate(Request $request){
         $this->validate($request, [
             'name' => 'required',
@@ -104,11 +149,7 @@ class StudentController extends Controller
         if(Auth::attempt($credentials)):
             $user = Auth::getProvider()->retrieveByCredentials($credentials);
             Auth::login($user, $request->get('remember'));
-            if($user->role == 'Admin'):
-                return redirect()->route('admin.dash')->with("success", "User logged in successfully!");
-            else:
-                return redirect()->route('student.dash')->with("success", "User logged in successfully!");
-            endif;
+            return redirect()->route('dash');
         endif;  
         return redirect()->back()->with('error', 'Login details are not valid')->withInput($request->all());
     }
@@ -181,7 +222,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        $branches = Branch::all();
+        return view('admin.student.edit', compact('student', 'branches'));
     }
 
     /**
@@ -193,7 +236,29 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email:filter|unique:students,email,'.$id,
+            'mobile' => 'required|numeric|digits:10',
+            'admission_date' => 'required',
+            'address' => 'required',
+            'fee' => 'required',
+            'branch' => 'required',
+        ]);
+        $input = $request->all();
+        $student = Student::find($id); $user = User::where('email', $student->email)->first();
+        if($request->hasFile('photo')):
+            $img = $request->file('photo');
+            $fname = 'photos/'.$img->getClientOriginalName();
+            Storage::disk('public')->putFileAs($fname, $img, '');
+            $input['photo'] = $img->getClientOriginalName();                                 
+        endif;
+        $input['updated_by'] = Auth::user()->id;
+        DB::transaction(function() use ($input, $student, $user) {
+            $student->update($input);
+            $user->update($input);
+        });
+        return redirect()->route('student')->with('success', 'Student Updated Successfully!');
     }
 
     /**
@@ -204,7 +269,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::find($id)->delete();
+        return redirect()->route('student')->with('success', 'Student Deleted Successfully!');
     }
 
     public function activeexams(){

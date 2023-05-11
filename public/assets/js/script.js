@@ -39,7 +39,7 @@ $(function(){
     $('#smartwizard').smartWizard({
         selected: 0,
         toolbar: {
-            extraHtml: `<button class="btn btn-success btn-submit" type="submit" onclick="javascript: return confirm('Are you sure want to submit the exam?')">Submit</button>&nbsp;<a href='/student/active-exams' class='btn btn-danger' onclick="javascript: return confirm('Are you sure want to cancel the exam?')">Cancel</a>&nbsp;<a title='Clear this answer' class='btn btn-warning' href='javascript:void(0)' onclick="clearAnswer($(this));">Clear</a>`
+            extraHtml: `<button class="sw-btn sw-btn-success btn-submit" type="submit" onclick="javascript: return confirm('Are you sure want to submit the exam?')">Submit</button>&nbsp;<a href='/student/active-exams' class='sw-btn sw-btn-danger' onclick="javascript: return confirm('Are you sure want to cancel the exam?')">Cancel</a>&nbsp;<a title='Clear this answer' class='sw-btn sw-btn-warning' href='javascript:void(0)' onclick="clearAnswer($(this));">Clear</a>`
         },
         anchor: {
             enableNavigation: false,
@@ -48,35 +48,19 @@ $(function(){
     $('#smartwizard1').smartWizard({
         autoAdjustHeight: false,
         toolbar: {
-            extraHtml: `<a class="btn btn-danger" href='/student/active-exams'>Cancel</a>`
+            extraHtml: `<a class="sw-btn sw-btn-danger" href='/student/active-exams'>Cancel</a>`
         }
     });
     $(".sw-btn-next, .sw-btn-prev").click(function(){
         $("#smartwizard .answer, #smartwizard1 .answer").collapse('hide');
     });
+    $(".sw-btn").removeClass("btn").addClass("rts-btn");
 });
 
 function clearAnswer(dis){
     var chk = dis.parent().parent().find('.quest:visible').find(".radanswer").data('chk');
     $("input[name='"+chk+"']").prop('checked', false);
 }
-
-var timeleft = parseInt($("#exam-time-duration").val()); 
-var s = 60;
-var examTimerSecs = setInterval(function(){
-    if(s <= 0){
-        s = 60;
-        timeleft -= 1;
-        document.getElementById("time-remain").innerHTML = timeleft;
-    }
-    if(timeleft <= 0){
-        clearInterval(examTimerSecs);
-        alert("Your time has over.");
-        $("#frmExam").submit();
-    }
-    document.getElementById("secs").innerHTML = s;
-    s -= 1;
-}, 1000);
 
 setTimeout(function () {
     $(".alert").hide('slow');
