@@ -124,6 +124,10 @@ class StudentController extends Controller
         return redirect()->route('student')->with('success', 'Student Created Successfully!');
     }
 
+    public function getprofile(){
+        return view('student.dash');
+    }
+
     public function profileupdate(Request $request){
         $this->validate($request, [
             'name' => 'required',
