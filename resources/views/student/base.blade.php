@@ -36,7 +36,7 @@
                 <div class="header-main-wrapper">
                     <div class="logo-area">
                         <a href="/" class="logo">
-                            <img src="{{ asset('assets/images/logo/acharya-black-small.png') }}" alt="image-logo">
+                            <img src="{{ asset('assets/images/logo/acharya-white-small.png') }}" alt="image-logo">
                         </a>
                     </div>
                     <!-- header right start -->
@@ -107,7 +107,7 @@
         <!-- inner menu area desktop start -->
         <div class="inner-main-wrapper-desk">
             <div class="thumbnail">
-                <img src="{{ asset('assets/images/logo/acharya-white-small.png') }}" alt="Acharya">
+                <img src="{{ asset('assets/images/logo/d.png') }}" alt="Acharya">
             </div>
         </div>
         <!-- mobile menu area start -->
