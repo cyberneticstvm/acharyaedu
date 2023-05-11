@@ -17,8 +17,6 @@ class AdminController extends Controller
 {
     public function dash(){
         $user = Auth::user();
-        echo $user->role;
-        die;
         if($user->role == 'Admin'):
             $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
             $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
