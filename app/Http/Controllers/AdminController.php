@@ -19,7 +19,7 @@ class AdminController extends Controller
         $user = Auth::user();
         if($user->role == 'Admin'):
             //return redirect()->route('admin.dash')->with("success", "User logged in successfully!");
-            return view('admin.dash1');
+            return view('admin.admin-dash');
         elseif($user->role == 'Staff'):
             return view('admin.staff-dash');
             //return redirect()->route('staff.dash')->with("success", "User logged in successfully!");
