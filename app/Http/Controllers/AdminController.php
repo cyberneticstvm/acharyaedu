@@ -18,11 +18,15 @@ class AdminController extends Controller
     public function dash(){
         $user = Auth::user();
         if($user->role == 'Admin'):
-            //return redirect()->route('admin.dash')->with("success", "User logged in successfully!");
-            return view('admin.admin-dash');
+            $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
+            $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
+            $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
+            $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+            $income = $afee + $bfee + $income; $profit = $income - $expense;
+            return view('admin.admin-dash', compact('income', 'expense', 'profit'));
         elseif($user->role == 'Staff'):
             return view('admin.staff-dash');
-            //return redirect()->route('staff.dash')->with("success", "User logged in successfully!");
+        //return redirect()->route('staff.dash')->with("success", "User logged in successfully!");
         else:
             return view('student.dash');
             //return redirect()->route('student.dash')->with("success", "User logged in successfully!");
