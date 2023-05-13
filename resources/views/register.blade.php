@@ -65,6 +65,19 @@
                                 <small class="text-danger">{{ $errors->first('qualification') }}</small>
                             @enderror
                         </div>
+                        <div class="col-md-4 form-group">
+                            <label class="req">Course Preference</label>
+                            <select class="form-control" name="course_id">
+                                <option value="">Select</option>
+                                @forelse($courses as $key => $course)
+                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                @empty
+                                @endforelse
+                            </select>                                
+                            @error('course_id')
+                                <small class="text-danger">{{ $errors->first('course_id') }}</small>
+                            @enderror
+                        </div>
                         <div class="col-md-4">
                             <label class="req">Password</label>
                             <input type="password" class="form-control" placeholder="******" name="password" >

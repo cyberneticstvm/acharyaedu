@@ -4,12 +4,24 @@
     <div class="container-fluid">
         <div class="row">
             <div class="mian-wrapper-form">
+                <div id="form-messages">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="row">
                     <div class="col-md-4"><h5 class="text-primary">{{ (Auth::user()) ? Auth::user()->student->name : '' }}</h5></div>
                     <div class="col-md-4"><h5 class="text-primary">{{ $exam->name }} / Number of Quests. {{ $exam->questions->count('id') }}</h5></div>
                     <div class="col-md-4"><h5 class="text-primary">Time Remaining: {{ $exam->duration }} / <span class="text-danger" id="time-remain">{{ $exam->duration }}</span> (<span id="secs" class="text-success"></span>) Minutes</h5></div>
                 </div>
-                <form method="post" action="{{ route('student.exam.save', $exam->id) }}" id="frmExam">
+                <form method="post" action="{{ route('student.exam.save', [$exam->id, $type]) }}" id="frmExam">
                     @csrf
                     <input type="hidden" id="exam-time-duration" value="{{ $exam->duration }}" />
                     <div class="row mt-3">

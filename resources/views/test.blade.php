@@ -1,1 +1,1 @@
-{{ cutoffMark(15) }}
+{{ dd(studentsubjects()) }}

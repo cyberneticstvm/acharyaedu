@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-12 table-responsive">
                         @php $slno = 1; @endphp
-                            <table id="datatable-basic" class="table table-sm table-bordered">
+                            <table id="datatable-basic" class="table table-sm table-striped table-bordered">
                             <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Unattended</th><th>Score</th><th>Grade</th><th class="text-center">Answer</th><th>Performance</th><th class="text-center">Take</th></tr></thead>
                                 <tbody>
                                 @forelse($exams as $key => $exam)
@@ -37,10 +37,10 @@
                                     <td>{{ ($se) ? $se->unattended_count : 0 }}</td>
                                     <td>{{ ($se) ? $se->total_mark_after_cutoff: 0 }}</td>
                                     <td>{{ ($se) ? $se->grade : 0 }}</td>
-                                    <td class="text-center"><a target="_blank" href="/student/exam/result/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-eye text-info"></a></td>
-                                    <td class="text-center"><a href="/student/exam/performance/{{ ($se) ? $se->id : 0 }}"><i class="fa fa-line-chart text-success"></i></a></td>
+                                    <td class="text-center"><a target="_blank" href="/student/exam/result/{{ ($se) ? encrypt($se->id) : 0 }}/paid"><i class="fa fa-eye text-info"></a></td>
+                                    <td class="text-center"><a href="/student/exam/performance/{{ ($se) ? encrypt($se->id) : 0 }}/paid"><i class="fa fa-line-chart text-success"></i></a></td>
                                     @if(!isStudentAttended($student->id, $exam->id))
-                                    <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id'>Take Exam</a>" : '' !!}</td>
+                                    <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id/paid'>Take Exam</a>" : '' !!}</td>
                                     @else
                                     <td></td>
                                     @endif

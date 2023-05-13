@@ -22,6 +22,7 @@ class Student extends Model
         'fee',
         'discount_applicable',
         'photo',
+        'course_id',
         'branch',
         'created_by',
         'updated_by',
@@ -41,5 +42,9 @@ class Student extends Model
     
     public function batchFee(){
         return $this->hasMany(Fee::class, 'student');
+    }
+
+    public function course(){
+        return $this->hasOne(Course::class, 'id', 'course_id');
     }
 }

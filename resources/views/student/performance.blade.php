@@ -11,6 +11,7 @@
                         </div>
                         <div class="col-md-12 mt-5">
                             <input type="hidden" id="student_exam_id" value="{{ $exam->student_exam_id }}" />
+                            <input type="hidden" id="student_exam_type" value="{{ $type }}" />
                             <div id="studPerfChart"></div>
                         </div>
                     </div>
