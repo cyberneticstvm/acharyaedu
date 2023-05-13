@@ -1,8 +1,9 @@
 $(function(){
     "use strict";
     var seid = $("#student_exam_id").val();
+    var type = $("#student_exam_type").val();
     var ctx1 = document.getElementById("studentPerformanceChart");
-    $.getJSON('/studentperfchart/'+seid, function(response){
+    $.getJSON('/studentperfchart/'+seid+'/'+type, function(response){
         var cor=[]; var wro=[]; var sub=[];
         for(var i=0; i<response.length; i++){
             cor.push(response[i]['correct']);
