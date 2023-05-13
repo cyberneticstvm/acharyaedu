@@ -33,12 +33,11 @@ class HelperController extends Controller
         return json_encode($score);
     }
 
-    public function studentperfchartall($type){
-        if($type == 'free'):
+    public function studentperfchartall(){
+        /*if($type == 'free'):
             $score = FreeExamScore::leftJoin('free_exams as se', 'se.id', 'free_exam_scores.student_exam_id')->leftJoin('subjects as s', 's.id', 'free_exam_scores.subject_id')->where('se.student_id', Auth::user()->student->id)->selectRaw('free_exam_scores.subject_id, s.name as sname, COUNT(free_exam_scores.id) as qcount, COUNT(CASE WHEN free_exam_scores.answer = 1 THEN free_exam_scores.answer END) AS correct, COUNT(CASE WHEN free_exam_scores.answer = 0 THEN free_exam_scores.answer END) AS wrong, COUNT(CASE WHEN free_exam_scores.answer IS NULL THEN free_exam_scores.answer END) AS unattended')->groupBy('free_exam_scores.subject_id', 's.name')->get();
-        else:
-            $score = StudentExamScore::leftJoin('student_exams as se', 'se.id', 'student_exam_scores.student_exam_id')->leftJoin('subjects as s', 's.id', 'student_exam_scores.subject_id')->where('se.student_id', Auth::user()->student->id)->selectRaw('student_exam_scores.subject_id, s.name as sname, COUNT(student_exam_scores.id) as qcount, COUNT(CASE WHEN student_exam_scores.answer = 1 THEN student_exam_scores.answer END) AS correct, COUNT(CASE WHEN student_exam_scores.answer = 0 THEN student_exam_scores.answer END) AS wrong, COUNT(CASE WHEN student_exam_scores.answer IS NULL THEN student_exam_scores.answer END) AS unattended')->groupBy('student_exam_scores.subject_id', 's.name')->get();
-        endif;
+        endif;*/
+        $score = StudentExamScore::leftJoin('student_exams as se', 'se.id', 'student_exam_scores.student_exam_id')->leftJoin('subjects as s', 's.id', 'student_exam_scores.subject_id')->where('se.student_id', Auth::user()->student->id)->selectRaw('student_exam_scores.subject_id, s.name as sname, COUNT(student_exam_scores.id) as qcount, COUNT(CASE WHEN student_exam_scores.answer = 1 THEN student_exam_scores.answer END) AS correct, COUNT(CASE WHEN student_exam_scores.answer = 0 THEN student_exam_scores.answer END) AS wrong, COUNT(CASE WHEN student_exam_scores.answer IS NULL THEN student_exam_scores.answer END) AS unattended')->groupBy('student_exam_scores.subject_id', 's.name')->get();
         return json_encode($score);
     }
 
