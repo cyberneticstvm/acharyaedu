@@ -12,6 +12,7 @@
                 <div class="row">
                     <div class="col-md-12 mt-5">
                         <input type="hidden" id="student_exam_id" value="{{ $exam->student_exam_id }}" />
+                        <input type="hidden" id="student_exam_type" value="paid" />
                         <div id="chart">
                             <canvas id="studentPerformanceChart" class="chart-canvas" height="300" width="755" style="display: block; box-sizing: border-box; height: 300px; width: 755px;"></canvas>
                         </div>
