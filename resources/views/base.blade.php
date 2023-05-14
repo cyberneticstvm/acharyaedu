@@ -33,7 +33,7 @@
                 <div class="header-main-wrapper">
                     <div class="logo-area">
                         <a href="/" class="logo">
-                            <img src="{{ asset('admin-assets/images/logo/logo.png') }}" alt="image-logo">
+                            <img src="{{ asset('admin-assets/images/logo/logo.svg') }}" alt="image-logo">
                         </a>
                     </div>
                     <!-- header right start -->
