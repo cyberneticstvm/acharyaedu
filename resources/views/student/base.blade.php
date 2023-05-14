@@ -7,7 +7,7 @@
     <meta name="description" content="Acharya">
     <meta name="keywords" content="Acharya">
     <title>Acharya E-Learning</title>
-    <link rel="icon" href="{{ asset('assets/images/fav.png') }}" type="image/x-icon"> <!-- Favicon-->
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon"> <!-- Favicon-->
 
      <!-- fontawesome css -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/fontawesome-5.css') }}">
