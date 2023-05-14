@@ -7,7 +7,7 @@
     <meta name="description" content="Acharya">
     <meta name="keywords" content="Acharya">
     <title>Acharya E-Learning</title>
-    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon"> <!-- Favicon-->
+    <link rel="icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon"> <!-- Favicon-->
 
      <!-- fontawesome css -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/fontawesome-5.css') }}">
@@ -36,7 +36,7 @@
                 <div class="header-main-wrapper">
                     <div class="logo-area">
                         <a href="/" class="logo">
-                            <img src="{{ asset('assets/images/logo/acharya-white-small.png') }}" alt="image-logo">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="image-logo">
                         </a>
                     </div>
                     <!-- header right start -->
