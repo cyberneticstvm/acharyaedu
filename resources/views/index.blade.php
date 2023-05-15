@@ -5,10 +5,9 @@
     <div class="banner-social-area">
         <div class="inner">
             <ul class="social-wrapper">
-                <li data-sal="slide-up" data-sal-delay="100" data-sal-duration="800"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li data-sal="slide-up" data-sal-delay="200" data-sal-duration="800"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                <li data-sal="slide-up" data-sal-delay="300" data-sal-duration="800"><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-                <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                <li data-sal="slide-up" data-sal-delay="100" data-sal-duration="800"><a href="https://facebook.com/Acharyalearningplatform" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li data-sal="slide-up" data-sal-delay="300" data-sal-duration="800"><a href="https://youtube.com/@acharyaeducations" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="https://instagram.com/team_acharya_" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
             </ul>
             <p class="divider"></p>
             <p class="content"> <span>Follow</span> <span>Us</span> </p>
@@ -34,12 +33,12 @@
                             <div class="col-lg-12">
                                 <div class="banner-one-wrapper ptb--110">
                                     <span class="b_one-pre" data-sal="slide-up" data-sal-delay="50" data-sal-duration="800">
-                                        Hospitality & Leisure
+                                        Your Choice Decides Your Destiny
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                                        Excellence and <br>
-                                        built into every <br>
-                                        design.
+                                        DREAM IT...! <br>
+                                        WE WILL MKE IT <br>
+                                        HAPPEN.
                                     </h1>
                                     <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
                                         supervisors to managers and executives.</p>
@@ -70,12 +69,12 @@
                             <div class="col-lg-12">
                                 <div class="banner-one-wrapper ptb--110">
                                     <span class="b_one-pre" data-sal="slide-up" data-sal-delay="50" data-sal-duration="800">
-                                        Hospitality & Leisure
+                                        Your Choice Decides Your Destiny
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                                        We’re Providing <br>
-                                        Industry Roofing <br>
-                                        Solution
+                                        DREAM IT...! <br>
+                                        WE WILL MKE IT <br>
+                                        HAPPEN.
                                     </h1>
                                     <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
                                         supervisors to managers and executives.</p>
@@ -106,12 +105,12 @@
                             <div class="col-lg-12">
                                 <div class="banner-one-wrapper ptb--110">
                                     <span class="b_one-pre" data-sal="slide-up" data-sal-delay="50" data-sal-duration="800">
-                                        Hospitality & Leisure
+                                        Your Choice Decides Your Destiny
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                                        We’re Providing <br>
-                                        Building Leading <br>
-                                        Solution
+                                        DREAM IT...! <br>
+                                        WE WILL MKE IT <br>
+                                        HAPPEN.
                                     </h1>
                                     <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
                                         supervisors to managers and executives.</p>

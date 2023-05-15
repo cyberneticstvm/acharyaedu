@@ -187,23 +187,18 @@
             <div class="social-wrapper-one">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="https://facebook.com/Acharyalearningplatform">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="https://youtube.com/@acharyaeducations">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fa-brands fa-linkedin-in"></i>
+                        <a href="https://instagram.com/team_acharya_">
+                            <i class="fa-brands fa-instagram"></i>
                         </a>
                     </li>
                 </ul>
@@ -224,18 +219,17 @@
                     <!-- ,main footer area start -->
                     <div class="main-footer-wrapper-two">
                         <div class="single-footer-wized-two logo-area" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                            <a href="assets/images/logo/02.png" class="logo">
-                                <img src="assets/images/logo/02.png" alt="logo">
+                            <a href="{{ asset('assets/images/logo/logo-small.png') }}" class="logo">
+                                <img src="{{ asset('assets/images/logo/logo-small.png') }}" alt="logo">
                             </a>
                             <p class="disc-f">
                                 Sapien luctus lesuada sentus pharetra nisi quisuea aenean eros mus magnis arcu vehicula nascetur feugiat
                             </p>
                             <div class="rts-social-wrapper-three">
                                 <ul>
-                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://facebook.com/Acharyalearningplatform" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="https://youtube.com/@acharyaeducations" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                                    <li><a href="https://instagram.com/team_acharya_" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
