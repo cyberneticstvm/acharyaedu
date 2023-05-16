@@ -17,7 +17,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::orderByDesc('exam_date')->get();
+        $exams = Exam::where('exam_type', 1)->orderByDesc('exam_date')->get();
         return view('admin.exam.index', compact('exams'));
     }
 

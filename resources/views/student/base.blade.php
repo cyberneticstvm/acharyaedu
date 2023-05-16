@@ -80,6 +80,7 @@
                                                 <li><a href="/student/active-exams">Active Exams</a></li>
                                                 <li><a href="/student/performance">My Performance</a></li>
                                                 <li><a href="/student/freeexam">Free Exam</a></li>
+                                                <li><a href="/student/leave">Update Leave</a></li>
                                                 <li><a href="/logout">Logout</a></li>
                                             </ul>
                                         </li>                                      

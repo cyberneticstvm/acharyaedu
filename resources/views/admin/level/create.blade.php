@@ -21,6 +21,21 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="req mb-1">Subject Level Category</label>
+                                    <select class="form-control" name="category">
+                                        <option value="">Select</option>
+                                        <option value="Standard">Standard</option>
+                                        <option value="General">General</option>
+                                    </select>                                  
+                                </div>
+                                @error('category')
+                                    <small class="text-danger">{{ $errors->first('category') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">CREATE</button>

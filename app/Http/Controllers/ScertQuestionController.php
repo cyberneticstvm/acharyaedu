@@ -2,35 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\Chapter;
 use App\Models\Question;
-use App\Models\QuestionCourse;
 use App\Models\QuestionLevel;
 use App\Models\QuestionOption;
 use App\Models\Subject;
 use App\Models\SubjectLevel;
-use App\Models\Topic;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use DB;
+use Carbon\Carbon;
 use Exception;
+use DB;
 
-class QuestionController extends Controller
+class ScertQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     protected $settings;
-
     public function __construct()
     {
         $this->settings = DB::table('settings')->where('id', 1)->first();
     }
 
     public function index()
-    {        
-        $questions  = Question::where('exam_type', 1)->get();
-        return view('admin.question.index', compact('questions'));
+    {
+        $questions  = Question::where('exam_type', 2)->get();
+        return view('admin.scert-question.index', compact('questions'));
     }
 
     /**
@@ -39,11 +36,10 @@ class QuestionController extends Controller
     public function create()
     {
         $subjects = Subject::all();
-        $levels = SubjectLevel::where('category', 'General')->get();
-        $courses = Course::all();
-        $topics = Topic::all();
+        $levels = SubjectLevel::where('category', 'Standard')->get();
+        $chapters = Chapter::all();
         $option_count = $this->settings->option_count;
-        return view('admin.question.create', compact('subjects', 'topics', 'levels', 'courses', 'option_count'));
+        return view('admin.scert-question.create', compact('subjects', 'levels', 'option_count', 'chapters'));
     }
 
     /**
@@ -52,7 +48,6 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'courses' => 'array|present',
             'options' => 'array|present',
             'correct_option' => 'required',
             'question' => 'required',
@@ -60,29 +55,22 @@ class QuestionController extends Controller
             'available_for_free' => 'required',
             'levels' => 'array|present',
             'subject_id' => 'required',
-            'topic_id' => 'required',
+            'chapter_id' => 'required',
         ]);
         $input = $request->all();
         $input['created_by'] = $request->user()->id;
         $input['updated_by'] = $request->user()->id;
-        $input['exam_type'] = 1;
+        $input['exam_type'] = 2;
+        $input['topic_id'] = 0;
         try{
             DB::transaction(function() use ($request, $input) {
-                $options = []; $courses = []; $levels = [];
+                $options = []; $levels = [];
                 $question = Question::create($input);
                 foreach($request->options as $key => $option):
                     $options[] = [
                         'question_id' => $question->id,
                         'option_id' => $input['option_id'][$key],
                         'option_name' => $option,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now(),
-                    ];
-                endforeach;
-                foreach($request->courses as $key => $course):
-                    $courses[] = [
-                        'question_id' => $question->id,
-                        'course_id' => $course,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                     ];
@@ -96,13 +84,12 @@ class QuestionController extends Controller
                     ];
                 endforeach;
                 QuestionOption::insert($options);
-                QuestionCourse::insert($courses);
                 QuestionLevel::insert($levels);
             });
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
-        return redirect()->route('question')->with('success', 'Question Saved Successfully!');
+        return redirect()->route('scertquestion')->with('success', 'Question Saved Successfully!');
     }
 
     /**
@@ -119,11 +106,10 @@ class QuestionController extends Controller
     public function edit(string $id)
     {
         $subjects = Subject::all();
-        $levels = SubjectLevel::where('category', 'General')->get();
-        $courses = Course::all();
+        $levels = SubjectLevel::where('category', 'Standard')->get();
         $question = Question::find($id);
-        $topics = Topic::all();
-        return view('admin.question.edit', compact('subjects', 'topics', 'levels', 'courses', 'question'));
+        $chapters = Chapter::all();
+        return view('admin.scert-question.edit', compact('subjects', 'chapters', 'levels', 'question'));
     }
 
     /**
@@ -132,7 +118,6 @@ class QuestionController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
-            'courses' => 'array|present',
             'options' => 'array|present',
             'correct_option' => 'required',
             'question' => 'required',
@@ -140,13 +125,13 @@ class QuestionController extends Controller
             'available_for_free' => 'required',
             'levels' => 'array|present',
             'subject_id' => 'required',
-            'topic_id' => 'required',
+            'chapter_id' => 'required',
         ]);
         $input = $request->all();
         $input['updated_by'] = $request->user()->id;
         try{
             DB::transaction(function() use ($request, $input, $id) {
-                $options = []; $courses = []; $levels = [];
+                $options = []; $levels = [];
                 $question = Question::find($id);
                 $question->update($input);
                 foreach($request->options as $key => $option):
@@ -154,14 +139,6 @@ class QuestionController extends Controller
                         'question_id' => $question->id,
                         'option_id' => $input['option_id'][$key],
                         'option_name' => $option,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now(),
-                    ];
-                endforeach;
-                foreach($request->courses as $key => $course):
-                    $courses[] = [
-                        'question_id' => $question->id,
-                        'course_id' => $course,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
                     ];
@@ -175,16 +152,14 @@ class QuestionController extends Controller
                     ];
                 endforeach;
                 QuestionOption::where('question_id', $question->id)->delete();
-                QuestionCourse::where('question_id', $question->id)->delete();
                 QuestionLevel::where('question_id', $question->id)->delete();
                 QuestionOption::insert($options);
-                QuestionCourse::insert($courses);
                 QuestionLevel::insert($levels);
             });
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
-        return redirect()->route('question')->with('success', 'Question Updated Successfully!');
+        return redirect()->route('scertquestion')->with('success', 'Question Updated Successfully!');
     }
 
     /**
@@ -193,6 +168,6 @@ class QuestionController extends Controller
     public function destroy(string $id)
     {
         Question::find($id)->delete();
-        return redirect()->route('question')->with('success', 'Question Deleted Successfully!');
+        return redirect()->route('scertquestion')->with('success', 'Question Deleted Successfully!');
     }
 }

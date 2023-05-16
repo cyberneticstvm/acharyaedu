@@ -30,7 +30,8 @@ class SubjectLevelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:subject_levels,name'
+            'name' => 'required|unique:subject_levels,name',
+            'category' => 'required',
         ]);
         $input = $request->all();               
         SubjectLevel::create($input);
@@ -60,7 +61,8 @@ class SubjectLevelController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
-            'name' => 'required|unique:subject_levels,name,'.$id
+            'name' => 'required|unique:subject_levels,name,'.$id,
+            'category' => 'required',
         ]);
         $input = $request->all();
         $level = SubjectLevel::find($id);               

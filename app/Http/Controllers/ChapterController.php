@@ -25,7 +25,7 @@ class ChapterController extends Controller
     public function create()
     {
         $subjects = Subject::pluck('name', 'id')->all();
-        $levels = SubjectLevel::pluck('name', 'id')->all();
+        $levels = SubjectLevel::where('category', 'Standard')->pluck('name', 'id')->all();
         return view('admin.chapter.create', compact('subjects', 'levels'));
     }
 
@@ -60,7 +60,7 @@ class ChapterController extends Controller
     public function edit(string $id)
     {
         $subjects = Subject::pluck('name', 'id')->all();
-        $levels = SubjectLevel::pluck('name', 'id')->all();
+        $levels = SubjectLevel::where('category', 'Standard')->pluck('name', 'id')->all();
         $chapter = Chapter::find(decrypt($id));
         return view('admin.chapter.edit', compact('subjects', 'levels', 'chapter'));
     }

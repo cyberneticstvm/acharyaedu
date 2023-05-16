@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Batch;
 use App\Models\Branch;
 use App\Models\Course;
@@ -452,5 +453,25 @@ class StudentController extends Controller
 
     public function studentperformance(){
         return view('student.student-performance');
+    }
+
+    public function leave(){
+        $student = Student::find(Auth::user()->student->id);
+        $batches = Batch::whereIn('id', $student->batches->pluck('batch'))->pluck('name', 'id')->all();
+        return view('student.leave', compact('student', 'batches'));
+    }
+
+    public function leaveupdate(Request $request){
+        $this->validate($request, [
+            'batch' => 'required',
+            'reason' => 'required',
+        ]);
+        $attendance = Attendance::where('student', $request->user()->student->id)->where('batch', $request->batch)->whereDate('date', Carbon::today())->first();
+        if(empty($attendance)):
+            return redirect()->back()->with('error', 'Attendance sheet yet to be generated.')->withInput($request->all());
+        else:
+            Attendance::where('id', $attendance->id)->update(['leave' => 1, 'present' => 0, 'absent' => 0, 'reason' => $request->reason]);
+        endif;
+        return redirect()->back()->with('success', 'Leave updated successfully');
     }
 }

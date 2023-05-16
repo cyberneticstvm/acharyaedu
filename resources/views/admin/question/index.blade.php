@@ -45,19 +45,4 @@
         </div>
     </div>
 </div>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body table-responsive table-sm table-striped">
-                    <div class="row">
-                        <div class="col"><h5 class="text-primary">Question Register</h5></div>
-                        <div class="col text-end"><a href="/admin/question/create"><i class="fa fa-plus fw-bold fa-lg text-primary"></i></a></div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

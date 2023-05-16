@@ -11,5 +11,6 @@ class SubjectLevel extends Model
 
     protected $fillable = [
         'name',
+        'category',
     ];
 }

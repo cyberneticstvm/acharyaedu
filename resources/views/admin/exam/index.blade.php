@@ -23,7 +23,7 @@
                 <div class="table-responsive">
                 @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Cutoff Mark</th><th>Q. count</th><th>Duration</th><th>Exam Date</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Cutoff Mark</th><th>Q. count</th><th>Duration</th><th>Exam Date</th><th>Status</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
                         @forelse($exams as $key => $exam)
                             <tr>
                                 <td>{{ $slno++ }}</td>
@@ -33,6 +33,7 @@
                                 <td>{{ $exam->question_count }}</td>
                                 <td>{{ $exam->duration }} Minutes</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
+                                <td>{{ ($exam->status == 0) ? 'Draft' : 'Published' }}</td>
                                 <td class="text-center"><a href="/admin/exam/edit/{{$exam->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('exam.delete', $exam->id) }}">

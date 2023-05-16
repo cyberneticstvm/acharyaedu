@@ -22,6 +22,7 @@ use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ScertQuestionController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\UserController;
@@ -197,6 +198,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::put('/admin/level/edit/{id}', [SubjectLevelController::class, 'update'])->name('level.update');
     Route::delete('/admin/level/{id}', [SubjectLevelController::class, 'destroy'])->name('level.delete');
 
+    Route::get('/admin/scertquestion', [ScertQuestionController::class, 'index'])->name('scertquestion');
+    Route::get('/admin/scertquestion/create', [ScertQuestionController::class, 'create'])->name('scertquestion.create');
+    Route::post('/admin/scertquestion/create', [ScertQuestionController::class, 'store'])->name('scertquestion.save');
+    Route::get('/admin/scertquestion/edit/{id}', [ScertQuestionController::class, 'edit'])->name('scertquestion.edit');
+    Route::put('/admin/scertquestion/edit/{id}', [ScertQuestionController::class, 'update'])->name('scertquestion.update');
+    Route::delete('/admin/scertquestion/{id}', [ScertQuestionController::class, 'destroy'])->name('scertquestion.delete');
+
     Route::get('/admin/question', [QuestionController::class, 'index'])->name('question');
     Route::get('/admin/question/create', [QuestionController::class, 'create'])->name('question.create');
     Route::post('/admin/question/create', [QuestionController::class, 'store'])->name('question.save');
@@ -253,7 +261,10 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');    
     Route::get('/student/freeexam', [StudentController::class, 'freeexam'])->name('student.freeexam');    
     Route::post('/student/freeexam', [StudentController::class, 'createfreeexam'])->name('student.freeexam.create');    
-    Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');    
+    Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');
+    
+    Route::get('/student/leave', [StudentController::class, 'leave'])->name('student.leave');
+    Route::post('/student/leave', [StudentController::class, 'leaveupdate'])->name('student.leave.update');
 });
 
 

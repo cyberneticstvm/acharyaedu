@@ -12,6 +12,7 @@ class Attendance extends Model
     protected $fillable = [
         'student',
         'batch',
+        'reason',
     ];
 
     public function student(){
