@@ -11,7 +11,22 @@
                     @csrf
                     @method("PUT")
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="req mb-1">Exam Type</label>
+                                <select class="form-control" name="exam_type">
+                                    <option value="">Select</option>
+                                    @forelse($etypes as $key => $etype)
+                                        <option value="{{ $etype->id }}" {{ ($exam->exam_type == $etype->id) ? 'selected' : '' }}>{{ $etype->name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>                                  
+                            </div>
+                            @error('exam_type')
+                                <small class="text-danger">{{ $errors->first('exam_type') }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req mb-1">Exam Name</label>
                                 <input type="text" class="form-control" name="name" value="{{ $exam->name }}" placeholder="Exam Name">                                    

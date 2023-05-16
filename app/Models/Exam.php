@@ -10,6 +10,7 @@ class Exam extends Model
     use HasFactory;
 
     protected $fillable = [
+        'exam_type',
         'name',
         'batch_id',
         'cut_off_mark',

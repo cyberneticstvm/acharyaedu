@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Batch;
 use App\Models\Exam;
+use App\Models\ExamType;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -25,8 +26,8 @@ class ExamController extends Controller
      */
     public function create()
     {
-        $batches = Batch::where('status', 1)->get();
-        return view('admin.exam.create', compact('batches'));
+        $batches = Batch::where('status', 1)->get(); $etypes = ExamType::all();
+        return view('admin.exam.create', compact('batches', 'etypes'));
     }
 
     /**
@@ -35,6 +36,7 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'exam_type' => 'required',
             'name' => 'required|unique:exams,name',
             'batch_id' => 'required',
             'cut_off_mark' => 'required',
@@ -69,8 +71,8 @@ class ExamController extends Controller
     public function edit(string $id)
     {
         $exam = Exam::find($id);
-        $batches = Batch::where('status', 1)->get();
-        return view('admin.exam.edit', compact('exam', 'batches'));
+        $batches = Batch::where('status', 1)->get(); $etypes = ExamType::all();
+        return view('admin.exam.edit', compact('exam', 'batches', 'etypes'));
     }
 
     /**
@@ -79,6 +81,7 @@ class ExamController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
+            'exam_type' => 'required',
             'name' => 'required|unique:exams,name,'.$id,
             'batch_id' => 'required',
             'cut_off_mark' => 'required',
