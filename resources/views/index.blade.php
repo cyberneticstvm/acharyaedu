@@ -37,7 +37,7 @@
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
                                         DREAM IT...! <br>
-                                        WE WILL MKE IT <br>
+                                        WE WILL MAKE IT <br>
                                         HAPPEN.
                                     </h1>
                                     <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
@@ -73,7 +73,7 @@
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
                                         DREAM IT...! <br>
-                                        WE WILL MKE IT <br>
+                                        WE WILL MAKE IT <br>
                                         HAPPEN.
                                     </h1>
                                     <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
@@ -109,7 +109,7 @@
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
                                         DREAM IT...! <br>
-                                        WE WILL MKE IT <br>
+                                        WE WILL MAKE IT <br>
                                         HAPPEN.
                                     </h1>
                                     <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>

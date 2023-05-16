@@ -14,6 +14,7 @@ use App\Http\Controllers\SubjectLevelController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FeeController;
@@ -225,6 +226,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/student/performance/exam/{id}', [HelperController::class, 'studentperformanceexam'])->name('studentperformanceexam');
     Route::get('/admin/exam/result/{id}', [HelperController::class, 'examresult'])->name('admin.exam.result');
     Route::get('/admin/exam/performance/{id}', [HelperController::class, 'examperformance'])->name('admin.exam.performance');
+
+    Route::get('/admin/chapter', [ChapterController::class, 'index'])->name('chapter');
+    Route::get('/admin/chapter/create', [ChapterController::class, 'create'])->name('chapter.create');
+    Route::post('/admin/chapter/create', [ChapterController::class, 'store'])->name('chapter.save');
+    Route::get('/admin/chapter/edit/{id}', [ChapterController::class, 'edit'])->name('chapter.edit');
+    Route::put('/admin/chapter/edit/{id}', [ChapterController::class, 'update'])->name('chapter.update');
+    Route::delete('/admin/chapter/{id}', [ChapterController::class, 'destroy'])->name('chapter.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){

@@ -208,6 +208,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/chapter">
+                  <i class='fa fa-file-pdf-o sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Chapter Register</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/topic">
                   <i class='fa fa-bookmark sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Module Register</span>
