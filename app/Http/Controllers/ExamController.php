@@ -18,7 +18,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::where('exam_type', 1)->when(Auth::user()->student->id > 0, function($query){
+        $exams = Exam::where('exam_type', 1)->when(Auth::user()->student, function($query){
             return $query->whereDate('exam_date', '>=', Auth::user()->student->admission_date);
         })->orderByDesc('exam_date')->get();
         return view('admin.exam.index', compact('exams'));
