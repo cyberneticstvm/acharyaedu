@@ -42,11 +42,19 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $students = Student::where('branch', Auth::user()->branch)->orderByDesc('id')->get();
+        $students = Student::where('branch', Auth::user()->branch)->where('course_id', 0)->orderByDesc('id')->get();
         $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();        
         return view('admin.student.index', compact('students', 'batches', 'status'));
     }
+
+    public function onlinestudents(){
+        $students = Student::where('branch', Auth::user()->branch)->where('course_id', '>', 0)->orderByDesc('id')->get();
+        $batches = Batch::where('status', 1)->get();
+        $status = DB::table('status')->where('category', 'student')->get();        
+        return view('admin.student.students', compact('students', 'batches', 'status'));
+    }
+
     public function create()
     {
         $branches = Branch::all();

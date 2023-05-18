@@ -108,7 +108,13 @@
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student">
                   <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Student</span>
+                  <span class="sidenav-normal ms-2 ps-1">Student (Offline)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/online">
+                  <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student (Online)</span>
                 </a>
               </li>
               <li class="nav-item">

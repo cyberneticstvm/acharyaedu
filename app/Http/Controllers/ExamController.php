@@ -8,6 +8,7 @@ use App\Models\ExamType;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Exp;
 
 class ExamController extends Controller
@@ -17,7 +18,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::where('exam_type', 1)->orderByDesc('exam_date')->get();
+        $exams = Exam::where('exam_type', 1)->whereDate('exam_date', '>=', Auth::user()->student->admission_date)->orderByDesc('exam_date')->get();
         return view('admin.exam.index', compact('exams'));
     }
 

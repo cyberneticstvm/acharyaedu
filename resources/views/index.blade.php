@@ -40,8 +40,8 @@
                                         WE WILL MAKE IT <br>
                                         HAPPEN.
                                     </h1>
-                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
-                                        supervisors to managers and executives.</p>
+                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">When You do Something Patiently Everyday, <br>
+                                        Eventually You Will Become the Master of It.</p>
                                     <div class="button-group-area mt--40" data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
                                         <a href="/register" class="rts-btn btn-seconday p-short">
                                             Register <i class="fa-regular fa-arrow-up-right"></i>
@@ -76,8 +76,8 @@
                                         WE WILL MAKE IT <br>
                                         HAPPEN.
                                     </h1>
-                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
-                                        supervisors to managers and executives.</p>
+                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">When You do Something Patiently Everyday, <br>
+                                        Eventually You Will Become the Master of It.</p>
                                     <div class="button-group-area mt--40" data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
                                         <a href="/register" class="rts-btn btn-seconday p-short">
                                             Register <i class="fa-regular fa-arrow-up-right"></i>
@@ -112,8 +112,8 @@
                                         WE WILL MAKE IT <br>
                                         HAPPEN.
                                     </h1>
-                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">Factory companies employ a large number of people from factory workers & <br>
-                                        supervisors to managers and executives.</p>
+                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">When You do Something Patiently Everyday, <br>
+                                        Eventually You Will Become the Master of It.</p>
                                     <div class="button-group-area mt--40" data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
                                         <a href="/register" class="rts-btn btn-seconday p-short">
                                             Register <i class="fa-regular fa-arrow-up-right"></i>

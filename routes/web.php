@@ -82,6 +82,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/studentfeechart', [AdminController::class, 'studentfeechart'])->name('dash.studentfeechart');
     Route::get('/studentcancelledchart', [AdminController::class, 'studentcancelledchart'])->name('dash.studentcancelledchart');
 
+    Route::get('/student/online', [StudentController::class, 'onlinestudents'])->name('onlinestudents');
     Route::get('/student', [StudentController::class, 'index'])->name('student');
     Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
     Route::post('/student/create', [StudentController::class, 'store'])->name('student.save');

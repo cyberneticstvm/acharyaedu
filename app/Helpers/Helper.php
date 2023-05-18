@@ -49,7 +49,7 @@ function studentsubjects(){
         return $query->where('course_id', Auth::user()->student->course_id);
     })->get();
     $quest = Question::whereIn('id', $questions->pluck('question_id'))->get();
-    $studentsubjects = Subject::whereIn('id', $quest->pluck('subject_id'))->limit(3)->get();
+    $studentsubjects = Subject::whereIn('id', $quest->pluck('subject_id'))->inRandomOrder()->limit(3)->get();
     return $studentsubjects;
 }
 ?>
