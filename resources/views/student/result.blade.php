@@ -34,9 +34,9 @@
                                     @forelse($quest->question->options as $key1 => $opt)
                                         @php $color = ""; @endphp
                                         @if($quest->correct_option == $opt->option_id && $quest->selected_option == $quest->question->correct_option)
-                                            @php $color = "text-success"; @endphp
+                                            @php $color = "text-success fw-bold"; @endphp
                                         @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
-                                            @php $color = "text-danger"; @endphp                                           
+                                            @php $color = "text-danger fw-bold"; @endphp                                          
                                         @endif                                        
                                         <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
                                         <hr>
