@@ -35,7 +35,7 @@
                                         @php $color = ""; @endphp
                                         @if($quest->correct_option == $opt->option_id && $quest->answer == 1)
                                             @php $color = "text-success fw-bold"; @endphp
-                                        @elseif($quest->answer == 0 && $quest->selected_option == $opt->option_id && $quest->selected_option != NULL)
+                                        @elseif($quest->correct_option == $opt->option_id && $quest->answer == 0 && $quest->selected_option != NULL)
                                             @php $color = "text-danger fw-bold"; @endphp                                          
                                         @endif                                        
                                         <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
