@@ -41,9 +41,8 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('index');
 })->name('login');
-Route::get('/test', function () {
-    return view('test');
-})->name('test');
+
+Route::get('/test', [HelperController::class, 'test'])->name('test');
 
 Route::get('/message', function () {
     return view('message');

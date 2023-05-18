@@ -12,11 +12,23 @@ use App\Models\Student;
 use App\Models\StudentExam;
 use App\Models\Subject;
 use App\Models\Topic;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HelperController extends Controller
 {
+    public function test(){
+        $exams = Exam::whereDate('exam_date', Carbon::today())->get();
+        foreach($exams as $key => $exam):
+            $studentexams = StudentExam::where('exam_id', $exam->id)->orderBy('total_mark_after_cutoff')->get();
+            foreach($studentexams as $key1 => $sxam):
+                StudentExam::where('id', $sxam->id)->update(['grade' => $key1+1]);
+            endforeach;
+        endforeach;
+        return view('test');
+    }
+
     public function module(Request $request){
         $data = Topic::where('subject_id', $request->sid)->select('id', 'name')->inRandomOrder()->when($request->random > 0, function($query) use ($request) {
             return $query->limit($request->random);
