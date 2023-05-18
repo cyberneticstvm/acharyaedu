@@ -38,7 +38,7 @@
                                         @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
                                             @php $color = "text-danger"; @endphp                                           
                                         @endif                                        
-                                        <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
+                                        <span class="{{ $color }}">{!! str_replace('<br>', '', $opt->option_name) !!}</span><br>
                                         <hr>
                                     @empty
                                     @endforelse 
