@@ -33,9 +33,9 @@
                                     Question {!! $c++.'. '. nl2br($quest->question->question) !!}<br><br>
                                     @forelse($quest->question->options as $key1 => $opt)
                                         @php $color = ""; @endphp
-                                        @if($quest->correct_option == $opt->option_id && $quest->selected_option == $quest->question->correct_option)
+                                        @if($quest->correct_option == $opt->option_id && $quest->answer == 1)
                                             @php $color = "text-success fw-bold"; @endphp
-                                        @elseif($quest->selected_option == $opt->option_id && $quest->selected_option != $quest->question->correct_option)
+                                        @elseif($quest->answer == 0 && $quest->selected_option == $opt->option_id && $quest->selected_option != NULL)
                                             @php $color = "text-danger fw-bold"; @endphp                                          
                                         @endif                                        
                                         <span class="{{ $color }}">{!! nl2br($opt->option_name) !!}</span><br>
