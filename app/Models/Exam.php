@@ -26,6 +26,10 @@ class Exam extends Model
         return $this->hasOne(Batch::class, 'id', 'batch_id');
     }
 
+    public function etype(){
+        return $this->hasOne(ExamType::class, 'id', 'exam_type');
+    }
+
     public function questions(){
         return $this->hasMany(ExamQuestion::class, 'exam_id', 'id');
     }

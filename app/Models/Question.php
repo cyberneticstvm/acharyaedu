@@ -19,6 +19,8 @@ class Question extends Model
         'exam_type',
         'available_for_free',
         'status',
+        'month',
+        'year',
         'created_by',
         'updated_by',
     ];

@@ -238,6 +238,18 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/previousquestion">
+                  <i class='fa fa-quora sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Question Register (Previous)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/caffairquestion">
+                  <i class='fa fa-quora sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Question Register (Current Affairs)</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/exam">
                   <i class='fa fa-file-text-o sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Exam Register</span>
@@ -506,7 +518,7 @@
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
   <script src="{{ asset('admin-assets/js/script.js') }}"></script>
-  @if(Route::current()->getName() == 'question.create' || Route::current()->getName() == 'question.edit' || Route::current()->getName() == 'scertquestion.create' || Route::current()->getName() == 'scertquestion.edit')
+  @if(Route::current()->getName() == 'question.create' || Route::current()->getName() == 'question.edit' || Route::current()->getName() == 'scertquestion.create' || Route::current()->getName() == 'scertquestion.edit' || Route::current()->getName() == 'previousquestion.create' || Route::current()->getName() == 'previousquestion.edit' || Route::current()->getName() == 'caffairquestion.create' || Route::current()->getName() == 'caffairquestion.edit')
   <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script>
     CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');

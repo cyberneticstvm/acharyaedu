@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\Chapter;
 use App\Models\Exam;
 use App\Models\ExamQuestion;
+use App\Models\Month;
 use App\Models\Question;
 use App\Models\QuestionCourse;
 use App\Models\QuestionLevel;
@@ -32,18 +34,31 @@ class ExamQuestionController extends Controller
     public function create(Request $request, $id)
     {
         $this->validate($request, [
-            'level_id' => 'required',
+            /*'level_id' => 'required',
             'subject_id' => 'required',
-            'topic_id' => 'required',
+            'topic_id' => 'required',*/
             'number_of_questions' => 'required'
         ]);
-        $input = $request->all();        
-        $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
-        //->whereIn('id', QuestionCourse::whereIn('course_id', Batch::whereIn('id', Exam::where('id', $id)->pluck('batch_id'))->pluck('course'))->pluck('question_id'));
+        $input = $request->all(); $exam = Exam::find($id);
+        if($exam->exam_type == 1): // General       
+            $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        endif;
+        if($exam->exam_type == 2): // SCERT
+            $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('chapter_id', $request->chapter)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        endif;
+        if($exam->exam_type == 3): // Previous
+            $questions = Question::where('exam_type', $exam->exam_type)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        endif;
+        if($exam->exam_type == 4): // Model
+            $questions = Question::where('subject_id', $request->subject_id)->where('exam_type', $request->questions_from)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        endif;
+        if($exam->exam_type == 5): // Current Affairs
+            $questions = Question::where('subject_id', $request->subject_id)->where('month', $request->month)->where('year', $request->year)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+        endif;
+        
         if($questions->isEmpty()):
             return redirect("/admin/eq/create/$id")->with('error', 'No records found')->withInput($request->all());
-        else:
-            $exam = Exam::find($id);            
+        else:        
             return view('admin.exam-question.question', compact('questions', 'exam'));
         endif;
     }
@@ -78,9 +93,9 @@ class ExamQuestionController extends Controller
         $exam = Exam::find($id);
         $subjects = Subject::all();
         $topics = Topic::all();
-        $levels = SubjectLevel::all();
+        $levels = SubjectLevel::all(); $chapters = Chapter::all(); $months = Month::all();
         $qcount = ExamQuestion::where('exam_id', $id)->count('id'); $max = $exam->question_count - $qcount;
-        return view('admin.exam-question.create', compact('exam', 'subjects', 'topics', 'levels', 'max'));
+        return view('admin.exam-question.create', compact('exam', 'subjects', 'topics', 'levels', 'max', 'chapters', 'months'));
     }
 
     /**

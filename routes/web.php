@@ -16,11 +16,14 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CurrentAffairQuestionController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ModelQuestionController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PreviousQuestionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScertQuestionController;
 use App\Http\Controllers\StudentBatchController;
@@ -211,6 +214,20 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/question/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
     Route::put('/admin/question/edit/{id}', [QuestionController::class, 'update'])->name('question.update');
     Route::delete('/admin/question/{id}', [QuestionController::class, 'destroy'])->name('question.delete');
+
+    Route::get('/admin/previousquestion', [PreviousQuestionController::class, 'index'])->name('previousquestion');
+    Route::get('/admin/previousquestion/create', [PreviousQuestionController::class, 'create'])->name('previousquestion.create');
+    Route::post('/admin/previousquestion/create', [PreviousQuestionController::class, 'store'])->name('previousquestion.save');
+    Route::get('/admin/previousquestion/edit/{id}', [PreviousQuestionController::class, 'edit'])->name('previousquestion.edit');
+    Route::put('/admin/previousquestion/edit/{id}', [PreviousQuestionController::class, 'update'])->name('previousquestion.update');
+    Route::delete('/admin/previousquestion/{id}', [PreviousQuestionController::class, 'destroy'])->name('previousquestion.delete');
+
+    Route::get('/admin/caffairquestion', [CurrentAffairQuestionController::class, 'index'])->name('caffairquestion');
+    Route::get('/admin/caffairquestion/create', [CurrentAffairQuestionController::class, 'create'])->name('caffairquestion.create');
+    Route::post('/admin/caffairquestion/create', [CurrentAffairQuestionController::class, 'store'])->name('caffairquestion.save');
+    Route::get('/admin/caffairquestion/edit/{id}', [CurrentAffairQuestionController::class, 'edit'])->name('caffairquestion.edit');
+    Route::put('/admin/caffairquestion/edit/{id}', [CurrentAffairQuestionController::class, 'update'])->name('caffairquestion.update');
+    Route::delete('/admin/caffairquestion/{id}', [CurrentAffairQuestionController::class, 'destroy'])->name('caffairquestion.delete');
 
     Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
     Route::get('/admin/exam/create', [ExamController::class, 'create'])->name('exam.create');
