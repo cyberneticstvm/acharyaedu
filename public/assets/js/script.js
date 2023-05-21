@@ -53,13 +53,24 @@ $(function(){
     });
     $(".sw-btn-next, .sw-btn-prev").click(function(){
         $("#smartwizard .answer, #smartwizard1 .answer").collapse('hide');
+        var rad = $(this).parent().parent().find('.quest:visible').find(".radanswer")
+        if(rad.is(":checked")){
+            var cls = rad.data('chk');
+            $('.'+cls).addClass('attended').removeClass('unattended');
+        }
     });
     $(".sw-btn").removeClass("btn").addClass("rts-btn");
 });
 
+function showTab(tab){
+    $("#smartwizard").find('.quest:visible').css('display', 'none');
+    $("#"+tab).css('display', 'block');
+}
+
 function clearAnswer(dis){
     var chk = dis.parent().parent().find('.quest:visible').find(".radanswer").data('chk');
     $("input[name='"+chk+"']").prop('checked', false);
+    $('.'+chk).addClass('unattended').removeClass('attended');
 }
 
 setTimeout(function () {

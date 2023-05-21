@@ -54,7 +54,15 @@
                                 </div>                            
                                 <!-- Include optional progressbar HTML -->
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">fgdf</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><h5>Question Attended Status</h5></div>
+                                    @php $c = 1 @endphp
+                                    @forelse($exam->questions as $key => $quest)
+                                    <div class="col text-center unattended rad_{{$quest->id}}"><a href="javascript:void(0)">{{$c++}}</a></div>
+                                    @empty
+                                    @endforelse
                                 </div>
                             </div>  
                         </div>

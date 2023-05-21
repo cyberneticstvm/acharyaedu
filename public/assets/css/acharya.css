@@ -65,6 +65,16 @@ input[type=checkbox], input[type=radio] {
 .heder-two .header-two-container .header-main-wrapper .logo-area a{
     padding: 0 !important;
 }
+.unattended{
+    border: 1px solid red;
+    background: red;
+    color: #fff;
+}
+.attended{
+    border: 1px solid green;
+    background: green;
+    color: #fff;
+}
 
 
 @media only screen and (max-width: 767px){
