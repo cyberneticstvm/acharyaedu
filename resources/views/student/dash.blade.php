@@ -16,11 +16,13 @@
                         </div>
                     @endif
                 </div>
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-md-12"><h5 class="text-primary">{{ Auth::user()->name }}'s Profile (Student ID: {{ Auth::user()->student->id }})</h5></div>
-                </div>
+                </div>-->
                 <div class="row">
                     <div class="col-6">
+                    <p class="fw-bold">"ഉറക്കത്തിൽ കാണുന്നതല്ല സ്വപ്നം... നമ്മുടെ ഉറക്കം നഷ്ടപ്പെടുത്തുന്നതാണ് യഥാർത്ഥ സ്വപ്നം... "</p>
+                        <!--<img src="{{ asset('assets/images/APJ.jpeg') }}" />
                         <form method="post" action="{{ route('student.profile.update') }}">
                             @csrf
                             @method("PUT")
@@ -62,7 +64,7 @@
                                     <button type="submit" class="rts-btn btn-primary btn-submit">Update</button>
                                 </div>
                             </div>
-                        </form>
+                        </form>-->
                     </div>
                     <div class="col-6">
                         <div class="row">
