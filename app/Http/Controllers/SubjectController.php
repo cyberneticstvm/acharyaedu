@@ -54,7 +54,7 @@ class SubjectController extends Controller
     public function edit(string $id)
     {
         $subject = Subject::find($id); $etypes = ExamType::all();
-        return view('admin.subject.edit', compact('subject', ));
+        return view('admin.subject.edit', compact('subject', 'etypes'));
     }
 
     /**
