@@ -76,14 +76,51 @@
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">Student Zone</a>
                                             <ul class="submenu inner-page">
+                                                <li><a href="#">Live Class Schedule</a></li>
+                                                <li><a href="#">Offline Class Schedule</a></li>
                                                 <li><a href="/student/dash">Profile</a></li>
-                                                <li><a href="/student/active-exams">Active Exams</a></li>
                                                 <li><a href="/student/performance">My Performance</a></li>
-                                                <li><a href="/student/freeexam">Free Exam</a></li>
                                                 <li><a href="/student/leave">Update Leave</a></li>
+                                                <li><a href="#">Fee Schedule</a></li>
+                                                <li><a href="#">Student Feedback</a></li>
                                                 <li><a href="/logout">Logout</a></li>
                                             </ul>
-                                        </li>                                      
+                                        </li>   
+                                        <li class="has-droupdown pages">
+                                            <a class="nav-link" href="#">Exams</a>
+                                            <ul class="submenu inner-page">
+                                                <li><a href="/student/active-exams">General Exams</a></li>
+                                                <li><a href="/student/active-exams">Previous Questions Exams</a></li>
+                                                <li><a href="/student/active-exams">Model Exams</a></li>
+                                                <li><a href="/student/active-exams">SCERT Exams</a></li>
+                                                <li><a href="/student/active-exams">Topic Wise Exams</a></li>
+                                                <li><a href="/student/active-exams">Current Affairs Exams</a></li>
+                                                <li><a href="/student/active-exams">Weekly Revision Exams</a></li>
+                                                <li><a href="/student/freeexam">Free Exams</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-droupdown pages">
+                                            <a class="nav-link" href="#">Downloads</a>
+                                            <ul class="submenu inner-page">
+                                                <li><a href="#">Study Materials</a></li>
+                                                <li><a href="#">Current Affairs</a></li>
+                                                <li><a href="#">Syllabus</a></li>
+                                                <li><a href="#">Miscellaneous</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-droupdown pages">
+                                            <a class="nav-link" href="#">PSC</a>
+                                            <ul class="submenu inner-page">
+                                                <li><a href="#">Updates</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-droupdown pages">
+                                            <a class="nav-link" href="#">Videos</a>
+                                            <ul class="submenu inner-page">
+                                                <li><a href="#">Paid Classes</a></li>
+                                                <li><a href="#">Free Classes</a></li>
+                                            </ul>
+                                        </li>                                   
                                     </ul>
                                 </nav>
                             </div>
@@ -119,10 +156,17 @@
                         <a href="#" class="main">Student Zone</a>
                         <ul class="submenu">
                             <li><a class="mobile-menu-link" href="/student/dash">Profile</a></li>
-                            <li><a class="mobile-menu-link" href="/student/active-exams">Active Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams">General Exams</a></li>
                             <li><a class="mobile-menu-link" href="/student/performance">My Performance</a></li>
-                            <li><a class="mobile-menu-link" href="/student/studymaterials">Free Exam</a></li>
+                            <li><a class="mobile-menu-link" href="/student/freeexam">Free Exam</a></li>
                             <li><a class="mobile-menu-link" href="/logout">Logout</a></li>                           
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Exams</a>
+                        <ul class="submenu">
+                            <li><a class="mobile-menu-link" href="/student/active-exams">General Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/studymaterials">Free Exam</a></li>                          
                         </ul>
                     </li>
                 </ul>
