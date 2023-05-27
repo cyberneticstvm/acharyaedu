@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $exams = Exam::whereDate('exam_date', Carbon::today())->get();
             foreach($exams as $key => $exam):
-                $studentexams = StudentExam::where('exam_id', $exam->id)->orderBy('total_mark_after_cutoff')->get();
+                $studentexams = StudentExam::where('exam_id', $exam->id)->orderByDesc('total_mark_after_cutoff')->get();
                 foreach($studentexams as $key1 => $sxam):
                     StudentExam::where('id', $sxam->id)->update(['grade' => $key1+1]);
                 endforeach;

@@ -13,6 +13,21 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
+                                <label class="req">Batch Type</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="batch_type">
+                                        <option value="">Select</option>
+                                        <option value="Online" {{ ($batch->batch_type == 'Online') ? 'selected' : '' }}>Online</option>
+                                        <option value="Offline" {{ ($batch->batch_type == 'Offline') ? 'selected' : '' }}>Offline</option>                                        
+                                    </select>
+                                </div>
+                                @error('batch_type')
+                                    <small class="text-danger">{{ $errors->first('batch_type') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
                                 <label>Batch Start Date</label>
                                 <div class="mb-3">
                                     <input type="date" class="form-control" name="start_date" value="{{ $batch->start_date }}" aria-label="Date" aria-describedby="date-addon">

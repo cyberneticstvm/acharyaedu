@@ -194,7 +194,7 @@ class StudentController extends Controller
                 $message->to($request->email);
                 $message->subject('Acharya - Password Reset Link');
             });        
-            return redirect()->route('forgot')->with('success','Password chnage link has been sent to your registered email successfully. Please check your inbox/spam folder and click the password change link.');
+            return redirect()->route('forgot')->with('success','Password change link has been sent to your registered email successfully. Please check your inbox/spam folder and click the password change link.');
         else:
             return redirect()->route('forgot')->with('error','Provided email id could not found in the records. Please try with another email id.')->withInput($request->all());
         endif;
