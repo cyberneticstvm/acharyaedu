@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ExamType;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('admin.subject.create');
+        $etypes = ExamType::all();
+        return view('admin.subject.create', compact('etypes'));
     }
 
     /**
@@ -30,7 +32,8 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:subjects,name'
+            'name' => 'required',
+            'exam_type' => 'required',
         ]);
         $input = $request->all();               
         Subject::create($input);
@@ -50,8 +53,8 @@ class SubjectController extends Controller
      */
     public function edit(string $id)
     {
-        $subject = Subject::find($id);
-        return view('admin.subject.edit', compact('subject'));
+        $subject = Subject::find($id); $etypes = ExamType::all();
+        return view('admin.subject.edit', compact('subject', 'etypes'));
     }
 
     /**
@@ -60,7 +63,8 @@ class SubjectController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
-            'name' => 'required|unique:subjects,name,'.$id
+            'name' => 'required',
+            'exam_type' => 'required',
         ]);
         $input = $request->all();
         $subject = Subject::find($id);               

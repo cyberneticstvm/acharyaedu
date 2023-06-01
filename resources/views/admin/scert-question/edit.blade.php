@@ -97,7 +97,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="mb-1">Explanation</label>
-                                <textarea class="form-control" rows="5" name="explanation" id="explanation" placeholder="Explanation">{{ old('explanation') }}</textarea>                               
+                                <textarea class="form-control" rows="5" name="explanation" id="explanation" placeholder="Explanation">{{ $question->explanation }}</textarea>                               
                             </div>
                         </div>
                         <div class="col-md-3">

@@ -82,10 +82,10 @@
                                 </thead>
                                 <tbody>
                                     @forelse($records as $key => $record)
-                                    @php $fee = $record->student()->find($record->student)->batchFee()->where('fee_month', $inputs[1])->where('fee_year', $inputs[2])->where('batch', $inputs[0]) @endphp
+                                    @php $fee = $record->studentname()->find($record->student)->batchFee()->where('fee_month', $inputs[1])->where('fee_year', $inputs[2])->where('batch', $inputs[0]) @endphp
                                     <tr>
-                                        <td>{{ $record->student()->find($record->student)->name }}</td>
-                                        <td>{{ $record->student()->find($record->student)->mobile }}</td>
+                                        <td>{{ $record->studentname()->find($record->student)->name }}</td>
+                                        <td>{{ $record->studentname()->find($record->student)->mobile }}</td>
                                         <td>{{ $fee->value('fee') }}</td>
                                         <td>{{ ($fee->value('paid_date')) ? date('d/M/Y', strtotime($fee->value('paid_date'))) : '' }}</td>
                                         <td class="text-center">{!! ($fee->value('fee') > 0) ? "<i class='fa fa-check text-success'>" : "<i class='fa fa-times text-danger'>" !!}</td>

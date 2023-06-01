@@ -12,6 +12,23 @@
                     @method("PUT")
                     <div class="row">
                         <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="req">Exam Type</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="exam_type">
+                                        <option value="">Select</option>
+                                        @forelse($etypes as $key => $etype)
+                                            <option value="{{ $etype->id }}" {{ ($etype->id == $subject->exam_type) ? 'selected' : '' }}>{{ $etype->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('exam_type')
+                                    <small class="text-danger">{{ $errors->first('exam_type') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="req">Subject Name</label>

@@ -100,6 +100,18 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/faculty">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Faculty</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/cschedule">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/branch">
                   <i class="fa fa-code-fork sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Branch</span>

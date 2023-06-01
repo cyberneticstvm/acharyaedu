@@ -10,6 +10,7 @@ class Batch extends Model
     use HasFactory;
 
     protected $fillable = [
+        'batch_type',
         'name',
         'course',
         'start_date',

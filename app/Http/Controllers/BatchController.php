@@ -44,6 +44,7 @@ class BatchController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'batch_type' => 'required',
             'name' => 'required|unique:batches,name',
             'course' => 'required',
             'fee' => 'required',
@@ -101,6 +102,7 @@ class BatchController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'batch_type' => 'required',
             'name' => 'required|unique:batches,name,'.$id,
             'course' => 'required',
             'fee' => 'required',

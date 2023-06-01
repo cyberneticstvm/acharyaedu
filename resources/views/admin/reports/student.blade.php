@@ -61,7 +61,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse($records as $key => $record)
-                                    @php $fee = $record->student()->find($record->student)->batchFee() @endphp
+                                    @php $fee = $record->studentname()->find($record->student)->batchFee() @endphp
                                     <tr>
                                         <td>{{ $record->batch()->find($record->batch)->name }}</td>
                                         <td>{{ $fee->value('fee') }}</td>

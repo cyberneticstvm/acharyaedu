@@ -15,9 +15,11 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\ClassScheduleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CurrentAffairQuestionController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
@@ -258,6 +260,20 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/chapter/edit/{id}', [ChapterController::class, 'edit'])->name('chapter.edit');
     Route::put('/admin/chapter/edit/{id}', [ChapterController::class, 'update'])->name('chapter.update');
     Route::delete('/admin/chapter/{id}', [ChapterController::class, 'destroy'])->name('chapter.delete');
+
+    Route::get('/faculty', [FacultyController::class, 'index'])->name('faculty');
+    Route::get('/faculty/create', [FacultyController::class, 'create'])->name('faculty.create');
+    Route::post('/faculty/create', [FacultyController::class, 'store'])->name('faculty.save');
+    Route::get('/faculty/edit/{id}', [FacultyController::class, 'edit'])->name('faculty.edit');
+    Route::put('/faculty/edit/{id}', [FacultyController::class, 'update'])->name('faculty.update');
+    Route::delete('/faculty/delete/{id}', [FacultyController::class, 'destroy'])->name('faculty.delete');
+
+    Route::get('/cschedule', [ClassScheduleController::class, 'index'])->name('cschedule');
+    Route::get('/cschedule/create', [ClassScheduleController::class, 'create'])->name('cschedule.create');
+    Route::post('/cschedule/create', [ClassScheduleController::class, 'store'])->name('cschedule.save');
+    Route::get('/cschedule/edit/{id}', [ClassScheduleController::class, 'edit'])->name('cschedule.edit');
+    Route::put('/cschedule/edit/{id}', [ClassScheduleController::class, 'update'])->name('cschedule.update');
+    Route::delete('/cschedule/delete/{id}', [ClassScheduleController::class, 'destroy'])->name('cschedule.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
