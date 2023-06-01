@@ -73,10 +73,23 @@
                             </div>
                             <div class="col-6 text-center">
                                 @if(Auth::user()->student->photo)
-                                    <img src="https://app.acharyaedu.in/public/storage/photos/{{ Auth::user()->student->photo }}" height="100%" width="50%" alt="{{ Auth::user()->student->name }}" />
+                                    <img src="{{ asset('storage/student-photos/'.Auth::user()->student->id.'/'.Auth::user()->student->photo) }}" height="100%" width="50%" alt="{{ Auth::user()->student->name }}" />
                                 @else
                                     <img src="{{ asset('assets/images/avatar.webp') }}" width="120" height="120" alt="{{ Auth::user()->student->name }}" />
-                                    <p class="text-center mt-1"><a href="">Upload Photo</a></p>
+                                    <form method="post" class="mt-3" action="{{ route('student.photo.upload') }}" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <input type="file" class="" name="photo" required />
+                                                @error('photo')
+                                                    <small class="text-danger">{{ $errors->first('photo') }}</small>
+                                                @enderror
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" class="btn btn-primary">Upload</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 @endif
                                 <div class="mt-5">
                                     <h5>Payment QR Code</h5>

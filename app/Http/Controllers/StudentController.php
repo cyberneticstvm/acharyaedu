@@ -482,4 +482,19 @@ class StudentController extends Controller
         endif;
         return redirect()->back()->with('success', 'Leave updated successfully');
     }
+
+    public function uploadphoto(Request $request){
+        $this->validate($request, [
+            'photo' => 'required|file|max:250|mimes:jpg,png,jpeg',
+        ]);
+        $input = $request->all();
+        $sid = $request->user()->student->id;
+        if($request->hasFile('photo')):
+            $img = $request->file('photo');
+            $fname = 'student-photos/'.$sid.'/'.$img->getClientOriginalName();
+            Storage::disk('public')->putFileAs($fname, $img, '');
+            Student::where('id', $sid)->update(['photo' => $img->getClientOriginalName()]);                                 
+        endif;
+        return redirect()->back()->with('success', 'Photo updated successfully');
+    }
 }

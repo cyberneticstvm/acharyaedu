@@ -282,6 +282,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     
     Route::get('/student/leave', [StudentController::class, 'leave'])->name('student.leave');
     Route::post('/student/leave', [StudentController::class, 'leaveupdate'])->name('student.leave.update');
+    Route::post('/student/photo', [StudentController::class, 'uploadphoto'])->name('student.photo.upload');
 });
 
 
