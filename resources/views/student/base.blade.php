@@ -119,6 +119,7 @@
                                             <ul class="submenu inner-page">
                                                 <li><a href="#">Paid Classes</a></li>
                                                 <li><a href="#">Free Classes</a></li>
+                                                <li><a href="#">Zoom Classes</a></li>
                                             </ul>
                                         </li>                                   
                                     </ul>
@@ -171,7 +172,6 @@
                     </li>
                 </ul>
             </nav>
-
             <div class="social-wrapper-one">
                 <ul>
                     <li>

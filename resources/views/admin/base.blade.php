@@ -273,6 +273,12 @@
                   <span class="sidenav-normal ms-2 ps-1">Exam questions Register</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/docs">
+                  <i class='fa fa-file-upload sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Docs</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>

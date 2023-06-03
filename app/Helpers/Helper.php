@@ -6,10 +6,15 @@ use App\Models\Question;
 use App\Models\QuestionCourse;
 use App\Models\StudentExam;
 use App\Models\Subject;
+use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
 
 function courseOffers(){
    return CourseOffer::all();
+}
+
+function getAllModules(){
+    return Topic::all();
 }
 
 function albhabets(){

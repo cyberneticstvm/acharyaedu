@@ -18,6 +18,7 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\ClassScheduleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CurrentAffairQuestionController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\FeeController;
@@ -274,6 +275,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/cschedule/edit/{id}', [ClassScheduleController::class, 'edit'])->name('cschedule.edit');
     Route::put('/cschedule/edit/{id}', [ClassScheduleController::class, 'update'])->name('cschedule.update');
     Route::delete('/cschedule/delete/{id}', [ClassScheduleController::class, 'destroy'])->name('cschedule.delete');
+
+    Route::get('/admin/docs', [DownloadController::class, 'index'])->name('docs');
+    Route::get('/admin/docs/create', [DownloadController::class, 'create'])->name('docs.create');
+    Route::post('/admin/docs/create', [DownloadController::class, 'store'])->name('docs.save');
+    Route::get('/admin/docs/edit/{id}', [DownloadController::class, 'edit'])->name('docs.edit');
+    Route::put('/admin/docs/edit/{id}', [DownloadController::class, 'update'])->name('docs.update');
+    Route::delete('/admin/docs/delete/{id}', [DownloadController::class, 'destroy'])->name('docs.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
