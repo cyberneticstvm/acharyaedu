@@ -24,7 +24,6 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
-use App\Http\Controllers\ModelQuestionController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PreviousQuestionController;
 use App\Http\Controllers\ReportController;
@@ -233,6 +232,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::delete('/admin/caffairquestion/{id}', [CurrentAffairQuestionController::class, 'destroy'])->name('caffairquestion.delete');
 
     Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
+    Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
     Route::get('/admin/exam/create', [ExamController::class, 'create'])->name('exam.create');
     Route::post('/admin/exam/create', [ExamController::class, 'store'])->name('exam.save');
     Route::get('/admin/exam/edit/{id}', [ExamController::class, 'edit'])->name('exam.edit');
@@ -292,7 +292,7 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 });
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function(){
-    Route::get('/student/active-exams', [StudentController::class, 'activeexams'])->name('student.active.exams');
+    Route::get('/student/active-exams/{type}', [StudentController::class, 'activeexams'])->name('student.active.exams');
     Route::get('/student/exam/{id}/{type}', [StudentController::class, 'exam'])->name('student.exam');
     Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');   
     Route::get('/student/exam/result/{id}/{type}', [StudentController::class, 'examresult'])->name('student.exam.result');
@@ -312,6 +312,8 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/fee-payment', [StudentController::class, 'feepayment'])->name('student.fee.payment');
     Route::get('/student/feedback', [StudentController::class, 'feedback'])->name('student.feedback');
     Route::post('/student/feedback', [StudentController::class, 'savefeedback'])->name('student.feedback.save');
+
+    Route::get('/student/downloads/{type}', [StudentController::class, 'downloads'])->name('student.downloads');
 });
 
 

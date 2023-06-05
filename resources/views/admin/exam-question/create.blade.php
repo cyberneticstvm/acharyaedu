@@ -37,6 +37,9 @@
                     @if($exam->exam_type == 5)
                         @include("admin.exam-question.exams.caffair")
                     @endif
+                    @if($exam->exam_type == 7 || $exam->exam_type == 8)
+                        @include("admin.exam-question.exams.tw") <!-- Topic wise / Weekly Revision -->
+                    @endif
                     <div class="text-center">
                         <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">GENERATE</button>
                         <button type="button" onclick="history.back()" class="btn bg-gradient-warning mt-4 mb-0">CANCEL</button>

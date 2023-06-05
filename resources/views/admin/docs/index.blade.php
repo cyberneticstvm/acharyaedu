@@ -33,7 +33,7 @@
                                 <td>{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
                                 <td class="text-center"><a href="{{ asset('storage/'.$doc->attachment) }}" target="_blank">Attachment</a></td>
-                                <td></td>
+                                <td>{{ $doc->notes }}</td>
                                 <td class="text-center"><a href="/admin/docs/edit/{{encrypt($doc->id)}}"><i class="fa fa-pencil text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('docs.delete', $doc->id) }}">

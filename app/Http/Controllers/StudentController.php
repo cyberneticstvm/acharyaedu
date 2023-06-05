@@ -7,6 +7,7 @@ use App\Models\Batch;
 use App\Models\Branch;
 use App\Models\ClassSchedule;
 use App\Models\Course;
+use App\Models\Download;
 use App\Models\Exam;
 use App\Models\Fee;
 use App\Models\FreeExam;
@@ -295,9 +296,9 @@ class StudentController extends Controller
         return redirect()->route('student')->with('success', 'Student Deleted Successfully!');
     }
 
-    public function activeexams(){
+    public function activeexams($type){
         $student = Student::where('email', Auth::user()->email)->first();
-        $exams = Exam::whereIn('batch_id', $student->batches->pluck('batch'))->where('status', 1)->get(); //whereDate('exam_date', '>=', Carbon::today())->
+        $exams = Exam::whereIn('batch_id', $student->batches->pluck('batch'))->where('status', 1)->where('exam_type', $type)->get(); //whereDate('exam_date', '>=', Carbon::today())->
         return view('student.active-exams', compact('exams', 'student'));
     }
 
@@ -525,5 +526,11 @@ class StudentController extends Controller
         StudentFeedback::create($input);
         $feedbacks = StudentFeedback::where('student_id', Auth::user()->student->id)->orderByDesc('created_at')->get();
         return redirect()->back()->with('success', 'Feedback submitted successfully');
+    }
+
+    public function downloads($type){
+        $student = Student::find(Auth::user()->student->id);
+        $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->where('document_type', $type)->get();
+        return view('student.downloads', compact('downloads', 'student'));
     }
 }

@@ -89,37 +89,37 @@
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">Exams</a>
                                             <ul class="submenu inner-page">
-                                                <li><a href="/student/active-exams">General Exams</a></li>
-                                                <li><a href="/student/active-exams">Previous Questions Exams</a></li>
-                                                <li><a href="/student/active-exams">Model Exams</a></li>
-                                                <li><a href="/student/active-exams">SCERT Exams</a></li>
-                                                <li><a href="/student/active-exams">Topic Wise Exams</a></li>
-                                                <li><a href="/student/active-exams">Current Affairs Exams</a></li>
-                                                <li><a href="/student/active-exams">Weekly Revision Exams</a></li>
+                                                <li><a href="/student/active-exams/1">General Exams</a></li>
+                                                <li><a href="/student/active-exams/3">Previous Questions Exams</a></li>
+                                                <li><a href="/student/active-exams/4">Model Exams</a></li>
+                                                <li><a href="/student/active-exams/2">SCERT Exams</a></li>
+                                                <li><a href="/student/active-exams/7">Topic Wise Exams</a></li>
+                                                <li><a href="/student/active-exams/5">Current Affairs Exams</a></li>
+                                                <li><a href="/student/active-exams/8">Weekly Revision Exams</a></li>
                                                 <li><a href="/student/freeexam">Free Exams</a></li>
                                             </ul>
                                         </li>
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">Downloads</a>
                                             <ul class="submenu inner-page">
-                                                <li><a href="#">Study Materials</a></li>
-                                                <li><a href="#">Current Affairs</a></li>
-                                                <li><a href="#">Syllabus</a></li>
-                                                <li><a href="#">Miscellaneous</a></li>
+                                                <li><a href="/student/downloads/1">Study Materials</a></li>
+                                                <li><a href="/student/downloads/2">Current Affairs</a></li>
+                                                <li><a href="/student/downloads/3">Syllabus</a></li>
+                                                <li><a href="/student/downloads/4">Miscellaneous</a></li>
                                             </ul>
                                         </li>
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">PSC</a>
                                             <ul class="submenu inner-page">
-                                                <li><a href="#">Updates</a></li>
+                                                <li><a href="/student/updates">Updates</a></li>
                                             </ul>
                                         </li>
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">Videos</a>
                                             <ul class="submenu inner-page">
-                                                <li><a href="#">Paid Classes</a></li>
-                                                <li><a href="#">Free Classes</a></li>
-                                                <li><a href="#">Zoom Classes</a></li>
+                                                <li><a href="/student/videos/1">Paid Classes</a></li>
+                                                <li><a href="/student/videos/2">Free Classes</a></li>
+                                                <li><a href="/student/videos/3">Zoom Classes</a></li>
                                             </ul>
                                         </li>                                   
                                     </ul>
@@ -156,18 +156,50 @@
                     <li class="has-droupdown">
                         <a href="#" class="main">Student Zone</a>
                         <ul class="submenu">
+                            <li><a class="mobile-menu-link" href="/student/class-schedule/0">Live Class Schedule</a></li>
+                            <li><a class="mobile-menu-link" href="/student/class-schedule/1">Offline Class Schedule</a></li>
                             <li><a class="mobile-menu-link" href="/student/dash">Profile</a></li>
-                            <li><a class="mobile-menu-link" href="/student/active-exams">General Exams</a></li>
                             <li><a class="mobile-menu-link" href="/student/performance">My Performance</a></li>
-                            <li><a class="mobile-menu-link" href="/student/freeexam">Free Exam</a></li>
+                            <li><a class="mobile-menu-link" href="/student/leave">Update Leave</a></li>
+                            <li><a class="mobile-menu-link" href="/student/fee-payment">Fee Payments</a></li>
+                            <li><a class="mobile-menu-link" href="/student/feedback">Student Feedback</a></li>
                             <li><a class="mobile-menu-link" href="/logout">Logout</a></li>                           
                         </ul>
                     </li>
                     <li class="has-droupdown">
                         <a href="#" class="main">Exams</a>
                         <ul class="submenu">
-                            <li><a class="mobile-menu-link" href="/student/active-exams">General Exams</a></li>
-                            <li><a class="mobile-menu-link" href="/student/studymaterials">Free Exam</a></li>                          
+                            <li><a class="mobile-menu-link" href="/student/active-exams/1">General Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams/3">Previous Questions Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams/4">Model Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams/2">SCERT Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams/7">Topic Wise Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams/5">Current Affairs Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/active-exams/8">Weekly Revision Exams</a></li>
+                            <li><a class="mobile-menu-link" href="/student/freeexam">Free Exams</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Downloads</a>
+                        <ul class="submenu">
+                            <li><a class="mobile-menu-link" href="/student/downloads/1">Study Materials</a></li>
+                            <li><a class="mobile-menu-link" href="/student/downloads/2">Current Affairs</a></li>
+                            <li><a class="mobile-menu-link" href="/student/downloads/3">Syllabus</a></li>
+                            <li><a class="mobile-menu-link" href="/student/downloads/4">Miscellaneous</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">PSC</a>
+                        <ul class="submenu">
+                            <li><a class="mobile-menu-link" href="/student/updates">Updates</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Videos</a>
+                        <ul class="submenu">
+                            <li><a class="mobile-menu-link" href="/student/videos/1">Paid Classes</a></li>
+                            <li><a class="mobile-menu-link" href="/student/videos/2">Free Classes</a></li>
+                            <li><a class="mobile-menu-link" href="/student/videos/3">Zoom Classes</a></li>
                         </ul>
                     </li>
                 </ul>
