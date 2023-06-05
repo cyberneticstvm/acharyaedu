@@ -26,11 +26,13 @@ class Fee extends Model
         return $this->belongsTo(Student::class, 'student');
     }
 
-    public function batch(){
+    public function batches(){
         return $this->belongsTo(Batch::class, 'batch');
     }
 
     public function mname(){
         return $this->belongsTo(Month::class, 'fee_month');
     }
+
+    protected $casts = ['paid_date' => 'date'];
 }

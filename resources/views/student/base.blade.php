@@ -76,13 +76,13 @@
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">Student Zone</a>
                                             <ul class="submenu inner-page">
-                                                <li><a href="#">Live Class Schedule</a></li>
-                                                <li><a href="#">Offline Class Schedule</a></li>
+                                                <li><a href="/student/class-schedule/0">Live Class Schedule</a></li>
+                                                <li><a href="/student/class-schedule/1">Offline Class Schedule</a></li>
                                                 <li><a href="/student/dash">Profile</a></li>
                                                 <li><a href="/student/performance">My Performance</a></li>
                                                 <li><a href="/student/leave">Update Leave</a></li>
-                                                <li><a href="#">Fee Schedule</a></li>
-                                                <li><a href="#">Student Feedback</a></li>
+                                                <li><a href="/student/fee-payment">Fee Payments</a></li>
+                                                <li><a href="/student/feedback">Student Feedback</a></li>
                                                 <li><a href="/logout">Logout</a></li>
                                             </ul>
                                         </li>   

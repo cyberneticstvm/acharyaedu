@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Receipt</th><th>Send</th><th>Assign</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Branch</th><th>Edit</th></tr>
+                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Receipt</th><th>Send</th><th>Assign</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Edit</th></tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
@@ -40,8 +40,7 @@
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->mobile }}</td>
                                     <td>{{ $student->address }}</td>
-                                    <td class="text-center"><a href="/public/storage/photos/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>
-                                    <td>{{ $student->branch()->find($student->branch)->name }}</td>                                                                    
+                                    <td class="text-center"><a href="/public/storage/photos/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>                                                                   
                                     <td class="text-center"><a href="/student/edit/{{ $student->id }}"><i class="fa fa-edit text-warning"></i></a></td>
                                     
                                 </tr>

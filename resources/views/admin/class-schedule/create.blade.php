@@ -90,6 +90,20 @@
                                     <input type="text" class="form-control" name="notes" value="{{ old('notes') }}" aria-label="Text" aria-describedby="text-addon" placeholder="Notes">
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Class Type</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="type">
+                                        <option value="0">Online</option>
+                                        <option value="1">Offline</option>
+                                    </select>
+                                </div>
+                                @error('type')
+                                    <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @enderror
+                            </div>
                         </div>                       
                     </div>
                     <div class="text-center">

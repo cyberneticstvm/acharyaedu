@@ -91,6 +91,20 @@
                                     <input type="text" class="form-control" name="notes" value="{{ $class->notes }}" aria-label="Text" aria-describedby="text-addon" placeholder="Notes">
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Class Type</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="type">
+                                        <option value="0" {{ ($class->type == 0) ? 'selected' : '' }}>Online</option>
+                                        <option value="1" {{ ($class->type == 1) ? 'selected' : '' }}>Offline</option>
+                                    </select>
+                                </div>
+                                @error('type')
+                                    <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @enderror
+                            </div>
                         </div>                       
                     </div>
                     <div class="text-center">

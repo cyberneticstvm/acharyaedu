@@ -23,7 +23,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">
                         <thead class="thead-light">
-                            <tr><th>SL No</th><th>Date</th><th>Batch</th><th>Subject</th><th>Faculty</th><th>Time</th><th>Notes</th><th>Edit</th><th>Remove</th></tr>
+                            <tr><th>SL No</th><th>Date</th><th>Batch</th><th>Subject</th><th>Faculty</th><th>Time</th><th>Notes</th><th>Type</th><th>Edit</th><th>Remove</th></tr>
                         </thead>
                         <tbody>
                             @php $slno = 1 @endphp
@@ -36,6 +36,7 @@
                                 <td>{{ $class->faculty->name }}</td>
                                 <td>{{ $class->class_time }}</td>
                                 <td>{{ $class->notes }}</td>
+                                <td>{{ ($class->type == 0) ? 'Online' : 'Offline' }}</td>
                                 <td class="text-center"><a href="/cschedule/edit/{{ encrypt($class->id) }}"><i class="fa fa-edit text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('cschedule.delete', $class->id) }}">

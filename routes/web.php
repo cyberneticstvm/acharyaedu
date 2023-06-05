@@ -307,6 +307,11 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/leave', [StudentController::class, 'leave'])->name('student.leave');
     Route::post('/student/leave', [StudentController::class, 'leaveupdate'])->name('student.leave.update');
     Route::post('/student/photo', [StudentController::class, 'uploadphoto'])->name('student.photo.upload');
+
+    Route::get('/student/class-schedule/{type}', [StudentController::class, 'classschedule'])->name('student.class.schedule');
+    Route::get('/student/fee-payment', [StudentController::class, 'feepayment'])->name('student.fee.payment');
+    Route::get('/student/feedback', [StudentController::class, 'feedback'])->name('student.feedback');
+    Route::post('/student/feedback', [StudentController::class, 'savefeedback'])->name('student.feedback.save');
 });
 
 

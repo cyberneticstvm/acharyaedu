@@ -89,7 +89,7 @@
                                 <td class="text-end">{{ $fee->fee }}</td>
                                 <td class="text-end {{ ($fee->fee_pending == 1) ? 'text-danger' : 'text-success' }}">{{ ($fee->fee_pending == 1) ? 'Yes' : 'No' }}</td>
                                 <td class="text-center"><a href="/pdf/batch-fee/{{ $fee->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
-                                <td>{{ $fee->batch()->find($fee->batch)->name }}</td>
+                                <td>{{ $fee->batches()->find($fee->batches)->pluck('name')->implode(',') }}</td>
                                 <td>{{ DateTime::createFromFormat('!m', $fee->fee_month)->format('F') }}</td>
                                 <td class="text-end">{{ $fee->fee_year }}</td>
                                 <td>{{ date('d/M/Y', strtotime($fee->paid_date)) }}</td>                          

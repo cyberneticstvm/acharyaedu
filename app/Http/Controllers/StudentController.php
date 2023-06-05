@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\Batch;
 use App\Models\Branch;
+use App\Models\ClassSchedule;
 use App\Models\Course;
 use App\Models\Exam;
+use App\Models\Fee;
 use App\Models\FreeExam;
 use App\Models\FreeExamQuestion;
 use App\Models\FreeExamScore;
@@ -18,7 +20,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\StudentExam;
 use App\Models\StudentExamScore;
-use App\Models\Subject;
+use App\Models\StudentFeedback;
 use App\Models\Topic;
 use App\Models\User;
 use Carbon\Carbon;
@@ -42,14 +44,14 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $students = Student::where('branch', Auth::user()->branch)->where('course_id', 0)->orderByDesc('id')->get();
+        $students = Student::where('course_id', 0)->orderByDesc('id')->get();
         $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();        
         return view('admin.student.index', compact('students', 'batches', 'status'));
     }
 
     public function onlinestudents(){
-        $students = Student::where('branch', Auth::user()->branch)->where('course_id', '>', 0)->orderByDesc('id')->get();
+        $students = Student::where('course_id', '>', 0)->orderByDesc('id')->get();
         $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();        
         return view('admin.student.students', compact('students', 'batches', 'status'));
@@ -496,5 +498,32 @@ class StudentController extends Controller
             Student::where('id', $sid)->update(['photo' => $img->getClientOriginalName()]);                                 
         endif;
         return redirect()->back()->with('success', 'Photo updated successfully');
+    }
+
+    public function classschedule($type){
+        $student = Auth::user()->student;
+        $schedules = ClassSchedule::whereIn('batch_id', $student->batches->pluck('batch'))->where('type', $type)->whereDate('class_date', '>=', Carbon::today())->orderByDesc('class_date')->get();
+        return view('student.class-schedule', compact('schedules', 'student'));
+    }
+
+    public function feepayment(){
+        $fees = Fee::where('student', Auth::user()->student->id)->orderByDesc('id')->get();
+        return view('student.fee-payment', compact('fees'));
+    }
+
+    public function feedback(){
+        $feedbacks = StudentFeedback::where('student_id', Auth::user()->student->id)->orderByDesc('created_at')->get();
+        return view('student.feedback', compact('feedbacks'));
+    }
+
+    public function savefeedback(Request $request){
+        $this->validate($request, [
+            'feedback' => 'required',
+        ]);
+        $input = $request->all();
+        $input['student_id'] = Auth::user()->student->id;
+        StudentFeedback::create($input);
+        $feedbacks = StudentFeedback::where('student_id', Auth::user()->student->id)->orderByDesc('created_at')->get();
+        return redirect()->back()->with('success', 'Feedback submitted successfully');
     }
 }
