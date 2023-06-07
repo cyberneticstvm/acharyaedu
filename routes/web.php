@@ -26,6 +26,8 @@ use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PreviousQuestionController;
+use App\Http\Controllers\PSCUpdateController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScertQuestionController;
 use App\Http\Controllers\StudentBatchController;
@@ -282,6 +284,20 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/docs/edit/{id}', [DownloadController::class, 'edit'])->name('docs.edit');
     Route::put('/admin/docs/edit/{id}', [DownloadController::class, 'update'])->name('docs.update');
     Route::delete('/admin/docs/delete/{id}', [DownloadController::class, 'destroy'])->name('docs.delete');
+
+    Route::get('/admin/psc', [PSCUpdateController::class, 'index'])->name('psc');
+    Route::get('/admin/psc/create', [PSCUpdateController::class, 'create'])->name('psc.create');
+    Route::post('/admin/psc/create', [PSCUpdateController::class, 'store'])->name('psc.save');
+    Route::get('/admin/psc/edit/{id}', [PSCUpdateController::class, 'edit'])->name('psc.edit');
+    Route::put('/admin/psc/edit/{id}', [PSCUpdateController::class, 'update'])->name('psc.update');
+    Route::delete('/admin/psc/delete/{id}', [PSCUpdateController::class, 'destroy'])->name('psc.delete');
+
+    Route::get('/admin/record', [RecordController::class, 'index'])->name('record');
+    Route::get('/admin/record/create', [RecordController::class, 'create'])->name('record.create');
+    Route::post('/admin/record/create', [RecordController::class, 'store'])->name('record.save');
+    Route::get('/admin/record/edit/{id}', [RecordController::class, 'edit'])->name('record.edit');
+    Route::put('/admin/record/edit/{id}', [RecordController::class, 'update'])->name('record.update');
+    Route::delete('/admin/record/delete/{id}', [RecordController::class, 'destroy'])->name('record.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){

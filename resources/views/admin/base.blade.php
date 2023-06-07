@@ -279,6 +279,18 @@
                   <span class="sidenav-normal ms-2 ps-1">Docs</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/psc">
+                  <i class='fa fa-file-upload sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">PSC Updates</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/record">
+                  <i class='fa fa-youtube sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Recordings</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>

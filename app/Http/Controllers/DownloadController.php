@@ -135,7 +135,7 @@ class DownloadController extends Controller
      */
     public function destroy(string $id)
     {
-        Download::find('id', $id)->delete();
+        Download::find($id)->delete();
         return redirect()->route('docs')->with('success', 'Doc deleted successfully');
     }
 }
