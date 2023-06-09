@@ -374,7 +374,7 @@ class StudentController extends Controller
         if($type == 'free'):
             return redirect()->route('student.freeexam')->with('success', "Congratulations! You have successfully completed your exam.");
         else:
-            return redirect()->route('student.active.exams')->with('success', "Congratulations! You have successfully completed your exam.");
+            return redirect()->route('student.active.exams', 1)->with('success', "Congratulations! You have successfully completed your exam.");
         endif;
     }
 
