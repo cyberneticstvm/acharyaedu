@@ -14,6 +14,7 @@ use App\Models\FreeExam;
 use App\Models\FreeExamQuestion;
 use App\Models\FreeExamScore;
 use App\Models\FreeStudentExam;
+use App\Models\PscUpdate;
 use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -532,5 +533,16 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->where('document_type', $type)->get();
         return view('student.downloads', compact('downloads', 'student'));
+    }
+
+    public function updates(){
+        $updates = PscUpdate::all();
+        return view('student.updates', compact('updates'));
+    }
+
+    public function videos($type){
+        $student = Student::find(Auth::user()->student->id);
+        $videos = [];
+        return view('student.videos', compact('videos', 'student'));
     }
 }

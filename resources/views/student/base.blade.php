@@ -119,7 +119,8 @@
                                             <ul class="submenu inner-page">
                                                 <li><a href="/student/videos/1">Paid Classes</a></li>
                                                 <li><a href="/student/videos/2">Free Classes</a></li>
-                                                <li><a href="/student/videos/3">Zoom Classes</a></li>
+                                                <li><a href="/student/videos/3">Paid Zoom Classes</a></li>
+                                                <li><a href="/student/videos/4">Free Zoom Classes</a></li>
                                             </ul>
                                         </li>                                   
                                     </ul>
@@ -199,7 +200,8 @@
                         <ul class="submenu">
                             <li><a class="mobile-menu-link" href="/student/videos/1">Paid Classes</a></li>
                             <li><a class="mobile-menu-link" href="/student/videos/2">Free Classes</a></li>
-                            <li><a class="mobile-menu-link" href="/student/videos/3">Zoom Classes</a></li>
+                            <li><a class="mobile-menu-link" href="/student/videos/3">Paid Zoom Classes</a></li>
+                            <li><a class="mobile-menu-link" href="/student/videos/4">Free Zoom Classes</a></li>
                         </ul>
                     </li>
                 </ul>

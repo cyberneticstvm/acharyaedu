@@ -330,6 +330,8 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::post('/student/feedback', [StudentController::class, 'savefeedback'])->name('student.feedback.save');
 
     Route::get('/student/downloads/{type}', [StudentController::class, 'downloads'])->name('student.downloads');
+    Route::get('/student/updates', [StudentController::class, 'updates'])->name('student.updates');
+    Route::get('/student/videos/{type}', [StudentController::class, 'videos'])->name('student.videos');
 });
 
 

@@ -24,7 +24,7 @@ class RecordController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::where('exam_type', 6)->get();
+        $subjects = Subject::where('exam_type', 1)->get();
         return view('admin.recordings.create', compact('subjects'));
     }
 
@@ -64,7 +64,7 @@ class RecordController extends Controller
      */
     public function edit(string $id)
     {
-        $subjects = Subject::where('exam_type', 6)->get(); $record = Record::find(decrypt($id));
+        $subjects = Subject::where('exam_type', 1)->get(); $record = Record::find(decrypt($id));
         return view('admin.recordings.edit', compact('subjects', 'record'));
     }
 
