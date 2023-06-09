@@ -67,13 +67,10 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req mb-1">Attachment</label>
+                                <label class="mb-1">Attachment</label>
                                 <div class="mb-3">
                                     <input type="file" class="form-control" name="attachment" />
                                 </div>
-                                @error('attachment')
-                                    <small class="text-danger">{{ $errors->first('attachment') }}</small>
-                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -113,6 +110,14 @@
                                 @error('document_type')
                                     <small class="text-danger">{{ $errors->first('document_type') }}</small>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Description</label>
+                                <div class="mb-3">
+                                    <textarea rows="5" class="form-control" name="description"  placeholder="Description">{{ $doc->description }}</textarea>
+                                </div>
                             </div>
                         </div>                        
                     </div>

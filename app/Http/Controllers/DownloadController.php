@@ -44,7 +44,6 @@ class DownloadController extends Controller
             'title' => 'required',
             'batch_id' => 'required',
             'subject_id' => 'required',
-            'attachment' => 'required|mimes:pdf,csv,xls,xlsx,doc,docx',
             'modules' => 'array|present',
             'document_type' => 'required',
         ]);

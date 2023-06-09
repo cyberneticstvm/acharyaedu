@@ -16,6 +16,7 @@ class Download extends Model
         'subject_id',
         'attachment',
         'notes',
+        'description',
         'created_by',
         'updated_by',
     ];
