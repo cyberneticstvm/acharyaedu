@@ -369,7 +369,7 @@
           <div class="collapse" id="notes">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white " href="#">
+                <a class="nav-link text-white " href="/student/notes">
                   <i class='fa fa-gear sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Notes</span>
                 </a>

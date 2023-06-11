@@ -84,7 +84,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label class="">Notes</label>
                                 <div class="mb-3">
@@ -104,6 +104,14 @@
                                 @error('type')
                                     <small class="text-danger">{{ $errors->first('type') }}</small>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="">Link</label>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="link" value="{{ $class->link }}" aria-label="Text" aria-describedby="text-addon" placeholder="Link">
+                                </div>
                             </div>
                         </div>                       
                     </div>

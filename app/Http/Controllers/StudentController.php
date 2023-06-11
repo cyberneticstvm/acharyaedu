@@ -535,7 +535,7 @@ class StudentController extends Controller
 
     public function downloads($type){
         $student = Student::find(Auth::user()->student->id);
-        $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->where('document_type', $type)->get();
+        $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->whereNotNull('attachment')->where('document_type', $type)->get();
         return view('student.downloads', compact('downloads', 'student'));
     }
 
@@ -548,5 +548,11 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $videos = [];
         return view('student.videos', compact('videos', 'student'));
+    }
+
+    public function notes(){
+        $student = Student::find(Auth::user()->student->id);
+        $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->whereNotNull('description')->get();
+        return view('student.notes', compact('downloads', 'student'));
     }
 }

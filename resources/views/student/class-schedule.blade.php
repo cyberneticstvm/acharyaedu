@@ -12,7 +12,7 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Batch Name</th><th>Faculty</th><th>Subject</th><th>Class Date</th><th>Class Time</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>SL No</th><th>Batch Name</th><th>Faculty</th><th>Subject</th><th>Class Date</th><th>Class Time</th><th>Notes</th><th>Link</th></tr></thead>
                             <tbody>
                             @forelse($schedules as $key => $sc)
                             <tr>
@@ -23,6 +23,7 @@
                                 <td>{{ $sc->class_date->format('d/M/Y') }}</td>
                                 <td>{{ $sc->class_time }}</td>
                                 <td>{{ $sc->notes }}</td>
+                                <td><a href="{{ $sc->link }}" target="_blank">Link</a></td>
                             </tr>
                         @empty
                         @endforelse

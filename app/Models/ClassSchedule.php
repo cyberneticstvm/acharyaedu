@@ -17,6 +17,7 @@ class ClassSchedule extends Model
         'class_time',
         'notes',
         'type',
+        'link',
         'created_by',
         'updated_by',
     ];
