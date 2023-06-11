@@ -401,8 +401,12 @@ class StudentController extends Controller
                 $e = StudentExam::find(decrypt($id));
                 $exam = StudentExamScore::where('student_exam_id', decrypt($id))->first();
             endif;
-            $student = Student::find($e->student_id);
-            return view('student.performance', compact('exam', 'student', 'type'));
+            if($e):
+                $student = Student::find($e->student_id);
+                return view('student.performance', compact('exam', 'student', 'type'));
+            else:
+                return redirect()->back()->with('error', "No result found");
+            endif;
         else:
             return redirect()->back()->with('error', "No result found");
         endif;
