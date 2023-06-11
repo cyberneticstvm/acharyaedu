@@ -36,8 +36,8 @@
                                 <td>{{ ($se) ? $se->unattended_count : 0 }}</td>
                                 <td>{{ ($se) ? $se->total_mark_after_cutoff: 0 }}</td>
                                 <td>{{ ($se) ? $se->grade : 0 }}</td>
-                                <td class="text-center"><a target="_blank" href="/student/exam/result/{{ ($se) ? encrypt($se->id) : 0 }}/paid"><i class="fa fa-eye text-info"></a></td>
-                                <td class="text-center"><a href="/student/exam/performance/{{ ($se) ? encrypt($se->id) : 0 }}/paid"><i class="fa fa-line-chart text-success"></i></a></td>
+                                <td class="text-center"><a target="_blank" href="/student/exam/result/{{ ($se) ? encrypt($se->id) : encrypt(0) }}/paid"><i class="fa fa-eye text-info"></a></td>
+                                <td class="text-center"><a href="/student/exam/performance/{{ ($se) ? encrypt($se->id) : encrypt(0) }}/paid"><i class="fa fa-line-chart text-success"></i></a></td>
                                 @if(!isStudentAttended($student->id, $exam->id))
                                 <td class="text-center">{!! ($exam->exam_date->format('d/M/Y') == date('d/M/Y')) ? "<a href='/student/exam/$exam->id/paid'>Take Exam</a>" : '' !!}</td>
                                 @else

@@ -1,17 +1,15 @@
 @extends("student.base")
 @section("content")
-<div class="rts-contact-page-form-area rts-section-gapTop">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="mian-wrapper-form">
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header pb-0 text-left bg-transparent">
                 <div class="row">
-                    <div class="col-md-12"><h5 class="text-primary">{{ $student->name }}'s Videos</h5></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                    </div>
-                </div>
+                    <div class="col"><h3 class="font-weight-bolder text-primary text-gradient">{{ $student->name }}'s Videos</h3></div>
+                </div>                
+            </div>
+            <div class="card-body">
+
             </div>
         </div>
     </div>
