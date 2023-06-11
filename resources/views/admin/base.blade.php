@@ -572,6 +572,15 @@
     });
   </script>
   @endif
+  @if(Route::current()->getName() == 'docs.create' || Route::current()->getName() == 'docs.edit')
+  <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
+    CKEDITOR.replace('description', {
+        toolbarCanCollapse : true,
+    });
+  </script>
+  @endif
 </body>
 
 </html>

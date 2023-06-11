@@ -16,6 +16,7 @@ use App\Models\FreeExamScore;
 use App\Models\FreeStudentExam;
 use App\Models\PscUpdate;
 use App\Models\Question;
+use App\Models\Record;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -546,7 +547,15 @@ class StudentController extends Controller
 
     public function videos($type){
         $student = Student::find(Auth::user()->student->id);
-        $videos = [];
+        if($type == 1):
+            $videos = Record::where('category', 'Paid')->where('type', 'Record')->orderByDesc('id')->get();
+        elseif($type == 2):
+            $videos = Record::where('category', 'Free')->where('type', 'Record')->orderByDesc('id')->get();
+        elseif($type == 3):
+            $videos = Record::where('category', 'Paid')->where('type', 'Zoom')->orderByDesc('id')->get();
+        else:
+            $videos = Record::where('category', 'Free')->where('type', 'Zoom')->orderByDesc('id')->get();
+        endif;
         return view('student.videos', compact('videos', 'student'));
     }
 
@@ -554,5 +563,10 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->whereNotNull('description')->get();
         return view('student.notes', compact('downloads', 'student'));
+    }
+
+    public function viewnote($id){
+        $note = Download::find(decrypt($id));
+        return view('student.notes-view', compact('note'));
     }
 }

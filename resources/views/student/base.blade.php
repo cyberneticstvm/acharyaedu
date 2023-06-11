@@ -38,6 +38,9 @@
   <link id="pagestyle" href="{{ asset('admin-assets/css/style.css') }}" rel="stylesheet" />
   <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('assets/plugin/smart-wizard/css/smart_wizard_all.min.css') }}">
+  @if(Route::current()->getName() == 'student.videos')
+  <link rel="stylesheet" href="{{ asset('assets/plugin/magnific-popup/magnific-popup.css') }}">
+  @endif
   <link rel="stylesheet" href="{{ asset('assets/css/acharya.css') }}">
 </head>
 
@@ -321,25 +324,25 @@
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/videos/1">
-                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <i class='fa fa-youtube sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Paid Classes</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/videos/2">
-                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <i class='fa fa-youtube sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Free Classes</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/videos/3">
-                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <i class='fa fa-youtube sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Paid Zoom Classes</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/videos/4">
-                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <i class='fa fa-youtube sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Free Zoom Classes</span>
                 </a>
               </li>
@@ -562,6 +565,16 @@
     @if(Route::current()->getName() == 'student.exam.performance' || Route::current()->getName() == 'student.performance')
     <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/chart.js') }}"></script>
+    @endif
+    @if(Route::current()->getName() == 'student.videos')
+    <script src="{{ asset('assets/plugin/magnific-popup/jquery.magnific-popup.js') }}"></script>
+    <script>
+      $(document).ready(function() {
+        $('.popup-youtube').magnificPopup({
+          type: 'iframe'
+        });
+      });
+    </script>
     @endif
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

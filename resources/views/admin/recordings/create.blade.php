@@ -50,30 +50,30 @@
                         </div>               
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req">Video type</label>
+                                <label class="req">Video Category</label>
                                 <div class="mb-3">
-                                    <select class="form-control" name="type">
+                                    <select class="form-control" name="category">
                                         <option value="Free">Free</option>
                                         <option value="Paid">Paid</option>
                                     </select>
                                 </div>
-                                @error('type')
-                                    <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @error('category')
+                                    <small class="text-danger">{{ $errors->first('category') }}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req">Video Category</label>
+                                <label class="req">Video Type</label>
                                 <div class="mb-3">
-                                    <select class="form-control" name="category">
+                                    <select class="form-control" name="type">
                                         <option value="Recordings">Recordings</option>
                                         <option value="Zoom">Zoom Live</option>
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
-                                @error('category')
-                                    <small class="text-danger">{{ $errors->first('category') }}</small>
+                                @error('type')
+                                    <small class="text-danger">{{ $errors->first('type') }}</small>
                                 @enderror
                             </div>
                         </div>

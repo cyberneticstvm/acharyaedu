@@ -51,30 +51,30 @@
                         </div>               
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req">Video type</label>
+                                <label class="req">Video Category</label>
                                 <div class="mb-3">
-                                    <select class="form-control" name="type">
+                                    <select class="form-control" name="category">
                                         <option value="Free" {{ ($record->type == 'Free') ? 'selected': '' }}>Free</option>
                                         <option value="Paid" {{ ($record->type == 'Paid') ? 'selected': '' }}>Paid</option>
                                     </select>
                                 </div>
-                                @error('type')
-                                    <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @error('category')
+                                    <small class="text-danger">{{ $errors->first('category') }}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req">Video Category</label>
+                                <label class="req">Video Type</label>
                                 <div class="mb-3">
-                                    <select class="form-control" name="category">
-                                        <option value="Recordings" {{ ($record->category == 'Recordings') ? 'selected': '' }}>Recordings</option>
+                                    <select class="form-control" name="type">
+                                        <option value="Record" {{ ($record->category == 'Record') ? 'selected': '' }}>Recordings</option>
                                         <option value="Zoom" {{ ($record->category == 'Zoom') ? 'selected': '' }}>Zoom Live</option>
                                         <option value="Other" {{ ($record->category == 'Other') ? 'selected': '' }}>Other</option>
                                     </select>
                                 </div>
-                                @error('category')
-                                    <small class="text-danger">{{ $errors->first('category') }}</small>
+                                @error('type')
+                                    <small class="text-danger">{{ $errors->first('type') }}</small>
                                 @enderror
                             </div>
                         </div>

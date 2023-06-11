@@ -12,7 +12,7 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Doc Type</th><th>Title</th><th>Batch</th><th>Subject</th><th>Modules</th><th>Description</th><th>Notes</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Doc Type</th><th>Title</th><th>Batch</th><th>Subject</th><th>Modules</th><th>View</th><th>Notes</th></tr></thead><tbody>
                         @forelse($downloads as $key => $doc)
                             <tr>
                                 <td>{{ $slno++ }}</td>
@@ -21,7 +21,7 @@
                                 <td>{{ $doc->batch->name }}</td>
                                 <td>{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
-                                <td>{{ $doc->description }}</td>
+                                <td class="text-center"><a href="/student/notes/view/{{encrypt($doc->id)}}">View</a></td>
                                 <td>{{ $doc->notes }}</td>
                             </tr>
                         @empty

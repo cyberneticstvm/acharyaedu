@@ -333,6 +333,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/updates', [StudentController::class, 'updates'])->name('student.updates');
     Route::get('/student/videos/{type}', [StudentController::class, 'videos'])->name('student.videos');
     Route::get('/student/notes', [StudentController::class, 'notes'])->name('student.notes');
+    Route::get('/student/notes/view/{id}', [StudentController::class, 'viewnote'])->name('student.viewnote');
 });
 
 

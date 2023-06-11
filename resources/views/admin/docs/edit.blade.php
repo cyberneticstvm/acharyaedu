@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 <label class="">Description</label>
                                 <div class="mb-3">
-                                    <textarea rows="5" class="form-control" name="description"  placeholder="Description">{{ $doc->description }}</textarea>
+                                    <textarea rows="5" class="form-control" name="description" id="description" placeholder="Description">{{ $doc->description }}</textarea>
                                 </div>
                             </div>
                         </div>                        
