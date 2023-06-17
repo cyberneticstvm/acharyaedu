@@ -548,13 +548,13 @@ class StudentController extends Controller
     public function videos($type){
         $student = Student::find(Auth::user()->student->id);
         if($type == 1):
-            $videos = Record::where('category', 'Paid')->where('type', 'Recordings')->orderByDesc('id')->get();
+            $videos = Record::where('category', 'Recordings')->where('type', 'Paid')->orderByDesc('id')->get();
         elseif($type == 2):
-            $videos = Record::where('category', 'Free')->where('type', 'Recordings')->orderByDesc('id')->get();
+            $videos = Record::where('category', 'Recordings')->where('type', 'Free')->orderByDesc('id')->get();
         elseif($type == 3):
-            $videos = Record::where('category', 'Paid')->where('type', 'Zoom')->orderByDesc('id')->get();
+            $videos = Record::where('category', 'Zoom')->where('type', 'Paid')->orderByDesc('id')->get();
         else:
-            $videos = Record::where('category', 'Free')->where('type', 'Zoom')->orderByDesc('id')->get();
+            $videos = Record::where('category', 'Zoom')->where('type', 'Free')->orderByDesc('id')->get();
         endif;
         return view('student.videos', compact('videos', 'student'));
     }
