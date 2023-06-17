@@ -68,7 +68,7 @@
                                 <label class="req">Video Type</label>
                                 <div class="mb-3">
                                     <select class="form-control" name="type">
-                                        <option value="Record" {{ ($record->category == 'Record') ? 'selected': '' }}>Recordings</option>
+                                        <option value="Recordings" {{ ($record->category == 'Recordings') ? 'selected': '' }}>Recordings</option>
                                         <option value="Zoom" {{ ($record->category == 'Zoom') ? 'selected': '' }}>Zoom Live</option>
                                         <option value="Other" {{ ($record->category == 'Other') ? 'selected': '' }}>Other</option>
                                     </select>
