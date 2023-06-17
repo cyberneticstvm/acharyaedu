@@ -9,14 +9,16 @@
                 </div>                
             </div>
             <div class="card-body">
-                @forelse($videos as $key => $video)
-                    <div class="col-md-3">
-							<h5 class="color-primary">{{ $video->title }}</h5>
-							<a class="popup-youtube" href="https://youtube.com/watch?v={{$video->video_id}}"><img src="https://img.youtube.com/vi/{{$video->video_id}}/hqdefault.jpg" class="img-fluid" /></a>
-						</div>
-					</div>
-                @empty
-                @endforelse
+                <div class="row">
+                    @forelse($videos as $key => $video)
+                        <div class="col-md-3">
+                                <h5 class="color-primary">{{ $video->title }}</h5>
+                                <a class="popup-youtube" href="https://youtube.com/watch?v={{$video->video_id}}"><img src="https://img.youtube.com/vi/{{$video->video_id}}/hqdefault.jpg" class="img-fluid" /></a>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
             </div>
         </div>
     </div>
