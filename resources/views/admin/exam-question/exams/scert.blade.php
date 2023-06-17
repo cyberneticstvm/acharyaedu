@@ -20,7 +20,7 @@
             <select class="form-control" name="chapter">
                 <option value="">Select</option>
                 @forelse($chapters as $key => $chapter)
-                    <option value="{{ $chapter->id }}" {{ ($chapter->id == old('chapter')) ? 'selected' : '' }}>{{ $subject->name }}</option>
+                    <option value="{{ $chapter->id }}" {{ ($chapter->id == old('chapter')) ? 'selected' : '' }}>{{ $chapter->name }}</option>
                 @empty
                 @endforelse
             </select>                                  
