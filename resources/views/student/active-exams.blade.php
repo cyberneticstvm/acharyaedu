@@ -22,13 +22,14 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                         <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Unattended</th><th>Score</th><th>Grade</th><th class="text-center">Answer</th><th>Performance</th><th class="text-center">Take</th></tr></thead>
+                        <thead><tr><th>SL No</th><th>Exam Name</th><th>Modules</th><th>Batch</th><th>Exam Date</th><th>Correct</th><th>Wrong</th><th>Unattended</th><th>Score</th><th>Grade</th><th class="text-center">Answer</th><th>Performance</th><th class="text-center">Take</th></tr></thead>
                             <tbody>
                             @forelse($exams as $key => $exam)
                             @php $se = getStudentScore($student->id, $exam->id) @endphp
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $exam->name }}</td>
+                                <td class="text-center"><a href="javascript:void(0)" title="{{ getModules($exam->id) }}">Modules</a></td>
                                 <td>{{ $exam->batch->name }}</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
                                 <td>{{ ($se) ? $se->correct_answer_count : 0 }}</td>

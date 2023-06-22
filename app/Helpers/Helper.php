@@ -5,6 +5,7 @@ use App\Models\FreeStudentExam;
 use App\Models\Question;
 use App\Models\QuestionCourse;
 use App\Models\StudentExam;
+use App\Models\ExamQuestion;
 use App\Models\Subject;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
@@ -56,5 +57,10 @@ function studentsubjects(){
     $quest = Question::whereIn('id', $questions->pluck('question_id'))->get();
     $studentsubjects = Subject::whereIn('id', $quest->pluck('subject_id'))->inRandomOrder()->limit(3)->get();
     return $studentsubjects;
+}
+
+function getModules($exam){
+    $topics = Question::leftJoin('topics as t', 'questions.topic_id', 't.id')->whereIn('questions.id', ExamQuestion::where('exam_id', $exam)->pluck('question_id'))->groupBy('t.name')->pluck('t.name')->implode(',');
+    return $topics;
 }
 ?>
