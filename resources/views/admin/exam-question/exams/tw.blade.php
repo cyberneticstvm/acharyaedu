@@ -17,11 +17,11 @@
     <div class="col-md-9">
         <div class="form-group">
             <label class="req mb-1">Module Name</label>
-            <select class="form-control select2" name="topic_id[]" multiple>
-                @forelse(getAllModules() as $key => $module)
+            <select class="form-control select2 module" name="topic_id[]" multiple>
+                <!--@forelse(getAllModules() as $key => $module)
                     <option value="{{ $module->id }}">{{ $module->name }}</option>
                 @empty
-                @endforelse
+                @endforelse-->
             </select>                                  
         </div>
         @error('topic_id')
