@@ -12,8 +12,8 @@
                 <div class="row">
                     @forelse($videos as $key => $video)
                         <div class="col-md-3">
-                            <h5 class="color-primary">{{ Str::limit($video->title, 20) }}</h5>
-                            <a class="popup-youtube" href="https://youtube.com/watch?v={{$video->video_id}}"><img src="https://img.youtube.com/vi/{{$video->video_id}}/hqdefault.jpg" class="img-fluid" /></a>
+                            <h5 class="color-primary"><a href="javascript:void(0)" title="{{ $video->title }}">{{ Str::limit($video->title, 20) }}</a></h5>
+                            <a class="popup-youtube" href="https://youtube.com/watch?v={{$video->video_id}}"><img src="https://img.youtube.com/vi/{{$video->video_id}}/hqdefault.jpg" class="img-fluid rounded" /></a>
                         </div>
                     @empty
                     @endforelse
