@@ -66,14 +66,14 @@ input[type=checkbox], input[type=radio] {
     padding: 0 !important;
 }
 .unattended{
-    border: 1px solid red;
+    border: 1px solid white;
     background: red;
-    color: #fff;
+    color: #fff !important;
 }
 .attended{
-    border: 1px solid green;
+    border: 1px solid white;
     background: green;
-    color: #fff;
+    color: #fff !important;
 }
 
 

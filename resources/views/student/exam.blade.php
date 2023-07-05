@@ -60,7 +60,7 @@
                                     <div class="col-md-12"><h5>Question Attended Status</h5></div>
                                     @php $c = 1 @endphp
                                     @forelse($exam->questions as $key => $quest)
-                                    <div class="col text-center unattended rad_{{$quest->id}}"><a href="javascript:void(0)">{{$c++}}</a></div>
+                                    <div class="col text-center unattended rad_{{$quest->id}}"><p>{{$c++}}</p></div>
                                     @empty
                                     @endforelse
                                 </div>
