@@ -25,8 +25,6 @@ class ExamQuestionController extends Controller
     {
         $mid = Exam::max('id');
         $eqs = ExamQuestion::leftJoin('exams as e', 'e.id', 'exam_questions.exam_id')->select('exam_questions.id', 'exam_questions.exam_id', 'exam_questions.question_id')->whereDate('e.exam_date', '>=', Carbon::today())->where('exam_questions.exam_id', $mid)->get();
-        dd($eqs);
-        die;
         return view('admin.exam-question.index', compact('eqs'));
     }
 
