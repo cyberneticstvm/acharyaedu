@@ -37,10 +37,10 @@
                                 <small class="text-danger">{{ $errors->first('topic_id') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req mb-1">Exam Levels</label>
-                                <select class="form-control select2" name="levels[]" data-placeholder="Select Multiple if required" multiple>
+                                <select class="form-control select2 selectall" name="levels[]" data-placeholder="Select Multiple if required" multiple>
                                     @forelse($levels as $key => $level)
                                         <option value="{{ $level->id }}">{{ $level->name }}</option>
                                     @empty
@@ -50,6 +50,10 @@
                             @error('levels')
                                 <small class="text-danger">{{ $errors->first('levels') }}</small>
                             @enderror
+                        </div>
+                        <div class="col-md-2">
+                            <label class="req mb-1">Select All</label>
+                            <input type="checkbox" class="sall" />
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -77,7 +81,9 @@
                                 <small class="text-danger">{{ $errors->first('status') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label class="req mb-1">Question</label>
                                 <textarea class="form-control" rows="10" name="question" id="question" placeholder="Question">{{ old('question') }}</textarea>                               
@@ -86,14 +92,17 @@
                                 <small class="text-danger">{{ $errors->first('question') }}</small>
                             @enderror
                         </div>
+                        <div class="col-md-2"></div>
                         @for($i=1; $i<=$option_count; $i++)
-                            <div class="col-md-12">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="req mb-1">Option {{ albhabets()[$i] }}</label>
                                     <textarea class="form-control" name="options[]" id="option{{$i}}" placeholder="Option {{ albhabets()[$i] }}" required></textarea>
                                     <input type="hidden" name="option_id[]" value="{{ $i }}">                               
                                 </div>
                             </div>
+                            <div class="col-md-2"></div>
                         @endfor
                         <div class="col-md-12">
                             <div class="form-group">
@@ -110,12 +119,14 @@
                                 <small class="text-danger">{{ $errors->first('courses') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label class="mb-1">Explanation</label>
                                 <textarea class="form-control" rows="5" name="explanation" id="explanation" placeholder="Explanation">{{ old('explanation') }}</textarea>                               
                             </div>
                         </div>
+                        <div class="col-md-2"></div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="req mb-1">Correct Option</label>

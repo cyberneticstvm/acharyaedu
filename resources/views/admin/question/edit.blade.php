@@ -41,14 +41,18 @@
                                 <small class="text-danger">{{ $errors->first('topic_id') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req mb-1">Exam Levels</label>
-                                {!! Form::select('levels[]', $levels->pluck('name', 'id')->all(),  $question->levels()->pluck('level_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}                                  
+                                {!! Form::select('levels[]', $levels->pluck('name', 'id')->all(),  $question->levels()->pluck('level_id')->toArray(), ['class' => 'form-control select2 selectall', 'multiple']) !!}                                  
                             </div>
                             @error('levels')
                                 <small class="text-danger">{{ $errors->first('levels') }}</small>
                             @enderror
+                        </div>
+                        <div class="col-md-2">
+                            <label class="req mb-1">Select All</label>
+                            <input type="checkbox" class="sall" />
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -76,7 +80,9 @@
                                 <small class="text-danger">{{ $errors->first('status') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label class="req mb-1">Question</label>
                                 <textarea class="form-control" rows="10" name="question" placeholder="Question">{{ $question->question }}</textarea>                               
@@ -85,14 +91,17 @@
                                 <small class="text-danger">{{ $errors->first('question') }}</small>
                             @enderror
                         </div>
+                        <div class="col-md-2"></div>
                         @forelse($question->options as $key => $option)
-                            <div class="col-md-12">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="req mb-1">Option {{ albhabets()[$option->option_id] }}</label>
                                     <textarea class="form-control" name="options[]" id="option{{$key+1}}" placeholder="Option {{ $option->option_id }}" required>{{ $option->where('option_id', $option->option_id)->where('question_id', $question->id)->value('option_name') }}</textarea>
                                     <input type="hidden" name="option_id[]" value="{{ $option->option_id }}">                               
                                 </div>
                             </div>
+                            <div class="col-md-2"></div>
                         @empty
                         @endforelse
                         <div class="col-md-12">
@@ -104,12 +113,14 @@
                                 <small class="text-danger">{{ $errors->first('courses') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label class="mb-1">Explanation</label>
                                 <textarea class="form-control" rows="5" name="explanation" id="explanation" placeholder="Explanation">{{ $question->explanation }}</textarea>                               
                             </div>
                         </div>
+                        <div class="col-md-2"></div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="req mb-1">Correct Option</label>

@@ -23,7 +23,7 @@
                                     <td>{{ $slno++ }}</td>
                                     <td>{!! $question->question !!}</td>
                                     <td class="text-center">
-                                        @if($slno != 2)<a href="javascript:void(0)"><i class="fa fa-trash text-danger" onclick="javascript: $(this).closest('tr').remove();"></i></a>@endif
+                                        @if($slno != 1)<a href="javascript:void(0)"><i class="fa fa-trash text-danger" onclick="javascript: $(this).closest('tr').remove();"></i></a>@endif
                                     </td>
                                 </tr>
                             @empty

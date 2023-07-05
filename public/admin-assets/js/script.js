@@ -117,6 +117,16 @@ $(function(){
     });
     $(".sw-btn").removeClass("btn").addClass("rts-btn");
 
+    $(document).on('click', '.sall', function(){
+      if($(".sall").is(':checked')){
+        $(".selectall > option").prop("selected", "selected");
+        $(".selectall").trigger("change");
+      } else {
+          $(".selectall > option").prop("selected", "");
+          $(".selectall").trigger("change");
+      }
+    });
+
 });
 
 setTimeout(function () {

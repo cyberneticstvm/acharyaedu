@@ -23,12 +23,13 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Question Count</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
                         @forelse($topics as $key => $topic)
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td><a href="/admin/module/questions/{{$topic->id}}" target="_blank" class="text-primary">{{ $topic->name }}</a></td>
                                 <td>{{ $topic->subject->name }}</td>
+                                <td>{{ $topic->questions->count() }}</td>
                                 <td class="text-center"><a href="/admin/topic/edit/{{$topic->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('topic.delete', $topic->id) }}">

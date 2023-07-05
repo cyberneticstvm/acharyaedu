@@ -237,6 +237,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
     Route::get('/admin/exam/create', [ExamController::class, 'create'])->name('exam.create');
     Route::post('/admin/exam/create', [ExamController::class, 'store'])->name('exam.save');
+    Route::get('/admin/exam/assign/{id}', [ExamController::class, 'assign'])->name('exam.assign');
+    Route::post('/admin/exam/assign', [ExamController::class, 'assignsave'])->name('exam.assign.save');
     Route::get('/admin/exam/edit/{id}', [ExamController::class, 'edit'])->name('exam.edit');
     Route::put('/admin/exam/edit/{id}', [ExamController::class, 'update'])->name('exam.update');
     Route::delete('/admin/exam/{id}', [ExamController::class, 'destroy'])->name('exam.delete');
