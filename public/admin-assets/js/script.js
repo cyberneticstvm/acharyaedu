@@ -15,6 +15,30 @@ $(function(){
     $('#datatable-basic').DataTable({
         pagingType: "numbers"
     });
+    var table = $('#datatable-basic').DataTable();
+    $("#datatable-basic.dataTables_filter").append($(".custom_filter"));
+    var index = 0;
+    $("#datatable-basic th").each(function (i) {
+        if ($($(this)).html() == "Batch") {
+            index = i;
+            return false;
+        }
+    });
+    $.fn.dataTable.ext.search.push(
+      function (settings, data, dataIndex) {
+          var selectedItem = $('.custom_filter').val()
+          var batch = data[index];
+          if (selectedItem === "" || batch.includes(selectedItem)) {
+              return true;
+          }
+          return false;
+      }
+    );
+    $(".custom_filter").change(function (e) {
+      table.draw();
+    });
+
+    table.draw();
 
     $(document).ready(function() {
         $('.select2').select2();
