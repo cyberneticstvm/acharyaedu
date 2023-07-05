@@ -87,6 +87,50 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
+                                <label class="req">Fee Advance</label>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="fee_advance" min="1" step="1" value="{{ $fee->fee_advance }}" placeholder="0.00" />
+                                </div>
+                                @error('fee_advance')
+                                    <small class="text-danger">{{ $errors->first('fee_advance') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="">Fee Balance</label>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="fee_balance" min="1" step="1" value="{{ $fee->fee_balance }}" placeholder="0.00" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Payment Mode</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="payment_mode">
+                                        <option value="">Select</option>
+                                        @forelse($pmodes as $key => $pmode)
+                                            <option value="{{ $pmode->id }}" {{ ($fee->payment_mode == $pmode->id) ? 'selected' : '' }}>{{ $pmode->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('payment_mode')
+                                    <small class="text-danger">{{ $errors->first('payment_mode') }}</small>
+                                @enderror
+                            </div>
+                        </div>                        
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Tentative Date</label>
+                                <div class="mb-3">
+                                    <input type="date" class="form-control" name="tentative_date" value="{{ ($fee->tentative_date) ? $fee->tentative_date->format('Y-m-d') : '' }}" aria-label="Date" aria-describedby="date-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
                                 <label class="req">Discount Applicable</label>
                                 <div class="mb-3">
                                     <select class="form-control" name="discount_applicable">
@@ -113,6 +157,14 @@
                                 @error('fee_pending')
                                     <small class="text-danger">{{ $errors->first('fee_pending') }}</small>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="">Remarks</label>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="remarks" placeholder="Remarks">{{ $fee->remarks }}</textarea>
+                                </div>
                             </div>
                         </div>
                     </div>

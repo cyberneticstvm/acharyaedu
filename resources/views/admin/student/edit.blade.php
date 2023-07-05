@@ -91,28 +91,6 @@
                                     <input type="file" class="form-control" name="photo" />
                                 </div>
                             </div>
-                        </div>                        
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="req">Address</label>
-                                <div class="mb-3">
-                                    <textarea class="form-control" name="address" placeholder="Address">{{ $student->address }}</textarea>
-                                </div>
-                                @error('address')
-                                    <small class="text-danger">{{ $errors->first('address') }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label class="req">Admission Fee</label>
-                                <div class="mb-3">
-                                    <input type="number" class="form-control" name="fee" min="1" step="1" value="{{ $student->fee }}" placeholder="0.00" />
-                                </div>
-                                @error('fee')
-                                    <small class="text-danger">{{ $errors->first('fee') }}</small>
-                                @enderror
-                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -131,6 +109,95 @@
                                 @enderror
                             </div>
                         </div>                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="req">Address</label>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="address" placeholder="Address">{{ $student->address }}</textarea>
+                                </div>
+                                @error('address')
+                                    <small class="text-danger">{{ $errors->first('address') }}</small>
+                                @enderror
+                            </div>
+                        </div>                                                
+                    </div>
+                    <div class="row">
+                        <h5>Admission Fee Details</h5>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Admission Fee</label>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="fee" min="1" step="1" value="{{ $student->fee }}" placeholder="0.00" />
+                                </div>
+                                @error('fee')
+                                    <small class="text-danger">{{ $errors->first('fee') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Admission Fee Advance</label>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="admission_fee_advance" min="1" step="1" value="{{ $student->admission_fee_advance }}" placeholder="0.00" />
+                                </div>
+                                @error('admission_fee_advance')
+                                    <small class="text-danger">{{ $errors->first('admission_fee_advance') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="">Admission Fee Balance</label>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="admission_fee_balance" min="1" step="1" value="{{ $student->admission_fee_balance }}" placeholder="0.00" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Payment Mode</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="payment_mode">
+                                        <option value="">Select</option>
+                                        @forelse($pmodes as $key => $pmode)
+                                            <option value="{{ $pmode->id }}" {{ ($student->payment_mode == $pmode->id) ? 'selected' : '' }}>{{ $pmode->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('payment_mode')
+                                    <small class="text-danger">{{ $errors->first('payment_mode') }}</small>
+                                @enderror
+                            </div>
+                        </div>                        
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Tentative Date</label>
+                                <div class="mb-3">
+                                    <input type="date" class="form-control" name="tentative_date" value="{{ ($student->tentative_date) ? $student->tentative_date->format('Y-m-d') : '' }}" aria-label="Date" aria-describedby="date-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Balance Fee Received</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="balance_received">
+                                        <option value="">Select</option>
+                                        <option value="0" {{ ($student->balance_received == 0) ? 'selected' : '' }}>No</option>
+                                        <option value="1" {{ ($student->balance_received == 1) ? 'selected' : '' }}>Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="">Remarks</label>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="remarks" placeholder="Remarks">{{ $student->remarks }}</textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">UPADTE</button>

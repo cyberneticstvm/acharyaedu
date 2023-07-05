@@ -14,6 +14,7 @@ use App\Models\FreeExam;
 use App\Models\FreeExamQuestion;
 use App\Models\FreeExamScore;
 use App\Models\FreeStudentExam;
+use App\Models\PaymentMode;
 use App\Models\PscUpdate;
 use App\Models\Question;
 use App\Models\Record;
@@ -62,8 +63,8 @@ class StudentController extends Controller
 
     public function create()
     {
-        $branches = Branch::all();
-        return view('admin.student.create', compact('branches'));
+        $branches = Branch::all(); $pmodes = PaymentMode::all();
+        return view('admin.student.create', compact('branches', 'pmodes'));
     }
 
     /**
@@ -123,6 +124,7 @@ class StudentController extends Controller
             'admission_date' => 'required',
             'address' => 'required',
             'fee' => 'required',
+            'payment_mode' => 'required',
             'branch' => 'required',
         ]);
         $input = $request->all();
@@ -248,8 +250,8 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-        $branches = Branch::all();
-        return view('admin.student.edit', compact('student', 'branches'));
+        $branches = Branch::all(); $pmodes = PaymentMode::all();
+        return view('admin.student.edit', compact('student', 'branches', 'pmodes'));
     }
 
     /**

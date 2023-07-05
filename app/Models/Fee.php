@@ -16,6 +16,11 @@ class Fee extends Model
         'fee_month',
         'fee_year',
         'fee', 
+        'fee_advance',
+        'fee_balance',
+        'payment_mode',
+        'tentative_date',
+        'remarks',
         'discount_applicable',
         'fee_pending',
         'created_by',
@@ -34,5 +39,5 @@ class Fee extends Model
         return $this->belongsTo(Month::class, 'fee_month');
     }
 
-    protected $casts = ['paid_date' => 'date'];
+    protected $casts = ['paid_date' => 'date', 'tentative_date' => 'date'];
 }

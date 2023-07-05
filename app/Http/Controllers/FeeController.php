@@ -9,6 +9,7 @@ use App\Models\Batch;
 use App\Models\Month;
 use App\Models\Year;
 use App\Models\Fee;
+use App\Models\PaymentMode;
 use App\Models\Settings;
 use Exception;
 
@@ -35,8 +36,8 @@ class FeeController extends Controller
         $student = Student::findOrFail($id);
         $batch = Batch::where('status', 1)->get();
         $months = Month::all();
-        $years = Year::all();
-        return view('admin.fee.create', compact('student', 'batch', 'months', 'years'));
+        $years = Year::all(); $pmodes = PaymentMode::all();
+        return view('admin.fee.create', compact('student', 'batch', 'months', 'years', 'pmodes'));
     }
 
     /**
@@ -101,8 +102,8 @@ class FeeController extends Controller
         $student = Student::find($fee->student);
         $batch = Batch::where('status', 1)->get();
         $months = Month::all();
-        $years = Year::all();
-        return view('admin.fee.edit', compact('fee', 'student', 'batch', 'months', 'years'));
+        $years = Year::all(); $pmodes = PaymentMode::all();
+        return view('admin.fee.edit', compact('fee', 'student', 'batch', 'months', 'years', 'pmodes'));
     }
 
     /**

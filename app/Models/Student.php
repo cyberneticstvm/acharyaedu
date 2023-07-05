@@ -20,6 +20,12 @@ class Student extends Model
         'address',
         'admission_date',
         'fee',
+        'admission_fee_advance',
+        'admission_fee_balance',
+        'payment_mode',
+        'tentative_date',
+        'balance_received',
+        'remarks',
         'discount_applicable',
         'photo',
         'course_id',
@@ -27,6 +33,8 @@ class Student extends Model
         'created_by',
         'updated_by',
     ];
+
+    protected $casts = ['tentative_date' => 'date'];
 
     public function branch(){
         return $this->belongsTo(Branch::class, 'branch');
