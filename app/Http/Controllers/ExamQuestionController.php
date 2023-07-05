@@ -25,6 +25,8 @@ class ExamQuestionController extends Controller
     {
         $mid = Exam::max('id');
         $eqs = ExamQuestion::leftJoin('exams as e', 'e.id', 'exam_questions.exam_id')->select('exam_questions.id', 'exam_questions.exam_id', 'exam_questions.question_id')->whereDate('e.exam_date', '>=', Carbon::today())->where('exam_questions.exam_id', $mid)->get();
+        dd($eqs);
+        die;
         return view('admin.exam-question.index', compact('eqs'));
     }
 
@@ -41,22 +43,22 @@ class ExamQuestionController extends Controller
         ]);
         $input = $request->all(); $exam = Exam::find($id);
         if($exam->exam_type == 1): // General       
-            $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+            $questions = Question::where('subject_id', $request->subject_id)->whereNotIn('id', ExamQuestion::where('exam_id', $exam->id)->pluck('question_id'))->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
         endif;
         if($exam->exam_type == 2): // SCERT
-            $questions = Question::where('subject_id', $request->subject_id)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('chapter_id', $request->chapter)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+            $questions = Question::where('subject_id', $request->subject_id)->whereNotIn('id', ExamQuestion::where('exam_id', $exam->id)->pluck('question_id'))->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('chapter_id', $request->chapter)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
         endif;
         if($exam->exam_type == 3): // Previous
-            $questions = Question::where('exam_type', $exam->exam_type)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+            $questions = Question::where('exam_type', $exam->exam_type)->where('status', 1)->whereNotIn('id', ExamQuestion::where('exam_id', $exam->id)->pluck('question_id'))->inRandomOrder()->limit($request->number_of_questions)->get();
         endif;
         if($exam->exam_type == 4): // Model
-            $questions = Question::where('subject_id', $request->subject_id)->where('exam_type', $request->questions_from)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+            $questions = Question::where('subject_id', $request->subject_id)->where('exam_type', $request->questions_from)->whereNotIn('id', ExamQuestion::where('exam_id', $exam->id)->pluck('question_id'))->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
         endif;
         if($exam->exam_type == 5): // Current Affairs
-            $questions = Question::where('subject_id', $request->subject_id)->where('month', $request->month)->where('year', $request->year)->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+            $questions = Question::where('subject_id', $request->subject_id)->where('month', $request->month)->where('year', $request->year)->whereNotIn('id', ExamQuestion::where('exam_id', $exam->id)->pluck('question_id'))->whereIn('id', QuestionLevel::whereIn('level_id', $request->level_id)->pluck('question_id'))->where('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
         endif;
         if($exam->exam_type == 7 || $exam->exam_type == 8): // Topic Wise or Weekly Revision
-            $questions = Question::where('subject_id', $request->subject_id)->where('exam_type', 1)->whereIn('topic_id', $request->topic_id)->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
+            $questions = Question::where('subject_id', $request->subject_id)->where('exam_type', 1)->whereIn('topic_id', $request->topic_id)->whereNotIn('id', ExamQuestion::where('exam_id', $exam->id)->pluck('question_id'))->where('status', 1)->inRandomOrder()->limit($request->number_of_questions)->get();
         endif;        
         if($questions->isEmpty()):
             return redirect("/admin/eq/create/$id")->with('error', 'No records found')->withInput($request->all());
