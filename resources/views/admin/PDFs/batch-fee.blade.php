@@ -28,7 +28,7 @@
 </head>
 <body>
     <center>
-        <img src="./assets/img/logos/acharya.jpg" width="100%"/><br/>
+        <img src="./assets/images/acharya.jpg" width="100%"/><br/>
     </center>
     <br/>
     <table width="100%" cellpadding="0" cellspacing="0">
