@@ -34,7 +34,7 @@ class Student extends Model
         'updated_by',
     ];
 
-    protected $casts = ['tentative_date' => 'date'];
+    protected $casts = ['tentative_date' => 'date', 'admission_date' => 'date'];
 
     public function branch(){
         return $this->belongsTo(Branch::class, 'branch');

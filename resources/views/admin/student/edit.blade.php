@@ -7,6 +7,16 @@
                 <h3 class="font-weight-bolder text-primary text-gradient">Update Student</h3>
             </div>
             <div class="card-body">
+                @if(session()->has('success'))
+                    <div class="alert alert-success text-white">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-danger text-white">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <form role="form" method="post" action="{{ route('student.update', $student->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
@@ -15,7 +25,7 @@
                             <div class="form-group">
                                 <label class="req">Date of Admission</label>
                                 <div class="mb-3">
-                                    <input type="date" class="form-control" name="admission_date" value="{{ $student->admission_date }}" aria-label="Date" aria-describedby="date-addon">
+                                    <input type="date" class="form-control" name="admission_date" value="{{ $student->admission_date->format('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
                                 </div>
                             </div>
                         </div>
@@ -149,7 +159,7 @@
                             <div class="form-group">
                                 <label class="">Admission Fee Balance</label>
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" name="admission_fee_balance" min="1" step="1" value="{{ $student->admission_fee_balance }}" placeholder="0.00" />
+                                    <input type="number" class="form-control" name="admission_fee_balance" value="{{ $student->admission_fee_balance }}" placeholder="0.00" />
                                 </div>
                             </div>
                         </div>

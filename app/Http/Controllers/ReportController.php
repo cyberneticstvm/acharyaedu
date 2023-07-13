@@ -67,7 +67,7 @@ class ReportController extends Controller
         $batches = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = DB::table('years')->get();
-        $records = StudentBatch::where('batch', $request->batch)->get();
+        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->whereMonth('date_joined', '<=', $request->month)->whereYear('date_joined', '<=', $request->year)->get();
         return view('admin.reports.fee-pending', compact('records', 'batches', 'months', 'years', 'inputs'));
     }
 
@@ -90,7 +90,7 @@ class ReportController extends Controller
         $months = Month::all();
         $years = DB::table('years')->get();
         $days = cal_days_in_month(CAL_GREGORIAN, $request->month, $request->year);
-        $records = StudentBatch::where('batch', $request->batch)->get();
+        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->get();
         return view('admin.reports.attendance', compact('records', 'batches', 'months', 'years', 'inputs', 'days'));
     }
 

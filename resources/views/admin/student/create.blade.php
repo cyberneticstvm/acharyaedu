@@ -148,7 +148,7 @@
                             <div class="form-group">
                                 <label class="">Admission Fee Balance</label>
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" name="admission_fee_balance" min="1" step="1" value="{{ old('admission_fee_balance') }}" placeholder="0.00" />
+                                    <input type="number" class="form-control" name="admission_fee_balance" value="{{ old('admission_fee_balance') }}" placeholder="0.00" />
                                 </div>
                             </div>
                         </div>

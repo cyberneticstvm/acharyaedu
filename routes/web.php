@@ -95,6 +95,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
     Route::put('/student/edit/{id}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
+    Route::get('/student/{id}/{type}', [StudentController::class, 'batchstudents'])->name('batchstudents');
 
     Route::get('/course', [CourseController::class, 'index'])->name('course');
     Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\StudentBatch;
 use App\Models\StudentExam;
 use App\Models\StudentExamScore;
 use App\Models\StudentFeedback;
@@ -59,6 +60,11 @@ class StudentController extends Controller
         $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();        
         return view('admin.student.students', compact('students', 'batches', 'status'));
+    }
+
+    public function batchstudents($id, $type){
+        $students = StudentBatch::where('cancelled', $type)->where('batch', $id)->get();
+        return view('admin.batch.students', compact('students'));
     }
 
     public function create()
@@ -118,6 +124,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'admission_date' => 'required',
             'name' => 'required',
             'email' => 'required|email:filter|unique:students,email',
             'mobile' => 'required|numeric|digits:10',
@@ -264,6 +271,7 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'admission_date' => 'required',
             'name' => 'required',
             'email' => 'required|email:filter|unique:students,email,'.$id,
             'mobile' => 'required|numeric|digits:10',
@@ -276,15 +284,19 @@ class StudentController extends Controller
         $student = Student::find($id); $user = User::where('email', $student->email)->first();
         if($request->hasFile('photo')):
             $img = $request->file('photo');
-            $fname = 'photos/'.$img->getClientOriginalName();
+            $fname = 'student-photos/'.$id.'/'.str_replace(' ', '_', $img->getClientOriginalName());
             Storage::disk('public')->putFileAs($fname, $img, '');
-            $input['photo'] = $img->getClientOriginalName();                                 
+            $input['photo'] = str_replace(' ', '_', $img->getClientOriginalName());                                 
         endif;
         $input['updated_by'] = Auth::user()->id;
-        DB::transaction(function() use ($input, $student, $user) {
-            $student->update($input);
-            $user->update($input);
-        });
+        try{
+            DB::transaction(function() use ($input, $student, $user) {
+                $student->update($input);
+                $user->update($input);
+            });
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }        
         return redirect()->route('student')->with('success', 'Student Updated Successfully!');
     }
 
@@ -502,9 +514,9 @@ class StudentController extends Controller
         $sid = $request->user()->student->id;
         if($request->hasFile('photo')):
             $img = $request->file('photo');
-            $fname = 'student-photos/'.$sid.'/'.$img->getClientOriginalName();
+            $fname = 'student-photos/'.$sid.'/'.str_replace(' ', '_', $img->getClientOriginalName());
             Storage::disk('public')->putFileAs($fname, $img, '');
-            Student::where('id', $sid)->update(['photo' => $img->getClientOriginalName()]);                                 
+            Student::where('id', $sid)->update(['photo' => str_replace('_', ' ', $img->getClientOriginalName())]);                                 
         endif;
         return redirect()->back()->with('success', 'Photo updated successfully');
     }
