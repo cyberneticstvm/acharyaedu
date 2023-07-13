@@ -18,6 +18,6 @@ class Student
         if($request->user()->role == 'Student'):
             return $next($request);
         endif;
-        return redirect()->route('message')->with("error", "Oops! you are not authorized to access this content.");
+        return redirect()->route('message')->with("error", "Oops! you are not authorized to access this content. Student Only");
     }
 }

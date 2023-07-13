@@ -65,6 +65,35 @@ Route::post('/forgot', [StudentController::class, 'sendemail'])->name('send.emai
 Route::get('/resetpassword/{email}', [StudentController::class, 'resetpassword'])->name('resetpassword');
 Route::post('/updatepassword', [StudentController::class, 'updatepassword'])->name('updatepassword');
 
+Route::group(['middleware' => ['web', 'auth', 'student']], function(){
+    Route::get('/student/active-exams/{type}', [StudentController::class, 'activeexams'])->name('student.active.exams');
+    Route::get('/student/exam/{id}/{type}', [StudentController::class, 'exam'])->name('student.exam');
+    Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');   
+    Route::get('/student/exam/result/{id}/{type}', [StudentController::class, 'examresult'])->name('student.exam.result');
+    Route::get('/student/exam/performance/{id}/{type}', [StudentController::class, 'examperformance'])->name('student.exam.performance');    
+    Route::get('/student/dash', [StudentController::class, 'getprofile'])->name('student.profile.get');
+    Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
+    Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');    
+    Route::get('/student/freeexam', [StudentController::class, 'freeexam'])->name('student.freeexam');    
+    Route::post('/student/freeexam', [StudentController::class, 'createfreeexam'])->name('student.freeexam.create');    
+    Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');
+    
+    Route::get('/student/leave', [StudentController::class, 'leave'])->name('student.leave');
+    Route::post('/student/leave', [StudentController::class, 'leaveupdate'])->name('student.leave.update');
+    Route::post('/student/photo', [StudentController::class, 'uploadphoto'])->name('student.photo.upload');
+
+    Route::get('/student/class-schedule/{type}', [StudentController::class, 'classschedule'])->name('student.class.schedule');
+    Route::get('/student/fee-payment', [StudentController::class, 'feepayment'])->name('student.fee.payment');
+    Route::get('/student/feedback', [StudentController::class, 'feedback'])->name('student.feedback');
+    Route::post('/student/feedback', [StudentController::class, 'savefeedback'])->name('student.feedback.save');
+
+    Route::get('/student/downloads/{type}', [StudentController::class, 'downloads'])->name('student.downloads');
+    Route::get('/student/updates', [StudentController::class, 'updates'])->name('student.updates');
+    Route::get('/student/videos/{type}', [StudentController::class, 'videos'])->name('student.videos');
+    Route::get('/student/notes', [StudentController::class, 'notes'])->name('student.notes');
+    Route::get('/student/notes/view/{id}', [StudentController::class, 'viewnote'])->name('student.viewnote');
+});
+
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     
     Route::get('/branch', [BranchController::class, 'index'])->name('branch');
@@ -310,34 +339,6 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/studentperfchartall', [HelperController::class, 'studentperfchartall'])->name('studentperfchartall');
 });
 
-Route::group(['middleware' => ['web', 'auth', 'student']], function(){
-    Route::get('/student/active-exams/{type}', [StudentController::class, 'activeexams'])->name('student.active.exams');
-    Route::get('/student/exam/{id}/{type}', [StudentController::class, 'exam'])->name('student.exam');
-    Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');   
-    Route::get('/student/exam/result/{id}/{type}', [StudentController::class, 'examresult'])->name('student.exam.result');
-    Route::get('/student/exam/performance/{id}/{type}', [StudentController::class, 'examperformance'])->name('student.exam.performance');    
-    Route::get('/student/dash', [StudentController::class, 'getprofile'])->name('student.profile.get');
-    Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
-    Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');    
-    Route::get('/student/freeexam', [StudentController::class, 'freeexam'])->name('student.freeexam');    
-    Route::post('/student/freeexam', [StudentController::class, 'createfreeexam'])->name('student.freeexam.create');    
-    Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');
-    
-    Route::get('/student/leave', [StudentController::class, 'leave'])->name('student.leave');
-    Route::post('/student/leave', [StudentController::class, 'leaveupdate'])->name('student.leave.update');
-    Route::post('/student/photo', [StudentController::class, 'uploadphoto'])->name('student.photo.upload');
-
-    Route::get('/student/class-schedule/{type}', [StudentController::class, 'classschedule'])->name('student.class.schedule');
-    Route::get('/student/fee-payment', [StudentController::class, 'feepayment'])->name('student.fee.payment');
-    Route::get('/student/feedback', [StudentController::class, 'feedback'])->name('student.feedback');
-    Route::post('/student/feedback', [StudentController::class, 'savefeedback'])->name('student.feedback.save');
-
-    Route::get('/student/downloads/{type}', [StudentController::class, 'downloads'])->name('student.downloads');
-    Route::get('/student/updates', [StudentController::class, 'updates'])->name('student.updates');
-    Route::get('/student/videos/{type}', [StudentController::class, 'videos'])->name('student.videos');
-    Route::get('/student/notes', [StudentController::class, 'notes'])->name('student.notes');
-    Route::get('/student/notes/view/{id}', [StudentController::class, 'viewnote'])->name('student.viewnote');
-});
 
 
 

@@ -19,6 +19,6 @@ class Staff
         if($request->user()->role == 'Staff'):
             return $next($request);
         endif;
-        return redirect()->route('dash')->with("error", "Oops! you are not authorized to access this content.");
+        return redirect()->route('dash')->with("error", "Oops! you are not authorized to access this content. Staff Only");
     }
 }

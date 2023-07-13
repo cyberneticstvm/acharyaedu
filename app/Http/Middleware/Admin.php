@@ -18,6 +18,6 @@ class Admin
         if($request->user()->role == 'Admin'):
             return $next($request);
         endif;
-        return redirect()->route('message')->with("error", "Oops! you are not authorized to access this content.");
+        return redirect()->route('message')->with("error", "Oops! you are not authorized to access this content. Admin Only");
     }
 }
