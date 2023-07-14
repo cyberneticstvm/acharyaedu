@@ -88,7 +88,7 @@
                                     @php $fee = $record->studentname()->find($record->student)->batchFee()->where('fee_month', $inputs[1])->where('fee_year', $inputs[2])->where('batch', $inputs[0]) @endphp
                                     <tr>
                                         <td>{{ $record->studentname()->find($record->student)->name }}</td>
-                                        <td>{{ $record->studentname->id }}</td>
+                                        <td>{{ $record->studentname()->find($record->student)->id }}</td>
                                         <td>{{ $record->studentname()->find($record->student)->mobile }}</td>
                                         <td>{{ $fee->value('fee') }}</td>
                                         <td>{{ $fee->value('fee_balance') }}</td>
