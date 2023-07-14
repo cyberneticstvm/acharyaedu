@@ -75,8 +75,11 @@
                             <table class="table table-striped table-bordered">
                                 <thead class="thead-light">
                                     <th>Student</th>
+                                    <th>Student ID</th>
                                     <th>Contact</th>
                                     <th>Fee</th>
+                                    <th>Fee Balance</th>
+                                    <th>Fee Balance Paid</th>
                                     <th>Date Paid</th>
                                     <th>Status</th>
                                 </thead>
@@ -85,8 +88,11 @@
                                     @php $fee = $record->studentname()->find($record->student)->batchFee()->where('fee_month', $inputs[1])->where('fee_year', $inputs[2])->where('batch', $inputs[0]) @endphp
                                     <tr>
                                         <td>{{ $record->studentname()->find($record->student)->name }}</td>
+                                        <td>{{ $record->studentname->id }}</td>
                                         <td>{{ $record->studentname()->find($record->student)->mobile }}</td>
                                         <td>{{ $fee->value('fee') }}</td>
+                                        <td>{{ $fee->value('fee_balance') }}</td>
+                                        <td>{{ ($fee->value('fee_pending') == 0 && $fee->value('fee_balance') > 0) ? 'Not Paid' : 'Paid' }}</td>
                                         <td>{{ ($fee->value('paid_date')) ? date('d/M/Y', strtotime($fee->value('paid_date'))) : '' }}</td>
                                         <td class="text-center">{!! ($fee->value('fee') > 0) ? "<i class='fa fa-check text-success'>" : "<i class='fa fa-times text-danger'>" !!}</td>
                                     </tr>
