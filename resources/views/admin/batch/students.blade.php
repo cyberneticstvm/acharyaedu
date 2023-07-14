@@ -21,7 +21,7 @@
                                 @forelse($students as $key => $student)
                                 <tr>
                                     <td>{{ $slno++ }}</td>
-                                    <td>{{ $student->id }}</td>
+                                    <td>{{ $student->studentname->id }}</td>
                                     <td>{{ $student->studentname->name }}</td>                                    
                                 </tr>
                                 @empty
