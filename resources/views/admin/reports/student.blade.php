@@ -46,6 +46,9 @@
                     <div class="col">
                         <p class="fw-bold">Batches: <span class="text-primary">{{ $batches }}</span></p>
                     </div>
+                    <div class="col">
+                        <p class="fw-bold">Photo: <span class="text-primary"><a href="storage/student-photos/{{ $student->id }}/{{ $student->photo }}" target="_blank">View</a></span></p>
+                    </div>
                 </div>
                 @endif
                 <div class="row mt-5">
