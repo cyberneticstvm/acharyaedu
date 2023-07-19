@@ -50,7 +50,7 @@
                                 <div class="mb-3">
                                     <select class="form-control" name="batch">
                                         @forelse($student->batches as $key => $bat)
-                                            <option value="{{ $bat->batch }}">{{ $batches->find($bat->batch) }}</option>
+                                            <option value="{{ $bat->batch }}">{{ $bat->batch->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
