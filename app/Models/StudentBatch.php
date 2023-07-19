@@ -23,6 +23,10 @@ class StudentBatch extends Model
         return $this->belongsTo(Student::class, 'student');
     }
 
+    public function batch(){
+        return $this->belongsTo(Batch::class, 'batch');
+    }
+
     public function batchh(){
         return $this->belongsTo(Batch::class, 'batch');
     }
