@@ -34,10 +34,10 @@ class FeeController extends Controller
     public function create($id)
     {
         $student = Student::findOrFail($id);
-        $batch = Batch::where('status', 1)->get();
+        $batches = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = Year::all(); $pmodes = PaymentMode::all();
-        return view('admin.fee.create', compact('student', 'batch', 'months', 'years', 'pmodes'));
+        return view('admin.fee.create', compact('student', 'batches', 'months', 'years', 'pmodes'));
     }
 
     /**
