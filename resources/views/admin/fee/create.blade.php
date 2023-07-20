@@ -109,7 +109,7 @@
                             <div class="form-group">
                                 <label class="">Fee Balance</label>
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" name="fee_balance" min="1" step="1" value="{{ old('fee_balance') }}" placeholder="0.00" />
+                                    <input type="number" class="form-control" name="fee_balance" step="any" value="{{ old('fee_balance') }}" placeholder="0.00" />
                                 </div>
                             </div>
                         </div>
