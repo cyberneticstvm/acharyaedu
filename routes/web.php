@@ -222,11 +222,12 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::delete('/admin/subject/{id}', [SubjectController::class, 'destroy'])->name('subject.delete');
 
     Route::get('/admin/topic', [TopicController::class, 'index'])->name('topic');
+    Route::post('/admin/topic', [TopicController::class, 'assign'])->name('course.module.save');
     Route::get('/admin/topic/create', [TopicController::class, 'create'])->name('topic.create');
     Route::post('/admin/topic/create', [TopicController::class, 'store'])->name('topic.save');
     Route::get('/admin/topic/edit/{id}', [TopicController::class, 'edit'])->name('topic.edit');
     Route::put('/admin/topic/edit/{id}', [TopicController::class, 'update'])->name('topic.update');
-    Route::delete('/admin/topic/{id}', [TopicController::class, 'destroy'])->name('topic.delete');
+    Route::delete('/admin/topic/{id}', [TopicController::class, 'destroy'])->name('topic.delete');    
 
     Route::get('/admin/level', [SubjectLevelController::class, 'index'])->name('level');
     Route::get('/admin/level/create', [SubjectLevelController::class, 'create'])->name('level.create');
