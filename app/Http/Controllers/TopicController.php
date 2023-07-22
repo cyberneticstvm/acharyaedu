@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\Course;
 use App\Models\CourseModule;
+use App\Models\Faculty;
+use App\Models\ModuleCompleteStatus;
 use App\Models\Subject;
 use App\Models\Topic;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use DB;
 
 class TopicController extends Controller
 {
@@ -46,6 +50,44 @@ class TopicController extends Controller
             return redirect()->back()->with('error', "Selected module(s) already been assigned to the Course")->withInput($request->all());
         }        
         return redirect()->back()->with('success', 'Module Assigned Successfully!');
+    }
+
+    public function showmodule(){
+        $batches = Batch::all(); $modules = collect(); $batch = 0;
+        return view('admin.module.index', compact('batches', 'modules', 'batch'));
+    }
+
+    public function fetchmodule(Request $request){
+        $this->validate($request, [
+            'batch' => 'required',
+        ]);
+        $batches = Batch::all(); $faculties = Faculty::all(); $batch = $request->batch;
+        $modules = ModuleCompleteStatus::where('batch', $request->batch)->orderByDesc('status')->get();
+        if($modules->isEmpty()):
+            $modules = CourseModule::where('course', Batch::find($request->batch)->course)->get();
+        endif;
+        return view('admin.module.index', compact('batches', 'modules', 'faculties', 'batch'));
+    }
+
+    public function savemodule(Request $request){
+        DB::transaction(function() use ($request) {
+            $data = [];
+            foreach($request->modules as $key => $value):
+                $data [] = [
+                    'batch' => $request->batch,
+                    'module' => $value,
+                    'faculty' => $request->faculties[$key],
+                    'status' => $request->statuses[$key],
+                    'created_by' => $request->user()->id,
+                    'updated_by' => $request->user()->id,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ];
+            endforeach;
+            ModuleCompleteStatus::where('batch', $request->batch)->delete();
+            ModuleCompleteStatus::insert($data);
+        });
+        return redirect()->route('module.status.show')->with('success', 'Module Status Updated Successfully!');
     }
 
     /**

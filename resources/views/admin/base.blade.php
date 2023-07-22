@@ -153,10 +153,16 @@
                   <span class="sidenav-normal ms-2 ps-1">Student => Batch</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link text-white " href="/syllabus-status">
                   <i class="fa fa-check sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Syllabus Status</span>
+                </a>
+              </li>-->
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/module-status">
+                  <i class="fa fa-check sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Module Status</span>
                 </a>
               </li>
               <li class="nav-item">
