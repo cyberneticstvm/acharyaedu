@@ -29,6 +29,7 @@ use App\Http\Controllers\PreviousQuestionController;
 use App\Http\Controllers\PSCUpdateController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\ScertQuestionController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\SyllabusController;
@@ -231,7 +232,14 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::post('/admin/topic/create', [TopicController::class, 'store'])->name('topic.save');
     Route::get('/admin/topic/edit/{id}', [TopicController::class, 'edit'])->name('topic.edit');
     Route::put('/admin/topic/edit/{id}', [TopicController::class, 'update'])->name('topic.update');
-    Route::delete('/admin/topic/{id}', [TopicController::class, 'destroy'])->name('topic.delete');    
+    Route::delete('/admin/topic/{id}', [TopicController::class, 'destroy'])->name('topic.delete');
+    
+    Route::get('/admin/revision', [RevisionController::class, 'index'])->name('revision');
+    Route::get('/admin/revision/create', [RevisionController::class, 'create'])->name('revision.create');
+    Route::post('/admin/revision/create', [RevisionController::class, 'store'])->name('revision.save');
+    Route::get('/admin/revision/edit/{id}', [RevisionController::class, 'edit'])->name('revision.edit');
+    Route::put('/admin/revision/edit/{id}', [RevisionController::class, 'update'])->name('revision.update');
+    Route::delete('/admin/revision/{id}', [RevisionController::class, 'destroy'])->name('revision.delete');
 
     Route::get('/admin/level', [SubjectLevelController::class, 'index'])->name('level');
     Route::get('/admin/level/create', [SubjectLevelController::class, 'create'])->name('level.create');
