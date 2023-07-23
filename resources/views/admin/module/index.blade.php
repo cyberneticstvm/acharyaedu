@@ -46,7 +46,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <h5 class="mb-3">Modules</h5>
+                    <h5 class="mb-3">Modules completed in Batch</h5>
                     <form method="post" action="{{ route('module.status.save') }}">
                         @csrf                    
                         <div class="card-body">
@@ -90,6 +90,8 @@
                             </div>
                         </div>
                     </form>
+                    <h5 class="mb-3">Modules completed in Topic wise Exams</h5>
+                    <div class="col"> {{ $topics }}</div>
                 </div>
             </div>
         </div>
