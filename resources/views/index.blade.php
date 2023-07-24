@@ -25,7 +25,7 @@
             @forelse(sliders() as $key => $slider)
             <div class="swiper-slide">
                 <!-- rts-banner area end-->
-                <div class="rts-section-gap3Top ptb_sm-20 rts-banner-one bg_image" style="background-image: url('/storage/sliders/{{ $slider->image }}')">
+                <div class="rts-section-gap3Top ptb_sm-20 rts-banner-one bg_image" style="background-image: url('storage/sliders/{{ $slider->image }}')">
                     <div class="banner-shape-area">
                         <img src="assets/images/banner/shape/01.png" alt="banner-shape" class="shape shape-1">
                         <img src="assets/images/banner/shape/02.png" alt="banner-shape" class="shape shape-2">
