@@ -34,10 +34,10 @@ class TopicController extends Controller
         $this->validate($request, [
             'modules' => 'present|array',
             'course' => 'present|array',
-        ]);
-        $data = [];   
+        ]);           
         try{
             foreach($request->course as $key1 => $course):
+                $data = [];
                 foreach($request->modules as $key => $module):
                     $data [] = [
                         'module' => $module,
