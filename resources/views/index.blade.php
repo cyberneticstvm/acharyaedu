@@ -8,6 +8,7 @@
                 <li data-sal="slide-up" data-sal-delay="100" data-sal-duration="800"><a href="https://facebook.com/Acharyalearningplatform" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                 <li data-sal="slide-up" data-sal-delay="300" data-sal-duration="800"><a href="https://youtube.com/@acharyaeducations" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
                 <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="https://instagram.com/team_acharya_" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="https://instagram.com/team_acharya_" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
             </ul>
             <p class="divider"></p>
             <p class="content"> <span>Follow</span> <span>Us</span> </p>
