@@ -53,7 +53,7 @@
                                     <tr>
                                         <td>{{ $slno++ }}</td>
                                         <td>{{ $record->student()->find($record->student)->name }}</td>
-                                        <td>{{ $record->batch()->find($record->batch)->name }}</td>
+                                        <td>{{ $record->batches()->find($record->batch)->name }}</td>
                                         <td>{{ $record->mname()->find($record->fee_month)->short_name }} / {{ $record->fee_year }}</td>
                                         <td>{{ date('d/M/Y', strtotime($record->paid_date)) }}</td>
                                         <td>{{ $record->fee }}</td>
