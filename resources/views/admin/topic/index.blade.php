@@ -43,11 +43,11 @@
                         @error('modules')
                             <small class="text-danger">{{ $errors->first('modules') }}</small>
                         @enderror
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label class="req">Course</label>
                                 <div class="mb-3">
-                                    <select class="form-control" name="course">
+                                    <select class="form-control select2" name="course" multiple>
                                         <option value="">Select</option>
                                         @forelse($courses as $key => $course)
                                             <option value="{{ $course->id }}">{{ $course->name }}</option>

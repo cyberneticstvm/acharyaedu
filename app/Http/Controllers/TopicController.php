@@ -33,22 +33,23 @@ class TopicController extends Controller
     public function assign(Request $request){
         $this->validate($request, [
             'modules' => 'present|array',
-            'course' => 'required',
+            'course' => 'present|array',
         ]);
-        $modules = $request->modules;
-        $data = [];
-        foreach($modules as $key => $module):
-            $data [] = [
-                'module' => $module,
-                'course' => $request->course,
-                'created_by' => $request->user()->id,
-                'updated_by' => $request->user()->id,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
-        endforeach;
+        $data = [];   
         try{
-            CourseModule::insert($data);
+            foreach($request->course as $key1 => $course):
+                foreach($request->modules as $key => $module):
+                    $data [] = [
+                        'module' => $module,
+                        'course' => $course,
+                        'created_by' => $request->user()->id,
+                        'updated_by' => $request->user()->id,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                endforeach;
+                CourseModule::insert($data);
+            endforeach;            
         }catch(Exception $e){
             //throw $e;
             return redirect()->back()->with('error', "Selected module(s) already been assigned to the Course")->withInput($request->all());
