@@ -8,7 +8,7 @@
                 <li data-sal="slide-up" data-sal-delay="100" data-sal-duration="800"><a href="https://facebook.com/Acharyalearningplatform" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                 <li data-sal="slide-up" data-sal-delay="300" data-sal-duration="800"><a href="https://youtube.com/@acharyaeducations" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
                 <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="https://instagram.com/team_acharya_" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="https://instagram.com/team_acharya_" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                <li data-sal="slide-up" data-sal-delay="400" data-sal-duration="800"><a href="https://t.me/AcharyaEducations" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
             </ul>
             <p class="divider"></p>
             <p class="content"> <span>Follow</span> <span>Us</span> </p>
@@ -22,9 +22,10 @@
 
         <div class="swiper-wrapper">
             <!-- Slides -->
+            @forelse(sliders() as $key => $slider)
             <div class="swiper-slide">
                 <!-- rts-banner area end-->
-                <div class="rts-section-gap3Top ptb_sm-20 rts-banner-one bg_image bg_image--1">
+                <div class="rts-section-gap3Top ptb_sm-20 rts-banner-one bg_image" style="background-image: url('/storage/sliders/{{ $slider->image }}')">
                     <div class="banner-shape-area">
                         <img src="assets/images/banner/shape/01.png" alt="banner-shape" class="shape shape-1">
                         <img src="assets/images/banner/shape/02.png" alt="banner-shape" class="shape shape-2">
@@ -34,15 +35,13 @@
                             <div class="col-lg-12">
                                 <div class="banner-one-wrapper ptb--110">
                                     <span class="b_one-pre" data-sal="slide-up" data-sal-delay="50" data-sal-duration="800">
-                                        Your Choice Decides Your Destiny
+                                        {!! $slider->text1 !!}
                                     </span>
                                     <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                                        DREAM IT...! <br>
-                                        WE WILL MAKE IT <br>
-                                        HAPPEN.
+                                        {!! $slider->text2 !!}
                                     </h1>
-                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">When You do Something Patiently Everyday, <br>
-                                        Eventually You Will Become the Master of It.</p>
+                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">
+                                        {!! $slider->text3 !!}</p>
                                     <div class="button-group-area mt--40" data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
                                         <a href="/register" class="rts-btn btn-seconday p-short">
                                             Register <i class="fa-regular fa-arrow-up-right"></i>
@@ -58,78 +57,8 @@
                 </div>
                 <!-- rts-banner area end -->
             </div>
-            <div class="swiper-slide">
-                <!-- rts-banner area end-->
-                <div class="rts-section-gap3Top ptb_sm-20 rts-banner-one bg_image bg_image--2">
-                    <div class="banner-shape-area">
-                        <img src="assets/images/banner/shape/01.png" alt="banner-shape" class="shape shape-1">
-                        <img src="assets/images/banner/shape/02.png" alt="banner-shape" class="shape shape-2">
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="banner-one-wrapper ptb--110">
-                                    <span class="b_one-pre" data-sal="slide-up" data-sal-delay="50" data-sal-duration="800">
-                                        Your Choice Decides Your Destiny
-                                    </span>
-                                    <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                                        DREAM IT...! <br>
-                                        WE WILL MAKE IT <br>
-                                        HAPPEN.
-                                    </h1>
-                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">When You do Something Patiently Everyday, <br>
-                                        Eventually You Will Become the Master of It.</p>
-                                    <div class="button-group-area mt--40" data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
-                                        <a href="/register" class="rts-btn btn-seconday p-short">
-                                            Register <i class="fa-regular fa-arrow-up-right"></i>
-                                        </a>
-                                        <a href="/signin" class="rts-btn btn-seconday">
-                                            Signin
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- rts-banner area end -->
-            </div>
-            <div class="swiper-slide">
-                <!-- rts-banner area end-->
-                <div class="rts-section-gap3Top ptb_sm-20 rts-banner-one bg_image bg_image--3">
-                    <div class="banner-shape-area">
-                        <img src="assets/images/banner/shape/01.png" alt="banner-shape" class="shape shape-1">
-                        <img src="assets/images/banner/shape/02.png" alt="banner-shape" class="shape shape-2">
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="banner-one-wrapper ptb--110">
-                                    <span class="b_one-pre" data-sal="slide-up" data-sal-delay="50" data-sal-duration="800">
-                                        Your Choice Decides Your Destiny
-                                    </span>
-                                    <h1 class="title-banner" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
-                                        DREAM IT...! <br>
-                                        WE WILL MAKE IT <br>
-                                        HAPPEN.
-                                    </h1>
-                                    <p class="desc" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">When You do Something Patiently Everyday, <br>
-                                        Eventually You Will Become the Master of It.</p>
-                                    <div class="button-group-area mt--40" data-sal="slide-up" data-sal-delay="300" data-sal-duration="800">
-                                        <a href="/register" class="rts-btn btn-seconday p-short">
-                                            Register <i class="fa-regular fa-arrow-up-right"></i>
-                                        </a>
-                                        <a href="/signin" class="rts-btn btn-seconday">
-                                            Signin
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- rts-banner area end -->
-            </div>
+            @empty
+            @endforelse
             <!-- If we need pagination -->
         </div>
         <!-- If we need navigation buttons -->

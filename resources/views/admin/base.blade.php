@@ -94,6 +94,12 @@
           <div class="collapse" id="admins">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
+                <a class="nav-link text-white " href="/slider">
+                  <i class='fa fa-image sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Slider</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/user">
                   <i class='fa fa-users sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Staff</span>

@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Models\QuestionCourse;
 use App\Models\StudentExam;
 use App\Models\ExamQuestion;
+use App\Models\Slider;
 use App\Models\Subject;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,10 @@ function getAllModules(){
 
 function albhabets(){
     return array(1 => 'A', 2 => 'B', 3 => 'C', 4 => 'D', 5 => 'E');
+}
+
+function sliders(){
+    return Slider::orderBy('order', 'ASC')->get();
 }
 
 function isStudentAttended($sid, $eid, $type=''){

@@ -31,6 +31,7 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\ScertQuestionController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\UserController;
@@ -97,6 +98,13 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     
+    Route::get('/slider', [SliderController::class, 'index'])->name('slider');
+    Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
+    Route::post('/slider/create', [SliderController::class, 'store'])->name('slider.save');
+    Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+    Route::put('/slider/edit/{id}', [SliderController::class, 'update'])->name('slider.update');
+    Route::delete('/slider/delete/{id}', [SliderController::class, 'destroy'])->name('slider.delete');
+
     Route::get('/branch', [BranchController::class, 'index'])->name('branch');
     Route::get('/branch/create', [BranchController::class, 'create'])->name('branch.create');
     Route::post('/branch/create', [BranchController::class, 'store'])->name('branch.save');
