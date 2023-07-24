@@ -71,7 +71,7 @@
                                         <td>{{ $student->studentname->admission_fee_advance }}</td>
                                         <td>{{ $student->studentname->admission_fee_balance }}</td>
                                         <td>{{ ($student->studentname->balance_received == 0 && $student->studentname->admission_fee_balance > 0) ? 'Not Paid' : 'Paid' }}</td>
-                                        <td>{{ $student->studentname->admission_date->format('d/M/Y') }}</td>
+                                        <td>{{ date('d/M/Y', strtotime($student->studentname->admission_date)) }}</td>
                                         <td>{{ $student->studentname->attendances()->where('batch', $student->batch)->where('leave', 1)->count('leave') }}</td>
                                     </tr>
                                     @empty
