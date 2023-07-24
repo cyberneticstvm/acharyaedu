@@ -57,8 +57,8 @@ class TopicController extends Controller
     }
 
     public function showmodule(){
-        $batches = Batch::all(); $modules = collect(); $batch = 0;
-        return view('admin.module.index', compact('batches', 'modules', 'batch'));
+        $batches = Batch::all(); $modules = collect(); $batch = 0; $topics = collect();
+        return view('admin.module.index', compact('batches', 'modules', 'batch', 'topics'));
     }
 
     public function fetchmodule(Request $request){
