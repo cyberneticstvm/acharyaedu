@@ -7,6 +7,7 @@ use App\Models\Batch;
 use App\Models\Branch;
 use App\Models\ClassSchedule;
 use App\Models\Course;
+use App\Models\CurrentAffair;
 use App\Models\Download;
 use App\Models\Exam;
 use App\Models\Fee;
@@ -582,5 +583,10 @@ class StudentController extends Controller
     public function viewnote($id){
         $note = Download::find(decrypt($id));
         return view('student.notes-view', compact('note'));
+    }
+
+    public function caffair(){
+        $caffairs = CurrentAffair::orderByDesc('date')->get();
+        return view('student.caffair', compact('caffairs'));
     }
 }

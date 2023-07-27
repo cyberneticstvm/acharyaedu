@@ -251,7 +251,13 @@
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/downloads/2">
                   <i class='fa fa-gear sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Current Affairs</span>
+                  <span class="sidenav-normal ms-2 ps-1">Current Affairs (Doc)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/caffair">
+                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Current Affairs (Que)</span>
                 </a>
               </li>
               <li class="nav-item">

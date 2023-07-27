@@ -95,6 +95,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/videos/{type}', [StudentController::class, 'videos'])->name('student.videos');
     Route::get('/student/notes', [StudentController::class, 'notes'])->name('student.notes');
     Route::get('/student/notes/view/{id}', [StudentController::class, 'viewnote'])->name('student.viewnote');
+    Route::get('/student/caffair', [StudentController::class, 'caffair'])->name('student.caffair');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){

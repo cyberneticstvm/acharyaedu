@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $exam->name }}</td>
-                                <td class="text-center"><a href="javascript:void(0)" title="{{ getModules($exam->id) }}">Modules</a></td>
+                                <td class="text-center"><a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ getModules($exam->id) }}">Modules</a></td>
                                 <td>{{ $exam->batch->name }}</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
                                 <td>{{ ($se) ? $se->correct_answer_count : 0 }}</td>
