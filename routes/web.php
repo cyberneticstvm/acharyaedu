@@ -17,6 +17,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\ClassScheduleController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CurrentAffairController;
 use App\Http\Controllers\CurrentAffairQuestionController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ExpenseController;
@@ -351,6 +352,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/record/edit/{id}', [RecordController::class, 'edit'])->name('record.edit');
     Route::put('/admin/record/edit/{id}', [RecordController::class, 'update'])->name('record.update');
     Route::delete('/admin/record/delete/{id}', [RecordController::class, 'destroy'])->name('record.delete');
+
+    Route::get('/admin/caffair', [CurrentAffairController::class, 'index'])->name('caffair');
+    Route::get('/admin/caffair/create', [CurrentAffairController::class, 'create'])->name('caffair.create');
+    Route::post('/admin/caffair/create', [CurrentAffairController::class, 'store'])->name('caffair.save');
+    Route::get('/admin/caffair/edit/{id}', [CurrentAffairController::class, 'edit'])->name('caffair.edit');
+    Route::put('/admin/caffair/edit/{id}', [CurrentAffairController::class, 'update'])->name('caffair.update');
+    Route::delete('/admin/caffair/delete/{id}', [CurrentAffairController::class, 'destroy'])->name('caffair.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
