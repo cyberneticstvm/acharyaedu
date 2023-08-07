@@ -591,6 +591,13 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+  <script>
+    $(document).ready(function() {
+      $('body').bind('cut copy paste', function(event) {
+      event.preventDefault();
+      });
+    });
+  </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
