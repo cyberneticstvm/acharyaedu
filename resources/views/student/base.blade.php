@@ -567,6 +567,11 @@
             s -= 1;
         }, 1000);
     </script>
+    <script type="text/javascript">
+      window.onbeforeunload = function() {
+          return "Dude, are you sure you want to leave? Think of the kittens!";
+      }
+    </script>
     @endif
     @if(Route::current()->getName() == 'student.exam.performance' || Route::current()->getName() == 'student.performance')
     <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
@@ -597,11 +602,6 @@
       event.preventDefault();
       });
     });
-  </script>
-  <script type="text/javascript">
-    window.onbeforeunload = function() {
-        return "Dude, are you sure you want to leave? Think of the kittens!";
-    }
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
