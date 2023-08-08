@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('document_type')->references('id')->on('document_types');
             $table->string('title')->nullable();
-            $table->unsignedBigInteger('batch_id')->references('id')->on('batches');
             $table->unsignedBigInteger('subject_id')->references('id')->on('subjects');
             $table->string('attachment')->nullable();
             $table->text('notes')->nullable();            

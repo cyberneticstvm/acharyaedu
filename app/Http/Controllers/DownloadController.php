@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Batch;
 use App\Models\DocumentType;
 use App\Models\Download;
+use App\Models\DownloadBatch;
 use App\Models\DownloadModule;
 use App\Models\Module;
 use App\Models\Subject;
@@ -42,7 +43,7 @@ class DownloadController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'batch_id' => 'required',
+            'batch_id' => 'array|present',
             'subject_id' => 'required',
             'modules' => 'array|present',
             'document_type' => 'required',
@@ -50,8 +51,9 @@ class DownloadController extends Controller
         $input = $request->all();
         $input['created_by'] = $request->user()->id;
         $input['updated_by'] = $request->user()->id;
+        $input['batch_id'] = 0;
         try{
-            $modules = [];
+            $modules = []; $batches = [];
             $download = Download::create($input);
             foreach($request->modules as $key => $module):
                 $modules[] = [
@@ -59,7 +61,14 @@ class DownloadController extends Controller
                     'module_id' => $module,
                 ];
             endforeach;
+            foreach($request->batch_id as $key => $batch):
+                $batches [] = [
+                    'batch_id' => $batch,
+                    'download_id' => $download->id,
+                ];
+            endforeach;
             DownloadModule::insert($modules);
+            DownloadBatch::insert($batches);
             if($request->hasFile('attachment')):
                 $f = $request->file('attachment');
                 $fname = 'downloads/'.$download->id.'/'.$f->getClientOriginalName();
@@ -98,15 +107,16 @@ class DownloadController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'batch_id' => 'required',
+            'batch_id' => 'array|present',
             'subject_id' => 'required',
             'modules' => 'array|present',
             'document_type' => 'required',
         ]);
         $input = $request->all();
         $input['updated_by'] = $request->user()->id;
+        $input['batch_id'] = 0;
         try{
-            $modules = [];
+            $modules = []; $batches = [];
             $download = Download::find($id);
             $download->update($input);
             foreach($request->modules as $key => $module):
@@ -115,8 +125,16 @@ class DownloadController extends Controller
                     'module_id' => $module,
                 ];
             endforeach;
+            foreach($request->batch_id as $key => $batch):
+                $batches [] = [
+                    'batch_id' => $batch,
+                    'download_id' => $download->id,
+                ];
+            endforeach;
             DownloadModule::where('download_id', $download->id)->delete();
+            DownloadBatch::where('download_id', $download->id)->delete();
             DownloadModule::insert($modules);
+            DownloadBatch::insert($batches);
             if($request->hasFile('attachment')):
                 $f = $request->file('attachment');
                 $fname = 'downloads/'.$download->id.'/'.$f->getClientOriginalName();

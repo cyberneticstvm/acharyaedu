@@ -12,7 +12,6 @@ class Download extends Model
     protected $fillable = [
         'document_type',
         'title',
-        'batch_id',
         'subject_id',
         'attachment',
         'notes',
@@ -25,8 +24,8 @@ class Download extends Model
         return $this->belongsTo(DocumentType::class, 'document_type', 'id');
     }
 
-    public function batch(){
-        return $this->belongsTo(Batch::class, 'batch_id', 'id');
+    public function batches(){
+        return $this->belongsTo(DownloadBatch::class, 'download_id', 'id');
     }
 
     public function subject(){
@@ -34,6 +33,6 @@ class Download extends Model
     }
 
     public function modules(){
-        return $this->hasMany(DownloadModule::class);
+        return $this->hasMany(DownloadModule::class, 'download_id', 'id');
     }
 }
