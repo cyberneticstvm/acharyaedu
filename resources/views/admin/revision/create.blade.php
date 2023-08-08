@@ -21,7 +21,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label class="req mb-1">Batch</label>
                                 <select class="form-control select2" name="batch_id" multiple>
@@ -34,6 +34,18 @@
                             </div>
                             @error('batch_id')
                                 <small class="text-danger">{{ $errors->first('batch_id') }}</small>
+                            @enderror
+                        </div>                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="req mb-1">Module Name</label>
+                                <select class="form-control module select2" name="modules[]" multiple>
+                                    <option value="">Select</option>
+                                    
+                                </select>                                  
+                            </div>
+                            @error('modules')
+                                <small class="text-danger">{{ $errors->first('modules') }}</small>
                             @enderror
                         </div>
                         <div class="col-md-4">
@@ -49,18 +61,6 @@
                             </div>
                             @error('subject_id')
                                 <small class="text-danger">{{ $errors->first('subject_id') }}</small>
-                            @enderror
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="req mb-1">Module Name</label>
-                                <select class="form-control module select2" name="modules[]" multiple>
-                                    <option value="">Select</option>
-                                    
-                                </select>                                  
-                            </div>
-                            @error('modules')
-                                <small class="text-danger">{{ $errors->first('modules') }}</small>
                             @enderror
                         </div>
                         <div class="col-md-3">
