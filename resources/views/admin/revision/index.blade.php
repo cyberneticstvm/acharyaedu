@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $revision->title }}</td>
-                                <td>{{ getAllModules()->whereIn('id', $revision->modules->pluck('id'))->pluck('name')->implode(',') }}</td>
+                                <td>{{ getAllModules()->whereIn('id', $revision->modules->module->pluck('id'))->pluck('name')->implode(',') }}</td>
                                 <td>{{ $revision->modules->pluck('id') }}</td>
                                 <td>{{ $revision->batch->name }}</td>
                                 <td>{{ ($revision->status == 0) ? 'Pending' : 'Completed' }}</td>
