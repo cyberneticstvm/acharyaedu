@@ -551,7 +551,7 @@ class StudentController extends Controller
 
     public function downloads($type){
         $student = Student::find(Auth::user()->student->id);
-        $downloads = Download::whereIn('batch_id', $student->batches->pluck('batch'))->whereNotNull('attachment')->where('document_type', $type)->get();
+        $downloads = Download::leftJoin('download_batches', 'downloads.id', '=', 'download_batches.download_id')->whereIn('download_batches.batch_id', $student->batches->pluck('batch'))->whereNotNull('attachment')->where('document_type', $type)->get();
         return view('student.downloads', compact('downloads', 'student'));
     }
 
