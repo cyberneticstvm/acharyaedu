@@ -19,7 +19,7 @@ class Revision extends Model
     ];
 
     public function modules(){
-        return $this->hasMany(RevisionModule::class, 'revision_id', 'id');
+        return $this->hasMany(RevisionModule::class, 'id', 'revision_id');
     }
 
     public function batch(){
