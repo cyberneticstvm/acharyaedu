@@ -36,16 +36,7 @@
                             @error('batch_id')
                                 <small class="text-danger">{{ $errors->first('batch_id') }}</small>
                             @enderror
-                        </div>                        
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="req mb-1">Module Name</label>
-                                {!! Form::select('modules[]', $modules->pluck('name', 'id')->all(),  $revision->modules()->pluck('module_id')->toArray(), ['class' => 'form-control module select2', 'multiple']) !!}                                  
-                            </div>
-                            @error('modules')
-                                <small class="text-danger">{{ $errors->first('modules') }}</small>
-                            @enderror
-                        </div>
+                        </div>               
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req mb-1">Subject Name</label>
@@ -59,6 +50,15 @@
                             </div>
                             @error('subject_id')
                                 <small class="text-danger">{{ $errors->first('subject_id') }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="req mb-1">Module Name</label>
+                                {!! Form::select('modules[]', $modules->pluck('name', 'id')->all(),  $revision->modules()->pluck('module_id')->toArray(), ['class' => 'form-control module select2', 'multiple']) !!}                                  
+                            </div>
+                            @error('modules')
+                                <small class="text-danger">{{ $errors->first('modules') }}</small>
                             @enderror
                         </div>
                         <div class="col-md-3">
