@@ -24,7 +24,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label class="req mb-1">Batch</label>
-                                <select class="form-control select2" name="batch_id" multiple>
+                                <select class="form-control select2" name="batch_id[]" multiple>
                                     <option value="">Select</option>
                                     @forelse($batches as $key => $batch)
                                         <option value="{{ $batch->id }}">{{ $batch->name }}</option>

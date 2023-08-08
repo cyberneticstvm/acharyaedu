@@ -11,7 +11,6 @@ class Revision extends Model
 
     protected $fillable = [
         'title',
-        'batch_id',
         'date',
         'status',
         'created_by',
@@ -22,8 +21,8 @@ class Revision extends Model
         return $this->hasMany(RevisionModule::class, 'revision_id', 'id');
     }
 
-    public function batch(){
-        return $this->belongsTo(Batch::class, 'batch_id', 'id');
+    public function batches(){
+        return $this->hasMany(RevisionBatch::class, 'revision_id', 'id');
     }
 
     protected $casts = ['date' => 'date'];

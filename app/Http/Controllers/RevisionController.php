@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Batch;
 use App\Models\Revision;
+use App\Models\RevisionBatch;
 use App\Models\RevisionModule;
 use App\Models\Subject;
 use App\Models\Topic;
@@ -39,14 +40,16 @@ class RevisionController extends Controller
         $this->validate($request, [
             'modules' => 'present|array',
             'title' => 'required',
-            'batch_id' => 'required',
+            'batch_id' => 'present|array',
             'date' => 'required',
             'status' => 'required',
         ]);
-        DB::transaction(function() use ($request) {
-            $data = []; $input = $request->all();
-            $input['created_by'] = $request->user()->id;
-            $input['updated_by'] = $request->user()->id;
+        $input = $request->all();
+        $input['created_by'] = $request->user()->id;
+        $input['updated_by'] = $request->user()->id;
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::transaction(function() use ($request, $input) {
+            $data = []; $batches = []; 
             $revision = Revision::create($input);
             foreach($request->modules as $key => $module):
                 $data [] = [
@@ -54,8 +57,16 @@ class RevisionController extends Controller
                     'revision_id' => $revision->id,
                 ];
             endforeach;
+            foreach($request->batch_id as $key => $batch):
+                $batches [] = [
+                    'batch_id' => $batch,
+                    'revision_id' => $revision->id,
+                ];
+            endforeach;
             RevisionModule::insert($data);
+            RevisionBatch::insert($batches);
         });
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         return redirect()->route('revision')->with('success', 'Revision Saved Successfully!');
     }
 
@@ -85,13 +96,15 @@ class RevisionController extends Controller
         $this->validate($request, [
             'modules' => 'present|array',
             'title' => 'required',
-            'batch_id' => 'required',
+            'batch_id' => 'present|array',
             'date' => 'required',
             'status' => 'required',
         ]);
-        DB::transaction(function() use ($request, $id) {
-            $data = []; $input = $request->all();
-            $input['updated_by'] = $request->user()->id;
+        $input = $request->all();
+        $input['updated_by'] = $request->user()->id;
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::transaction(function() use ($request, $id, $input) {
+            $data = []; $batches = [];
             $revision = Revision::find($id);
             $revision->update($input);
             foreach($request->modules as $key => $module):
@@ -100,9 +113,18 @@ class RevisionController extends Controller
                     'revision_id' => $revision->id,
                 ];
             endforeach;
+            foreach($request->batch_id as $key => $batch):
+                $batches [] = [
+                    'batch_id' => $batch,
+                    'revision_id' => $revision->id,
+                ];
+            endforeach;
             RevisionModule::where('revision_id', $id)->delete();
+            RevisionBatch::where('revision_id', $id)->delete();
             RevisionModule::insert($data);
+            RevisionBatch::insert($batches);
         });
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         return redirect()->route('revision')->with('success', 'Revision Updated Successfully!');
     }
 

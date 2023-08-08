@@ -25,13 +25,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label class="req mb-1">Batch</label>
-                                <select class="form-control select2" name="batch_id" multiple>
-                                    <option value="">Select</option>
-                                    @forelse($batches as $key => $batch)
-                                        <option value="{{ $batch->id }}" {{ ($revision->batch_id == $batch->id) ? 'selected' : '' }}>{{ $batch->name }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>                                  
+                                {!! Form::select('batch_id[]', $batches->pluck('name', 'id')->all(),  $revision->batches()->pluck('batch_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}                                  
                             </div>
                             @error('batch_id')
                                 <small class="text-danger">{{ $errors->first('batch_id') }}</small>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Batch;
 use App\Models\CourseOffer;
 use App\Models\FreeStudentExam;
 use App\Models\Question;
@@ -17,6 +18,10 @@ function courseOffers(){
 
 function getAllModules(){
     return Topic::all();
+}
+
+function getActiveBatches(){
+    return Batch::where('status', 1)->get();
 }
 
 function albhabets(){
