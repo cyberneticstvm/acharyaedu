@@ -35,7 +35,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="req">Batch</label>
-                                {!! Form::select('batch_id[]', $batches->pluck('name', 'id')->all(),  $doc->batches()->pluck('batch_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}
+                                {!! Form::select('batch_id[]', $batches->pluck('name', 'id')->all(),  $doc->batches->pluck('batch_id'), ['class' => 'form-control select2', 'multiple']) !!}
                                 @error('batch_id')
                                     <small class="text-danger">{{ $errors->first('batch_id') }}</small>
                                 @enderror

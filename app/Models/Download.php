@@ -25,7 +25,7 @@ class Download extends Model
     }
 
     public function batches(){
-        return $this->belongsTo(DownloadBatch::class, 'download_id', 'id');
+        return $this->hasMany(DownloadBatch::class, 'download_id', 'id');
     }
 
     public function subject(){
