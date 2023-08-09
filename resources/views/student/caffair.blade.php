@@ -18,7 +18,7 @@
                     </div>
                 @endif
             </div>
-            <div class="card-body">
+            <!-- <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">
                         <thead class="thead-light">
@@ -38,6 +38,19 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
+            </div> -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @php($c=1)
+                        @forelse($caffairs as $key => $caffair)
+                            <div>
+                                {{$c++}}: {{ $caffair->question }}
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>
