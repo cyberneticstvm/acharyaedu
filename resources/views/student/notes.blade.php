@@ -18,7 +18,7 @@
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->doctype->name }}</td>
                                 <td>{{ $doc->title }}</td>
-                                <td>{{ $doc->getActiveBatches()->whereIn('id', $doc->batches->pluck('batch_id'))->pluck('name') }}</td>
+                                <td>{{ getActiveBatches()->whereIn('id', $doc->batches->pluck('batch_id'))->pluck('name') }}</td>
                                 <td>{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
                                 <td class="text-center"><a href="/student/notes/view/{{encrypt($doc->id)}}">View</a></td>
