@@ -45,9 +45,16 @@
                     <div class="col-md-12">
                         @php($c=1)
                         @forelse($caffairs as $key => $caffair)
-                            <div>
+                            <div class="mb-1">
                                 {{$c++}}: {{ $caffair->question }}
                             </div>
+                            <div class="mb-1">
+                                Ans: {{ $caffair->answer }}
+                            </div>
+                            <div class="mb-1">
+                                Exp: {{ $caffair->explanation }}
+                            </div>
+                            <hr>
                         @empty
                         @endforelse
                     </div>
