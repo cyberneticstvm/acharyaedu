@@ -56,7 +56,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-md-2">
                             <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">Fetch</button>
                         </div>
                     </div>
