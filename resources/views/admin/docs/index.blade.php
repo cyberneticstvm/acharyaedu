@@ -29,7 +29,7 @@
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->doctype->name }}</td>
                                 <td>{{ $doc->title }}</td>
-                                <td>{{ ($doc->batches) ? getActiveBatches()->whereIn('id', $doc->batches->pluck('batch_id'))->pluck('name')->implode(',') : '' }}</td>
+                                <td><a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ ($doc->batches) ? getActiveBatches()->whereIn('id', $doc->batches->pluck('batch_id'))->pluck('name')->implode(',') : '' }}">View</a></td>
                                 <td>{{ ($doc->subject) ? $doc->subject->name : '' }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
                                 <td class="text-center"><a href="{{ asset('storage/'.$doc->attachment) }}" target="_blank">{{ ($doc->attachment) ? 'Attachment' : '' }}</a></td>
