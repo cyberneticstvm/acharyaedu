@@ -20,7 +20,7 @@
                                 <td>{{ $doc->title }}</td>
                                 <td>{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
-                                <td class="text-center"><a href="/student/notes/view/{{$doc->id}}">View</a></td>
+                                <td class="text-center"><a href="/student/notes/view/{{encrypt($doc->id)}}">View</a></td>
                                 <td>{{ $doc->notes }}</td>
                             </tr>
                         @empty
