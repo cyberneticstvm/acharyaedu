@@ -315,7 +315,7 @@ class StudentController extends Controller
 
     public function activeexams($type){
         $student = Student::where('email', Auth::user()->email)->first();
-        $exams = Exam::whereIn('batch_id', $student->batches->pluck('batch'))->where('status', 1)->where('exam_type', $type)->get(); //whereDate('exam_date', '>=', Carbon::today())->
+        $exams = Exam::whereIn('batch_id', $student->batches->pluck('batch'))->where('status', 1)->where('exam_type', $type)->orderByDesc('exam_date')->get(); //whereDate('exam_date', '>=', Carbon::today())->
         return view('student.active-exams', compact('exams', 'student'));
     }
 
