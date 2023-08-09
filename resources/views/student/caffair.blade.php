@@ -18,6 +18,50 @@
                     </div>
                 @endif
             </div>
+            <div class="card-body">
+                <form method="post" action="{{ route('student.caffair.fetch') }}">
+                    @csrf
+                    <div class="row g-2">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Fee Month</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="month">
+                                        <option value="">Select</option>
+                                        @forelse($months as $key => $month)
+                                            <option value="{{ $month->id }}">{{ $month->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('month')
+                                    <small class="text-danger">{{ $errors->first('month') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Fee Year</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="year">
+                                        <option value="">Select</option>
+                                        @forelse($years as $key => $year)
+                                            <option value="{{ $year->year }}">{{ $year->year }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('year')
+                                    <small class="text-danger">{{ $errors->first('year') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">Fetch</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <!-- <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">

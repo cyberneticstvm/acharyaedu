@@ -15,6 +15,7 @@ use App\Models\FreeExam;
 use App\Models\FreeExamQuestion;
 use App\Models\FreeExamScore;
 use App\Models\FreeStudentExam;
+use App\Models\Month;
 use App\Models\PaymentMode;
 use App\Models\PscUpdate;
 use App\Models\Question;
@@ -29,6 +30,7 @@ use App\Models\StudentExamScore;
 use App\Models\StudentFeedback;
 use App\Models\Topic;
 use App\Models\User;
+use App\Models\Year;
 use Carbon\Carbon;
 use Exception;
 use DB;
@@ -587,6 +589,13 @@ class StudentController extends Controller
 
     public function caffair(){
         $caffairs = CurrentAffair::orderByDesc('date')->get();
-        return view('student.caffair', compact('caffairs'));
+        $months = Month::all(); $years = Year::all();
+        return view('student.caffair', compact('caffairs', 'months', 'years'));
+    }
+
+    public function caffairfetch(Request $request){
+        $caffairs = CurrentAffair::whereMonth('date', $request->month)->whereYear('date', $request->year)->orderByDesc('date')->get();
+        $months = Month::all(); $years = Year::all();
+        return view('student.caffair', compact('caffairs', 'months', 'years'));
     }
 }
