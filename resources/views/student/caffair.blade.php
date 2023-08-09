@@ -24,7 +24,7 @@
                     <div class="row g-2">
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req">Fee Month</label>
+                                <label class="req">Month</label>
                                 <div class="mb-3">
                                     <select class="form-control" name="month">
                                         <option value="">Select</option>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="req">Fee Year</label>
+                                <label class="req">Year</label>
                                 <div class="mb-3">
                                     <select class="form-control" name="year">
                                         <option value="">Select</option>
