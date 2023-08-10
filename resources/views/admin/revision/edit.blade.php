@@ -77,6 +77,17 @@
                                 <small class="text-danger">{{ $errors->first('date') }}</small>
                             @enderror
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Revision No.</label>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="revision_no" value="{{ $revision->revision_no }}" placeholder="0" step="any">
+                                </div>
+                                @error('revision_no')
+                                    <small class="text-danger">{{ $errors->first('revision_no') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">UPDATE</button>

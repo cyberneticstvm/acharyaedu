@@ -140,6 +140,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/student/revision">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Revision</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/logout">
                   <i class="fa fa-file sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Logout</span>

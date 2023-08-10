@@ -13,6 +13,7 @@ class Revision extends Model
         'title',
         'date',
         'status',
+        'revision_no',
         'created_by',
         'updated_by',
     ];

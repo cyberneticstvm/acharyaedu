@@ -20,6 +20,7 @@ use App\Models\PaymentMode;
 use App\Models\PscUpdate;
 use App\Models\Question;
 use App\Models\Record;
+use App\Models\Revision;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -597,5 +598,11 @@ class StudentController extends Controller
         $caffairs = CurrentAffair::whereMonth('date', $request->month)->whereYear('date', $request->year)->orderByDesc('date')->get();
         $months = Month::all(); $years = Year::all();
         return view('student.caffair', compact('caffairs', 'months', 'years'));
+    }
+
+    public function revision(){
+        $student = Student::find(Auth::user()->student->id);
+        $revisions = Revision::leftJoin('revision_batches', 'revisions.id', '=', 'revision_batches.revision_id')->selectRaw("revisions.*")->whereIn('revision_batches.batch_id', $student->batches->pluck('batch'))->get();
+        return view('student.revision', compact('student', 'revisions'));
     }
 }

@@ -97,6 +97,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/notes/view/{id}', [StudentController::class, 'viewnote'])->name('student.viewnote');
     Route::get('/student/caffair', [StudentController::class, 'caffair'])->name('student.caffair');
     Route::post('/student/caffair/fetch', [StudentController::class, 'caffairfetch'])->name('student.caffair.fetch');
+    Route::get('/student/revision', [StudentController::class, 'revision'])->name('student.revision');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){

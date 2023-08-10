@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label class="req">Course</label>
                                 <div class="mb-3">
-                                    <select class="form-control select2" name="course" multiple>
+                                    <select class="form-control select2" name="course[]" multiple>
                                         <option value="">Select</option>
                                         @forelse($courses as $key => $course)
                                             <option value="{{ $course->id }}">{{ $course->name }}</option>
