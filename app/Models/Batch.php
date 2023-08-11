@@ -24,6 +24,10 @@ class Batch extends Model
         return $this->belongsTo(Course::class, 'course');
     }
 
+    public function courses(){
+        return $this->hasMany(BatchCourse::class, 'batch_id', 'id');
+    }
+
     public function batchsyllabi(){
         return $this->hasMany(BatchSyllabs::class, 'batch');
     }

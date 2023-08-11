@@ -7,6 +7,16 @@
                 <h3 class="font-weight-bolder text-primary text-gradient">Update Batch</h3>
             </div>
             <div class="card-body">
+                @if(session()->has('success'))
+                    <div class="alert alert-success text-white">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-danger text-white">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <form role="form" method="post" action="{{ route('batch.update', $batch->id) }}">
                     @csrf
                     @method("PUT")
@@ -48,17 +58,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Course Name</label>
-                                <div class="mb-3">
-                                    <select class="form-control" name="course">
-                                        <option value="">Select</option>
-                                        @forelse($courses as $key => $course)
-                                            <option value="{{ $course->id }}" {{ ($course->id == $batch->course) ? 'selected' : '' }}>{{ $course->name }}</option>
-                                        @empty
-                                        @endforelse
-                                    </select>
-                                </div>
-                                @error('course')
-                                    <small class="text-danger">{{ $errors->first('course') }}</small>
+                                {!! Form::select('courses[]', $courses->pluck('name', 'id')->all(),  $batch->courses()->pluck('course_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}
+                                @error('courses')
+                                    <small class="text-danger">{{ $errors->first('courses') }}</small>
                                 @enderror
                             </div>
                         </div>                        

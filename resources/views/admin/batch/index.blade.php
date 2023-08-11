@@ -35,7 +35,7 @@
                                 <td class="text-end"><a href="/student/{{$batch->id}}/0" class="text-success">{{ $batch->studentbatches()->where('cancelled', 0)->count('id') }}</a></td>
                                 <td class="text-end"><a href="/student/{{$batch->id}}/1" class="text-danger">{{ $batch->studentbatches()->where('cancelled', 1)->count('id') }}</a></td>
                                 <td class="text-end text-info">{{ $batch->studentbatches()->count('id') }}</td>                             
-                                <td>{{ $batch->course()->find($batch->course)->name }}</td>                             
+                                <td>{{ getAllCourses()->whereIn('id', $batch->courses->pluck('course_id'))->pluck('name')->implode(',') }}</td>                             
                                 <!--<td>{{ $syllabus->whereIn('id', $batch->batchsyllabi()->pluck('syllabus'))->pluck('name')->implode(',') }}</td>-->                             
                                 <td>{{ $batch->fee }}</td>
                                 <td>{{ ($batch->status == 1) ? 'Active' : 'Expired' }}</td>                             

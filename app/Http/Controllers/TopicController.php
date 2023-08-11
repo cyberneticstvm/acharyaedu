@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\BatchCourse;
 use App\Models\Course;
 use App\Models\CourseModule;
 use App\Models\Exam;
@@ -69,7 +70,7 @@ class TopicController extends Controller
         $batches = Batch::all(); $faculties = Faculty::all(); $batch = $request->batch;
         $modules = ModuleCompleteStatus::where('batch', $request->batch)->orderByDesc('status')->get();
         if($modules->isEmpty()):
-            $modules = CourseModule::where('course', Batch::find($request->batch)->course)->get();
+            $modules = CourseModule::whereIn('course', BatchCourse::where('batch_id', $request->batch)->pluck('course_id'))->get();
         endif;
         $exam = Exam::where('batch_id', $request->batch)->where('exam_type', 7)->pluck('id');
         $topics = Question::leftJoin('topics as t', 'questions.topic_id', 't.id')->whereIn('questions.id', ExamQuestion::whereIn('exam_id', $exam)->pluck('question_id'))->groupBy('t.name')->pluck('t.name')->implode(',');

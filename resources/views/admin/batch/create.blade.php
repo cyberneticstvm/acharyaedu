@@ -7,6 +7,16 @@
                 <h3 class="font-weight-bolder text-primary text-gradient">Create Batch</h3>
             </div>
             <div class="card-body">
+                @if(session()->has('success'))
+                    <div class="alert alert-success text-white">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-danger text-white">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <form role="form" method="post" action="{{ route('batch.save') }}">
                     @csrf
                     <div class="row">
@@ -48,7 +58,7 @@
                             <div class="form-group">
                                 <label class="req">Course Name</label>
                                 <div class="mb-3">
-                                    <select class="form-control" name="course">
+                                    <select class="form-control select2" name="courses[]" multiple>
                                         <option value="">Select</option>
                                         @forelse($courses as $key => $course)
                                             <option value="{{ $course->id }}" {{ ($course->id == old('course')) ? 'selected' : '' }}>{{ $course->name }}</option>
@@ -56,8 +66,8 @@
                                         @endforelse
                                     </select>
                                 </div>
-                                @error('course')
-                                    <small class="text-danger">{{ $errors->first('course') }}</small>
+                                @error('courses')
+                                    <small class="text-danger">{{ $errors->first('courses') }}</small>
                                 @enderror
                             </div>
                         </div>                        

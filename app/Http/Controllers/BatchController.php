@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Batch;
 use App\Models\Syllabus;
 use DB;
+use Exception;
 
 class BatchController extends Controller
 {
@@ -46,23 +47,39 @@ class BatchController extends Controller
         $this->validate($request, [
             'batch_type' => 'required',
             'name' => 'required|unique:batches,name',
-            'course' => 'required',
+            'courses' => 'present|array',
             'fee' => 'required',
             'syllabi' => 'present|array',
         ]);
         $input = $request->all();
         $input['created_by'] = Auth::user()->id;        
         $input['updated_by'] = Auth::user()->id;
-        DB::transaction(function() use ($input, $request) {
-            $batch = Batch::create($input);
-            foreach($request->syllabi as $key => $syl):
-                $data [] = [
-                    'syllabus' => $syl,
-                    'batch' => $batch->id,
-                ];
-            endforeach;
-            DB::table('batch_syllabs')->insert($data);
-        });       
+        $input['course'] = 0;
+        
+        try{
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            DB::transaction(function() use ($input, $request) { 
+                $batch = Batch::create($input);           
+                foreach($request->syllabi as $key => $syl):
+                    $data [] = [
+                        'syllabus' => $syl,
+                        'batch' => $batch->id,
+                    ];
+                endforeach;
+                foreach($request->courses as $key => $course):
+                    $courses [] = [
+                        'batch_id' => $batch->id,
+                        'course_id' => $course,
+                    ];
+                endforeach;
+                DB::table('batch_syllabs')->insert($data);
+                DB::table('batch_courses')->insert($courses);
+            });
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }catch(Exception $e){
+            throw $e;
+            return redirect()->back()->with('error', $e->getMessage());
+        }               
         return redirect()->route('batch')->with('success', 'Batch Created Successfully!');
     }
 
@@ -104,24 +121,39 @@ class BatchController extends Controller
         $this->validate($request, [
             'batch_type' => 'required',
             'name' => 'required|unique:batches,name,'.$id,
-            'course' => 'required',
+            'courses' => 'present|array',
             'fee' => 'required',
             'syllabi' => 'present|array',
         ]);
         $input = $request->all();       
-        $input['updated_by'] = Auth::user()->id;
-        DB::transaction(function() use ($input, $request, $id) {
-            $batch = Batch::find($id);        
-            $batch->update($input);
-            DB::table('batch_syllabs')->where('batch', $id)->delete();
-            foreach($request->syllabi as $key => $syl):
-                $data [] = [
-                    'syllabus' => $syl,
-                    'batch' => $batch->id,
-                ];
-            endforeach;
-            DB::table('batch_syllabs')->insert($data);
-        });        
+        $input['updated_by'] = Auth::user()->id;        
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        try{
+            DB::transaction(function() use ($input, $request, $id) { 
+                $batch = Batch::find($id);        
+                $batch->update($input);           
+                DB::table('batch_syllabs')->where('batch', $id)->delete();
+                DB::table('batch_courses')->where('batch_id', $id)->delete();
+                foreach($request->syllabi as $key => $syl):
+                    $data [] = [
+                        'syllabus' => $syl,
+                        'batch' => $batch->id,
+                    ];
+                endforeach;
+                foreach($request->courses as $key => $course):
+                    $courses [] = [
+                        'batch_id' => $batch->id,
+                        'course_id' => $course,
+                    ];
+                endforeach;
+                DB::table('batch_syllabs')->insert($data);
+                DB::table('batch_courses')->insert($courses);
+            });
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }catch(Exception $e){
+            throw $e;
+            return redirect()->back()->with('error', $e->getMessage());
+        }          
         return redirect()->route('batch')->with('success', 'Batch Updated Successfully!');
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Batch;
+use App\Models\Course;
 use App\Models\CourseOffer;
 use App\Models\FreeStudentExam;
 use App\Models\Question;
@@ -16,8 +17,16 @@ function courseOffers(){
    return CourseOffer::all();
 }
 
+function getAllCourses(){
+    return Course::all();
+}
+
 function getAllModules(){
     return Topic::all();
+}
+
+function getAllSubjects(){
+    return Subject::all();
 }
 
 function getActiveBatches(){

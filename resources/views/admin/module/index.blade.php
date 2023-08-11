@@ -53,7 +53,7 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered">
                                     <thead class="thead-light">
-                                        <tr><th>SL No</th><th>Module Name</th><th>Faculty</th><th>Status</th></tr>
+                                        <tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Faculty</th><th>Status</th></tr>
                                     </thead>
                                     <tbody>
                                         @php $slno = 1 @endphp
@@ -63,6 +63,7 @@
                                         <tr>
                                             <td>{{ $slno++ }}</td>
                                             <td>{{ $module->modules->name }}</td>
+                                            <td>{{ getAllsubjects()->find($module->modules->subject_id)->name }}</td>
                                             <td>
                                                 <select class="form-control" name="faculties[]">
                                                     <option value="0">Select</option>
