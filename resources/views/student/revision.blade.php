@@ -17,7 +17,7 @@
                             <tr class="{{ ($doc->date->format('Y-m-d') > date('Y-m-d')) ? 'text-danger' : '' }}">
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->title }}</td>
-                                <td>{{ $doc->subject->name }}</td>
+                                <td>{{ ($doc->subject) ? $doc->subject->name : '' }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
                                 <td>{{ $doc->date->format('d-M-Y') }}</td>
                                 <td>{{ $doc->revision_no }}</td>
