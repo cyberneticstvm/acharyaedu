@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
-                    <table id="datatable-basic" class="table table-sm table-striped table-bordered">
+                    <table id="datatable-basic" class="table table-sm table-bordered">
                         <thead><tr><th>SL No</th><th>Title</th><th>Modules</th><th>Date</th><th>Revision No</th><th>Status</th></tr></thead><tbody>
                         @forelse($revisions as $key => $doc)
                             <tr class="{{ ($doc->date->format('Y-m-d') > date('Y-m-d')) ? 'text-danger' : '' }}">
