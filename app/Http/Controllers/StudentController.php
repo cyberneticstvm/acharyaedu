@@ -602,7 +602,7 @@ class StudentController extends Controller
 
     public function revision(){
         $student = Student::find(Auth::user()->student->id);
-        $revisions = Revision::leftJoin('revision_batches', 'revisions.id', '=', 'revision_batches.revision_id')->selectRaw("revisions.*")->whereIn('revision_batches.batch_id', $student->batches->pluck('batch'))->get();
+        $revisions = Revision::leftJoin('revision_batches', 'revisions.id', '=', 'revision_batches.revision_id')->selectRaw("revisions.*")->whereIn('revision_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('date')->get();
         return view('student.revision', compact('student', 'revisions'));
     }
 }
