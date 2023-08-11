@@ -12,11 +12,12 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-bordered">
-                        <thead><tr><th>SL No</th><th>Title</th><th>Modules</th><th>Date</th><th>Revision No</th><th>Status</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Title</th><th>Subject</th><th>Modules</th><th>Date</th><th>Revision No</th><th>Status</th></tr></thead><tbody>
                         @forelse($revisions as $key => $doc)
                             <tr class="{{ ($doc->date->format('Y-m-d') > date('Y-m-d')) ? 'text-danger' : '' }}">
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->title }}</td>
+                                <td>{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
                                 <td>{{ $doc->date->format('d-M-Y') }}</td>
                                 <td>{{ $doc->revision_no }}</td>
