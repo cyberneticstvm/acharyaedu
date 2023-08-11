@@ -13,6 +13,7 @@ class Revision extends Model
         'title',
         'date',
         'status',
+        'subject_id',
         'revision_no',
         'created_by',
         'updated_by',
@@ -24,6 +25,10 @@ class Revision extends Model
 
     public function batches(){
         return $this->hasMany(RevisionBatch::class, 'revision_id', 'id');
+    }
+
+    public function subject(){
+        return $this->belongsTo(Subject::class, 'subject_id', 'id');
     }
 
     protected $casts = ['date' => 'date'];

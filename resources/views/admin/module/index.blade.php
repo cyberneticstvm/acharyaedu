@@ -53,7 +53,7 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered">
                                     <thead class="thead-light">
-                                        <tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Faculty</th><th>Status</th></tr>
+                                        <tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Faculty</th><th>Status</th><th>Remove</th></tr>
                                     </thead>
                                     <tbody>
                                         @php $slno = 1 @endphp
@@ -78,6 +78,13 @@
                                                     <option value="0" {{ (($module->status) && $module->status == 0) ? 'selected' : '' }}>Pending</option>
                                                     <option value="1" {{ (($module->status) && $module->status == 1) ? 'selected' : '' }}>Completed</option>
                                                 </select>
+                                            </td>
+                                            <td>
+                                            <form method="post" action="{{ route('module.complete.delete', $module->id) }}">
+                                                @csrf 
+                                                @method("DELETE")
+                                                <button type="submit" class="border no-border" onclick="javascript: return confirm('Are you sure want to delete this record?');"><i class="fa fa-trash text-danger"></i></button>
+                                            </form>
                                             </td>
                                         </tr>
                                         @empty

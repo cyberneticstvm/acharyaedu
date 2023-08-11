@@ -37,7 +37,7 @@
                                 <select class="form-control subject" data-random="0" name="subject_id">
                                     <option value="">Select</option>
                                     @forelse($subjects as $key => $subject)
-                                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                        <option value="{{ $subject->id }}" {{ ($subject->id == $revision->subject_id) ? 'selected' : '' }}>{{ $subject->name }}</option>
                                     @empty
                                     @endforelse
                                 </select>                                  

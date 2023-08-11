@@ -98,6 +98,11 @@ class TopicController extends Controller
         return redirect()->route('module.status.show')->with('success', 'Module Status Updated Successfully!');
     }
 
+    public function deletemodule($id){
+        ModuleCompleteStatus::find($id)->delete();
+        return redirect()->route('module.status.show')->with('success', 'Module Deleted Successfully!');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

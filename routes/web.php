@@ -161,6 +161,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/module-status', [TopicController::class, 'showmodule'])->name('module.status.show');
     Route::post('/module-status', [TopicController::class, 'fetchmodule'])->name('module.status.fetch');
     Route::post('/module-status/save', [TopicController::class, 'savemodule'])->name('module.status.save');
+    Route::delete('/module-status/delete/{id}', [TopicController::class, 'deletemodule'])->name('module.complete.delete');
 
     Route::get('/syllabus', [SyllabusController::class, 'index'])->name('syllabus');
     Route::get('/syllabus/create', [SyllabusController::class, 'create'])->name('syllabus.create');

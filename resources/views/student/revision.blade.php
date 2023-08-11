@@ -14,7 +14,7 @@
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
                         <thead><tr><th>SL No</th><th>Title</th><th>Modules</th><th>Date</th><th>Revision No</th><th>Status</th></tr></thead><tbody>
                         @forelse($revisions as $key => $doc)
-                            <tr class="{{ ($doc->date->format('Y-m-d') > date('Y-m-d')) ? 'bg-danger' : '' }}">
+                            <tr class="{{ ($doc->date->format('Y-m-d') > date('Y-m-d')) ? 'text-danger' : '' }}">
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->title }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>

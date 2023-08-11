@@ -24,12 +24,13 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Title</th><th>Modules</th><th>Batches</th><th>Status</th><th>Date</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Title</th><th>Modules</th><th>Subject</th><th>Batches</th><th>Status</th><th>Date</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
                         @forelse($revisions as $key => $revision)
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $revision->title }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $revision->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
+                                <td>{{ $revision->subject->name }}</td>
                                 <td>{{ getActiveBatches()->whereIn('id', $revision->batches->pluck('batch_id'))->pluck('name')->implode(',') }}</td>
                                 <td>{{ ($revision->status == 0) ? 'Pending' : 'Completed' }}</td>
                                 <td>{{ $revision->date->format('d/M/Y') }}</td>
