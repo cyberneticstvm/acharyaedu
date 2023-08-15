@@ -93,108 +93,100 @@
           </a>
           <div class="collapse" id="admins">
             <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/branch">
-                    <i class="fa fa-code-fork sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Branch</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/user">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Staff</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/faculty">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Faculty</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/cschedule">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/course">
-                    <i class="fa fa-id-card-o sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Course</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/batch">
-                    <i class="fa fa-bars sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Batch</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/student-batch">
-                    <i class="fa fa-arrows-h sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student => Batch</span>
-                    </a>
-                </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#finance" aria-controls="finance" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Finance Admin</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(304.000000, 151.000000)">
-                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Finance Admin</span>
-          </a>
-          <div class="collapse" id="finance">
-            <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white " href="#">
-                  <i class='fa fa-gear sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Monthly Closing</span>
+                <a class="nav-link text-white " href="/slider">
+                  <i class='fa fa-image sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Slider</span>
                 </a>
               </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#fmgmnt" aria-controls="fmgmnt" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Finance Management</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(304.000000, 151.000000)">
-                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Finance Management</span>
-          </a>
-          <div class="collapse" id="fmgmnt">
-            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/user">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Staff</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/faculty">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Faculty</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/cschedule">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/branch">
+                  <i class="fa fa-code-fork sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Branch</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student">
+                  <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student (Offline)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/online">
+                  <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student (Online)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/course">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Course</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/syllabus">
+                  <i class="fa fa-file sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Syllabus</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/batch">
+                  <i class="fa fa-bars sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Batch</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student-batch">
+                  <i class="fa fa-arrows-h sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student => Batch</span>
+                </a>
+              </li>
+              <!--<li class="nav-item">
+                <a class="nav-link text-white " href="/syllabus-status">
+                  <i class="fa fa-check sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Syllabus Status</span>
+                </a>
+              </li>-->
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/module-status">
+                  <i class="fa fa-check sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Module Status</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/revision">
+                  <i class="fa fa-check sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Revision</span>
+                </a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link text-white " href="/fee">
                   <i class="fa fa-dollar sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Fee</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/attendance">
+                  <i class="fa fa-calendar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Attendance</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -215,140 +207,29 @@
                   <span class="sidenav-normal ms-2 ps-1">Expense</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="#">
-                  <i class='fa fa-gear sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Daily Closing</span>
-                </a>
-              </li>
             </ul>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#szone" aria-controls="szone" role="button" aria-expanded="false" data-bs-toggle="collapse">
+          <a class="nav-link active" href="#exam" aria-controls="exam" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Student Zone</title>
+            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Opticals</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(304.000000, 151.000000)">
-                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
+                      <g transform="translate(453.000000, 454.000000)">
+                        <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
+                        <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
                       </g>
                     </g>
                   </g>
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Student Zone</span>
+            <span class="nav-link-text ms-1">Exam Management</span>
           </a>
-          <div class="collapse" id="szone">
-            <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                    <a class="nav-link text-white " href="/student">
-                    <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student (Offline)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/student/online">
-                    <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student (Online)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white " href="/cschedule">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white " href="/attendance">
-                    <i class="fa fa-calendar sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Attendance</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white " href="#">
-                    <i class="fa fa-calendar sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Leave Details</span>
-                  </a>
-                </li>
-            </ul>
-          </div>
-        </li>    
-        <li class="nav-item">
-          <a class="nav-link active" href="#syllabus" aria-controls="syllabus" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Syllabus Management</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(304.000000, 151.000000)">
-                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Syllabus Management</span>
-          </a>
-          <div class="collapse" id="syllabus">
-            <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/syllabus">
-                  <i class="fa fa-file sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Syllabus</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/admin/topic">
-                  <i class='fa fa-bookmark sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Topic</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/admin/revision">
-                  <i class="fa fa-check sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Revision</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/module-status">
-                  <i class="fa fa-check sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">TW Exam Syllabus Status</span>
-                </a>
-              </li>              
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#question" aria-controls="question" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Question Zone</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(304.000000, 151.000000)">
-                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Question Zone</span>
-          </a>
-          <div class="collapse" id="question">
+          <div class="collapse" id="exam">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/subject">
@@ -387,35 +268,17 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/previousquestion">
+                  <i class='fa fa-quora sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Question Register (Previous)</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/caffairquestion">
                   <i class='fa fa-quora sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Question Register (Current Affairs)</span>
                 </a>
               </li>
-            </ul>
-          </div>
-        </li>    
-        <li class="nav-item">
-          <a class="nav-link active" href="#exam" aria-controls="exam" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Exam Zone</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(453.000000, 454.000000)">
-                        <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
-                        <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Exam Zone</span>
-          </a>
-          <div class="collapse" id="exam">
-            <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/exam">
                   <i class='fa fa-file-text-o sidenav-mini-icon'></i>
@@ -428,40 +291,10 @@
                   <span class="sidenav-normal ms-2 ps-1">Exam questions Register</span>
                 </a>
               </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#materials" aria-controls="materials" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Study Materials</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(453.000000, 454.000000)">
-                        <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
-                        <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Study Materials</span>
-          </a>
-          <div class="collapse" id="materials">
-            <ul class="nav nav-sm flex-column">
-            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/docs">
                   <i class='fa fa-file-upload sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Docs</span>
-                </a>
-              </li>              
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/admin/record">
-                  <i class='fa fa-youtube sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Recordings</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -470,14 +303,57 @@
                   <span class="sidenav-normal ms-2 ps-1">PSC Updates</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/record">
+                  <i class='fa fa-youtube sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Recordings</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/caffair">
+                  <i class='fa fa-check sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Current Affairs</span>
+                </a>
+              </li>
             </ul>
           </div>
-        </li>        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#settings" aria-controls="settings" role="button" aria-expanded="false" data-bs-toggle="collapse">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>settings</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(304.000000, 151.000000)">
+                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
+                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
+                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Settings</span>
+          </a>
+          <div class="collapse" id="settings">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/settings">
+                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Settings</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#opt" aria-controls="opt" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Reports</title>
+                <title>Opticals</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
@@ -493,7 +369,13 @@
             <span class="nav-link-text ms-1">Reports</span>
           </a>
           <div class="collapse" id="opt">
-            <ul class="nav nav-sm flex-column">              
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/report/daybook">
+                  <i class='fa fa-file sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Daybook</span>
+                </a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link text-white " href="/report/attendance">
                   <i class="fa fa-calendar sidenav-mini-icon"></i>
@@ -504,12 +386,6 @@
                 <a class="nav-link text-white " href="/report/attendance/summary">
                   <i class="fa fa-calendar sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Attendance Summary</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/report/daybook">
-                  <i class='fa fa-file sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Daybook</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -540,37 +416,6 @@
                 <a class="nav-link text-white " href="/admin/student/performance">
                   <i class="fa fa-line-chart sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Exam Performance</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#settings" aria-controls="settings" role="button" aria-expanded="false" data-bs-toggle="collapse">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>settings</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(304.000000, 151.000000)">
-                        <polygon class="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                        <path class="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                        <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Settings</span>
-          </a>
-          <div class="collapse" id="settings">
-            <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/slider">
-                  <i class='fa fa-image sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Slider</span>
                 </a>
               </li>
             </ul>
