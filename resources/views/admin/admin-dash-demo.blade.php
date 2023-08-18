@@ -15,6 +15,7 @@
             </div>
             <div class="card-body">
                 <h1 class="text-center">NAVADARSANA EDUCATIONS</h1>
+                <h5 class="text-center">Udayinkulangara, Trivandrum</h5>
             </div>
         </div>
     </div>
