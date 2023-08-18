@@ -271,7 +271,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white " href="#">
+                  <a class="nav-link text-white " href="/admin/leaves">
                     <i class="fa fa-calendar sidenav-mini-icon"></i>
                     <span class="sidenav-normal ms-2 ps-1">Leave Details</span>
                   </a>

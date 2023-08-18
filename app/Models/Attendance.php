@@ -15,11 +15,21 @@ class Attendance extends Model
         'reason',
     ];
 
+    protected $casts = ['date' => 'date'];
+
     public function student(){
         return $this->belongsTo(Student::class, 'student');
     }
 
+    public function studentName(){
+        return $this->belongsTo(Student::class, 'student');
+    }
+
     public function batch(){
+        return $this->belongsTo(Batch::class, 'batch');
+    }
+
+    public function batchName(){
         return $this->belongsTo(Batch::class, 'batch');
     }
 }

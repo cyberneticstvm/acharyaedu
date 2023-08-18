@@ -363,6 +363,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/caffair/edit/{id}', [CurrentAffairController::class, 'edit'])->name('caffair.edit');
     Route::put('/admin/caffair/edit/{id}', [CurrentAffairController::class, 'update'])->name('caffair.update');
     Route::delete('/admin/caffair/delete/{id}', [CurrentAffairController::class, 'destroy'])->name('caffair.delete');
+
+    Route::get('/admin/leaves', [AdminController::class, 'leaves'])->name('leaves');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){

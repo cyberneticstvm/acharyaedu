@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Expense;
 use App\Models\Fee;
 use App\Models\Income;
@@ -107,5 +108,10 @@ class AdminController extends Controller
 		) AS dates
 		LEFT JOIN student_batches s ON s.created_at >= date AND s.created_at < date + INTERVAL 1 MONTH GROUP BY date");
         return json_encode($students);
+    }
+
+    public function leaves(){
+        $attendance = Attendance::where('leave', 1)->orderByDesc('date')->get();
+        return view('admin.student.leaves', compact('attendance'));
     }
 }
