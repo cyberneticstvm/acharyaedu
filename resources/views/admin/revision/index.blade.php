@@ -30,7 +30,7 @@
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $revision->title }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $revision->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
-                                <td>{{ $revision->subject->name }}</td>
+                                <td>{{ ($revision->subject) ? $revision->subject->name : '' }}</td>
                                 <td>{{ getActiveBatches()->whereIn('id', $revision->batches->pluck('batch_id'))->pluck('name')->implode(',') }}</td>
                                 <td>{{ ($revision->status == 0) ? 'Pending' : 'Completed' }}</td>
                                 <td>{{ $revision->date->format('d/M/Y') }}</td>
