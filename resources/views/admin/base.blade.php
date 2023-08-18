@@ -95,7 +95,7 @@
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                     <a class="nav-link text-white " href="/admin/dashdemo">
-                    <i class="fa fa-dash sidenav-mini-icon"></i>
+                    <i class="fa fa-dashboard sidenav-mini-icon"></i>
                     <span class="sidenav-normal ms-2 ps-1">Dashboard</span>
                     </a>
                 </li>
