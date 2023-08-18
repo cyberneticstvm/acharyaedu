@@ -95,7 +95,7 @@
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                     <a class="nav-link text-white " href="/admin/dashdemo">
-                    <i class="fa fa-computer sidenav-mini-icon"></i>
+                    <i class="fa fa-dash sidenav-mini-icon"></i>
                     <span class="sidenav-normal ms-2 ps-1">Dashboard</span>
                     </a>
                 </li>
@@ -711,7 +711,7 @@
   <script src="{{ asset('admin-assets/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('admin-assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
   <script src="{{ asset('admin-assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-  @if(Route::current()->getName() == 'admin.exam.performance' || Route::current()->getName() == 'dash')
+  @if(Route::current()->getName() == 'admin.exam.performance' || Route::current()->getName() == 'dashdemo')
   <script src="{{ asset('admin-assets/js/plugins/chartjs.min.js') }}"></script>
   <script src="{{ asset('admin-assets/js/acharya-charts.js') }}"></script>
   @endif
