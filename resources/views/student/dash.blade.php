@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        
+                        <img src="{{ asset('assets/images/APJ.jpeg') }}" class="img-fluid" />
                     </div>
                     <div class="col-md-4">
                         @if(Auth::user()->student->photo)
