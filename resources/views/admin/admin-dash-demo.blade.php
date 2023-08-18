@@ -13,6 +13,9 @@
             <div class="card-body text-center">
                 <img src="{{ asset('admin-assets/img/acharya3.jpeg') }}" class="img-fluid" width="50%"/>
             </div>
+            <div class="card-body">
+                <h1 class="text-center">NAVADARSANA EDUCATIONS</h1>
+            </div>
         </div>
     </div>
 </div>
