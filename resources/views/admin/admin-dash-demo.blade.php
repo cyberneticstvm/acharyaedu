@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="card-body text-center">
-                <img src="{{ asset('admin-assets/img/acharya3.jpeg') }}" class="img-fluid"/>
+                <img src="{{ asset('admin-assets/img/acharya3.jpeg') }}" class="img-fluid" width="50%"/>
             </div>
         </div>
     </div>
