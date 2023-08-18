@@ -24,7 +24,7 @@ class AdminController extends Controller
             $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
             $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
             $income = $afee + $bfee + $income; $profit = $income - $expense;
-            return view('admin.admin-dash', compact('income', 'expense', 'profit'));
+            return view('admin.admin-dash-demo', compact('income', 'expense', 'profit'));
         elseif($user->role == 'Staff'):
             return view('admin.staff-dash');
         //return redirect()->route('staff.dash')->with("success", "User logged in successfully!");
@@ -32,6 +32,15 @@ class AdminController extends Controller
             return view('student.dash');
             //return redirect()->route('student.dash')->with("success", "User logged in successfully!");
         endif;
+    }
+
+    public function dashdemo(){
+        $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
+        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
+        $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
+        $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+        $income = $afee + $bfee + $income; $profit = $income - $expense;
+        return view('admin.admin-dash', compact('income', 'expense', 'profit'));
     }
 
     public function show(){

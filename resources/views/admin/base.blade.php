@@ -93,6 +93,12 @@
           </a>
           <div class="collapse" id="admins">
             <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                    <a class="nav-link text-white " href="/admin/dashdemo">
+                    <i class="fa fa-computer sidenav-mini-icon"></i>
+                    <span class="sidenav-normal ms-2 ps-1">Dashboard</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white " href="/branch">
                     <i class="fa fa-code-fork sidenav-mini-icon"></i>
