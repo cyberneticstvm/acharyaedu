@@ -28,10 +28,10 @@
                             <p class="fw-bold">"ഉറക്കത്തിൽ കാണുന്നതല്ല സ്വപ്നം... നമ്മുടെ ഉറക്കം നഷ്ടപ്പെടുത്തുന്നതാണ് യഥാർത്ഥ സ്വപ്നം... "</p>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <img src="{{ asset('assets/images/APJ.jpeg') }}" class="img-fluid" />
+                    <div class="col-md-12 text-center">
+                        <img src="{{ asset('assets/images/APJ.jpeg') }}" class="img-fluid" width="50%"/>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         @if(Auth::user()->student->photo)
                             <img src="{{ asset('storage/student-photos/'.Auth::user()->student->id.'/'.Auth::user()->student->photo) }}" height="100%" width="50%" class="img-fluid" alt="{{ Auth::user()->student->name }}" />
                         @else
@@ -51,12 +51,12 @@
                                 </div>
                             </form>
                         @endif
-                        <!--<div class="mt-5">
+                        <div class="mt-5">
                             <h5>Payment QR Code</h5>
                             <img src="{{ asset('assets/images/qr.png') }}" width="250" height="250" alt="QR" />
                             <p>OR ENTER PAYMENT ADDRESS<br><strong>saijusss0951@dlb</strong></p>
-                        </div>-->
-                    </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>
