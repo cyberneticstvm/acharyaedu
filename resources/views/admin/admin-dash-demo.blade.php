@@ -10,6 +10,9 @@
                     </div>
                 </div>
             </div>
+            <div class="card-body text-center">
+                <img src="{{ asset('admin-assets/img/acharya3.jpeg') }}" class="img-fluid"/>
+            </div>
         </div>
     </div>
 </div>
