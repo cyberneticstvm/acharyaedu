@@ -80,11 +80,7 @@
                                                 </select>
                                             </td>
                                             <td>
-                                            <form method="post" action="{{ route('module.complete.delete', $module->id) }}">
-                                                @csrf 
-                                                @method("DELETE")
-                                                <button type="submit" class="border no-border" onclick="javascript: return confirm('Are you sure want to delete this record?');"><i class="fa fa-trash text-danger"></i></button>
-                                            </form>
+                                            
                                             </td>
                                         </tr>
                                         @empty
@@ -98,6 +94,11 @@
                             </div>
                         </div>
                     </form>
+                    <!--<form method="post" action="{{ route('module.complete.delete', $module->id) }}">
+                        @csrf 
+                        @method("DELETE")
+                        <button type="submit" class="border no-border" onclick="javascript: return confirm('Are you sure want to delete this record?');"><i class="fa fa-trash text-danger"></i></button>
+                    </form>-->
                     <h5 class="mb-3">Modules completed in Topic wise Exams</h5>
                     <div class="col"> {{ $topics }}</div>
                 </div>

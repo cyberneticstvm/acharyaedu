@@ -14,8 +14,8 @@
                 <img src="{{ asset('admin-assets/img/acharya3.jpeg') }}" class="img-fluid" width="50%"/>
             </div>
             <div class="card-body">
-                <h1 class="text-center">NAVADARSANA EDUCATIONS</h1>
-                <h5 class="text-center">Udayinkulangara, Trivandrum</h5>
+                <h1 class="text-center">NAVADARSHANA EDUCATIONS</h1>
+                <h5 class="text-center">Udayankulangara, Trivandrum</h5>
             </div>
         </div>
     </div>
