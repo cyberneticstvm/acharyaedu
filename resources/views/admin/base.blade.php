@@ -335,7 +335,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#question" aria-controls="question" role="button" aria-expanded="false" data-bs-toggle="collapse">
+          <a class="nav-link active" href="#questionzone" aria-controls="questionzone" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Question Zone</title>
@@ -354,7 +354,7 @@
             </div>
             <span class="nav-link-text ms-1">Question Zone</span>
           </a>
-          <div class="collapse" id="question">
+          <div class="collapse" id="questionzone">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/subject">
