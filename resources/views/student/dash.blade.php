@@ -28,8 +28,13 @@
                             <p class="fw-bold">"ഉറക്കത്തിൽ കാണുന്നതല്ല സ്വപ്നം... നമ്മുടെ ഉറക്കം നഷ്ടപ്പെടുത്തുന്നതാണ് യഥാർത്ഥ സ്വപ്നം... "</p>
                         </div>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <img src="{{ asset('assets/images/APJ.jpeg') }}" class="img-fluid" width="50%"/>
+                    <div class="col-md-4 mt-5 text-center">
+                        <h4>Become Master</h4>
+                        <h2 class="bg-text color-900">A better <span class="fw-bold">learning</span> future starts here</h2>
+                        <p class="color-500 lead mb-4">When You do Something Patiently Everyday, Eventually You Will Become the Master of It.</p>
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <img src="{{ asset('assets/images/hero.svg') }}" class="img-fluid" width="50%"/>
                     </div>
                     <!-- <div class="col-md-4">
                         @if(Auth::user()->student->photo)
