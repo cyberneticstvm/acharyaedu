@@ -398,6 +398,12 @@
                   <span class="sidenav-normal ms-2 ps-1">Question Register (Current Affairs)</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/caffair">
+                  <i class='fa fa-check sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Daily Current Affairs</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>    
