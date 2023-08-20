@@ -79,8 +79,8 @@
                                                     <option value="1" {{ (($module->status) && $module->status == 1) ? 'selected' : '' }}>Completed</option>
                                                 </select>
                                             </td>
-                                            <td>
-                                            
+                                            <td class="text-center">
+                                            <a href="javascript:void(0)" class="dlt" data-id="{{$module->id}}" data-model="module-status"><i class="fa fa-trash text-danger"></i></a>
                                             </td>
                                         </tr>
                                         @empty

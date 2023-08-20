@@ -6,6 +6,7 @@ use App\Models\Attendance;
 use App\Models\Expense;
 use App\Models\Fee;
 use App\Models\Income;
+use App\Models\ModuleCompleteStatus;
 use App\Models\Settings;
 use App\Models\Student;
 use App\Models\Syllabus;
@@ -122,5 +123,13 @@ class AdminController extends Controller
     public function leaves(){
         $attendance = Attendance::where('leave', 1)->orderByDesc('date')->get();
         return view('admin.student.leaves', compact('attendance'));
+    }
+
+    public function deleteRecord(Request $request){
+        $id = $request->id; $model = $request->model;
+        if($model == 'module-status'):
+            ModuleCompleteStatus::findOrFail($id)->delete();
+        endif;
+        echo "Record deleted successfully";
     }
 }

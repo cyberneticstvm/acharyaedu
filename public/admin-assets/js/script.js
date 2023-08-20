@@ -150,6 +150,22 @@ $(function(){
       }
     });
 
+    $(document).on('click', '.dlt', function(){
+      var id = $(this).data('id');
+      var model = $(this).data('model');
+      $.ajax({
+          type: 'POST',
+          url: '/admin/record/delete',
+          data: {'id': id, 'model': model},
+          success: function(response){
+              alert(response);
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown){
+              console.log(XMLHttpRequest);
+          }
+      });
+    });
+
 });
 
 setTimeout(function () {

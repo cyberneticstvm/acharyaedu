@@ -366,6 +366,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 
     Route::get('/admin/leaves', [AdminController::class, 'leaves'])->name('leaves');
     Route::get('/admin/dashdemo', [AdminController::class, 'dashdemo'])->name('dashdemo');
+
+    Route::post('/admin/record/delete', [AdminController::class, 'deleteRecord'])->name('admin.record.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
