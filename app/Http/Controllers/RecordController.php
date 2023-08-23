@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Record;
+use App\Models\RecordBatch;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Exception;
@@ -39,12 +40,21 @@ class RecordController extends Controller
             'type' => 'required',
             'category' => 'required',
             'video_id' => 'required',
+            'batch_id' => 'present|array',
         ]);
         $input = $request->all();
         $input['created_by'] = $request->user()->id;
         $input['updated_by'] = $request->user()->id;
         try{
             $record = Record::create($input);
+            $batches = [];
+            foreach($request->batch_id as $key => $batch):
+                $batches [] = [
+                    'batch_id' => $batch,
+                    'record_id' => $record->id,
+                ];
+            endforeach;
+            RecordBatch::insert($batches);            
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
@@ -79,12 +89,22 @@ class RecordController extends Controller
             'type' => 'required',
             'category' => 'required',
             'video_id' => 'required',
+            'batch_id' => 'present|array',
         ]);
         $input = $request->all();
         $input['updated_by'] = $request->user()->id;
         try{
-            $record = Record::find($id);
+            $record = Record::find($id); 
+            $batches = [];
+            foreach($request->batch_id as $key => $batch):
+                $batches [] = [
+                    'batch_id' => $batch,
+                    'record_id' => $record->id,
+                ];
+            endforeach;
             $record->update($input);
+            RecordBatch::where('record_id', $id)->delete();
+            RecordBatch::insert($batches);
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }

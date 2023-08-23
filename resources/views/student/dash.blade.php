@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card z-index-2">
-                            <p class="fw-bold">"ഉറക്കത്തിൽ കാണുന്നതല്ല സ്വപ്നം... നമ്മുടെ ഉറക്കം നഷ്ടപ്പെടുത്തുന്നതാണ് യഥാർത്ഥ സ്വപ്നം... "</p>
+                            <p class="fw-bold">"Dream is not that which you see while sleeping, it is something that does not let you sleep" Dr. APJ Abdul Kalam</p>
                         </div>
                     </div>
                     <div class="col-md-4 mt-5 text-center">

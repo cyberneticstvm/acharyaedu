@@ -23,4 +23,8 @@ class Record extends Model
     public function subject(){
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
     }
+
+    public function batches(){
+        return $this->hasMany(RecordBatch::class, 'record_id', 'id');
+    }
 }

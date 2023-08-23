@@ -21,7 +21,7 @@
                     @csrf
                     @method("PUT")
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Title</label>
                                 <div class="mb-3">
@@ -48,6 +48,15 @@
                                     <small class="text-danger">{{ $errors->first('subject_id') }}</small>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="req mb-1">Batch</label>
+                                {!! Form::select('batch_id[]', getActiveBatches()->pluck('name', 'id')->all(),  $record->batches()->pluck('batch_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}                                  
+                            </div>
+                            @error('batch_id')
+                                <small class="text-danger">{{ $errors->first('batch_id') }}</small>
+                            @enderror
                         </div>               
                         <div class="col-md-2">
                             <div class="form-group">
@@ -93,7 +102,7 @@
                             <div class="form-group">
                                 <label class="">Description</label>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="description" value="{{ $record->notes }}" placeholder="Description" />
+                                    <input type="text" class="form-control" name="description" value="{{ $record->description }}" placeholder="Description" />
                                 </div>
                             </div>
                         </div>                        

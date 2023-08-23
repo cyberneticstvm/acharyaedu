@@ -20,7 +20,7 @@
                 <form role="form" method="post" action="{{ route('record.save') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Title</label>
                                 <div class="mb-3">
@@ -47,6 +47,21 @@
                                     <small class="text-danger">{{ $errors->first('subject_id') }}</small>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="req mb-1">Batch</label>
+                                <select class="form-control select2" name="batch_id[]" multiple>
+                                    <option value="">Select</option>
+                                    @forelse(getActiveBatches() as $key => $batch)
+                                        <option value="{{ $batch->id }}">{{ $batch->name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>                                  
+                            </div>
+                            @error('batch_id')
+                                <small class="text-danger">{{ $errors->first('batch_id') }}</small>
+                            @enderror
                         </div>               
                         <div class="col-md-2">
                             <div class="form-group">
