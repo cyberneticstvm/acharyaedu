@@ -20,8 +20,12 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
     <!-- main css -->
+    @if(Route::current()->getName() == 'onam2023gal')
+    <link rel="stylesheet" href="{{ asset('assets/plugin/magnific-popup/magnific-popup.css') }}">
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/acharya.css') }}">
+
 </head>
 
 <body class="home-one">
@@ -432,6 +436,16 @@
     <!-- swip image -->
     <script src="{{ asset('assets/js/plugins/swip-img.js') }}"></script>
     <!-- header style two End -->
+    @if(Route::current()->getName() == 'onam2023gal')
+    <script src="{{ asset('assets/plugin/magnific-popup/jquery.magnific-popup.js') }}"></script>
+    <script>
+      $(document).ready(function() {
+        $('.popup-img').magnificPopup({
+          type: 'iframe'
+        });
+      });
+    </script>
+    @endif
     <script>
         $('form').submit(function(){
             $(".btn-submit").attr("disabled", true);

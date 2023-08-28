@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Batch;
 use App\Models\Exam;
 use App\Models\FreeExamScore;
+use App\Models\Gallery;
 use App\Models\Question;
 use App\Models\StudentBatch;
 use App\Models\StudentExamScore;
@@ -104,5 +105,10 @@ class HelperController extends Controller
         else:
             return redirect()->back()->with('error', "No result found");
         endif;
+    }
+
+    public function onam2023gal(){
+        $gals = Gallery::where('type', 'image')->orderByDesc('id')->get();
+        return view('onam-celeb-2023-gallery', compact('gals'));
     }
 }

@@ -23,6 +23,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\FeeController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\PDFController;
@@ -62,9 +63,7 @@ Route::get('/onam-celeb-2023-video', function () {
     return view('onam-celeb-2023-video');
 })->name('onam2023vid');
 
-Route::get('/onam-celeb-2023-gallery', function () {
-    return view('onam-celeb-2023-gallery');
-})->name('onam2023gal');
+Route::get('/onam-celeb-2023-gallery', [HelperController::class, 'onam2023gal'])->name('onam2023gal');
 
 Route::get('/register', [StudentController::class, 'register'])->name('register');
 Route::post('/register', [StudentController::class, 'save'])->name('student.register');
@@ -376,6 +375,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/dashdemo', [AdminController::class, 'dashdemo'])->name('dashdemo');
 
     Route::post('/admin/record/delete', [AdminController::class, 'deleteRecord'])->name('admin.record.delete');
+
+    Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('gallery');
+    Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/admin/gallery/create', [GalleryController::class, 'store'])->name('gallery.save');
+    Route::get('/admin/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+    Route::put('/admin/gallery/edit/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::delete('/admin/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('gallery.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){

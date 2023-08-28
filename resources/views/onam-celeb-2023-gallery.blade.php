@@ -10,9 +10,12 @@
                     <h2 class="title">Onam Celebration 2023</h2>
                 </div>
                 <div class="row">
-                    <div class="col text-center">
-                        
-                    </div>
+                    @forelse($gals as $key => $gal)
+                        <div class="col-md-3">
+                            <a class="popup-img" href="{{ asset('storage/'.$gal->attachment) }}"><img src="{{ asset('storage/'.$gal->attachment) }}" alt="Onam2023" class="img-fluid rounded" /></a>
+                        </div>
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </div>
