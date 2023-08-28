@@ -80,6 +80,7 @@
                                             <a class="nav-link" href="#">Gallery</a>
                                             <ul class="submenu inner-page">
                                                 <li><a href="/onam-celeb-2023-video">Onam Celebration 2023 (Video)</a></li>
+                                                <li><a href="/onam-celeb-2023-gallery">Onam Celebration 2023 (Gallery)</a></li>
                                             </ul>
                                         </li>
                                         <li class="has-droupdown pages">
