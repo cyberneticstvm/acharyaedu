@@ -58,6 +58,10 @@ Route::get('/message', function () {
     return view('message');
 })->name('message');
 
+Route::get('/onam-celeb-2023-video', function () {
+    return view('onam-celeb-2023-video');
+})->name('message');
+
 Route::get('/register', [StudentController::class, 'register'])->name('register');
 Route::post('/register', [StudentController::class, 'save'])->name('student.register');
 Route::get('/signin', [StudentController::class, 'show'])->name('signin.show');

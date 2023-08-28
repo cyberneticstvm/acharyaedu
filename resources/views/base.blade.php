@@ -76,8 +76,11 @@
                                         <li class="menu-item">
                                             <a class="nav-item" href="/">About</a>
                                         </li>
-                                        <li class="menu-item">
-                                            <a class="nav-item" href="/">Gallery</a>
+                                        <li class="has-droupdown pages">
+                                            <a class="nav-link" href="#">Gallery</a>
+                                            <ul class="submenu inner-page">
+                                                <li><a href="/onam-celeb-2023-video">Onam Celebration 2023 (Video)</a></li>
+                                            </ul>
                                         </li>
                                         <li class="has-droupdown pages">
                                             <a class="nav-link" href="#">Courses</a>
