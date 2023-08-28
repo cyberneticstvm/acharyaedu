@@ -156,9 +156,13 @@
                     <li>
                         <a href="/" class="main">About</a>
                     </li>
-                    <li>
-                        <a href="/" class="main">Gallery</a>
-                    </li>                    
+                    <li class="has-droupdown">
+                        <a class="main" href="#">Gallery</a>
+                        <ul class="submenu">
+                            <li><a class="mobile-menu-link" href="/onam-celeb-2023-video">Onam Celebration 2023 (Video)</a></li>
+                            <li><a class="mobile-menu-link" href="/onam-celeb-2023-gallery">Onam Celebration 2023 (Gallery)</a></li>
+                        </ul>
+                    </li>                   
                     <li class="has-droupdown">
                         <a href="#" class="main">Courses</a>
                         <ul class="submenu">
