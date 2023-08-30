@@ -20,11 +20,12 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
     <!-- main css -->
+    
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/acharya.css') }}">
     @if(Route::current()->getName() == 'onam2023gal')
     <link rel="stylesheet" href="{{ asset('assets/plugin/magnific-popup/magnific-popup.css') }}">
     @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/acharya.css') }}">
 
 </head>
 
@@ -440,8 +441,11 @@
     <script src="{{ asset('assets/plugin/magnific-popup/jquery.magnific-popup.js') }}"></script>
     <script>
       $(document).ready(function() {
-        $('.popup-img').magnificPopup({
-          type: 'iframe'
+        $('.popupgal').magnificPopup({
+          type: 'image',
+          gallery:{
+			enabled:true
+            }
         });
       });
     </script>

@@ -12,7 +12,7 @@
                 <div class="row">
                     @forelse($gals as $key => $gal)
                         <div class="col-md-3">
-                            <a class="popup-img" href="{{ asset('storage/'.$gal->attachment) }}"><img src="{{ asset('storage/'.$gal->attachment) }}" alt="Onam2023" class="img-fluid rounded" /></a>
+                            <a class="popupgal" href="{{ url('storage/'.$gal->attachment) }}"><img src="{{ url('storage/'.$gal->attachment) }}" alt="Onam2023" /></a>
                         </div>
                     @empty
                     @endforelse

@@ -566,13 +566,13 @@ class StudentController extends Controller
     public function videos($type){
         $student = Student::find(Auth::user()->student->id);
         if($type == 1):
-            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*')->where('records.type', 'Recordings')->where('records.category', 'Paid')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
+            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*, records.video_id')->where('records.type', 'Recordings')->where('records.category', 'Paid')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
         elseif($type == 2):
-            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*')->where('records.type', 'Recordings')->where('records.category', 'Free')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
+            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*, records.video_id')->where('records.type', 'Recordings')->where('records.category', 'Free')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
         elseif($type == 3):
-            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*')->where('records.type', 'Zoom')->where('records.category', 'Paid')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
+            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*, records.video_id')->where('records.type', 'Zoom')->where('records.category', 'Paid')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
         else:
-            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*')->where('records.type', 'Zoom')->where('records.category', 'Free')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
+            $videos = Record::leftJoin('record_batches', 'records.id', 'record_batches.record_id')->selectRaw('record_batches.*, records.video_id')->where('records.type', 'Zoom')->where('records.category', 'Free')->whereIn('record_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('record_batches.id')->get();
         endif;
         return view('student.videos', compact('videos', 'student'));
     }
