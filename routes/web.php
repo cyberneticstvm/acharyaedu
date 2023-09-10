@@ -81,8 +81,8 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');   
     Route::get('/student/exam/result/{id}/{type}', [StudentController::class, 'examresult'])->name('student.exam.result');
     Route::get('/student/exam/performance/{id}/{type}', [StudentController::class, 'examperformance'])->name('student.exam.performance');    
-    Route::get('/student/dash', [StudentController::class, 'getprofile'])->name('student.profile.get');
-    Route::put('/student/dash', [StudentController::class, 'profileupdate'])->name('student.profile.update');
+    Route::get('/student/profile', [StudentController::class, 'getprofile'])->name('student.profile.get');
+    Route::put('/student/profile', [StudentController::class, 'profileupdate'])->name('student.profile.update');
     Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');    
     Route::get('/student/freeexam', [StudentController::class, 'freeexam'])->name('student.freeexam');    
     Route::post('/student/freeexam', [StudentController::class, 'createfreeexam'])->name('student.freeexam.create');    

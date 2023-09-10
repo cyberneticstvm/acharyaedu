@@ -159,7 +159,7 @@ class StudentController extends Controller
     }
 
     public function getprofile(){
-        return view('student.dash');
+        return view('student.profile');
     }
 
     public function profileupdate(Request $request){
@@ -175,7 +175,7 @@ class StudentController extends Controller
             $student->update($input);                
             $user->update($input);
         });
-        return redirect()->route('student.dash')->with("success", "Profile updated successfully!");
+        return redirect()->route('student.profile')->with("success", "Profile updated successfully!");
     }
 
     public function signin(Request $request){
