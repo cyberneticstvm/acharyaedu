@@ -47,11 +47,20 @@
             <div class="card-body">
                 <div class="row">
                     <h5 class="mb-3">Modules completed in Batch</h5>
+                    <div class="col">
+                        <select class="form-control cFilter" name="batch">
+                            <option value="">Select subject to filter the records</option>
+                            @forelse(getAllsubjects() as $key => $sub)
+                                <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                            @empty
+                            @endforelse
+                        </select>
+                    </div>
                     <form method="post" action="{{ route('module.status.save') }}">
                         @csrf                    
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered">
+                                <table class="table table-striped table-bordered tblModuleStatus">
                                     <thead class="thead-light">
                                         <tr><th>SL No</th><th>Module Name</th><th>Subject</th><th>Faculty</th><th>Status</th><th>Remove</th></tr>
                                     </thead>

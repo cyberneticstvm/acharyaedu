@@ -6,7 +6,7 @@
             <div class="card-header pb-0 text-left bg-transparent">
                 <div class="row">
                     <div class="col">
-                        <h3 class="font-weight-bolder text-primary text-gradient">Dashboard - Student</h3>
+                        <h3 class="font-weight-bolder text-primary text-gradient">Student Profile</h3>
                         <h5 class="font-weight-bolder text-primary text-gradient">Student ID: {{ Auth::user()->student->id }}</h5>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                             </div>
                         </form>
                     </div>
-                     <div class="col-md-4">
+                     <div class="col-md-4 text-center">
                         @if(Auth::user()->student->photo)
                             <img src="{{ asset('storage/student-photos/'.Auth::user()->student->id.'/'.Auth::user()->student->photo) }}" height="100%" width="50%" class="img-fluid" alt="{{ Auth::user()->student->name }}" />
                         @else
@@ -91,10 +91,16 @@
                                 </div>
                             </form>
                         @endif
-                        <div class="mt-5">
+                        <div class="mt-5 text-center">
                             <h5>Payment QR Code</h5>
-                            <img src="{{ asset('assets/images/qr.png') }}" width="250" height="250" alt="QR" />
-                            <p>OR ENTER PAYMENT ADDRESS<br><strong>saijusss0951@dlb</strong></p>
+                            <img src="{{ asset('assets/images/qr.jpg') }}" width="50%" alt="QR" class="img-fluid" />
+                            <p><a target="_blank" class="text-primary" href="{{ asset('assets/images/qr.jpg') }}">Download QR Code</a></p>
+                            <p>Or transfer funds to</p>
+                            Account Holder: NAVADARSHANA EDUCATIONS PRIVATE LIMITED<br>
+                            Account Number: 50200082161245<br>
+                            IFSC: HDFC0004896<br>
+                            Branch: NEYYATTINKARA<br>
+                            Account Type: CURRENT
                         </div>
                     </div> 
                 </div>

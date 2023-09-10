@@ -166,6 +166,17 @@ $(function(){
       });
     });
 
+    $(".cFilter").change(function(e){
+        var txt = $('.cFilter option:selected').text();
+        $(".tblModuleStatus tbody tr").each(function(){
+            if($(this).find("td:eq(2)").text() == txt){
+              $(this).show();
+            }else{
+              $(this).hide();
+            }
+        })
+    })
+
 });
 
 setTimeout(function () {
