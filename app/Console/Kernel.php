@@ -59,7 +59,7 @@ class Kernel extends ConsoleKernel
                 endforeach;
                 Attendance::insert($data);
             endforeach;
-        })->days(range(1, 6))->at('12:30'); // Exclude Sunday
+        })->days(range(1, 6))->at('12:30')->appendOutputTo('schedule_log.log'); // Exclude Sunday
     }
 
     private function getClosingBalance(){
