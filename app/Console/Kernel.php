@@ -2,11 +2,14 @@
 
 namespace App\Console;
 
+use App\Models\Attendance;
+use App\Models\Batch;
 use App\Models\Exam;
 use App\Models\Expense;
 use App\Models\Fee;
 use App\Models\Income;
 use App\Models\Student;
+use App\Models\StudentBatch;
 use App\Models\StudentExam;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -37,6 +40,26 @@ class Kernel extends ConsoleKernel
                 ['date' => Carbon::today(), 'closing_balance' => $closing_balance, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
             );
         })->dailyAt('23:30');
+
+        $schedule->call(function () {
+            $batches = Batch::where('status', 1)->get();
+            foreach($batches as $key => $batch):
+                $students = StudentBatch::where('batch', $batch->id)->where('cancelled', 0)->get();
+                $data = [];
+                foreach($students as $key1 => $student):
+                    $data [] = [
+                        'student' => $student->student,
+                        'batch' => $batch->id,
+                        'date' => Carbon::today(),
+                        'created_by' => 1,
+                        'updated_by' => 1,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                endforeach;
+                Attendance::insert($data);
+            endforeach;
+        })->days(range(1, 6))->at('12:30'); // Exclude Sunday
     }
 
     private function getClosingBalance(){
