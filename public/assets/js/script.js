@@ -60,6 +60,29 @@ $(function(){
         }
     });
     $(".sw-btn").removeClass("btn").addClass("rts-btn");
+
+    $(document).on("change", ".selFilter", function(){
+        var cls = $(this).data('class');
+        var txt = $(".selFilter option:selected").text();
+        $(".tblFilter tbody tr").each(function(){
+            if(txt == $(this).find("."+cls).text()){
+                $(this).show();
+            }else{
+                $(this).hide();
+            }
+        });
+    });
+
+    $(".vidSubject").change(function(){
+        var sid = $(this).val();
+        $(".subFilter").each(function(){
+            if($(this).data('cls') == "sub_"+sid){
+                $(this).removeClass("d-none");
+            }else{
+                $(this).addClass("d-none")
+            }
+        })
+    });
 });
 
 function showTab(tab){

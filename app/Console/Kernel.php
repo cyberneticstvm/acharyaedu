@@ -3,10 +3,15 @@
 namespace App\Console;
 
 use App\Models\Exam;
+use App\Models\Expense;
+use App\Models\Fee;
+use App\Models\Income;
+use App\Models\Student;
 use App\Models\StudentExam;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,6 +30,24 @@ class Kernel extends ConsoleKernel
                 endforeach;
             endforeach;
         })->dailyAt('23:30');
+
+        $schedule->call(function () {
+            $closing_balance = $this->getclosingBalance();
+            DB::table('daily_closings')->insert(
+                ['date' => Carbon::today(), 'closing_balance' => $closing_balance, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+            );
+        })->dailyAt('23:30');
+    }
+
+    private function getClosingBalance(){
+
+        $opening_balance = DB::table('daily_closings as d')->select(DB::raw("MAX(d.id), IFNULL(d.closing_balance, 0) AS closing_balance"))->whereDate('d.date', '=', Carbon::today()->subDays(1))->orderByDesc('d.id')->first()->closing_balance;
+
+        $admission_fee = Student::whereDate('created_at', Carbon::today())->sum('admission_fee_advance');
+        $batch_fee = Fee::whereDate('paid_date', Carbon::today())->sum('fee_advance');
+        $income = Income::whereDate('date', Carbon::today())->sum('amount');
+        $expense = Expense::whereDate('date', Carbon::today())->sum('amount');
+        return ($opening_balance + $admission_fee + $batch_fee + $income) - $expense;
     }
 
     /**

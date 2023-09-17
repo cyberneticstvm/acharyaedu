@@ -10,15 +10,32 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="req">Subject</label>
+                            <div class="mb-3">
+                                <select class="form-control selFilter" name="subject_id" data-class="findVal">
+                                    <option value="">Select</option>
+                                    @forelse(getAllSubjects() as $key => $subject)
+                                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                            </div>
+                            @error('subject_id')
+                                <small class="text-danger">{{ $errors->first('subject_id') }}</small>
+                            @enderror
+                        </div>
+                    </div>
                     @php $slno = 1; @endphp
-                    <table id="datatable-basic" class="table table-sm table-striped table-bordered">
+                    <table id="datatable-basic" class="table table-sm table-striped table-bordered tblFilter">
                         <thead><tr><th>SL No</th><th>Doc Type</th><th>Title</th><th>Subject</th><th>Modules</th><th>View</th><th>Notes</th></tr></thead><tbody>
                         @forelse($downloads as $key => $doc)
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->doctype->name }}</td>
                                 <td>{{ $doc->title }}</td>
-                                <td>{{ $doc->subject->name }}</td>
+                                <td class="findVal">{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
                                 <td class="text-center"><a href="/student/notes/view/{{encrypt($doc->id)}}">View</a></td>
                                 <td>{{ $doc->notes }}</td>
