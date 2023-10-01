@@ -403,7 +403,7 @@
                   <i class='fa fa-check sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Daily Current Affairs</span>
                 </a>
-              </li>
+              </li>              
             </ul>
           </div>
         </li>    
@@ -438,6 +438,12 @@
                 <a class="nav-link text-white " href="/admin/eq">
                   <i class='fa fa-file-code-o sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Exam questions Register</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/oep">
+                  <i class='fa fa-check sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Offline Exam Performance</span>
                 </a>
               </li>
             </ul>

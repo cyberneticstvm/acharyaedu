@@ -26,6 +26,7 @@ use App\Http\Controllers\FeeController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\OfflineExamPerformanceController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PreviousQuestionController;
 use App\Http\Controllers\PSCUpdateController;
@@ -382,6 +383,14 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
     Route::put('/admin/gallery/edit/{id}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('/admin/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('gallery.delete');
+
+    Route::get('/admin/oep', [OfflineExamPerformanceController::class, 'index'])->name('oep');
+    Route::get('/admin/oep/create', [OfflineExamPerformanceController::class, 'create'])->name('oep.create');
+    Route::post('/admin/oep/create', [OfflineExamPerformanceController::class, 'store'])->name('oep.save');
+    Route::get('/admin/oep/edit/{id}', [OfflineExamPerformanceController::class, 'edit'])->name('oep.edit');
+    Route::put('/admin/oep/edit/{id}', [OfflineExamPerformanceController::class, 'update'])->name('oep.update');
+    Route::delete('/admin/oep/delete/{id}', [OfflineExamPerformanceController::class, 'destroy'])->name('oep.delete');
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
