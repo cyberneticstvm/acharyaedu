@@ -9,6 +9,7 @@ use App\Models\QuestionCourse;
 use App\Models\StudentExam;
 use App\Models\ExamQuestion;
 use App\Models\Slider;
+use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
@@ -81,5 +82,11 @@ function studentsubjects(){
 function getModules($exam){
     $topics = Question::leftJoin('topics as t', 'questions.topic_id', 't.id')->whereIn('questions.id', ExamQuestion::where('exam_id', $exam)->pluck('question_id'))->groupBy('t.name')->pluck('t.name')->implode(',');
     return $topics;
+}
+
+function getFeePendingDetails($studentid){
+    $student = Student::findOrFail($studentid);
+    $fee = $student->batchFee->pluck('fee_month', 'fee_year');
+    return $fee;
 }
 ?>

@@ -14,7 +14,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th></tr>
+                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Mobile</th><th>Fee Pending Months</th></tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
@@ -23,6 +23,8 @@
                                     <td>{{ $slno++ }}</td>
                                     <td>{{ $student->studentname->id }}</td>
                                     <td>{{ $student->studentname->name }}</td>                                    
+                                    <td>{{ $student->studentname->mobile }}</td>
+                                    <td>{{ getFeePendingDetails($student->studentname->id) }}</td>                                    
                                 </tr>
                                 @empty
                                 @endforelse

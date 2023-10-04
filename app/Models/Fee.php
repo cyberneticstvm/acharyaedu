@@ -39,5 +39,13 @@ class Fee extends Model
         return $this->belongsTo(Month::class, 'fee_month');
     }
 
+    public function feemonth(){
+        return $this->belongsTo(Month::class, 'fee_month', 'id');
+    }
+
+    public function feeyear(){
+        return $this->belongsTo(Year::class, 'fee_year', 'id');
+    }
+
     protected $casts = ['paid_date' => 'date', 'tentative_date' => 'date'];
 }
