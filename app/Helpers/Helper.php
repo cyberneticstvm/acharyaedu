@@ -89,7 +89,7 @@ function getFeePendingDetails($studentid){
     $student = Student::findOrFail($studentid);
     $fees = $student->batchFee;
     foreach($fees as $key => $fee):
-        $feemy .= $fee->feemonth?->name.'-'.$fee->fee_year.'<br>';
+        $feemy .= $fee->feemonth?->name.'-'.$fee->fee_year.' - ('.$fee->batches->name .')<br>';
     endforeach;
     return $feemy;
 }
