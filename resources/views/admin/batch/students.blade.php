@@ -25,7 +25,7 @@
                                     <td>{{ $student->studentname->name }}</td>                                    
                                     <td>{{ $student->studentname->mobile }}</td>
                                     <td>{{ $student->studentname->admission_date?->format('d, M Y') }}</td>
-                                    <td><a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="{!! getFeePendingDetails($student->studentname->id) !!}">View</a></td>                                    
+                                    <td><a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ getFeePendingDetails($student->studentname->id) }}">View</a></td>                                    
                                 </tr>
                                 @empty
                                 @endforelse
