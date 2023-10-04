@@ -29,6 +29,7 @@ use App\Models\StudentBatch;
 use App\Models\StudentExam;
 use App\Models\StudentExamScore;
 use App\Models\StudentFeedback;
+use App\Models\StudentInactiveReason;
 use App\Models\Topic;
 use App\Models\User;
 use App\Models\Year;
@@ -527,7 +528,7 @@ class StudentController extends Controller
 
     public function classschedule($type){
         $student = Auth::user()->student;
-        $schedules = ClassSchedule::whereIn('batch_id', $student->batches->pluck('batch'))->where('type', $type)->whereDate('class_date', '>=', Carbon::today())->orderByDesc('class_date')->get();
+        $schedules = ClassSchedule::whereIn('batch_id', $student->batches()->where('cancelled', 0)->pluck('batch'))->where('type', $type)->whereDate('class_date', '>=', Carbon::today())->orderByDesc('class_date')->get();
         return view('student.class-schedule', compact('schedules', 'student'));
     }
 
@@ -604,5 +605,14 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $revisions = Revision::leftJoin('revision_batches', 'revisions.id', '=', 'revision_batches.revision_id')->selectRaw("revisions.*")->whereIn('revision_batches.batch_id', $student->batches->pluck('batch'))->orderByDesc('date')->get();
         return view('student.revision', compact('student', 'revisions'));
+    }
+
+    public function studentInactiveReason(){
+        $data = StudentInactiveReason::latest()->all();
+        return view('admin.student.inactive', compact('data'));
+    }
+
+    public function studentInactiveReasonUpdate(Request $request){
+
     }
 }
