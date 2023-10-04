@@ -76,8 +76,8 @@
                                 <div class="mb-3">
                                     <select class="form-control" name="cancelled">
                                         <option value="">Select</option>
-                                        <option value="0" {{ ($sb->cancelled == 0) ? 'selected' : '' }}>Active</option>
-                                        <option value="1" {{ ($sb->cancelled == 1) ? 'selected' : '' }}>Inactive</option>
+                                        <option class="text-success" value="0" {{ ($sb->cancelled == 0) ? 'selected' : '' }}>Active</option>
+                                        <option class="text-danger" value="1" {{ ($sb->cancelled == 1) ? 'selected' : '' }}>Inactive</option>
                                     </select>
                                 </div>
                                 @error('cancelled')
