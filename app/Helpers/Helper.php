@@ -86,7 +86,7 @@ function getModules($exam){
 
 function getFeePendingDetails($studentid){
     $student = Student::findOrFail($studentid);
-    $fee = $student->batchFee();
+    $fee = $student->batchFee;
     return $fee;
 }
 ?>
