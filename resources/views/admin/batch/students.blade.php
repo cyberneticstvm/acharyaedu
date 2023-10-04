@@ -14,7 +14,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Mobile</th><th>Fee Paid Months</th></tr>
+                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Mobile</th><th>Admission Date</th><th>Fee Paid Months</th></tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
@@ -24,6 +24,7 @@
                                     <td>{{ $student->studentname->id }}</td>
                                     <td>{{ $student->studentname->name }}</td>                                    
                                     <td>{{ $student->studentname->mobile }}</td>
+                                    <td>{{ $student->studentname->admission_date->format('d, M Y') }}</td>
                                     <td>{!! getFeePendingDetails($student->studentname->id) !!}</td>                                    
                                 </tr>
                                 @empty
