@@ -85,8 +85,12 @@ function getModules($exam){
 }
 
 function getFeePendingDetails($studentid){
+    $feemy = "";
     $student = Student::findOrFail($studentid);
-    $fee = $student->batchFee;
-    return $fee;
+    $fees = $student->batchFee;
+    foreach($fees as $key => $fee):
+        $feemy .= $fee->feemonth?->name.', '.$fee->fee_year;
+    endforeach;
+    return $feemy;
 }
 ?>
