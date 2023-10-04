@@ -14,7 +14,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Mobile</th><th>Fee Pending Months</th></tr>
+                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Mobile</th><th>Fee Paid Months</th></tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
