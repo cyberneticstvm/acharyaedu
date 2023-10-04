@@ -24,7 +24,7 @@
                                     <td>{{ $student->studentname->id }}</td>
                                     <td>{{ $student->studentname->name }}</td>                                    
                                     <td>{{ $student->studentname->mobile }}</td>
-                                    <td>{{ getFeePendingDetails($student->studentname->id) }}</td>                                    
+                                    <td>{!! getFeePendingDetails($student->studentname->id) !!}</td>                                    
                                 </tr>
                                 @empty
                                 @endforelse
