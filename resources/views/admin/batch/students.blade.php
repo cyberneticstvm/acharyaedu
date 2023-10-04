@@ -24,7 +24,7 @@
                                     <td>{{ $student->studentname->id }}</td>
                                     <td>{{ $student->studentname->name }}</td>                                    
                                     <td>{{ $student->studentname->mobile }}</td>
-                                    <td>{{ $student->studentname->admission_date->format('d, M Y') }}</td>
+                                    <td>{{ $student->studentname->admission_date?->format('d, M Y') }}</td>
                                     <td>{!! getFeePendingDetails($student->studentname->id) !!}</td>                                    
                                 </tr>
                                 @empty
