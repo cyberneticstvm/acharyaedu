@@ -14,7 +14,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="req mb-1">Class Levels</label>
-                                {!! Form::select('levels[]', $levels->pluck('name', 'id')->all(),  $question->levels()->pluck('level_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}                                  
+                                {!! Form::select('levels[]', $levels->pluck('name', 'id')->all(),  $question->level->id, ['class' => 'form-control select2']) !!}                                  
                             </div>
                             @error('levels')
                                 <small class="text-danger">{{ $errors->first('levels') }}</small>

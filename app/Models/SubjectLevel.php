@@ -13,4 +13,6 @@ class SubjectLevel extends Model
         'name',
         'category',
     ];
+
+    
 }

@@ -608,11 +608,21 @@ class StudentController extends Controller
     }
 
     public function studentInactiveReason(){
-        $data = StudentInactiveReason::latest()->all();
+        $data = StudentInactiveReason::latest()->get();
         return view('admin.student.inactive', compact('data'));
     }
 
     public function studentInactiveReasonUpdate(Request $request){
-
+        $this->validate($request, [
+            'student_id' => 'required',
+            'reason' => 'required'
+        ]);
+        StudentInactiveReason::create([
+            'student_id' => $request->student_id,
+            'reason' => $request->reason,
+            'created_by' => $request->user()->id,
+            'updated_by' => $request->user()->id,
+        ]);
+        return redirect()->back()->with('success', 'Reason updated successfully');
     }
 }

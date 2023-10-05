@@ -147,8 +147,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::delete('/student/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
     Route::get('/student/{id}/{type}', [StudentController::class, 'batchstudents'])->name('batchstudents');
 
-    Route::get('/student/inactive/reason', [StudentController::class, 'studentInactiveReason'])->name('student.inactive.reason');
-    Route::post('/student/inactive/reason', [StudentController::class, 'studentInactiveReasonUpdate'])->name('student.inactive.reason.update');
+    Route::get('/students/inactive/reason', [StudentController::class, 'studentInactiveReason'])->name('student.inactive.reason');
+    Route::post('/students/inactive/reason', [StudentController::class, 'studentInactiveReasonUpdate'])->name('student.inactive.reason.update');
 
     Route::get('/course', [CourseController::class, 'index'])->name('course');
     Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
@@ -278,6 +278,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/scertquestion/edit/{id}', [ScertQuestionController::class, 'edit'])->name('scertquestion.edit');
     Route::put('/admin/scertquestion/edit/{id}', [ScertQuestionController::class, 'update'])->name('scertquestion.update');
     Route::delete('/admin/scertquestion/{id}', [ScertQuestionController::class, 'destroy'])->name('scertquestion.delete');
+    Route::get('/admin/scert/questions/view/{level}/{subject}/{chapter}', [ScertQuestionController::class, 'show'])->name('scertquestion.show');
 
     Route::get('/admin/question', [QuestionController::class, 'index'])->name('question');
     Route::get('/admin/question/create', [QuestionController::class, 'create'])->name('question.create');

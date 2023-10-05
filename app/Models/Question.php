@@ -34,7 +34,7 @@ class Question extends Model
     }
 
     public function subject(){
-        return $this->hasOne(Subject::class, 'subject_id', 'id');
+        return $this->hasOne(Subject::class, 'id', 'subject_id');
     }
 
     public function topic(){
@@ -43,5 +43,14 @@ class Question extends Model
 
     public function levels(){
         return $this->hasMany(QuestionLevel::class, 'question_id', 'id');
+    }
+
+    public function level(){
+        return $this->hasOne(QuestionLevel::class, 'question_id', 'id');
+    }
+
+
+    public function chapter(){
+        return $this->hasOne(Chapter::class, 'id', 'chapter_id');
     }
 }

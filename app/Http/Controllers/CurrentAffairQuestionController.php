@@ -38,7 +38,7 @@ class CurrentAffairQuestionController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('exam_type', 5)->get();
         $levels = SubjectLevel::where('category', 'General')->get();
         $courses = Course::all();
         $topics = Topic::all(); $months = Month::all();
@@ -110,7 +110,7 @@ class CurrentAffairQuestionController extends Controller
      */
     public function edit(string $id)
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('exam_type', 5)->get();
         $levels = SubjectLevel::where('category', 'General')->get();
         $courses = Course::all();
         $question = Question::find($id);

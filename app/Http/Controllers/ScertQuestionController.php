@@ -26,7 +26,10 @@ class ScertQuestionController extends Controller
 
     public function index()
     {
-        $questions  = Question::where('exam_type', 2)->get();
+        //$questions  = Question::where('exam_type', 2)->get();
+        $questions = Question::leftJoin('question_levels as ql', 'questions.id', 'ql.question_id')->selectRaw("COUNT(questions.id) AS qcount, subject_id, chapter_id, ql.level_id")->where('questions.exam_type', 2)->groupBy('subject_id', 'chapter_id', 'ql.level_id')->get();
+        /*dd($questions);
+        die;*/
         return view('admin.scert-question.index', compact('questions'));
     }
 
@@ -35,7 +38,7 @@ class ScertQuestionController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('exam_type', 2)->get();
         $levels = SubjectLevel::where('category', 'Standard')->get();
         $chapters = Chapter::all();
         $option_count = $this->settings->option_count;
@@ -53,7 +56,7 @@ class ScertQuestionController extends Controller
             'question' => 'required',
             'status' => 'required',
             'available_for_free' => 'required',
-            'levels' => 'array|present',
+            'levels' => 'required',
             'subject_id' => 'required',
             'chapter_id' => 'required',
         ]);
@@ -95,9 +98,10 @@ class ScertQuestionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($level, $subject, $chapter)
     {
-        //
+        $questions  = Question::leftJoin('question_levels as ql', 'questions.id', 'ql.question_id')->selectRaw("questions.id, questions.question")->where('exam_type', 2)->where('subject_id', $subject)->where('chapter_id', $chapter)->get();
+        return view('admin.scert-question.show', compact('questions'));
     }
 
     /**
@@ -105,7 +109,7 @@ class ScertQuestionController extends Controller
      */
     public function edit(string $id)
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('exam_type', 2)->get();
         $levels = SubjectLevel::where('category', 'Standard')->get();
         $question = Question::find($id);
         $chapters = Chapter::all();

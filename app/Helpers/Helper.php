@@ -11,6 +11,7 @@ use App\Models\ExamQuestion;
 use App\Models\Slider;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\SubjectLevel;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +29,10 @@ function getAllModules(){
 
 function getAllSubjects(){
     return Subject::all();
+}
+
+function subjectLevels(){
+    return SubjectLevel::all();
 }
 
 function getActiveBatches(){

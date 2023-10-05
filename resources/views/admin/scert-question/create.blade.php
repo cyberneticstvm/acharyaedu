@@ -13,7 +13,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="req mb-1">Class Levels</label>
-                                <select class="form-control select2" name="levels[]" data-placeholder="Select Multiple if required" multiple>
+                                <select class="form-control" name="levels[]" data-placeholder="Select Multiple if required">
                                     @forelse($levels as $key => $level)
                                         <option value="{{ $level->id }}">{{ $level->name }}</option>
                                     @empty

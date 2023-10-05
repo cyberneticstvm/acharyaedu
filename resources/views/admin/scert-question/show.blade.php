@@ -23,15 +23,19 @@
                 <div class="table-responsive">
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered">
-                        <thead><tr><th>SL No</th><th>Level</th><th>Subject</th><th>Chapter</th><th>Count</th><th>View</th></tr></thead><tbody>
+                        <thead><tr><th>SL No</th><th>Question</th><th>Edit</th><th>Delete</th></tr></thead><tbody>
                         @forelse($questions as $key => $question)
                             <tr>
                                 <td>{{ $slno++ }}</td>
-                                <td>{{ subjectLevels()->find($question->level_id)->name }}</td>
-                                <td>{{ $question->subject?->name }}</td>
-                                <td>{{ $question->chapter?->name }}</td>
-                                <td>{{ $question->qcount }}</td>
-                                <td><a href="{{ route('scertquestion.show', ['level' => $question->level_id, 'subject' => $question->subject_id, 'chapter' => $question->chapter_id]) }}">Questions</a></td>
+                                <td class="quest">{!! nl2br($question->question) !!}</td>
+                                <td class="text-center"><a href="/admin/scertquestion/edit/{{$question->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
+                                <td class="text-center">
+                                    <form method="post" action="{{ route('scertquestion.delete', $question->id) }}">
+                                        @csrf 
+                                        @method("DELETE")
+                                        <button type="submit" class="border no-border" onclick="javascript: return confirm('Are you sure want to delete this record?');"><i class="fa fa-trash text-danger"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
                         @endforelse
