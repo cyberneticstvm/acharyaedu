@@ -47,7 +47,8 @@ class ReportController extends Controller
         $expense = collect();
         $inputs = [];
         $students = collect();
-        return view('admin.reports.daily-closing', compact('fee', 'income', 'expense', 'inputs', 'students'));
+        $closing_balance = 0;
+        return view('admin.reports.daily-closing', compact('fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
     }
 
     public function fetchDailyClosing(Request $request)
