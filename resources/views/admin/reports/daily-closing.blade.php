@@ -54,7 +54,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Opening Balance</td>
-                                        <td class="text-end text-success fw-bold">>{{ number_format($opening_balance, 2) }}</td>
+                                        <td class="text-end text-success fw-bold">{{ number_format($opening_balance, 2) }}</td>
                                         <td class="text-end"></td>
                                     </tr>
                                     <tr>
