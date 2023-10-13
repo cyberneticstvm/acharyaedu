@@ -41,52 +41,72 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td class="h5">Batch Fee</td></tr>
+                                    <tr>
+                                        <td class="h5">Batch Fee</td>
+                                    </tr>
                                     @php $slno = 1 @endphp
                                     @forelse($fee as $key => $record)
                                     <tr>
-                                        <td class="text-start">{{ $slno++ }}</td>                                
-                                        <td class="ps-4">{{ $record->student()->find($record->student)->name }}</td>                                
-                                        <td class="ps-4">{{ $record->fee }}</td>                                
+                                        <td class="text-start">{{ $slno++ }}</td>
+                                        <td class="ps-4">{{ $record->student()->find($record->student)->name }}</td>
+                                        <td class="ps-4">{{ $record->fee_advance }}</td>
                                     </tr>
                                     @empty
                                     @endforelse
-                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end fw-bold">{{ number_format($fee->pluck('fee')->sum(), 2) }}</td></tr>
+                                    <tr>
+                                        <td colspan="2" class="text-end">Total</td>
+                                        <td class="text-end fw-bold">{{ number_format($fee->pluck('fee_advance')->sum(), 2) }}</td>
+                                    </tr>
 
-                                    <tr><td class="h5">Admission Fee</td></tr>
+                                    <tr>
+                                        <td class="h5">Admission Fee</td>
+                                    </tr>
                                     @php $slno = 1 @endphp
                                     @forelse($students as $key => $student)
                                     <tr>
-                                        <td class="text-start">{{ $slno++ }}</td>                                
-                                        <td class="ps-4">{{ $student->name }}</td>                                
-                                        <td class="ps-4">{{ $student->fee }}</td>                                
+                                        <td class="text-start">{{ $slno++ }}</td>
+                                        <td class="ps-4">{{ $student->name }}</td>
+                                        <td class="ps-4">{{ $student->admission_fee_advance }}</td>
                                     </tr>
                                     @empty
                                     @endforelse
-                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end fw-bold">{{ number_format($students->pluck('fee')->sum(), 2) }}</td></tr>
+                                    <tr>
+                                        <td colspan="2" class="text-end">Total</td>
+                                        <td class="text-end fw-bold">{{ number_format($students->pluck('admission_fee_advance')->sum(), 2) }}</td>
+                                    </tr>
 
-                                    <tr><td class="h5">Income</td></tr>
+                                    <tr>
+                                        <td class="h5">Income</td>
+                                    </tr>
                                     @php $slno = 1 @endphp
                                     @forelse($income as $key => $record)
                                     <tr>
-                                        <td class="text-start">{{ $slno++ }}</td>                                
-                                        <td class="ps-4">{{ $record->description }}</td>                                
-                                        <td class="ps-4">{{ $record->amount }}</td>                                
+                                        <td class="text-start">{{ $slno++ }}</td>
+                                        <td class="ps-4">{{ $record->description }}</td>
+                                        <td class="ps-4">{{ $record->amount }}</td>
                                     </tr>
                                     @empty
                                     @endforelse
-                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end fw-bold">{{ number_format($income->pluck('amount')->sum(), 2) }}</td></tr>
-                                    <tr><td class="h5">Expenses</td></tr>
+                                    <tr>
+                                        <td colspan="2" class="text-end">Total</td>
+                                        <td class="text-end fw-bold">{{ number_format($income->pluck('amount')->sum(), 2) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="h5">Expenses</td>
+                                    </tr>
                                     @php $slno = 1 @endphp
                                     @forelse($expense as $key => $record)
                                     <tr>
-                                        <td class="text-start">{{ $slno++ }}</td>                                
-                                        <td class="ps-4">{{ $record->description }}</td>                                
-                                        <td class="ps-4">{{ $record->amount }}</td>                                
+                                        <td class="text-start">{{ $slno++ }}</td>
+                                        <td class="ps-4">{{ $record->description }}</td>
+                                        <td class="ps-4">{{ $record->amount }}</td>
                                     </tr>
                                     @empty
                                     @endforelse
-                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end fw-bold">{{ number_format($expense->pluck('amount')->sum(), 2) }}</td></tr>
+                                    <tr>
+                                        <td colspan="2" class="text-end">Total</td>
+                                        <td class="text-end fw-bold">{{ number_format($expense->pluck('amount')->sum(), 2) }}</td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>

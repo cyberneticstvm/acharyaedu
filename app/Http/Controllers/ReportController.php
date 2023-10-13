@@ -34,7 +34,7 @@ class ReportController extends Controller
         ]);
         $inputs = array($request->date);
         $fee = Fee::whereDate('paid_date', $request->date)->get();
-        $students = Student::whereDate('created_at', $request->date)->where('fee', '>', 0)->get();
+        $students = Student::whereDate('created_at', $request->date)->where('admission_fee_advance', '>', 0)->get();
         $income = Income::whereDate('date', $request->date)->get();
         $expense = Expense::whereDate('date', $request->date)->get();
         return view('admin.reports.daybook', compact('fee', 'income', 'expense', 'inputs', 'students'));
