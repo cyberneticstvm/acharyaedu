@@ -53,7 +53,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Opening Balance</td>
+                                        <td class="fw-bold">Opening Balance</td>
                                         <td class="text-end text-success fw-bold">{{ number_format($opening_balance, 2) }}</td>
                                         <td class="text-end"></td>
                                     </tr>
@@ -78,7 +78,7 @@
                                         <td class="text-end">{{ number_format($expense->sum('amount'), 2) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Closing Balance</td>
+                                        <td class="fw-bold">Closing Balance</td>
                                         <td class="text-end"></td>
                                         <td class="text-end text-info fw-bold">{{ number_format($closing_balance, 2) }}</td>
                                     </tr>
