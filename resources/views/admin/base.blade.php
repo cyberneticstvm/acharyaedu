@@ -41,7 +41,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps--active-y" id="sidenav-main">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps--active-y" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/dash">
@@ -94,59 +94,59 @@
           <div class="collapse" id="admins">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                    <a class="nav-link text-white " href="/admin/dashdemo">
-                    <i class="fa fa-dashboard sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/branch">
-                    <i class="fa fa-code-fork sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Branch</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/user">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Staff</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/faculty">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Faculty</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/cschedule">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/course">
-                    <i class="fa fa-id-card-o sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Course</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/batch">
-                    <i class="fa fa-bars sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Batch</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/student-batch">
-                    <i class="fa fa-arrows-h sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student => Batch</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ route('student.inactive.reason') }}">
-                    <i class="fa fa-arrows-h sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student Inactive Reason</span>
-                    </a>
-                </li>
+                <a class="nav-link text-white " href="/admin/dashdemo">
+                  <i class="fa fa-dashboard sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/branch">
+                  <i class="fa fa-code-fork sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Branch</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/user">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Staff</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/faculty">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Faculty</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/cschedule">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/course">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Course</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/batch">
+                  <i class="fa fa-bars sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Batch</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student-batch">
+                  <i class="fa fa-arrows-h sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student => Batch</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{{ route('student.inactive.reason') }}">
+                  <i class="fa fa-arrows-h sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student Inactive Reason</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>
@@ -228,7 +228,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white " href="#">
+                <a class="nav-link text-white " href="/admin/daily/closing">
                   <i class='fa fa-gear sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Daily Closing</span>
                 </a>
@@ -259,38 +259,38 @@
           <div class="collapse" id="szone">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                    <a class="nav-link text-white " href="/student">
-                    <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student (Offline)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="/student/online">
-                    <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Student (Online)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white " href="/cschedule">
-                    <i class='fa fa-users sidenav-mini-icon'></i>
-                    <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white " href="/attendance">
-                    <i class="fa fa-calendar sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Attendance</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white " href="/admin/leaves">
-                    <i class="fa fa-calendar sidenav-mini-icon"></i>
-                    <span class="sidenav-normal ms-2 ps-1">Leave Details</span>
-                  </a>
-                </li>
+                <a class="nav-link text-white " href="/student">
+                  <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student (Offline)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/online">
+                  <i class="fa fa-graduation-cap sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student (Online)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/cschedule">
+                  <i class='fa fa-users sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Class Schedule</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/attendance">
+                  <i class="fa fa-calendar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Attendance</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/leaves">
+                  <i class="fa fa-calendar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Leave Details</span>
+                </a>
+              </li>
             </ul>
           </div>
-        </li>    
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#syllabus" aria-controls="syllabus" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -336,7 +336,7 @@
                   <i class="fa fa-check sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">TW Exam Syllabus Status</span>
                 </a>
-              </li>              
+              </li>
             </ul>
           </div>
         </li>
@@ -409,14 +409,14 @@
                   <i class='fa fa-check sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Daily Current Affairs</span>
                 </a>
-              </li>              
+              </li>
             </ul>
           </div>
-        </li>    
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#exam" aria-controls="exam" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Exam Zone</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -458,7 +458,7 @@
         <li class="nav-item">
           <a class="nav-link active" href="#materials" aria-controls="materials" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Study Materials</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -476,12 +476,12 @@
           </a>
           <div class="collapse" id="materials">
             <ul class="nav nav-sm flex-column">
-            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/docs">
                   <i class='fa fa-file-upload sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Docs</span>
                 </a>
-              </li>              
+              </li>
               <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/record">
                   <i class='fa fa-youtube sidenav-mini-icon'></i>
@@ -496,7 +496,7 @@
               </li>
             </ul>
           </div>
-        </li>        
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#opt" aria-controls="opt" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -517,7 +517,7 @@
             <span class="nav-link-text ms-1">Reports</span>
           </a>
           <div class="collapse" id="opt">
-            <ul class="nav nav-sm flex-column">              
+            <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                 <a class="nav-link text-white " href="/report/attendance">
                   <i class="fa fa-calendar sidenav-mini-icon"></i>
@@ -612,7 +612,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
-      <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
+        <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
           <a href="javascript:;" class="nav-link text-body p-0">
             <div class="sidenav-toggler-inner">
               <i class="sidenav-toggler-line"></i>
@@ -623,30 +623,30 @@
         </div>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="/logout" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-power-off me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign Out</span>
-              </a>
-            </li>
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-          </ul>
+            <ul class="navbar-nav  justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a href="/logout" class="nav-link text-body font-weight-bold px-0">
+                  <i class="fa fa-power-off me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Sign Out</span>
+                </a>
+              </li>
+              <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item px-3 d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-body p-0">
+                  <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
@@ -762,22 +762,22 @@
   <script>
     CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
     CKEDITOR.replace('question', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
     CKEDITOR.replace('option1', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
     CKEDITOR.replace('option2', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
     CKEDITOR.replace('option3', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
     CKEDITOR.replace('option4', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
     CKEDITOR.replace('explanation', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
   </script>
   @endif
@@ -786,7 +786,7 @@
   <script>
     CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
     CKEDITOR.replace('description', {
-        toolbarCanCollapse : true,
+      toolbarCanCollapse: true,
     });
   </script>
   @endif

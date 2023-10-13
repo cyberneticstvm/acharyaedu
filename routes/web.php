@@ -76,19 +76,19 @@ Route::post('/forgot', [StudentController::class, 'sendemail'])->name('send.emai
 Route::get('/resetpassword/{email}', [StudentController::class, 'resetpassword'])->name('resetpassword');
 Route::post('/updatepassword', [StudentController::class, 'updatepassword'])->name('updatepassword');
 
-Route::group(['middleware' => ['web', 'auth', 'student']], function(){
+Route::group(['middleware' => ['web', 'auth', 'student']], function () {
     Route::get('/student/active-exams/{type}', [StudentController::class, 'activeexams'])->name('student.active.exams');
     Route::get('/student/exam/{id}/{type}', [StudentController::class, 'exam'])->name('student.exam');
-    Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');   
+    Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');
     Route::get('/student/exam/result/{id}/{type}', [StudentController::class, 'examresult'])->name('student.exam.result');
-    Route::get('/student/exam/performance/{id}/{type}', [StudentController::class, 'examperformance'])->name('student.exam.performance');    
+    Route::get('/student/exam/performance/{id}/{type}', [StudentController::class, 'examperformance'])->name('student.exam.performance');
     Route::get('/student/profile', [StudentController::class, 'getprofile'])->name('student.profile.get');
     Route::put('/student/profile', [StudentController::class, 'profileupdate'])->name('student.profile.update');
-    Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');    
-    Route::get('/student/freeexam', [StudentController::class, 'freeexam'])->name('student.freeexam');    
-    Route::post('/student/freeexam', [StudentController::class, 'createfreeexam'])->name('student.freeexam.create');    
+    Route::get('/student/performance', [StudentController::class, 'studentperformance'])->name('student.performance');
+    Route::get('/student/freeexam', [StudentController::class, 'freeexam'])->name('student.freeexam');
+    Route::post('/student/freeexam', [StudentController::class, 'createfreeexam'])->name('student.freeexam.create');
     Route::get('/student/question/{id}', [StudentController::class, 'getoptions'])->name('student.question');
-    
+
     Route::get('/student/leave', [StudentController::class, 'leave'])->name('student.leave');
     Route::post('/student/leave', [StudentController::class, 'leaveupdate'])->name('student.leave.update');
     Route::post('/student/photo', [StudentController::class, 'uploadphoto'])->name('student.photo.upload');
@@ -108,8 +108,8 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function(){
     Route::get('/student/revision', [StudentController::class, 'revision'])->name('student.revision');
 });
 
-Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
-    
+Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
+
     Route::get('/slider', [SliderController::class, 'index'])->name('slider');
     Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
     Route::post('/slider/create', [SliderController::class, 'store'])->name('slider.save');
@@ -257,7 +257,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/topic/edit/{id}', [TopicController::class, 'edit'])->name('topic.edit');
     Route::put('/admin/topic/edit/{id}', [TopicController::class, 'update'])->name('topic.update');
     Route::delete('/admin/topic/{id}', [TopicController::class, 'destroy'])->name('topic.delete');
-    
+
     Route::get('/admin/revision', [RevisionController::class, 'index'])->name('revision');
     Route::get('/admin/revision/create', [RevisionController::class, 'create'])->name('revision.create');
     Route::post('/admin/revision/create', [RevisionController::class, 'store'])->name('revision.save');
@@ -321,7 +321,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/admin/module/questions/{id}', [HelperController::class, 'modulequestions'])->name('modulequestions');
     Route::get('/admin/subject/modules/{id}', [HelperController::class, 'subjectmodules'])->name('subjectmodules');
 
-    Route::get('/admin/student/performance', [HelperController::class, 'studentperformanceall'])->name('studentperformanceall');    
+    Route::get('/admin/student/performance', [HelperController::class, 'studentperformanceall'])->name('studentperformanceall');
     Route::post('/admin/student/performance', [HelperController::class, 'studentperformanceallget'])->name('studentperformanceall.get');
     Route::get('/admin/student/performance/exam/{id}', [HelperController::class, 'studentperformanceexam'])->name('studentperformanceexam');
     Route::get('/admin/exam/result/{id}', [HelperController::class, 'examresult'])->name('admin.exam.result');
@@ -395,16 +395,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::put('/admin/oep/edit/{id}', [OfflineExamPerformanceController::class, 'update'])->name('oep.update');
     Route::delete('/admin/oep/delete/{id}', [OfflineExamPerformanceController::class, 'destroy'])->name('oep.delete');
 
+    Route::get('/admin/daily/closing', [ReportController::class, 'dailyClosing'])->name('daily.closing');
+    Route::post('/admin/daily/closing', [ReportController::class, 'fetchDailyClosing'])->name('daily.closing.fetch');
 });
 
-Route::group(['middleware' => ['web', 'auth']], function(){
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/dash', [AdminController::class, 'dash'])->name('dash');
     Route::get('/helper/module', [HelperController::class, 'module'])->name('helper.module');
     Route::get('/studentperfchart/{id}/{type}', [HelperController::class, 'studentperfchart'])->name('studentperfchart');
     Route::get('/studentperfchartall', [HelperController::class, 'studentperfchartall'])->name('studentperfchartall');
 });
-
-
-
-
-

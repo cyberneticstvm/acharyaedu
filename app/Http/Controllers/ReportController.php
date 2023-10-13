@@ -17,12 +17,18 @@ use DB;
 
 class ReportController extends Controller
 {
-    public function daybook(){
-        $fee = collect();  $income = collect(); $expense = collect(); $inputs = []; $students = collect();
+    public function daybook()
+    {
+        $fee = collect();
+        $income = collect();
+        $expense = collect();
+        $inputs = [];
+        $students = collect();
         return view('admin.reports.daybook', compact('fee', 'income', 'expense', 'inputs', 'students'));
     }
 
-    public function fetchdaybook(Request $request){
+    public function fetchdaybook(Request $request)
+    {
         $this->validate($request, [
             'date' => 'required',
         ]);
@@ -34,30 +40,66 @@ class ReportController extends Controller
         return view('admin.reports.daybook', compact('fee', 'income', 'expense', 'inputs', 'students'));
     }
 
-    public function fee(){
-        $records = collect(); $inputs = [];
-        return view('admin.reports.fee', compact('records', 'inputs'));
+    public function dailyClosing()
+    {
+        $fee = collect();
+        $income = collect();
+        $expense = collect();
+        $inputs = [];
+        $students = collect();
+        return view('admin.reports.daily-closing', compact('fee', 'income', 'expense', 'inputs', 'students'));
     }
 
-    public function fetchfee(Request $request){
+    public function fetchDailyClosing(Request $request)
+    {
         $this->validate($request, [
             'from_date' => 'required',
             'to_date' => 'required',
         ]);
-        $records = Fee::whereBetween('paid_date', [$request->from_date, $request->to_date])->get(); 
+        $inputs = array($request->from_date, $request->to_date);
+        $prev_day = Carbon::parse($request->from_date)->startOfDay()->subDays(1);
+
+        $opening_balance = DB::table('daily_closings as d')->select(DB::raw("MAX(d.id), IFNULL(d.closing_balance, 0) AS closing_balance"))->whereDate('d.date', '=', $prev_day)->orderByDesc('d.id')->first()->closing_balance;
+
+        $fee = Fee::whereBetween('paid_date', [$request->from_date, $request->to_date])->get();
+        $students = Student::whereBetween('created_at', [$request->from_date, $request->to_date])->where('admission_fee_advance', '>', 0)->get();
+        $income = Income::whereBetween('date', [$request->from_date, $request->to_date])->get();
+        $expense = Expense::whereBetween('date', [$request->from_date, $request->to_date])->get();
+
+        $closing_balance = ($opening_balance + $students->sum('admission_fee_advance') + $fee->sum('fee_advance') + $income->sum('amount')) - $expense->sum('amount');
+        return view('admin.reports.daily-closing', compact('fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
+    }
+
+    public function fee()
+    {
+        $records = collect();
+        $inputs = [];
+        return view('admin.reports.fee', compact('records', 'inputs'));
+    }
+
+    public function fetchfee(Request $request)
+    {
+        $this->validate($request, [
+            'from_date' => 'required',
+            'to_date' => 'required',
+        ]);
+        $records = Fee::whereBetween('paid_date', [$request->from_date, $request->to_date])->get();
         $inputs = array($request->from_date, $request->to_date);
         return view('admin.reports.fee', compact('records', 'inputs'));
     }
 
-    public function feepending(){
-        $records = collect(); $inputs = [];
+    public function feepending()
+    {
+        $records = collect();
+        $inputs = [];
         $batches = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = DB::table('years')->get();
         return view('admin.reports.fee-pending', compact('records', 'batches', 'months', 'years', 'inputs'));
     }
 
-    public function fetchfeepending(Request $request){
+    public function fetchfeepending(Request $request)
+    {
         $this->validate($request, [
             'batch' => 'required',
             'month' => 'required',
@@ -71,15 +113,19 @@ class ReportController extends Controller
         return view('admin.reports.fee-pending', compact('records', 'batches', 'months', 'years', 'inputs'));
     }
 
-    public function attendance(){
-        $records = collect(); $inputs = []; $days = 0;
+    public function attendance()
+    {
+        $records = collect();
+        $inputs = [];
+        $days = 0;
         $batches = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = DB::table('years')->get();
         return view('admin.reports.attendance', compact('records', 'batches', 'months', 'years', 'inputs', 'days'));
     }
 
-    public function fetchattendance(Request $request){
+    public function fetchattendance(Request $request)
+    {
         $this->validate($request, [
             'batch' => 'required',
             'month' => 'required',
@@ -94,48 +140,61 @@ class ReportController extends Controller
         return view('admin.reports.attendance', compact('records', 'batches', 'months', 'years', 'inputs', 'days'));
     }
 
-    public function student(){
-        $student = []; $batches = []; $records = []; $inputs = [];
+    public function student()
+    {
+        $student = [];
+        $batches = [];
+        $records = [];
+        $inputs = [];
         return view('admin.reports.student', compact('student', 'inputs', 'batches', 'records'));
     }
 
-    public function fetchstudent(Request $request){
+    public function fetchstudent(Request $request)
+    {
         $this->validate($request, [
             'student' => 'required',
         ]);
         $student = Student::find($request->student);
-        if($student):
+        if ($student) :
             $batches = Batch::whereIn('id', $student->batches()->pluck('batch'))->pluck('name')->implode(', ');
             $records = StudentBatch::whereIn('batch', $student->batches()->pluck('batch'))->where('student', $request->student)->get();
             $inputs = array($request->student);
             return view('admin.reports.student', compact('student', 'inputs', 'batches', 'records'));
-        else:
+        else :
             return redirect()->back()->with("error", "Student details not found")->withInput($request->all);
         endif;
     }
 
-    public function attendancesummary(){
-        $inputs = []; $att = collect(); $batches = Batch::where('status', 1)->get();
+    public function attendancesummary()
+    {
+        $inputs = [];
+        $att = collect();
+        $batches = Batch::where('status', 1)->get();
         return view('admin.reports.attendance-summary', compact('inputs', 'att', 'batches'));
     }
 
-    public function fetchattendancesummary(Request $request){
+    public function fetchattendancesummary(Request $request)
+    {
         $this->validate($request, [
             'date' => 'required',
             'batch' => 'required',
         ]);
-        $inputs = array($request->batch, $request->date); $batches = Batch::where('status', 1)->get();
+        $inputs = array($request->batch, $request->date);
+        $batches = Batch::where('status', 1)->get();
         $att = Attendance::whereDate('date', $request->date)->where('batch', $request->batch)->get();
         return view('admin.reports.attendance-summary', compact('inputs', 'att', 'batches'));
     }
 
-    public function ie(){
-        $inputs = []; $ies = collect();
+    public function ie()
+    {
+        $inputs = [];
+        $ies = collect();
         $heads = Head::all();
         return view('admin.reports.ie', compact('inputs', 'ies', 'heads'));
     }
 
-    public function iefetch(Request $request){
+    public function iefetch(Request $request)
+    {
         $this->validate($request, [
             'from_date' => 'required',
             'to_date' => 'required',
@@ -144,9 +203,9 @@ class ReportController extends Controller
         ]);
         $inputs = array($request->from_date, $request->to_date, $request->type, $request->head);
         $heads = Head::all();
-        if($request->type == 'Income'):
+        if ($request->type == 'Income') :
             $ies = Income::whereBetween('date', [$request->from_date, $request->to_date])->where('head', $request->head)->get();
-        else:
+        else :
             $ies = Expense::whereBetween('date', [$request->from_date, $request->to_date])->where('head', $request->head)->get();
         endif;
         return view('admin.reports.ie', compact('inputs', 'ies', 'heads'));
