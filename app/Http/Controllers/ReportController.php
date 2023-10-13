@@ -48,7 +48,8 @@ class ReportController extends Controller
         $inputs = [];
         $students = collect();
         $closing_balance = 0;
-        return view('admin.reports.daily-closing', compact('fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
+        $opening_balance = 0;
+        return view('admin.reports.daily-closing', compact('opening_balance', 'fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
     }
 
     public function fetchDailyClosing(Request $request)
@@ -68,7 +69,7 @@ class ReportController extends Controller
         $expense = Expense::whereBetween('date', [$request->from_date, $request->to_date])->get();
 
         $closing_balance = ($opening_balance + $students->sum('admission_fee_advance') + $fee->sum('fee_advance') + $income->sum('amount')) - $expense->sum('amount');
-        return view('admin.reports.daily-closing', compact('fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
+        return view('admin.reports.daily-closing', compact('opening_balance', 'fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
     }
 
     public function fee()
