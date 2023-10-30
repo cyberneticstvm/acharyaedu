@@ -17,7 +17,7 @@
                                     <select class="form-control" name="batch">
                                         <option value="">Select</option>
                                         @forelse($batches as $key => $batch)
-                                            <option value="{{ $batch->id }}" {{ ($inputs && $inputs[0] == $batch->id) ? 'selected' : '' }}>{{ $batch->name }}</option>
+                                        <option value="{{ $batch->id }}" {{ ($inputs && $inputs[0] == $batch->id) ? 'selected' : '' }}>{{ $batch->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -34,7 +34,7 @@
                                     <select class="form-control" name="month">
                                         <option value="">Select</option>
                                         @forelse($months as $key => $month)
-                                            <option value="{{ $month->id }}" {{ ($inputs && $inputs[1] == $month->id) ? 'selected' : '' }}>{{ $month->name }}</option>
+                                        <option value="{{ $month->id }}" {{ ($inputs && $inputs[1] == $month->id) ? 'selected' : '' }}>{{ $month->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -51,7 +51,7 @@
                                     <select class="form-control" name="year">
                                         <option value="">Select</option>
                                         @forelse($years as $key => $year)
-                                            <option value="{{ $year->year }}" {{ ($inputs && $inputs[2] == $year->year) ? 'selected' : '' }}>{{ $year->year }}</option>
+                                        <option value="{{ $year->year }}" {{ ($inputs && $inputs[2] == $year->year) ? 'selected' : '' }}>{{ $year->year }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -79,7 +79,6 @@
                                     <th>Contact</th>
                                     <th>Fee</th>
                                     <th>Fee Balance</th>
-                                    <th>Fee Balance Paid</th>
                                     <th>Date Paid</th>
                                     <th>Status</th>
                                 </thead>
@@ -92,7 +91,6 @@
                                         <td>{{ $record->studentname()->find($record->student)->mobile }}</td>
                                         <td>{{ $fee->value('fee') }}</td>
                                         <td>{{ $fee->value('fee_balance') }}</td>
-                                        <td>{{ ($fee->value('fee_pending') == 0 && $fee->value('fee_balance') > 0) ? 'Not Paid' : 'Paid' }}</td>
                                         <td>{{ ($fee->value('paid_date')) ? date('d/M/Y', strtotime($fee->value('paid_date'))) : '' }}</td>
                                         <td class="text-center">{!! ($fee->value('fee') > 0) ? "<i class='fa fa-check text-success'>" : "<i class='fa fa-times text-danger'>" !!}</td>
                                     </tr>
