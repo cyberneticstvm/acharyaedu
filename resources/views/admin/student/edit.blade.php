@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label class="req">Date of Admission</label>
                                 <div class="mb-3">
-                                    <input type="date" class="form-control" name="admission_date" value="{{ $student->admission_date->format('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
+                                    <input type="date" class="form-control" name="admission_date" value="{{ $student->admission_date?->format('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
                                 </div>
                             </div>
                         </div>
