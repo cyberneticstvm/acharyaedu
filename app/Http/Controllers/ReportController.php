@@ -68,7 +68,7 @@ class ReportController extends Controller
         $income = Income::whereBetween('date', [$request->from_date, $request->to_date])->get();
         $expense = Expense::whereBetween('date', [$request->from_date, $request->to_date])->get();
 
-        $closing_balance = ($opening_balance + $students->sum('admission_fee_advance') + $fee->sum('fee_advance') + $income->sum('amount')) - $expense->sum('amount');
+        $closing_balance = ($opening_balance + $students->sum('fee') + $fee->sum('fee_advance') + $income->sum('amount')) - $expense->sum('amount');
         return view('admin.reports.daily-closing', compact('opening_balance', 'fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
     }
 
