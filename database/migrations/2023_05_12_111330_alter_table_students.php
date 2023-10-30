@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('students', function(Blueprint $table){
+        Schema::table('students', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id')->references('id')->on('courses')->after('branch')->default(0)->nullable();
+            $table->enum('type', ['online', 'offline'])->nullable();
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('students', function(Blueprint $table){
+        Schema::table('students', function (Blueprint $table) {
             $table->dropColumn('course_id');
         });
     }
