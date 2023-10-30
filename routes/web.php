@@ -24,6 +24,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GeneralQuestionController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\OfflineExamPerformanceController;
@@ -106,6 +107,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function () {
     Route::get('/student/caffair', [StudentController::class, 'caffair'])->name('student.caffair');
     Route::post('/student/caffair/fetch', [StudentController::class, 'caffairfetch'])->name('student.caffair.fetch');
     Route::get('/student/revision', [StudentController::class, 'revision'])->name('student.revision');
+    Route::get('/student/general/question', [StudentController::class, 'generalQuestions'])->name('student.general.question');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
@@ -394,6 +396,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('/admin/oep/edit/{id}', [OfflineExamPerformanceController::class, 'edit'])->name('oep.edit');
     Route::put('/admin/oep/edit/{id}', [OfflineExamPerformanceController::class, 'update'])->name('oep.update');
     Route::delete('/admin/oep/delete/{id}', [OfflineExamPerformanceController::class, 'destroy'])->name('oep.delete');
+
+    Route::get('/admin/general/question', [GeneralQuestionController::class, 'index'])->name('question.general');
+    Route::get('/admin/general/question/create', [GeneralQuestionController::class, 'create'])->name('question.general.create');
+    Route::post('/admin/general/question/create', [GeneralQuestionController::class, 'store'])->name('question.general.save');
+    Route::get('/admin/general/question/edit/{id}', [GeneralQuestionController::class, 'edit'])->name('question.general.edit');
+    Route::put('/admin/general/question/edit/{id}', [GeneralQuestionController::class, 'update'])->name('question.general.update');
+    Route::delete('/admin/general/question/delete/{id}', [GeneralQuestionController::class, 'destroy'])->name('question.general.delete');
 
     Route::get('/admin/daily/closing', [ReportController::class, 'dailyClosing'])->name('daily.closing');
     Route::post('/admin/daily/closing', [ReportController::class, 'fetchDailyClosing'])->name('daily.closing.fetch');

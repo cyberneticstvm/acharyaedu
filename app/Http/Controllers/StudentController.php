@@ -15,6 +15,7 @@ use App\Models\FreeExam;
 use App\Models\FreeExamQuestion;
 use App\Models\FreeExamScore;
 use App\Models\FreeStudentExam;
+use App\Models\GeneralQuestion;
 use App\Models\Month;
 use App\Models\PaymentMode;
 use App\Models\PscUpdate;
@@ -197,6 +198,13 @@ class StudentController extends Controller
         if (Auth::attempt($credentials)) :
             $user = Auth::getProvider()->retrieveByCredentials($credentials);
             Auth::login($user, $request->get('remember'));
+            if (Auth::user()->role == 'Student') :
+                $student = Auth::user()->student;
+                $batches = Batch::whereIn('id', $student->batches()->pluck('batch'))->where('status', 1)->get();
+                if ($batches->isEmpty()) :
+                    $this->logout();
+                endif;
+            endif;
             return redirect()->route('dash');
         endif;
         return redirect()->back()->with('error', 'Login details are not valid')->withInput($request->all());
@@ -669,5 +677,14 @@ class StudentController extends Controller
             'updated_by' => $request->user()->id,
         ]);
         return redirect()->back()->with('success', 'Reason updated successfully');
+    }
+
+    public function generalQuestions()
+    {
+        $student = Student::find(Auth::user()->student->id);
+        $courses = Course::all();
+        $course = Batch::whereIn('id', $student->batches()->pluck('batch'))->where('status', 1)->pluck('course');
+        $questions = GeneralQuestion::join('general_question_courses as gqc', 'general_questions.id', 'gqc.question_id')->whereIn("gqc.course_id", $course)->latest()->get();
+        return view('student.question-general', compact('questions', 'courses'));
     }
 }

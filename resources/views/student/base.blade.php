@@ -45,7 +45,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps--active-y" id="sidenav-main">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps--active-y" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/dash">
@@ -146,6 +146,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/student/general/question">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">General questions</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/logout">
                   <i class="fa fa-file sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Logout</span>
@@ -157,7 +163,7 @@
         <li class="nav-item">
           <a class="nav-link active" href="#exam" aria-controls="exam" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Opticals</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -429,7 +435,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
-      <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
+        <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
           <a href="javascript:;" class="nav-link text-body p-0">
             <div class="sidenav-toggler-inner">
               <i class="sidenav-toggler-line"></i>
@@ -440,30 +446,30 @@
         </div>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="/logout" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-power-off me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign Out</span>
-              </a>
-            </li>
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-          </ul>
+            <ul class="navbar-nav  justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a href="/logout" class="nav-link text-body font-weight-bold px-0">
+                  <i class="fa fa-power-off me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Sign Out</span>
+                </a>
+              </li>
+              <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item px-3 d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-body p-0">
+                  <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
@@ -553,46 +559,46 @@
   <script src="{{ asset('admin-assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
   <script src="{{ asset('admin-assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
-    @if(Route::current()->getName() == 'student.exam')
-    <script>
-        var timeleft = parseInt($("#exam-time-duration").val()); 
-        var s = 60;
-        var examTimerSecs = setInterval(function(){
-            if(s <= 0){
-                s = 60;
-                timeleft -= 1;
-                document.getElementById("time-remain").innerHTML = timeleft;
-            }
-            if(timeleft <= 0){
-                clearInterval(examTimerSecs);
-                alert("Your time has over.");
-                $("#frmExam").submit();
-            }
-            document.getElementById("secs").innerHTML = s;
-            s -= 1;
-        }, 1000);
-    </script>
-    <script type="text/javascript">
-      window.onbeforeunload = function() {
-          return "Dude, are you sure you want to leave? Think of the kittens!";
+  <script src="{{ asset('assets/js/script.js') }}"></script>
+  @if(Route::current()->getName() == 'student.exam')
+  <script>
+    var timeleft = parseInt($("#exam-time-duration").val());
+    var s = 60;
+    var examTimerSecs = setInterval(function() {
+      if (s <= 0) {
+        s = 60;
+        timeleft -= 1;
+        document.getElementById("time-remain").innerHTML = timeleft;
       }
-    </script>
-    @endif
-    @if(Route::current()->getName() == 'student.exam.performance' || Route::current()->getName() == 'student.performance')
-    <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/chart.js') }}"></script>
-    @endif
-    @if(Route::current()->getName() == 'student.videos')
-    <script src="{{ asset('assets/plugin/magnific-popup/jquery.magnific-popup.js') }}"></script>
-    <script>
-      $(document).ready(function() {
-        $('.popup-youtube').magnificPopup({
-          type: 'iframe'
-        });
+      if (timeleft <= 0) {
+        clearInterval(examTimerSecs);
+        alert("Your time has over.");
+        $("#frmExam").submit();
+      }
+      document.getElementById("secs").innerHTML = s;
+      s -= 1;
+    }, 1000);
+  </script>
+  <script type="text/javascript">
+    window.onbeforeunload = function() {
+      return "Dude, are you sure you want to leave? Think of the kittens!";
+    }
+  </script>
+  @endif
+  @if(Route::current()->getName() == 'student.exam.performance' || Route::current()->getName() == 'student.performance')
+  <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
+  <script src="{{ asset('assets/js/chart.js') }}"></script>
+  @endif
+  @if(Route::current()->getName() == 'student.videos')
+  <script src="{{ asset('assets/plugin/magnific-popup/jquery.magnific-popup.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+      $('.popup-youtube').magnificPopup({
+        type: 'iframe'
       });
-    </script>
-    @endif
+    });
+  </script>
+  @endif
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -605,7 +611,7 @@
   <script>
     $(document).ready(function() {
       $('body').bind('cut copy paste', function(event) {
-      event.preventDefault();
+        event.preventDefault();
       });
     });
   </script>
