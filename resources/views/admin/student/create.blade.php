@@ -25,7 +25,7 @@
                                     <input type="text" class="form-control" placeholder="Student Name" name="name" value="{{ old('name') }}" aria-label="Text" aria-describedby="text-addon">
                                 </div>
                                 @error('name')
-                                    <small class="text-danger">{{ $errors->first('name') }}</small>
+                                <small class="text-danger">{{ $errors->first('name') }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                     <input type="email" class="form-control" placeholder="Email ID" name="email" value="{{ old('email') }}" aria-label="Email" aria-describedby="email-addon">
                                 </div>
                                 @error('email')
-                                    <small class="text-danger">{{ $errors->first('email') }}</small>
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     <input type="text" class="form-control" placeholder="Mobile Number" name="mobile" value="{{ old('mobile') }}" maxlength="10" aria-label="Text" aria-describedby="text-addon">
                                 </div>
                                 @error('mobile')
-                                    <small class="text-danger">{{ $errors->first('mobile') }}</small>
+                                <small class="text-danger">{{ $errors->first('mobile') }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -98,16 +98,16 @@
                                     <select class="form-control" name="branch">
                                         <option value="">Select</option>
                                         @forelse($branches as $key => $branch)
-                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
                                 </div>
                                 @error('branch')
-                                    <small class="text-danger">{{ $errors->first('branch') }}</small>
+                                <small class="text-danger">{{ $errors->first('branch') }}</small>
                                 @enderror
                             </div>
-                        </div>                                               
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Address</label>
@@ -115,10 +115,22 @@
                                     <textarea class="form-control" name="address" placeholder="Address">{{ old('address') }}</textarea>
                                 </div>
                                 @error('address')
-                                    <small class="text-danger">{{ $errors->first('address') }}</small>
+                                <small class="text-danger">{{ $errors->first('address') }}</small>
                                 @enderror
                             </div>
-                        </div>                        
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="req">Type</label>
+                                <select class="form-control" name="type">
+                                    <option value="online">Online</option>
+                                    <option value="offline">Offline</option>
+                                </select>
+                                @error('type')
+                                <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <h5>Admission Fee Details</h5>
@@ -129,7 +141,7 @@
                                     <input type="number" class="form-control" name="fee" min="1" step="1" value="{{ old('fee') }}" placeholder="0.00" />
                                 </div>
                                 @error('fee')
-                                    <small class="text-danger">{{ $errors->first('fee') }}</small>
+                                <small class="text-danger">{{ $errors->first('fee') }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -140,7 +152,7 @@
                                     <input type="number" class="form-control" name="admission_fee_advance" min="1" step="1" value="{{ old('admission_fee_advance') }}" placeholder="0.00" />
                                 </div>
                                 @error('admission_fee_advance')
-                                    <small class="text-danger">{{ $errors->first('admission_fee_advance') }}</small>
+                                <small class="text-danger">{{ $errors->first('admission_fee_advance') }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -159,16 +171,16 @@
                                     <select class="form-control" name="payment_mode">
                                         <option value="">Select</option>
                                         @forelse($pmodes as $key => $pmode)
-                                            <option value="{{ $pmode->id }}">{{ $pmode->name }}</option>
+                                        <option value="{{ $pmode->id }}">{{ $pmode->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
                                 </div>
                                 @error('payment_mode')
-                                    <small class="text-danger">{{ $errors->first('payment_mode') }}</small>
+                                <small class="text-danger">{{ $errors->first('payment_mode') }}</small>
                                 @enderror
                             </div>
-                        </div>                        
+                        </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Tentative Date</label>

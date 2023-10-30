@@ -54,7 +54,7 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $students = Student::where('course_id', 0)->orderByDesc('id')->get();
+        $students = Student::where('type', 'offline')->orderByDesc('id')->get();
         $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();
         return view('admin.student.index', compact('students', 'batches', 'status'));
@@ -62,7 +62,7 @@ class StudentController extends Controller
 
     public function onlinestudents()
     {
-        $students = Student::where('course_id', '>', 0)->orderByDesc('id')->get();
+        $students = Student::where('type', 'online')->orderByDesc('id')->get();
         $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();
         return view('admin.student.students', compact('students', 'batches', 'status'));
@@ -142,6 +142,7 @@ class StudentController extends Controller
             'fee' => 'required',
             'payment_mode' => 'required',
             'branch' => 'required',
+            'type' => 'required',
         ]);
         $input = $request->all();
         if ($request->hasFile('photo')) :
@@ -152,7 +153,6 @@ class StudentController extends Controller
         endif;
         $input['created_by'] = Auth::user()->id;
         $input['updated_by'] = Auth::user()->id;
-        $input['type'] = 'offline';
         $input['status'] = 'Active';
         $input['branch'] = 1;
         $input['role'] = 'Student';
