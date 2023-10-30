@@ -108,18 +108,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="req">Address</label>
-                                <div class="mb-3">
-                                    <textarea class="form-control" name="address" placeholder="Address">{{ old('address') }}</textarea>
-                                </div>
-                                @error('address')
-                                <small class="text-danger">{{ $errors->first('address') }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label class="req">Type</label>
                                 <select class="form-control" name="type">
@@ -128,6 +117,17 @@
                                 </select>
                                 @error('type')
                                 <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="req">Address</label>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="address" placeholder="Address">{{ old('address') }}</textarea>
+                                </div>
+                                @error('address')
+                                <small class="text-danger">{{ $errors->first('address') }}</small>
                                 @enderror
                             </div>
                         </div>

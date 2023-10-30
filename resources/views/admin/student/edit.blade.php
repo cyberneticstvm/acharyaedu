@@ -119,6 +119,18 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Type</label>
+                                <select class="form-control" name="type">
+                                    <option value="online" {{ ($student->type == 'online') ? 'selected' : '' }}>Online</option>
+                                    <option value="offline" {{ ($student->type == 'offline') ? 'selected' : '' }}>Offline</option>
+                                </select>
+                                @error('type')
+                                <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="req">Address</label>
@@ -127,18 +139,6 @@
                                 </div>
                                 @error('address')
                                 <small class="text-danger">{{ $errors->first('address') }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="req">Type</label>
-                                <select class="form-control" name="type">
-                                    <option value="online">Online</option>
-                                    <option value="offline">Offline</option>
-                                </select>
-                                @error('type')
-                                <small class="text-danger">{{ $errors->first('type') }}</small>
                                 @enderror
                             </div>
                         </div>
