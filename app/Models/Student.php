@@ -30,29 +30,35 @@ class Student extends Model
         'photo',
         'course_id',
         'branch',
+        'type',
         'created_by',
         'updated_by',
     ];
 
     protected $casts = ['tentative_date' => 'date', 'admission_date' => 'date'];
 
-    public function branch(){
+    public function branch()
+    {
         return $this->belongsTo(Branch::class, 'branch');
     }
 
-    public function batches(){
+    public function batches()
+    {
         return $this->hasMany(StudentBatch::class, 'student');
     }
 
-    public function attendances(){
+    public function attendances()
+    {
         return $this->hasMany(Attendance::class, 'student');
     }
-    
-    public function batchFee(){
+
+    public function batchFee()
+    {
         return $this->hasMany(Fee::class, 'student');
     }
 
-    public function course(){
+    public function course()
+    {
         return $this->hasOne(Course::class, 'id', 'course_id');
     }
 }
