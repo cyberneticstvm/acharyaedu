@@ -64,11 +64,11 @@ class ReportController extends Controller
         $opening_balance = DB::table('daily_closings as d')->select(DB::raw("MAX(d.id), IFNULL(d.closing_balance, 0) AS closing_balance"))->whereDate('d.date', '=', $prev_day)->orderByDesc('d.id')->first()->closing_balance;
 
         $fee = Fee::whereBetween('paid_date', [$request->from_date, $request->to_date])->get();
-        $students = Student::whereBetween('created_at', [Carbon::parse($request->from_date)->startOfDay(), Carbon::parse($request->to_date)->endOfDay()])->where('fee', '>', 0)->get();
+        $students = Student::whereBetween('created_at', [Carbon::parse($request->from_date)->startOfDay(), Carbon::parse($request->to_date)->endOfDay()])->where('admission_fee_advance', '>', 0)->get();
         $income = Income::whereBetween('date', [$request->from_date, $request->to_date])->get();
         $expense = Expense::whereBetween('date', [$request->from_date, $request->to_date])->get();
 
-        $closing_balance = ($opening_balance + $students->sum('fee') + $fee->sum('fee_advance') + $income->sum('amount')) - $expense->sum('amount');
+        $closing_balance = ($opening_balance + $students->sum('admission_fee_advance') + $fee->sum('fee_advance') + $income->sum('amount')) - $expense->sum('amount');
         return view('admin.reports.daily-closing', compact('opening_balance', 'fee', 'income', 'expense', 'inputs', 'students', 'closing_balance'));
     }
 

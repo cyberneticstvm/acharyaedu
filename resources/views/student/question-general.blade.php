@@ -11,32 +11,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered" id="datatable-basic">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>SL No</th>
-                                <th>Subject</th>
-                                <th>Question</th>
-                                <th>Answer</th>
-                                <th>Explanation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $slno = 1 @endphp
-                            @forelse($questions as $key => $question)
-                            <tr>
-                                <td>{{ $slno++ }}</td>
-                                <td>{{ $question->subject->name }}</td>
-                                <td>{{ $question->question }}</td>
-                                <td>{{ $question->answer }}</td>
-                                <td>{{ $question->explanation }}</td>
-                            </tr>
-                            @empty
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+                @forelse($questions as $key => $question)
+                <p>Question: {{ $question->question }}</p>
+                <p>Subject: {{ $question->subject->name }}</p>
+                <p>Subject: {{ $question->answer }}</p>
+                <p>Subject: {{ $question->explanation }}</p>
+                @empty
+                @endforelse
+                {!! $questions->withQueryString()->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>

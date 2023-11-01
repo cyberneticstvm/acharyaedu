@@ -59,7 +59,7 @@
                                     </tr>
                                     <tr>
                                         <td>Income from Admission</td>
-                                        <td class="text-end">{{ number_format($students->sum('fee'), 2) }}</td>
+                                        <td class="text-end">{{ number_format($students->sum('admission_fee_advance'), 2) }}</td>
                                         <td class="text-end"></td>
                                     </tr>
                                     <tr>
