@@ -14,8 +14,8 @@
                 @forelse($questions as $key => $question)
                 <p>Question: {{ $question->question }}</p>
                 <p>Subject: {{ $question->subject->name }}</p>
-                <p>Subject: {{ $question->answer }}</p>
-                <p>Subject: {{ $question->explanation }}</p>
+                <p>Answer: {{ $question->answer }}</p>
+                <p>Explanation: {{ $question->explanation }}</p>
                 @empty
                 @endforelse
                 {!! $questions->withQueryString()->links('pagination::bootstrap-5') !!}
