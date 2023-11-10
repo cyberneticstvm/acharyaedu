@@ -27,6 +27,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GeneralQuestionController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\MultiOptionQuestionController;
 use App\Http\Controllers\OfflineExamPerformanceController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PreviousQuestionController;
@@ -39,6 +40,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\UserController;
+use App\Models\MultiOptionQuestion;
 
 /*
 |--------------------------------------------------------------------------
@@ -403,6 +405,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('/admin/general/question/edit/{id}', [GeneralQuestionController::class, 'edit'])->name('question.general.edit');
     Route::put('/admin/general/question/edit/{id}', [GeneralQuestionController::class, 'update'])->name('question.general.update');
     Route::delete('/admin/general/question/delete/{id}', [GeneralQuestionController::class, 'destroy'])->name('question.general.delete');
+
+    Route::get('/admin/multi-option', [MultiOptionQuestionController::class, 'index'])->name('multi-option');
+    Route::get('/admin/multi-option/create', [MultiOptionQuestionController::class, 'create'])->name('multi-option.create');
+    Route::post('/admin/multi-option/create', [MultiOptionQuestionController::class, 'store'])->name('multi-option.save');
+    Route::get('/admin/multi-option/edit/{id}', [MultiOptionQuestionController::class, 'edit'])->name('multi-option.edit');
+    Route::put('/admin/multi-option/edit/{id}', [MultiOptionQuestionController::class, 'update'])->name('multi-option.update');
+    Route::delete('/admin/multi-option/delete/{id}', [MultiOptionQuestionController::class, 'destroy'])->name('multi-option.delete');
 
     Route::get('/admin/daily/closing', [ReportController::class, 'dailyClosing'])->name('daily.closing');
     Route::post('/admin/daily/closing', [ReportController::class, 'fetchDailyClosing'])->name('daily.closing.fetch');

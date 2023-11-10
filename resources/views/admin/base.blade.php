@@ -416,6 +416,12 @@
                   <span class="sidenav-normal ms-2 ps-1">General Questions</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/multi-option">
+                  <i class='fa fa-check sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Multiple Options Question</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>
@@ -763,7 +769,7 @@
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
   <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
   <script src="{{ asset('admin-assets/js/script.js') }}"></script>
-  @if(Route::current()->getName() == 'question.create' || Route::current()->getName() == 'question.edit' || Route::current()->getName() == 'scertquestion.create' || Route::current()->getName() == 'scertquestion.edit' || Route::current()->getName() == 'previousquestion.create' || Route::current()->getName() == 'previousquestion.edit' || Route::current()->getName() == 'caffairquestion.create' || Route::current()->getName() == 'caffairquestion.edit')
+  @if(Route::current()->getName() == 'question.create' || Route::current()->getName() == 'question.edit' || Route::current()->getName() == 'scertquestion.create' || Route::current()->getName() == 'scertquestion.edit' || Route::current()->getName() == 'previousquestion.create' || Route::current()->getName() == 'previousquestion.edit' || Route::current()->getName() == 'caffairquestion.create' || Route::current()->getName() == 'caffairquestion.edit' || Route::current()->getName() == 'multi-option.create' || Route::current()->getName() == 'multi-option.edit')
   <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
   <script>
     CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
