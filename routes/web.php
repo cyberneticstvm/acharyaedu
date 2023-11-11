@@ -110,6 +110,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function () {
     Route::post('/student/caffair/fetch', [StudentController::class, 'caffairfetch'])->name('student.caffair.fetch');
     Route::get('/student/revision', [StudentController::class, 'revision'])->name('student.revision');
     Route::get('/student/general/question', [StudentController::class, 'generalQuestions'])->name('student.general.question');
+    Route::get('/student/multi-options/question', [StudentController::class, 'multiOptionsQuestions'])->name('student.multi.options.question');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {

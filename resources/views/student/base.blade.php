@@ -392,7 +392,13 @@
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/general/question">
                   <i class="fa fa-id-card-o sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">General questions</span>
+                  <span class="sidenav-normal ms-2 ps-1">General Questions</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/multi-options/question">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Multiple Options Questions</span>
                 </a>
               </li>
             </ul>

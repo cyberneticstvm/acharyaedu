@@ -17,6 +17,7 @@ use App\Models\FreeExamScore;
 use App\Models\FreeStudentExam;
 use App\Models\GeneralQuestion;
 use App\Models\Month;
+use App\Models\MultiOptionQuestion;
 use App\Models\PaymentMode;
 use App\Models\PscUpdate;
 use App\Models\Question;
@@ -686,5 +687,11 @@ class StudentController extends Controller
         $course = Batch::whereIn('id', $student->batches()->pluck('batch'))->where('status', 1)->pluck('course');
         $questions = GeneralQuestion::join('general_question_courses as gqc', 'general_questions.id', 'gqc.question_id')->whereIn("gqc.course_id", $course)->latest()->paginate(1);
         return view('student.question-general', compact('questions', 'courses'));
+    }
+
+    public function multiOptionsQuestions()
+    {
+        $questions = MultiOptionQuestion::latest()->paginate(1);
+        return view('student.question-multi-options', compact('questions'));
     }
 }
