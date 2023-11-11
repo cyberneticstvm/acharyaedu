@@ -93,8 +93,8 @@ class ReportController extends Controller
     public function feepending()
     {
         $records = collect();
-        $inputs = [];
         $batches = Batch::where('status', 1)->get();
+        $inputs = array($batches->first()->id, date('m'), date('Y'));
         $months = Month::all();
         $years = DB::table('years')->get();
         return view('admin.reports.fee-pending', compact('records', 'batches', 'months', 'years', 'inputs'));

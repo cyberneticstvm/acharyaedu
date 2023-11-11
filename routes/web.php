@@ -244,6 +244,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('/pdf/admission-fee/{id}', [PDFController::class, 'admissionfee'])->name('admissionfee');
     Route::get('/pdf/batch-fee/{id}', [PDFController::class, 'batchfee'])->name('batchfee');
+    Route::get('/pdf/pending-fee/{batch}/{month}/{year}', [PDFController::class, 'pendingFee'])->name('report.pendingFee');
 
     Route::get('/email/admission-fee/{id}', [PDFController::class, 'emailadmissionfee'])->name('emailadmissionfee');
     Route::get('/email/batch-fee/{id}', [PDFController::class, 'emailbatchfee'])->name('emailbatchfee');

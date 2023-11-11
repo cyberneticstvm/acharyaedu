@@ -99,6 +99,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="text-end"><a href="{{ route('report.pendingFee', ['batch' => $inputs[0], 'month' => $inputs[1], 'year' => $inputs[2]]) }}" target="_blank">Download</a></div>
                     </div>
                 </div>
             </div>
