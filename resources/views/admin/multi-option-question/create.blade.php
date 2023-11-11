@@ -4,7 +4,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header pb-0 text-left bg-transparent">
-                <h3 class="font-weight-bolder text-primary text-gradient">Create SCERT Question</h3>
+                <h3 class="font-weight-bolder text-primary text-gradient">Create Multiple Options Question</h3>
             </div>
             <div class="card-body">
                 @if(session()->has('success'))
