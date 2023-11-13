@@ -15,13 +15,13 @@
                 <p>Question: {!! $question->question !!}</p>
                 <p>Subject: {{ $question->subject->name }}</p>
                 <br />
-                <p><input type="radio" name="moqr" value="" /> Option A: {!! $question->option_a !!}</p>
-                <p><input type="radio" name="moqr" value="" /> Option B: {!! $question->option_b !!}</p>
-                <p><input type="radio" name="moqr" value="" /> Option C: {!! $question->option_c !!}</p>
-                <p><input type="radio" name="moqr" value="" /> Option D: {!! $question->option_d !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" /> Option A: {!! $question->option_a !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" /> Option B: {!! $question->option_b !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" /> Option C: {!! $question->option_c !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" /> Option D: {!! $question->option_d !!}</p>
                 <br />
-                <p class="hidden">Correct Answer: {{ $question->correct_option }}</p>
-                <p class="hidden">Explanaton: {!! $question->explanation !!}</p>
+                <p class="hidden show">Correct Answer: {{ $question->correct_option }}</p>
+                <p class="hidden show">Explanaton: {!! $question->explanation !!}</p>
                 @empty
                 @endforelse
                 {!! $questions->withQueryString()->links() !!}
@@ -29,4 +29,11 @@
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        $(".moqr").click(function() {
+            $(".show").removeClass('hidden');
+        });
+    })
+</script>
 @endsection
