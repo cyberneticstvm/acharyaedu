@@ -24,7 +24,7 @@
                 <p>Explanaton: {!! $question->explanation !!}</p>
                 @empty
                 @endforelse
-                {!! $questions->withQueryString()->links('pagination::bootstrap-5') !!}
+                {!! $questions->withQueryString()->links() !!}
             </div>
         </div>
     </div>
