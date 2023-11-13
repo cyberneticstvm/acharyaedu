@@ -20,8 +20,8 @@
                 <p><input type="radio" name="moqr" value="" /> Option C: {!! $question->option_c !!}</p>
                 <p><input type="radio" name="moqr" value="" /> Option D: {!! $question->option_d !!}</p>
                 <br />
-                <p>Correct Answer: {{ $question->correct_option }}</p>
-                <p>Explanaton: {!! $question->explanation !!}</p>
+                <p class="hidden">Correct Answer: {{ $question->correct_option }}</p>
+                <p class="hidden">Explanaton: {!! $question->explanation !!}</p>
                 @empty
                 @endforelse
                 {!! $questions->withQueryString()->links() !!}
