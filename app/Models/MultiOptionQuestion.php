@@ -15,4 +15,9 @@ class MultiOptionQuestion extends Model
     {
         return $this->hasOne(Subject::class, 'id', 'subject_id');
     }
+
+    public function batches()
+    {
+        return $this->hasMany(MultiOptionQuestionBatch::class, 'question_id', 'id');
+    }
 }

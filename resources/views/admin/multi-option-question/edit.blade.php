@@ -36,6 +36,15 @@
                             <small class="text-danger">{{ $errors->first('subject_id') }}</small>
                             @enderror
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="req mb-1">Batch</label>
+                                {!! Form::select('batch_id[]', getActiveBatches()->pluck('name', 'id')->all(), $question->batches()->pluck('batch_id')->toArray(), ['class' => 'form-control select2', 'multiple']) !!}
+                            </div>
+                            @error('batch_id')
+                            <small class="text-danger">{{ $errors->first('batch_id') }}</small>
+                            @enderror
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="req mb-1">Question</label>
@@ -48,25 +57,25 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="req mb-1">Option A</label>
-                                <textarea class="form-control" name="option_id[]" id="option1" placeholder="Option A" required>{{ $question->option_a }}</textarea>
+                                <textarea class="form-control" name="options[]" id="option1" placeholder="Option A" required>{{ $question->option_a }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="req mb-1">Option B</label>
-                                <textarea class="form-control" name="option_id[]" id="option2" placeholder="Option B" required>{{ $question->option_b }}</textarea>
+                                <textarea class="form-control" name="options[]" id="option2" placeholder="Option B" required>{{ $question->option_b }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="req mb-1">Option C</label>
-                                <textarea class="form-control" name="option_id[]" id="option3" placeholder="Option C" required>{{ $question->option_c }}</textarea>
+                                <textarea class="form-control" name="options[]" id="option3" placeholder="Option C" required>{{ $question->option_c }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="req mb-1">Option D</label>
-                                <textarea class="form-control" name="option_id[]" id="option4" placeholder="Option D" required>{{ $question->option_d }}</textarea>
+                                <textarea class="form-control" name="options[]" id="option4" placeholder="Option D" required>{{ $question->option_d }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">

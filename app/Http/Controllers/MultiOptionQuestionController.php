@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\MultiOptionQuestion;
+use App\Models\MultiOptionQuestionBatch;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,8 @@ class MultiOptionQuestionController extends Controller
     public function create()
     {
         $subjects = Subject::where('exam_type', 1)->get();
-        return view('admin.multi-option-question.create', compact('subjects'));
+        $batches = Batch::where('status', 1)->get();
+        return view('admin.multi-option-question.create', compact('subjects', 'batches'));
     }
 
     /**
@@ -33,17 +36,25 @@ class MultiOptionQuestionController extends Controller
     {
         $this->validate($request, [
             'subject_id' => 'required',
+            'batch_id' => 'array|present',
         ]);
-        MultiOptionQuestion::create([
+        $qid = MultiOptionQuestion::create([
             'question' => $request->question,
             'subject_id' => $request->subject_id,
-            'option_a' => $request->option_id[0],
-            'option_b' => $request->option_id[1],
-            'option_c' => $request->option_id[2],
-            'option_d' => $request->option_id[3],
+            'option_a' => $request->options[0],
+            'option_b' => $request->options[1],
+            'option_c' => $request->options[2],
+            'option_d' => $request->options[3],
             'correct_option' => $request->correct_option,
             'explanation' => $request->explanation
-        ]);
+        ])->id;
+        foreach ($request->batch_id as $key => $batch) :
+            $batches[] = [
+                'question_id' => $qid,
+                'batch_id' => $batch,
+            ];
+        endforeach;
+        MultiOptionQuestionBatch::insert($batches);
         return redirect()->route('multi-option')->with('success', 'Question Saved Successfully!');
     }
 
@@ -62,7 +73,8 @@ class MultiOptionQuestionController extends Controller
     {
         $subjects = Subject::where('exam_type', 1)->get();
         $question = MultiOptionQuestion::find($id);
-        return view('admin.multi-option-question.edit', compact('subjects', 'question'));
+        $batches = Batch::where('status', 1)->get();
+        return view('admin.multi-option-question.edit', compact('subjects', 'question', 'batches'));
     }
 
     /**
@@ -72,17 +84,26 @@ class MultiOptionQuestionController extends Controller
     {
         $this->validate($request, [
             'subject_id' => 'required',
+            'batch_id' => 'array|present',
         ]);
         MultiOptionQuestion::findOrFail($id)->update([
             'question' => $request->question,
             'subject_id' => $request->subject_id,
-            'option_a' => $request->option_id[0],
-            'option_b' => $request->option_id[1],
-            'option_c' => $request->option_id[2],
-            'option_d' => $request->option_id[3],
+            'option_a' => $request->options[0],
+            'option_b' => $request->options[1],
+            'option_c' => $request->options[2],
+            'option_d' => $request->options[3],
             'correct_option' => $request->correct_option,
             'explanation' => $request->explanation
         ]);
+        foreach ($request->batch_id as $key => $batch) :
+            $batches[] = [
+                'question_id' => $id,
+                'batch_id' => $batch,
+            ];
+        endforeach;
+        MultiOptionQuestionBatch::where('question_id', $id)->delete();
+        MultiOptionQuestionBatch::insert($batches);
         return redirect()->route('multi-option')->with('success', 'Question updated Successfully!');
     }
 

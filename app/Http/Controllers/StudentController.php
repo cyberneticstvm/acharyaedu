@@ -691,7 +691,8 @@ class StudentController extends Controller
 
     public function multiOptionsQuestions()
     {
-        $questions = MultiOptionQuestion::latest()->paginate(1);
+        $student = Student::find(Auth::user()->student->id);
+        $questions = MultiOptionQuestion::leftJoin('multi_option_question_batches as moqb', 'multi_option_questions.id', 'moqb.question_id')->selectRaw("multi_option_questions.*")->whereIn('moqb.batch_id', $student->batches->pluck('batch'))->latest()->paginate(1);
         return view('student.question-multi-options', compact('questions'));
     }
 }
