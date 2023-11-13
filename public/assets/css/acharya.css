@@ -75,6 +75,9 @@ input[type=checkbox], input[type=radio] {
     background: green;
     color: #fff !important;
 }
+.hidden{
+    display: none !important;
+}
 
 
 @media only screen and (max-width: 767px){
