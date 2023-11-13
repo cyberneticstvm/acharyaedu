@@ -73,6 +73,8 @@
             @endforelse
         </tbody>
     </table>
+    <br><br><br><br><br>
+    <div class="text-right">Authorised Signatory</div>
 </body>
 
 </html>
