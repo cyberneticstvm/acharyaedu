@@ -83,6 +83,10 @@ $(function(){
             }
         })
     });
+
+    $(".moqr").click(function() {
+        $(".show").removeClass('hidden');
+    });
 });
 
 function showTab(tab){

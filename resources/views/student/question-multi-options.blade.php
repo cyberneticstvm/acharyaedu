@@ -29,12 +29,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(function() {
-        alert('sdf')
-        $(".moqr").click(function() {
-            $(".show").removeClass('hidden');
-        });
-    })
-</script>
 @endsection
