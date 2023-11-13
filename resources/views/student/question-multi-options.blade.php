@@ -15,10 +15,10 @@
                 <p>Question: {!! $question->question !!}</p>
                 <p>Subject: {{ $question->subject->name }}</p>
                 <br />
-                <p>Option A: {!! $question->option_a !!}</p>
-                <p>Option B: {!! $question->option_b !!}</p>
-                <p>Option C: {!! $question->option_c !!}</p>
-                <p>Option D: {!! $question->option_d !!}</p>
+                <p><input type="radio" name="moqr" value="" /> Option A: {!! $question->option_a !!}</p>
+                <p><input type="radio" name="moqr" value="" /> Option B: {!! $question->option_b !!}</p>
+                <p><input type="radio" name="moqr" value="" /> Option C: {!! $question->option_c !!}</p>
+                <p><input type="radio" name="moqr" value="" /> Option D: {!! $question->option_d !!}</p>
                 <br />
                 <p>Correct Answer: {{ $question->correct_option }}</p>
                 <p>Explanaton: {!! $question->explanation !!}</p>
