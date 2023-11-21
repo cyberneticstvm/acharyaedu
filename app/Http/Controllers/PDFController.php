@@ -56,7 +56,7 @@ class PDFController extends Controller
     {
         $batch = Batch::findOrFail($batch);
         $monthname = Carbon::createFromFormat('m', $month)->monthName;
-        $records = StudentBatch::where('batch', $batch->id)->where('cancelled', 0)->whereMonth('date_joined', '<=', $month)->whereYear('date_joined', '<=', $year)->get();
+        $records = StudentBatch::where('batch', $batch->id)->where('cancelled', 0)->get();
         $pdf = PDF::loadView('/admin/PDFs/pending-fee', compact('records', 'batch', 'monthname', 'year', 'month'));
         return $pdf->stream('pending-fee.pdf', array("Attachment" => 0));
     }
