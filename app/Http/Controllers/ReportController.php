@@ -111,7 +111,7 @@ class ReportController extends Controller
         $batches = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = DB::table('years')->get();
-        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->whereMonth('date_joined', '<=', $request->month)->whereYear('date_joined', '<=', $request->year)->get();
+        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->get();
         return view('admin.reports.fee-pending', compact('records', 'batches', 'months', 'years', 'inputs'));
     }
 
