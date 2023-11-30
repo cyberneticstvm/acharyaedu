@@ -91,9 +91,10 @@ $(function () {
         $(".moqr").each(function () {
             var dis = $(this)
             if (dis.data('ans') == c) {
+                alert(dis.parent().next('p').text())
                 dis.parent().next('p').addClass("text-success")
             } else {
-                dis.children().addClass("text-danger")
+                dis.parent().next('p').addClass("text-danger")
             }
         });
     });
