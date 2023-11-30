@@ -87,10 +87,10 @@ $(function () {
 
     $(".moqr").click(function () {
         $(".show").removeClass('hidden');
-        $c = $(".correct_answer").text(); alert($c)
+        var c = $(".correct_answer").text(); alert(c)
         $(".moqr").each(function () {
-            alert($c)
-            if ($(this).data('ans') == $c) {
+            alert(c)
+            if ($(this).data('ans') == c) {
                 $(this).addClass("text-scucces")
             } else {
                 $(this).addClass("text-danger")
