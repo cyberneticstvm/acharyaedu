@@ -1,7 +1,7 @@
-$(function(){
+$(function () {
     "use strict"
 
-    $('form').submit(function(){
+    $('form').submit(function () {
         $(".btn-submit").attr("disabled", true);
         $(".btn-submit").html("<span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span>");
     });
@@ -16,21 +16,22 @@ $(function(){
         pagingType: "numbers"
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.select2').select2();
     });
 
-    $(".subject").change(function(){
+    $(".subject").change(function () {
         var sid = $(this).val();
         var random = $(this).data('random');
         $.ajax({
             type: 'GET',
             url: '/helper/module',
-            data:{'sid': sid, 'random': random}
-        }).then(function (response){console.log(response)
+            data: { 'sid': sid, 'random': random }
+        }).then(function (response) {
+            console.log(response)
             var options = "<option value=''>Select</option>";
-            $.map(response, function(obj){
-                options = options + "<option value='"+obj.id+"'>"+obj.name+"</option>";
+            $.map(response, function (obj) {
+                options = options + "<option value='" + obj.id + "'>" + obj.name + "</option>";
             });
             $(".module").html(options);
         });
@@ -51,53 +52,61 @@ $(function(){
             extraHtml: `<a class="sw-btn sw-btn-danger" href='/student/active-exams'>Cancel</a>`
         }
     });
-    $(".sw-btn-next, .sw-btn-prev").click(function(){
+    $(".sw-btn-next, .sw-btn-prev").click(function () {
         $("#smartwizard .answer, #smartwizard1 .answer").collapse('hide');
         var rad = $(this).parent().parent().find('.quest:visible').find(".radanswer")
-        if(rad.is(":checked")){
+        if (rad.is(":checked")) {
             var cls = rad.data('chk');
-            $('.'+cls).addClass('attended').removeClass('unattended');
+            $('.' + cls).addClass('attended').removeClass('unattended');
         }
     });
     $(".sw-btn").removeClass("btn").addClass("rts-btn");
 
-    $(document).on("change", ".selFilter", function(){
+    $(document).on("change", ".selFilter", function () {
         var cls = $(this).data('class');
         var txt = $(".selFilter option:selected").text();
-        $(".tblFilter tbody tr").each(function(){
-            if(txt == $(this).find("."+cls).text()){
+        $(".tblFilter tbody tr").each(function () {
+            if (txt == $(this).find("." + cls).text()) {
                 $(this).show();
-            }else{
+            } else {
                 $(this).hide();
             }
         });
     });
 
-    $(".vidSubject").change(function(){
+    $(".vidSubject").change(function () {
         var sid = $(this).val();
-        $(".subFilter").each(function(){
-            if($(this).data('cls') == "sub_"+sid){
+        $(".subFilter").each(function () {
+            if ($(this).data('cls') == "sub_" + sid) {
                 $(this).removeClass("d-none");
-            }else{
+            } else {
                 $(this).addClass("d-none")
             }
         })
     });
 
-    $(".moqr").click(function() {
+    $(".moqr").click(function () {
         $(".show").removeClass('hidden');
+        $c = $(".correct_answer").text();
+        $(".moqr").each(function () {
+            if ($(this).data('ans') == $c) {
+                $(this).addClass("text-scucces")
+            } else {
+                $(this).addClass("text-danger")
+            }
+        });
     });
 });
 
-function showTab(tab){
+function showTab(tab) {
     $("#smartwizard").find('.quest:visible').css('display', 'none');
-    $("#"+tab).css('display', 'block');
+    $("#" + tab).css('display', 'block');
 }
 
-function clearAnswer(dis){
+function clearAnswer(dis) {
     var chk = dis.parent().parent().find('.quest:visible').find(".radanswer").data('chk');
-    $("input[name='"+chk+"']").prop('checked', false);
-    $('.'+chk).addClass('unattended').removeClass('attended');
+    $("input[name='" + chk + "']").prop('checked', false);
+    $('.' + chk).addClass('unattended').removeClass('attended');
 }
 
 setTimeout(function () {
