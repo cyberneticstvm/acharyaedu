@@ -54,7 +54,7 @@ class PDFController extends Controller
 
     public function pendingFee($batch, $month, $year)
     {
-        $date = Carbon::createFromDate($request->year, $request->month, 1)->copy()->endOfMonth();
+        $date = Carbon::createFromDate($year, $month, 1)->copy()->endOfMonth();
         $batch = Batch::findOrFail($batch);
         $monthname = Carbon::createFromFormat('m', $month)->monthName;
         $records = StudentBatch::where('batch', $batch->id)->where('cancelled', 0)->whereDate('date_joined', '<=', $date)->get();
