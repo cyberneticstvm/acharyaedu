@@ -89,10 +89,11 @@ $(function () {
         $(".show").removeClass('hidden');
         var c = $(".correct_answer").text();
         $(".moqr").each(function () {
-            if ($(this).data('ans') == c) {
-                $(this).find('.data').addClass("text-success")
+            var dis = $(this)
+            if (dis.data('ans') == c) {
+                dis.find('.data').addClass("text-success")
             } else {
-                $(this).find('.data').addClass("text-danger")
+                dis.find('.data').addClass("text-danger")
             }
         });
     });
