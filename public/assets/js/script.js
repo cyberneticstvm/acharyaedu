@@ -87,9 +87,10 @@ $(function () {
 
     $(".moqr").click(function () {
         $(".show").removeClass('hidden');
-        var c = $(".correct_answer").text(); alert(c)
+        var c = $(".correct_answer").text();
         $(".moqr").each(function () {
-            if ($(this).data('ans') === c) {
+            if ($(this).data('ans') == c) {
+                alert(c)
                 $(this).find('span').addClass("text-success")
             } else {
                 $(this).find('span').addClass("text-danger")
