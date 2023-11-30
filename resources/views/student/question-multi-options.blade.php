@@ -20,7 +20,7 @@
                 <p><input class="moqr" type="radio" name="moqr" value="" data-ans="C" /> Option C: {!! $question->option_c !!}</p>
                 <p><input class="moqr" type="radio" name="moqr" value="" data-ans="D" /> Option D: {!! $question->option_d !!}</p>
                 <br />
-                <p class="hidden show text-success correct_answer">Correct Answer: {{ albhabets()[$question->correct_option] }}</p>
+                <p class="hidden show text-success">Correct Answer: <span class="correct_answer">{{ albhabets()[$question->correct_option] }}</span></p>
                 <p class="hidden show">Explanaton: {!! $question->explanation !!}</p>
                 @empty
                 @endforelse
