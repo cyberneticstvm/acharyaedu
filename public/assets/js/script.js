@@ -90,10 +90,9 @@ $(function () {
         var c = $(".correct_answer").text();
         $(".moqr").each(function () {
             if ($(this).data('ans') == c) {
-                alert(c)
-                $(this).find('span').addClass("text-success")
+                $(this).find('.data').addClass("text-success")
             } else {
-                $(this).find('span').addClass("text-danger")
+                $(this).find('.data').addClass("text-danger")
             }
         });
     });
