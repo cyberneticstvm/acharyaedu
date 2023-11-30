@@ -15,10 +15,10 @@
                 <p>Question: {!! $question->question !!}</p>
                 <p>Subject: {{ $question->subject->name }}</p>
                 <br />
-                <p><input class="moqr" type="radio" name="moqr" value="" /> Option A: {!! $question->option_a !!}</span></p>
-                <p><input class="moqr" type="radio" name="moqr" value="" /> Option B: {!! $question->option_b !!}</span></p>
-                <p><input class="moqr" type="radio" name="moqr" value="" /> Option C: {!! $question->option_c !!}</span></p>
-                <p><input class="moqr" type="radio" name="moqr" value="" /> Option D: {!! $question->option_d !!}</span></p>
+                <p><input class="moqr" type="radio" name="moqr" value="" data-ans="A" />Option A: {!! $question->option_a !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" data-ans="B" />Option B: {!! $question->option_b !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" data-ans="C" />Option C: {!! $question->option_c !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" data-ans="D" />Option D: {!! $question->option_d !!}</p>
                 <br />
                 <p class="hidden show text-success">Correct Answer: <span class="correct_answer">{{ albhabets()[$question->correct_option] }}</span></p>
                 <p class="hidden show">Explanaton: {!! $question->explanation !!}</p>
