@@ -91,7 +91,7 @@ $(function () {
         $(".moqr").each(function () {
             var dis = $(this)
             if (dis.data('ans') == c) {
-                dis.children().addClass("text-success")
+                dis.parent().children().addClass("text-success")
             } else {
                 dis.children().addClass("text-danger")
             }
