@@ -91,9 +91,9 @@ $(function () {
         $(".moqr").each(function () {
             var dis = $(this)
             if (dis.data('ans') == c) {
-                dis.closest('p').addClass("text-success")
+                dis.children().addClass("text-success")
             } else {
-                dis.closest('p').addClass("text-danger")
+                dis.children().addClass("text-danger")
             }
         });
     });
