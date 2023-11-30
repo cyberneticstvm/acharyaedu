@@ -89,6 +89,7 @@ $(function () {
         $(".show").removeClass('hidden');
         $c = $(".correct_answer").text();
         $(".moqr").each(function () {
+            alert($c)
             if ($(this).data('ans') == $c) {
                 $(this).addClass("text-scucces")
             } else {
