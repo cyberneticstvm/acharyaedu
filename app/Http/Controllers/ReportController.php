@@ -107,12 +107,12 @@ class ReportController extends Controller
             'month' => 'required',
             'year' => 'required',
         ]);
-        $date = Carbon::createFromDate($request->year, $request->month, 1)->copy()->startOfMonth();
+        $date = Carbon::createFromDate($request->year, $request->month, 1)->copy()->endOfMonth();
         $inputs = array($request->batch, $request->month, $request->year);
         $batches = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = DB::table('years')->get();
-        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->whereDate('date_joined', '>=', $date)->get();
+        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->whereDate('date_joined', '<=', $date)->get();
         return view('admin.reports.fee-pending', compact('records', 'batches', 'months', 'years', 'inputs'));
     }
 
