@@ -15,7 +15,7 @@
                             <div class="form-group">
                                 <label>Fee Paid Date</label>
                                 <div class="mb-3">
-                                    <input type="date" class="form-control" name="paid_date" value="{{ $fee->paid_date->format('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
+                                    <input type="date" class="form-control" name="paid_date" value="{{ $fee->paid_date->format('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon" required>
                                 </div>
                                 @error('paid_date')
                                 <small class="text-danger">{{ $errors->first('paid_date') }}</small>

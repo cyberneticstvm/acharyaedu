@@ -36,7 +36,8 @@ class FeeController extends Controller
         $student = Student::findOrFail($id);
         $batches = Batch::where('status', 1)->get();
         $months = Month::all();
-        $years = Year::all(); $pmodes = PaymentMode::all();
+        $years = Year::all();
+        $pmodes = PaymentMode::all();
         return view('admin.fee.create', compact('student', 'batches', 'months', 'years', 'pmodes'));
     }
 
@@ -50,6 +51,7 @@ class FeeController extends Controller
     {
         $this->validate($request, [
             'paid_date' => 'required',
+            'fee_advance' => 'required',
             'student' => 'required',
             'batch' => 'required',
             'fee_month' => 'required',
@@ -62,16 +64,16 @@ class FeeController extends Controller
         $batch = Batch::find($request->batch);
         $fee = $batch->fee;
         $settings = Settings::where('branch', $request->user()->branch)->first();
-        if($request->discount_applicable == 1 && $settings->batch_fee_discount_percentage > 0):
-            $input['fee'] = $fee - (($fee*$settings->batch_fee_discount_percentage)/100);
-        else:
+        if ($request->discount_applicable == 1 && $settings->batch_fee_discount_percentage > 0) :
+            $input['fee'] = $fee - (($fee * $settings->batch_fee_discount_percentage) / 100);
+        else :
             $input['fee'] = $fee;
         endif;
-        try{
+        try {
             Fee::create($input);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return redirect()->back()->with('error', "Selected month fee already been paid")->withInput($request->all());
-        }        
+        }
         return redirect()->route('fee.show')->with('success', 'Fee Saved Successfully!');
     }
 
@@ -102,7 +104,8 @@ class FeeController extends Controller
         $student = Student::find($fee->student);
         $batch = Batch::where('status', 1)->get();
         $months = Month::all();
-        $years = Year::all(); $pmodes = PaymentMode::all();
+        $years = Year::all();
+        $pmodes = PaymentMode::all();
         return view('admin.fee.edit', compact('fee', 'student', 'batch', 'months', 'years', 'pmodes'));
     }
 
@@ -117,6 +120,7 @@ class FeeController extends Controller
     {
         $this->validate($request, [
             'paid_date' => 'required',
+            'fee_advance' => 'required',
             'student' => 'required',
             'batch' => 'required',
             'fee_month' => 'required',
@@ -129,9 +133,9 @@ class FeeController extends Controller
         $batch = Batch::find($request->batch);
         $fee = $batch->fee;
         $settings = Settings::where('branch', $request->user()->branch)->first();
-        if($request->discount_applicable == 1 && $settings->batch_fee_discount_percentage > 0):
-            $input['fee'] = $fee - (($fee*$settings->batch_fee_discount_percentage)/100);
-        else:
+        if ($request->discount_applicable == 1 && $settings->batch_fee_discount_percentage > 0) :
+            $input['fee'] = $fee - (($fee * $settings->batch_fee_discount_percentage) / 100);
+        else :
             $input['fee'] = $fee;
         endif;
         $fees->update($input);
