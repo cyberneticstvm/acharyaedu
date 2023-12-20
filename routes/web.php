@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdmissionFeeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\BatchSyllabusController;
@@ -201,6 +202,15 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('/fee/edit/{id}', [FeeController::class, 'edit'])->name('fee.edit');
     Route::put('/fee/edit/{id}', [FeeController::class, 'update'])->name('fee.update');
     Route::delete('/fee/delete/{id}', [FeeController::class, 'destroy'])->name('fee.delete');
+
+    Route::get('/admission/fee', [AdmissionFeeController::class, 'index'])->name('admission.fee');
+    Route::get('/admission/fee/create', [AdmissionFeeController::class, 'create'])->name('admission.fee.create');
+    Route::post('/admission/fee/create', [AdmissionFeeController::class, 'store'])->name('admission.fee.save');
+    Route::get('/admission/fee/edit/{id}', [AdmissionFeeController::class, 'edit'])->name('admission.fee.edit');
+    Route::put('/admission/fee/edit/{id}', [AdmissionFeeController::class, 'update'])->name('admission.fee.update');
+    Route::delete('/admission/fee/delete/{id}', [AdmissionFeeController::class, 'destroy'])->name('admission.fee.delete');
+
+
 
     Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendance');
     Route::post('/attendance', [AttendanceController::class, 'createemptyattendance'])->name('attendance.sheet.create');

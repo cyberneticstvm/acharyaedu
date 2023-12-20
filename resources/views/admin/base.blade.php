@@ -210,6 +210,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="{{ route('admission.fee') }}">
+                  <i class="fa fa-dollar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Admission Fee</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/head">
                   <i class="fa fa-header sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">I/E Heads</span>
