@@ -46,7 +46,7 @@ class AdmissionFeeController extends Controller
             AdmissionFee::create($input);
             return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
         else :
-            return redirect()->route('admission.fee')->with('error', 'Student Id not found!');
+            return redirect()->back()->with('error', 'Student Id not found!')->withInput($request->all());
         endif;
     }
 
@@ -86,7 +86,7 @@ class AdmissionFeeController extends Controller
             AdmissionFee::findOrFail($id)->update($input);
             return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
         else :
-            return redirect()->route('admission.fee')->with('error', 'Student Id not found!');
+            return redirect()->back()->with('error', 'Student Id not found!')->withInput($request->all());
         endif;
     }
 
