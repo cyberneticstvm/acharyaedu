@@ -42,7 +42,7 @@
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $item->student->id }}</td>
                                 <td>{{ $item->student->name }}</td>
-                                <td>{{ $item->batch->name }}</td>
+                                <td>{{ $item->batches->name }}</td>
                                 <td>{{ $item->amount }}</td>
                                 <td class="text-center"><a href="/admission/fee/edit/{{ $item->id }}"><i class="fa fa-edit text-warning"></i></a></td>
                                 <td class="text-center">
