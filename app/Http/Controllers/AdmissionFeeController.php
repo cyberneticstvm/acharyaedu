@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AdmissionFee;
 use App\Models\Batch;
 use App\Models\PaymentMode;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class AdmissionFeeController extends Controller
@@ -40,8 +41,13 @@ class AdmissionFeeController extends Controller
             'payment_mode' => 'required',
         ]);
         $input = $request->all();
-        AdmissionFee::create($input);
-        return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
+        $student = Student::findOrFail($request->student_id);
+        if ($student) :
+            AdmissionFee::create($input);
+            return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
+        else :
+            return redirect()->route('admission.fee')->with('error', 'Student Id not found!');
+        endif;
     }
 
     /**
@@ -75,8 +81,13 @@ class AdmissionFeeController extends Controller
             'payment_mode' => 'required',
         ]);
         $input = $request->all();
-        AdmissionFee::findOrFail($id)->update($input);
-        return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
+        $student = Student::findOrFail($request->student_id);
+        if ($student) :
+            AdmissionFee::findOrFail($id)->update($input);
+            return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
+        else :
+            return redirect()->route('admission.fee')->with('error', 'Student Id not found!');
+        endif;
     }
 
     /**
