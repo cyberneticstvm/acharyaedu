@@ -13,11 +13,11 @@ class AdmissionFee extends Model
 
     public function student()
     {
-        return $this->belongsTo(Student::class, 'student');
+        return $this->belongsTo(Student::class, 'student_id', 'id');
     }
 
     public function batches()
     {
-        return $this->belongsTo(Batch::class, 'batch');
+        return $this->belongsTo(Batch::class, 'batch_id', 'id');
     }
 }
