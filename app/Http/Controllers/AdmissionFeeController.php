@@ -41,7 +41,7 @@ class AdmissionFeeController extends Controller
             'payment_mode' => 'required',
         ]);
         $input = $request->all();
-        $student = Student::findOrFail($request->student_id);
+        $student = Student::find($request->student_id);
         if ($student) :
             AdmissionFee::create($input);
             return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
@@ -81,7 +81,7 @@ class AdmissionFeeController extends Controller
             'payment_mode' => 'required',
         ]);
         $input = $request->all();
-        $student = Student::findOrFail($request->student_id);
+        $student = Student::find($request->student_id);
         if ($student) :
             AdmissionFee::findOrFail($id)->update($input);
             return redirect()->route('admission.fee')->with('success', 'Admission Fee Updated Successfully!');
