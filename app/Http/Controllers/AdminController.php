@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdmissionFee;
 use App\Models\Attendance;
 use App\Models\Expense;
 use App\Models\Fee;
@@ -17,44 +18,52 @@ use DB;
 
 class AdminController extends Controller
 {
-    public function dash(){
+    public function dash()
+    {
         $user = Auth::user();
-        if($user->role == 'Admin'):
-            $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
-            $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
+        if ($user->role == 'Admin') :
+            $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('admission_fee_advance');
+            $afeeb = AdmissionFee::whereMonth('created_at', Carbon::now()->month)->sum('amount');
+            $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee_advance');
             $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
             $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
-            $income = $afee + $bfee + $income; $profit = $income - $expense;
+            $income = $afee + $afeeb + $bfee + $income;
+            $profit = $income - $expense;
             return view('admin.admin-dash-demo', compact('income', 'expense', 'profit'));
-        elseif($user->role == 'Staff'):
+        elseif ($user->role == 'Staff') :
             return view('admin.staff-dash');
         //return redirect()->route('staff.dash')->with("success", "User logged in successfully!");
-        else:
+        else :
             return view('student.dash');
-            //return redirect()->route('student.dash')->with("success", "User logged in successfully!");
+        //return redirect()->route('student.dash')->with("success", "User logged in successfully!");
         endif;
     }
 
-    public function dashdemo(){
-        $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
-        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
+    public function dashdemo()
+    {
+        $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('admission_fee_advance');
+        $afeeb = AdmissionFee::whereMonth('created_at', Carbon::now()->month)->sum('amount');
+        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee_advance');
         $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
         $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
-        $income = $afee + $bfee + $income; $profit = $income - $expense;
+        $income = $afee + $afeeb + $bfee + $income;
+        $profit = $income - $expense;
         return view('admin.admin-dash', compact('income', 'expense', 'profit'));
     }
 
-    public function show(){
+    public function show()
+    {
         $branch = Auth::user()->branch;
         $settings = Settings::where('branch', $branch)->first();
         return view('settings.index', compact('settings'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $branch = Auth::user()->branch;
         $this->validate($request, [
-            'admin_name' => 'required|unique:settings,admin_name,'.$id,
-            'admin_email' => 'required|email:filter|unique:settings,admin_email,'.$id,
+            'admin_name' => 'required|unique:settings,admin_name,' . $id,
+            'admin_email' => 'required|email:filter|unique:settings,admin_email,' . $id,
             'batch_fee_discount_percentage' => 'required|numeric',
         ]);
         $input = $request->except(array('_method', '_token'));
@@ -63,18 +72,20 @@ class AdminController extends Controller
         return redirect()->route('settings.show')->with('success', 'Settings Updated Successfully!');
     }
 
-    public function getDropDown(Request $request){
+    public function getDropDown(Request $request)
+    {
         $id = $request->bid;
         $syls = DB::table('batch_syllabs')->select('syllabus')->where('batch', $id)->pluck('syllabus');
         $data = Syllabus::whereIn('id', $syls)->select('id', 'name')->get();
         $op = "<option value=''>Select</option>";
-        foreach($data as $key => $val):
-            $op .= "<option value='".$val->id."'>".$val->name."</option>";
+        foreach ($data as $key => $val) :
+            $op .= "<option value='" . $val->id . "'>" . $val->name . "</option>";
         endforeach;
         echo $op;
     }
 
-    public function studentregchart(){
+    public function studentregchart()
+    {
         $students = DB::select("SELECT date, CONCAT_WS('-', SUBSTRING(MONTHNAME(date), 1, 3), DATE_FORMAT(date, '%y')) AS mname, COUNT(s.id) AS ptot FROM (
 		    SELECT LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 1 MONTH AS date UNION ALL
 		    SELECT LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 2 MONTH UNION ALL
@@ -93,7 +104,8 @@ class AdminController extends Controller
         return json_encode($students);
     }
 
-    public function studentfeechart(){
+    public function studentfeechart()
+    {
         $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
         $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
         $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
@@ -101,7 +113,8 @@ class AdminController extends Controller
         return array('afee' => $afee, 'bfee' => $bfee, 'income' => $income, 'expense' => $expenses);
     }
 
-    public function studentcancelledchart(){
+    public function studentcancelledchart()
+    {
         $students = DB::select("SELECT date, CONCAT_WS('-', SUBSTRING(MONTHNAME(date), 1, 3), DATE_FORMAT(date, '%y')) AS mname, COUNT(CASE WHEN s.cancelled = 1 THEN s.id END) AS ptot FROM (
 		    SELECT LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 1 MONTH AS date UNION ALL
 		    SELECT LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 2 MONTH UNION ALL
@@ -120,14 +133,17 @@ class AdminController extends Controller
         return json_encode($students);
     }
 
-    public function leaves(){
+    public function leaves()
+    {
         $attendance = Attendance::where('leave', 1)->orderByDesc('date')->get();
         return view('admin.student.leaves', compact('attendance'));
     }
 
-    public function deleteRecord(Request $request){
-        $id = $request->id; $model = $request->model;
-        if($model == 'module-status'):
+    public function deleteRecord(Request $request)
+    {
+        $id = $request->id;
+        $model = $request->model;
+        if ($model == 'module-status') :
             ModuleCompleteStatus::findOrFail($id)->delete();
         endif;
         echo "Record deleted successfully";
