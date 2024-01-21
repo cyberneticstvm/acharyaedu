@@ -32,6 +32,7 @@ use App\Models\StudentExam;
 use App\Models\StudentExamScore;
 use App\Models\StudentFeedback;
 use App\Models\StudentInactiveReason;
+use App\Models\Subject;
 use App\Models\Topic;
 use App\Models\User;
 use App\Models\Year;
@@ -626,8 +627,9 @@ class StudentController extends Controller
     public function notes()
     {
         $student = Student::find(Auth::user()->student->id);
+        $subjects = Subject::where('exam_type', 6)->get();
         $downloads = Download::leftJoin('download_batches', 'downloads.id', '=', 'download_batches.download_id')->selectRaw("downloads.*")->whereIn('download_batches.batch_id', $student->batches->pluck('batch'))->whereNotNull('description')->groupBy('downloads.title')->get();
-        return view('student.notes', compact('downloads', 'student'));
+        return view('student.notes', compact('downloads', 'student', 'subjects'));
     }
 
     public function viewnote($id)
