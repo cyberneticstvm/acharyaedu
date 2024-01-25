@@ -86,7 +86,7 @@ $(function () {
     });
 
     $(".moqr").click(function () {
-        $(".show").removeClass('hidden');
+        $(this).parent().find(".show").removeClass('hidden');
         var c = $(".correct_answer").text();
         $(".moqr").each(function () {
             var dis = $(this)

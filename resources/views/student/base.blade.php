@@ -398,7 +398,7 @@
               <li class="nav-item">
                 <a class="nav-link text-white " href="/student/multi-options/question">
                   <i class="fa fa-id-card-o sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Multiple Options Questions</span>
+                  <span class="sidenav-normal ms-2 ps-1">Multiple Choice Questions</span>
                 </a>
               </li>
             </ul>
