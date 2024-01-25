@@ -21,7 +21,7 @@
                 <p><input class="moqr" type="radio" name="moqr" value="" data-ans="D" /> Option D: {!! $question->option_d !!}</p>
                 <br />
                 <p class="hidden show text-success">Correct Answer: <span class="correct_answer">{{ albhabets()[$question->correct_option] }}</span></p>
-                <p class="hidden show">Explanaton: {!! $question->explanation !!}</p>
+                <div class="hidden show">Explanaton: {!! $question->explanation !!}</div>
                 @empty
                 @endforelse
                 {!! $questions->withQueryString()->links() !!}
