@@ -24,7 +24,7 @@
                             @forelse($questions as $key => $question)
                             <tr>
                                 <td>{{ $slno++ }}</td>
-                                <td>{{ $question->subject->name }}</td>
+                                <td><a href="{{ route('student.multi.options.question.subject', $question->subject->id) }}" target="_blank">{{ $question->subject->name }}</a></td>
                             </tr>
                             @empty
                             @endforelse
