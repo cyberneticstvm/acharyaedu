@@ -6,7 +6,7 @@
             <div class="card-header pb-0 text-left bg-transparent">
                 <div class="row">
                     <div class="col">
-                        <h3 class="font-weight-bolder text-primary text-gradient">{{ $student->name }}'s Multiple Choice Question Register</h3>
+                        <h3 class="font-weight-bolder text-primary text-gradient">Multiple Choice Question Register</h3>
                     </div>
                 </div>
             </div>
