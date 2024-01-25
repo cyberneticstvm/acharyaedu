@@ -85,6 +85,8 @@ $(function () {
         })
     });
 
+    $(".hidden").hide();
+
     $(".moqr").click(function () {
         $(this).parent().parent().find(".show").removeClass('hidden');
         var c = $(".correct_answer").text();
