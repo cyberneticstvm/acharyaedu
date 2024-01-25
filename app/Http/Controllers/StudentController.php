@@ -687,7 +687,7 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $courses = Course::all();
         $course = Batch::whereIn('id', $student->batches()->pluck('batch'))->where('status', 1)->pluck('course');
-        $questions = GeneralQuestion::join('general_question_courses as gqc', 'general_questions.id', 'gqc.question_id')->whereIn("gqc.course_id", $course)->latest()->paginate(1);
+        $questions = GeneralQuestion::join('general_question_courses as gqc', 'general_questions.id', 'gqc.question_id')->whereIn("gqc.course_id", $course)->distinct()->latest()->paginate(1);
         return view('student.question-general', compact('questions', 'courses'));
     }
 
