@@ -21,10 +21,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($questions as $key => $question)
+                            @forelse($subjects as $key => $item)
                             <tr>
                                 <td>{{ $slno++ }}</td>
-                                <td><a href="{{ route('student.multi.options.question.subject', $question->subject->id) }}" target="_blank">{{ $question->subject->name }}</a></td>
+                                <td><a href="{{ route('student.multi.options.question.subject', $item->id) }}" target="_blank">{{ $item->name }}</a></td>
                             </tr>
                             @empty
                             @endforelse
