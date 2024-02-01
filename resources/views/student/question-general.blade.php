@@ -15,8 +15,10 @@
                 <p>Subject: {{ $question->subject->name }}</p>
                 <p>Question: {{ $question->question }}</p>
                 <p><a data-toggle="collapse" href="#collapseExample_{{$question->id}}" role="button" aria-expanded="false">Show Answer</a></p>
-                <div class="collapse" id="collapseExample_{{$question->id}}">Answer: {{ $question->answer }}</div>
-                <p>Explanation: {{ $question->explanation }}</p>
+                <div class="collapse" id="collapseExample_{{$question->id}}">
+                    <p>Answer: {{ $question->answer }}</p>
+                    <p>Explanation: {{ $question->explanation }}</p>
+                </div>
                 @empty
                 @endforelse
                 {!! $questions->withQueryString()->links() !!}
