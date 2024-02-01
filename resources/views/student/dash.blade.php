@@ -9,7 +9,7 @@
                         <h3 class="font-weight-bolder text-primary text-gradient">Dashboard - Student</h3>
                         <h5 class="font-weight-bolder text-primary text-gradient">Student ID: {{ Auth::user()->student->id }}</h5>
                         @php $student = App\Models\Student::find(Auth::id()) @endphp
-                        <h5 class="font-weight-bolder text-primary text-gradient">Batches: {{ Batch::whereIn('id', $student->batches()->pluck('batch'))->pluck('name')->implode(', ') }}</h5>
+                        <h5 class="font-weight-bolder text-primary text-gradient">Batches: {{ App\Models\Batch::whereIn('id', $student->batches()->pluck('batch'))->pluck('name')->implode(', ') }}</h5>
                     </div>
                 </div>
                 @if(session()->has('success'))
