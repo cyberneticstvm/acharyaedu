@@ -15,7 +15,7 @@
                 <p>Subject: {{ $question->subject->name }}</p>
                 <p>Question: {{ $question->question }}</p>
                 <p class="asd"><a href="#collapseExample_{{$question->id}}">Show Answer</a></p>
-                <div class="hide" id="collapseExample_{{$question->id}}">
+                <div class="hidden" id="collapseExample_{{$question->id}}">
                     <p>Answer: {{ $question->answer }}</p>
                     <p>Explanation: {{ $question->explanation }}</p>
                 </div>
