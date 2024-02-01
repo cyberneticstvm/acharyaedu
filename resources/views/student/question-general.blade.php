@@ -14,8 +14,8 @@
                 @forelse($questions as $key => $question)
                 <p>Subject: {{ $question->subject->name }}</p>
                 <p>Question: {{ $question->question }}</p>
-                <p><a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false">Show Answer</a></p>
-                <div class="collapse" id="collapseExample">Answer: {{ $question->answer }}</div>
+                <p><a data-toggle="collapse" href="#collapseExample_{{$question->id}}" role="button" aria-expanded="false">Show Answer</a></p>
+                <div class="collapse" id="collapseExample_{{$question->id}}">Answer: {{ $question->answer }}</div>
                 <p>Explanation: {{ $question->explanation }}</p>
                 @empty
                 @endforelse
