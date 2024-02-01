@@ -1,378 +1,384 @@
-$(function(){
-    "use strict"
+$(function () {
+  "use strict"
 
-    $('form').submit(function(){
-        $(".btn-submit").attr("disabled", true);
-        $(".btn-submit").html("<span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span>");
-    });
+  $('form').submit(function () {
+    $(".btn-submit").attr("disabled", true);
+    $(".btn-submit").html("<span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span>");
+  });
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 
-    $('#datatable-basic').DataTable({
-        pagingType: "numbers",
-        searching: true
-    });
-    var table = $('#datatable-basic').DataTable();
-    $("#datatable-basic.dataTables_filter").append($(".custom_filter"));
-    var index = 0;
-    $("#datatable-basic th").each(function (i) {
-        if ($($(this)).html() == "Batch") {
-            index = i;
-            return false;
-        }
-    });
-    $.fn.dataTable.ext.search.push(
-      function (settings, data, dataIndex) {
-          var selectedItem = $('.custom_filter option:selected').text()
-          var batch = data[index];
-          if (selectedItem === "" || batch.includes(selectedItem)) {
-              return true;
-          }
-          return false;
+  $('#datatable-basic').DataTable({
+    pagingType: "numbers",
+    searching: true
+  });
+  var table = $('#datatable-basic').DataTable();
+  $("#datatable-basic.dataTables_filter").append($(".custom_filter"));
+  var index = 0;
+  $("#datatable-basic th").each(function (i) {
+    if ($($(this)).html() == "Batch") {
+      index = i;
+      return false;
+    }
+  });
+  $.fn.dataTable.ext.search.push(
+    function (settings, data, dataIndex) {
+      var selectedItem = $('.custom_filter option:selected').text()
+      var batch = data[index];
+      if (selectedItem === "" || batch.includes(selectedItem)) {
+        return true;
       }
-    );
-    $(".custom_filter").change(function (e) {
-      table.draw();
+      return false;
+    }
+  );
+  $(".custom_filter").change(function (e) {
+    table.draw();
+  });
+
+  $(document).ready(function () {
+    $('.select2').select2();
+  });
+
+  $(document).on('click', '.rad_at', function () {
+    var col = $(this).data('col');
+    var aid = $(this).data('aid');
+    var val = $(this).val();
+    $.ajax({
+      type: 'GET',
+      url: '/updateAttendance',
+      data: { 'col': col, 'aid': aid, 'val': val },
+      success: function (response) {
+        alert(response);
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
+      }
     });
+  });
 
-    $(document).ready(function() {
-        $('.select2').select2();
+  $(".chkModule").change(function () {
+    var mid = $(this).data('mid');
+    var val = 0;
+    if ($(this).is(":checked")) {
+      val = 1;
+    };
+    $.ajax({
+      type: 'GET',
+      url: '/syllabus-status/update',
+      data: { 'mid': mid, 'val': val },
+      success: function (response) {
+        alert(response);
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
+      }
     });
+  });
 
-    $(document).on('click', '.rad_at', function(){
-        var col = $(this).data('col');
-        var aid = $(this).data('aid');
-        var val = $(this).val();
-        $.ajax({
-            type: 'GET',
-            url: '/updateAttendance',
-            data: {'col': col, 'aid': aid, 'val': val},
-            success: function(response){
-                alert(response);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-                console.log(XMLHttpRequest);
-            }
-        });
+  $(".att tr").each(function () {
+    var dis = $(this);
+    var p = 0; var l = 0; var a = 0;
+    dis.find('td').each(function () {
+      if ($(this).text() == 'L') {
+        $(this).addClass('text-warning');
+        l += 1;
+      }
+      if ($(this).text() == 'P') {
+        $(this).addClass('text-success');
+        p += 1;
+      }
+      if ($(this).text() == 'A') {
+        $(this).addClass('text-danger');
+        a += 1;
+      }
     });
+    dis.find("td:nth-child(3)").text(l).addClass('text-center text-warning');
+    dis.find("td:nth-child(4)").text(a).addClass('text-center text-danger');
+    dis.find("td:nth-child(5)").text(p).addClass('text-center text-success');;
+  })
 
-    $(".chkModule").change(function(){
-        var mid = $(this).data('mid');
-        var val = 0;
-        if($(this).is(":checked")){
-            val = 1;
-        };
-        $.ajax({
-            type: 'GET',
-            url: '/syllabus-status/update',
-            data: {'mid': mid, 'val': val},
-            success: function(response){
-                alert(response);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-                console.log(XMLHttpRequest);
-            }
-        });
+  $(".bforSyl").change(function () {
+    var bid = $(this).val();
+    $.ajax({
+      type: 'GET',
+      url: '/getDropDown',
+      data: { 'bid': bid },
+      success: function (response) {
+        $(".bSyl").html(response);
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
+      }
     });
+  });
 
-    $(".att tr").each(function(){
-        var dis = $(this);
-        var p = 0; var l = 0; var a = 0;
-        dis.find('td').each(function(){
-            if($(this).text() == 'L'){
-                $(this).addClass('text-warning');
-                l += 1;
-            }
-            if($(this).text() == 'P'){
-                $(this).addClass('text-success');
-                p += 1;
-            }
-            if($(this).text() == 'A'){
-                $(this).addClass('text-danger');
-                a += 1;
-            }
-        });
-        dis.find("td:nth-child(3)").text(l).addClass('text-center text-warning');
-        dis.find("td:nth-child(4)").text(a).addClass('text-center text-danger');
-        dis.find("td:nth-child(5)").text(p).addClass('text-center text-success');;
-    })
-
-    $(".bforSyl").change(function(){
-        var bid = $(this).val();
-        $.ajax({
-            type: 'GET',
-            url: '/getDropDown',
-            data: {'bid': bid},
-            success: function(response){
-                $(".bSyl").html(response);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-                console.log(XMLHttpRequest);
-            }
-        });
-    });
-
-    $(".subject").change(function(){
-      var sid = $(this).val();
-      var random = $(this).data('random');
-      $.ajax({
-          type: 'GET',
-          url: '/helper/module',
-          data:{'sid': sid, 'random': random}
-      }).then(function (response){console.log(response)
-          var options = "<option value=''>Select</option>";
-          $.map(response, function(obj){
-              options = options + "<option value='"+obj.id+"'>"+obj.name+"</option>";
-          });
-          $(".module").html(options);
+  $(".subject").change(function () {
+    var sid = $(this).val();
+    var random = $(this).data('random');
+    $.ajax({
+      type: 'GET',
+      url: '/helper/module',
+      data: { 'sid': sid, 'random': random }
+    }).then(function (response) {
+      console.log(response)
+      var options = "<option value=''>Select</option>";
+      $.map(response, function (obj) {
+        options = options + "<option value='" + obj.id + "'>" + obj.name + "</option>";
       });
+      $(".module").html(options);
     });
+  });
 
-    $('#smartwizard1').smartWizard({
-      autoAdjustHeight: false,
-      toolbar: {
-          extraHtml: `<a class="sw-btn sw-btn-danger" href='/dash'>Cancel</a>`
+  $('#smartwizard1').smartWizard({
+    autoAdjustHeight: false,
+    toolbar: {
+      extraHtml: `<a class="sw-btn sw-btn-danger" href='/dash'>Cancel</a>`
+    }
+  });
+  $(".sw-btn").removeClass("btn").addClass("rts-btn");
+
+  $(document).on('click', '.sall', function () {
+    if ($(".sall").is(':checked')) {
+      $(".selectall > option").prop("selected", "selected");
+      $(".selectall").trigger("change");
+    } else {
+      $(".selectall > option").prop("selected", "");
+      $(".selectall").trigger("change");
+    }
+  });
+
+  $(document).on('click', '.dlt', function () {
+    var id = $(this).data('id');
+    var model = $(this).data('model');
+    $.ajax({
+      type: 'POST',
+      url: '/admin/record/delete',
+      data: { 'id': id, 'model': model },
+      success: function (response) {
+        alert(response);
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
       }
     });
-    $(".sw-btn").removeClass("btn").addClass("rts-btn");
+  });
 
-    $(document).on('click', '.sall', function(){
-      if($(".sall").is(':checked')){
-        $(".selectall > option").prop("selected", "selected");
-        $(".selectall").trigger("change");
+  $(".cFilter").change(function (e) {
+    var txt = $('.cFilter option:selected').text();
+    $(".tblModuleStatus tbody tr").each(function () {
+      if ($(this).find("td:eq(2)").text() == txt) {
+        $(this).show();
       } else {
-          $(".selectall > option").prop("selected", "");
-          $(".selectall").trigger("change");
+        $(this).hide();
       }
-    });
-
-    $(document).on('click', '.dlt', function(){
-      var id = $(this).data('id');
-      var model = $(this).data('model');
-      $.ajax({
-          type: 'POST',
-          url: '/admin/record/delete',
-          data: {'id': id, 'model': model},
-          success: function(response){
-              alert(response);
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown){
-              console.log(XMLHttpRequest);
-          }
-      });
-    });
-
-    $(".cFilter").change(function(e){
-        var txt = $('.cFilter option:selected').text();
-        $(".tblModuleStatus tbody tr").each(function(){
-            if($(this).find("td:eq(2)").text() == txt){
-              $(this).show();
-            }else{
-              $(this).hide();
-            }
-        })
     })
+  })
+
+  $(document).on('click', '.asd', function () {
+    let id = $(this).find('a').attr('href');
+    $("#" + id).show();
+  })
 
 });
 
 setTimeout(function () {
-    $(".alert").hide('slow');
+  $(".alert").hide('slow');
 }, 3000);
 
-$(function(){
-    "use strict";
+$(function () {
+  "use strict";
 
-    /*var ctx5 = document.getElementById("stud-reg-chart").getContext("2d");
-    alert(ctx5)
-    $.getJSON('/studentregchart/', function(response){
-        new Chart(ctx5, {
-            type: "bar",
-            data: {
-              labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
-              datasets: [{
-                label: "Student Registration",
-                weight: 5,
-                borderWidth: 0,
-                borderRadius: 4,
-                backgroundColor: '#cb0c9f',
-                data: [response[11].ptot, response[10].ptot, response[9].ptot, response[8].ptot, response[7].ptot, response[6].ptot, response[5].ptot, response[4].ptot, response[3].ptot, response[2].ptot, response[1].ptot, response[0].ptot],
-                fill: false,
-                maxBarThickness: 35
-              }],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: {
-                  display: false,
-                }
-              },
-              scales: {
-                y: {
-                  grid: {
-                    drawBorder: false,
-                    display: true,
-                    drawOnChartArea: true,
-                    drawTicks: false,
-                    borderDash: [5, 5]
-                  },
-                  ticks: {
-                    display: true,
-                    padding: 10,
-                    color: '#9ca2b7'
-                  }
-                },
-                x: {
-                  grid: {
-                    drawBorder: false,
-                    display: false,
-                    drawOnChartArea: true,
-                    drawTicks: true,
-                  },
-                  ticks: {
-                    display: true,
-                    color: '#9ca2b7',
-                    padding: 10
-                  }
-                },
-              },
-            },
-          });
-    });
-
-    var ctx4 = document.getElementById("stud-fee-chart").getContext("2d");
-    $.getJSON('/studentfeechart/', function(response){
-        new Chart(ctx4, {
-        type: "pie",
-        data: {
-            labels: ['Admission Fee', 'Batch Fee', 'Other Income', 'Expenses'],
+  /*var ctx5 = document.getElementById("stud-reg-chart").getContext("2d");
+  alert(ctx5)
+  $.getJSON('/studentregchart/', function(response){
+      new Chart(ctx5, {
+          type: "bar",
+          data: {
+            labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
             datasets: [{
-            label: "Income & Expense",
-            weight: 9,
-            cutout: 0,
-            tension: 0.9,
-            pointRadius: 2,
-            borderWidth: 2,
-            backgroundColor: ['#17c1e8', '#cb0c9f', '#82d616', '#ea0606'],
-            data: [response['afee'], response['bfee'], response['income'], response['expense']],
-            fill: false
+              label: "Student Registration",
+              weight: 5,
+              borderWidth: 0,
+              borderRadius: 4,
+              backgroundColor: '#cb0c9f',
+              data: [response[11].ptot, response[10].ptot, response[9].ptot, response[8].ptot, response[7].ptot, response[6].ptot, response[5].ptot, response[4].ptot, response[3].ptot, response[2].ptot, response[1].ptot, response[0].ptot],
+              fill: false,
+              maxBarThickness: 35
             }],
-        },
-        options: {
+          },
+          options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-            legend: {
-                display: true,
-            }
-            },
-            interaction: {
-            intersect: false,
-            mode: 'index',
+              legend: {
+                display: false,
+              }
             },
             scales: {
-            y: {
+              y: {
                 grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
+                  drawBorder: false,
+                  display: true,
+                  drawOnChartArea: true,
+                  drawTicks: false,
+                  borderDash: [5, 5]
                 },
                 ticks: {
-                display: false
+                  display: true,
+                  padding: 10,
+                  color: '#9ca2b7'
                 }
-            },
-            x: {
+              },
+              x: {
                 grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-                },
-                ticks: {
-                display: false,
-                }
-            },
-            },
-        },
-        });
-    });
-
-    var ctx3 = document.getElementById("stud-canc-chart").getContext("2d");
-    var gradientStroke1 = ctx3.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.02)');
-    gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //
-
-    $.getJSON('/studentcancelledchart/', function(response){
-        new Chart(ctx3, {
-            type: "line",
-            data: {
-              labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
-              datasets: [{
-                label: "Students Cancelled",
-                tension: 0.5,
-                borderWidth: 0,
-                pointRadius: 0,
-                borderColor: "#cb0c9f",
-                borderWidth: 2,
-                backgroundColor: gradientStroke1,
-                data: [response[11].ptot, response[10].ptot, response[9].ptot, response[8].ptot, response[7].ptot, response[6].ptot, response[5].ptot, response[4].ptot, response[3].ptot, response[2].ptot, response[1].ptot, response[0].ptot],
-                maxBarThickness: 6,
-                fill: true
-              }],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: {
+                  drawBorder: false,
                   display: false,
+                  drawOnChartArea: true,
+                  drawTicks: true,
+                },
+                ticks: {
+                  display: true,
+                  color: '#9ca2b7',
+                  padding: 10
                 }
               },
-              interaction: {
-                intersect: false,
-                mode: 'index',
+            },
+          },
+        });
+  });
+
+  var ctx4 = document.getElementById("stud-fee-chart").getContext("2d");
+  $.getJSON('/studentfeechart/', function(response){
+      new Chart(ctx4, {
+      type: "pie",
+      data: {
+          labels: ['Admission Fee', 'Batch Fee', 'Other Income', 'Expenses'],
+          datasets: [{
+          label: "Income & Expense",
+          weight: 9,
+          cutout: 0,
+          tension: 0.9,
+          pointRadius: 2,
+          borderWidth: 2,
+          backgroundColor: ['#17c1e8', '#cb0c9f', '#82d616', '#ea0606'],
+          data: [response['afee'], response['bfee'], response['income'], response['expense']],
+          fill: false
+          }],
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+          legend: {
+              display: true,
+          }
+          },
+          interaction: {
+          intersect: false,
+          mode: 'index',
+          },
+          scales: {
+          y: {
+              grid: {
+              drawBorder: false,
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
               },
-              scales: {
-                y: {
-                  grid: {
-                    drawBorder: false,
-                    display: false,
-                    drawOnChartArea: true,
-                    drawTicks: false,
-                    borderDash: [5, 5]
-                  },
-                  ticks: {
-                    display: true,
-                    padding: 10,
-                    color: '#9ca2b7'
-                  }
+              ticks: {
+              display: false
+              }
+          },
+          x: {
+              grid: {
+              drawBorder: false,
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
+              },
+              ticks: {
+              display: false,
+              }
+          },
+          },
+      },
+      });
+  });
+
+  var ctx3 = document.getElementById("stud-canc-chart").getContext("2d");
+  var gradientStroke1 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+  gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.02)');
+  gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+  gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //
+
+  $.getJSON('/studentcancelledchart/', function(response){
+      new Chart(ctx3, {
+          type: "line",
+          data: {
+            labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
+            datasets: [{
+              label: "Students Cancelled",
+              tension: 0.5,
+              borderWidth: 0,
+              pointRadius: 0,
+              borderColor: "#cb0c9f",
+              borderWidth: 2,
+              backgroundColor: gradientStroke1,
+              data: [response[11].ptot, response[10].ptot, response[9].ptot, response[8].ptot, response[7].ptot, response[6].ptot, response[5].ptot, response[4].ptot, response[3].ptot, response[2].ptot, response[1].ptot, response[0].ptot],
+              maxBarThickness: 6,
+              fill: true
+            }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              }
+            },
+            interaction: {
+              intersect: false,
+              mode: 'index',
+            },
+            scales: {
+              y: {
+                grid: {
+                  drawBorder: false,
+                  display: false,
+                  drawOnChartArea: true,
+                  drawTicks: false,
+                  borderDash: [5, 5]
                 },
-                x: {
-                  grid: {
-                    drawBorder: false,
-                    display: true,
-                    drawOnChartArea: true,
-                    drawTicks: false,
-                    borderDash: [5, 5]
-                  },
-                  ticks: {
-                    display: true,
-                    padding: 10,
-                    color: '#9ca2b7'
-                  }
+                ticks: {
+                  display: true,
+                  padding: 10,
+                  color: '#9ca2b7'
+                }
+              },
+              x: {
+                grid: {
+                  drawBorder: false,
+                  display: true,
+                  drawOnChartArea: true,
+                  drawTicks: false,
+                  borderDash: [5, 5]
                 },
+                ticks: {
+                  display: true,
+                  padding: 10,
+                  color: '#9ca2b7'
+                }
               },
             },
-        });      
-    });*/
+          },
+      });      
+  });*/
 });
 
 
