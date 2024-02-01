@@ -15,7 +15,7 @@
                 <p>Subject: {{ $question->subject->name }}</p>
                 <p>Question: {{ $question->question }}</p>
                 <p><a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false">Show Answer</a></p>
-                <p class="collapse" id="collapseExample">Answer: {{ $question->answer }}</p>
+                <div class="collapse" id="collapseExample">Answer: {{ $question->answer }}</div>
                 <p>Explanation: {{ $question->explanation }}</p>
                 @empty
                 @endforelse
