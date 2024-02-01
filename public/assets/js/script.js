@@ -100,7 +100,7 @@ $(function () {
 
     $(document).on('click', '.asd', function () {
         let id = $(this).find('a').attr('href');
-        $("#" + id).removeClass('hidden');
+        $(id).removeClass('hidden');
     })
 });
 
