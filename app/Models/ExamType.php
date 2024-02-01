@@ -9,7 +9,12 @@ class ExamType extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-    ];
+    protected $guarded = [];
+
+    public $timestamps = false;
+
+    public function batch()
+    {
+        return $this->hasOne(Batch::class, 'id', 'batch_id');
+    }
 }

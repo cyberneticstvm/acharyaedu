@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('exam_types', function (Blueprint $table) {
             $table->id();
             $table->string('name', 125)->unique();
+            $table->unsignedBigInteger('batch_id');
+            $table->integer('cut_off_mark')->default(0);
+            $table->integer('question_count')->default(0);
+            $table->dateTime('exam_duration')->default(0);
+            $table->string('status', 25)->default('Active');
+            $table->foreign('batch_id')->references('id')->on('batches');
         });
     }
 

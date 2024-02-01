@@ -405,6 +405,10 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::put('/admin/gallery/edit/{id}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('/admin/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('gallery.delete');
 
+    Route::get('/admin/settings/exam', [ExamController::class, 'examSettings'])->name('admin.exam.setting');
+    Route::get('/admin/settings/exam/edit/{id}', [ExamController::class, 'examSettingsEdit'])->name('admin.exam.setting.edit');
+    Route::put('/admin/settings/exam/edit/{id}', [ExamController::class, 'examSettingsUpdate'])->name('admin.exam.setting.update');
+
     Route::get('/admin/oep', [OfflineExamPerformanceController::class, 'index'])->name('oep');
     Route::get('/admin/oep/create', [OfflineExamPerformanceController::class, 'create'])->name('oep.create');
     Route::post('/admin/oep/create', [OfflineExamPerformanceController::class, 'store'])->name('oep.save');

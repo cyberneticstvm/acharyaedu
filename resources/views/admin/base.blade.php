@@ -621,6 +621,12 @@
                   <span class="sidenav-normal ms-2 ps-1">Gallery</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/settings/exam">
+                  <i class='fa fa-file-o sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Exam</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>

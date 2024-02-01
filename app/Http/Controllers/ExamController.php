@@ -18,7 +18,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::when(Auth::user()->student, function($query){
+        $exams = Exam::when(Auth::user()->student, function ($query) {
             return $query->whereDate('exam_date', '>=', Auth::user()->student->admission_date);
         })->orderByDesc('exam_date')->get();
         $batches = Batch::where('status', 1)->get();
@@ -30,7 +30,8 @@ class ExamController extends Controller
      */
     public function create()
     {
-        $batches = Batch::where('status', 1)->get(); $etypes = ExamType::all();
+        $batches = Batch::where('status', 1)->get();
+        $etypes = ExamType::all();
         return view('admin.exam.create', compact('batches', 'etypes'));
     }
 
@@ -50,12 +51,12 @@ class ExamController extends Controller
             'status' => 'required',
         ]);
         $input = $request->all();
-        $input['created_by'] = $request->user()->id;               
+        $input['created_by'] = $request->user()->id;
         $input['updated_by'] = $request->user()->id;
-        $input['exam_date'] = Carbon::parse($request->exam_date)->startOfDay();               
-        try{
+        $input['exam_date'] = Carbon::parse($request->exam_date)->startOfDay();
+        try {
             Exam::create($input);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
         return redirect()->route('exam')->with('success', 'Exam Created Successfully!');
@@ -75,7 +76,8 @@ class ExamController extends Controller
     public function edit(string $id)
     {
         $exam = Exam::find($id);
-        $batches = Batch::where('status', 1)->get(); $etypes = ExamType::all();
+        $batches = Batch::where('status', 1)->get();
+        $etypes = ExamType::all();
         return view('admin.exam.edit', compact('exam', 'batches', 'etypes'));
     }
 
@@ -86,7 +88,7 @@ class ExamController extends Controller
     {
         $this->validate($request, [
             'exam_type' => 'required',
-            'name' => 'required|unique:exams,name,'.$id,
+            'name' => 'required|unique:exams,name,' . $id,
             'batch_id' => 'required',
             'cut_off_mark' => 'required',
             'question_count' => 'required',
@@ -94,25 +96,28 @@ class ExamController extends Controller
             'duration' => 'required',
             'status' => 'required',
         ]);
-        $input = $request->all();             
+        $input = $request->all();
         $input['updated_by'] = $request->user()->id;
-        $input['exam_date'] = Carbon::parse($request->exam_date)->startOfDay();               
-        try{
+        $input['exam_date'] = Carbon::parse($request->exam_date)->startOfDay();
+        try {
             $exam = Exam::find($id);
             $exam->update($input);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
         return redirect()->route('exam')->with('success', 'Exam Updated Successfully!');
     }
 
-    public function assign(string $id){
+    public function assign(string $id)
+    {
         $exam = Exam::find($id);
-        $batches = Batch::where('status', 1)->where('id', '!=', $exam->batch_id)->get(); $etypes = ExamType::all();
+        $batches = Batch::where('status', 1)->where('id', '!=', $exam->batch_id)->get();
+        $etypes = ExamType::all();
         return view('admin.exam.assign', compact('exam', 'batches', 'etypes'));
     }
 
-    public function assignsave(Request $request){
+    public function assignsave(Request $request)
+    {
         $this->validate($request, [
             'exam_type' => 'required',
             'name' => 'required|unique:exams,name',
@@ -124,16 +129,16 @@ class ExamController extends Controller
             'status' => 'required',
         ]);
         $input = $request->all();
-        $input['created_by'] = $request->user()->id;               
+        $input['created_by'] = $request->user()->id;
         $input['updated_by'] = $request->user()->id;
-        $input['exam_date'] = Carbon::parse($request->exam_date)->startOfDay();               
-        try{
+        $input['exam_date'] = Carbon::parse($request->exam_date)->startOfDay();
+        try {
             $exam = Exam::create($input);
             $questions = ExamQuestion::where('exam_id', $request->exam_id)->get();
             //dd($questions);
             //die;
-            foreach($questions as $key => $value):
-                $data [] = [
+            foreach ($questions as $key => $value) :
+                $data[] = [
                     'exam_id' => $exam->id,
                     'question_id' => $value->question_id,
                     'created_by' => $request->user()->id,
@@ -141,7 +146,7 @@ class ExamController extends Controller
                 ];
             endforeach;
             ExamQuestion::insert($data);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
         return redirect()->route('exam')->with('success', 'Exam Assigned Successfully!');
@@ -154,5 +159,35 @@ class ExamController extends Controller
     {
         Exam::find($id)->delete();
         return redirect()->route('exam')->with('success', 'Exam Deleted Successfully!');
+    }
+
+    public function examSettings()
+    {
+        $etypes = ExamType::all();
+        return view('admin.settings.exam', compact('etypes'));
+    }
+
+    public function examSettingsEdit($id)
+    {
+        $batches = Batch::where('status', 1)->get();
+        $etype = ExamType::findOrFail($id);
+        return view('admin.settings.exam-edit', compact('batches', 'etype'));
+    }
+
+    public function examSettingsUpdate(Request $request, string $id)
+    {
+        $this->validate($request, [
+            'batch_id' => 'required',
+            'cut_off_mark' => 'required',
+            'question_count' => 'required',
+            'duration' => 'required',
+            'status' => 'required',
+        ]);
+        try {
+            ExamType::where('id', $id)->update(['batch_id' => $request->batch_id, 'cut_off_mark' => $request->cut_off_mark, 'question_count' => $request->question_count, 'exam_duration' => $request->duration, 'status' => $request->status]);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        }
+        return redirect()->route('admin.exam.setting')->with('success', 'Exam Settings Updated Successfully!');
     }
 }
