@@ -5,9 +5,12 @@ namespace App\Console;
 use App\Models\Attendance;
 use App\Models\Batch;
 use App\Models\Exam;
+use App\Models\ExamQuestion;
+use App\Models\ExamType;
 use App\Models\Expense;
 use App\Models\Fee;
 use App\Models\Income;
+use App\Models\Question;
 use App\Models\Student;
 use App\Models\StudentBatch;
 use App\Models\StudentExam;
@@ -26,10 +29,10 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
             $exams = Exam::whereDate('exam_date', Carbon::today())->get();
-            foreach($exams as $key => $exam):
+            foreach ($exams as $key => $exam) :
                 $studentexams = StudentExam::where('exam_id', $exam->id)->orderByDesc('total_mark_after_cutoff')->get();
-                foreach($studentexams as $key1 => $sxam):
-                    StudentExam::where('id', $sxam->id)->update(['grade' => $key1+1]);
+                foreach ($studentexams as $key1 => $sxam) :
+                    StudentExam::where('id', $sxam->id)->update(['grade' => $key1 + 1]);
                 endforeach;
             endforeach;
         })->dailyAt('23:30');
@@ -42,12 +45,43 @@ class Kernel extends ConsoleKernel
         })->dailyAt('23:30');
 
         $schedule->call(function () {
+            $etypes = ExamType::where('status', 'Active')->get();
+            foreach ($etypes as $key => $item) :
+                $exam = Exam::insert([
+                    'exam_type' => $item->id,
+                    'name' => $item->name . Carbon::today()->format('d, M Y'),
+                    'batch_id' => $item->batch_id,
+                    'cut_off_mark' => $item->cut_off_mark,
+                    'question_count' => $item->question_count,
+                    'exam_date' => Carbon::now(),
+                    'duration' => $item->exam_duration,
+                    'status' => 1,
+                    'created_by' => 1,
+                    'updated_by' => 1,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+                $questions = Question::where('status', 1)->where('exam_type', $item->id)->inRandomOrder()->limit($item->question_count)->get();
+                foreach ($questions as $key1 => $que) :
+                    ExamQuestion::insert([
+                        'exam_id' => $exam->id,
+                        'question' => $que->id,
+                        'created_by' => 1,
+                        'updated_by' => 1,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ]);
+                endforeach;
+            endforeach;
+        })->dailyAt('00:30');
+
+        $schedule->call(function () {
             $batches = Batch::where('status', 1)->get();
-            foreach($batches as $key => $batch):
+            foreach ($batches as $key => $batch) :
                 $students = StudentBatch::where('batch', $batch->id)->where('cancelled', 0)->get();
                 $data = [];
-                foreach($students as $key1 => $student):
-                    $data [] = [
+                foreach ($students as $key1 => $student) :
+                    $data[] = [
                         'student' => $student->student,
                         'batch' => $batch->id,
                         'date' => Carbon::today(),
@@ -62,7 +96,8 @@ class Kernel extends ConsoleKernel
         })->days(range(1, 6))->at('1:00')->appendOutputTo('schedule_log.log'); // Exclude Sunday
     }
 
-    private function getClosingBalance(){
+    private function getClosingBalance()
+    {
 
         $opening_balance = DB::table('daily_closings as d')->select(DB::raw("MAX(d.id), IFNULL(d.closing_balance, 0) AS closing_balance"))->whereDate('d.date', '=', Carbon::today()->subDays(1))->orderByDesc('d.id')->first()->closing_balance;
 
@@ -78,7 +113,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
