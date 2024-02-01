@@ -12,8 +12,8 @@
             </div>
             <div class="card-body">
                 @forelse($questions as $key => $question)
-                <p>Question: {{ $question->question }}</p>
                 <p>Subject: {{ $question->subject->name }}</p>
+                <p>Question: {{ $question->question }}</p>
                 <p>Answer: {{ $question->answer }}</p>
                 <p>Explanation: {{ $question->explanation }}</p>
                 @empty
