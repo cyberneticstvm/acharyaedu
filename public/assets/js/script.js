@@ -99,8 +99,8 @@ $(function () {
     });
 
     $(document).on('click', '.asd', function () {
-        let id = $(this).find('a').attr('href'); alert(id)
-        $("#" + id).show();
+        let id = $(this).find('a').attr('href');
+        $("#" + id).removeClass('hidden');
     })
 });
 
