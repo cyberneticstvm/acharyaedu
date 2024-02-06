@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Batch;
 use App\Models\Exam;
+use App\Models\ExamQuestion;
 use App\Models\FreeExamScore;
 use App\Models\Gallery;
 use App\Models\Question;
@@ -33,8 +34,18 @@ class HelperController extends Controller
     public function test()
     {
         $questions = Question::where('status', 1)->where('exam_type', 2)->inRandomOrder()->limit(50)->get();
-        dd($questions);
-        die;
+        $data = [];
+        foreach ($questions as $key1 => $que) :
+            $data[] = [
+                'exam_id' => 138,
+                'question_id' => $que->id,
+                'created_by' => 1,
+                'updated_by' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        endforeach;
+        ExamQuestion::insert($data);
     }
 
     public function module(Request $request)

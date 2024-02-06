@@ -62,16 +62,18 @@ class Kernel extends ConsoleKernel
                     'updated_at' => Carbon::now(),
                 ]);
                 $questions = Question::where('status', 1)->where('exam_type', $item->id)->inRandomOrder()->limit($item->question_count)->get();
+                $data = [];
                 foreach ($questions as $key1 => $que) :
-                    ExamQuestion::insert([
+                    $data[] = [
                         'exam_id' => $exam->id,
-                        'question' => $que->id,
+                        'question_id' => $que->id,
                         'created_by' => 1,
                         'updated_by' => 1,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
-                    ]);
+                    ];
                 endforeach;
+                ExamQuestion::insert($data);
             endforeach;
         })->dailyAt('00:30');
 
