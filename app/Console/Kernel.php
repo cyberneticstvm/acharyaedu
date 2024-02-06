@@ -49,7 +49,7 @@ class Kernel extends ConsoleKernel
             foreach ($etypes as $key => $item) :
                 $exam = Exam::insert([
                     'exam_type' => $item->id,
-                    'name' => $item->name . Carbon::today()->format('d, M Y'),
+                    'name' => $item->name . ' - ' . Carbon::today()->format('d, M Y'),
                     'batch_id' => $item->batch_id,
                     'cut_off_mark' => $item->cut_off_mark,
                     'question_count' => $item->question_count,
