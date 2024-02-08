@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]);
-                $questions = Question::where('status', 1)->where('exam_type', $item->id)->inRandomOrder()->limit($item->question_count)->get();
+                $questions = Question::where('status', 1)->where('exam_type', $exam->exam_type)->inRandomOrder()->limit($exam->question_count)->get();
                 $data = [];
                 foreach ($questions as $key1 => $que) :
                     $data[] = [
@@ -75,7 +75,7 @@ class Kernel extends ConsoleKernel
                 endforeach;
                 ExamQuestion::insert($data);
             endforeach;
-        })->dailyAt('00:30');
+        })->dailyAt('00:30')->appendOutputTo('schedule_log.log');
 
         $schedule->call(function () {
             $batches = Batch::where('status', 1)->get();
