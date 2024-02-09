@@ -47,7 +47,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $etypes = ExamType::where('status', 'Active')->get();
             foreach ($etypes as $key => $item) :
-                $exam = Exam::insert([
+                $exam = Exam::create([
                     'exam_type' => $item->id,
                     'name' => $item->name . ' - ' . Carbon::today()->format('d, M Y'),
                     'batch_id' => $item->batch_id,

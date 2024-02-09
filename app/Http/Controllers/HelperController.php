@@ -37,7 +37,7 @@ class HelperController extends Controller
         $data = [];
         foreach ($questions as $key1 => $que) :
             $data[] = [
-                'exam_id' => 138,
+                'exam_id' => 141,
                 'question_id' => $que->id,
                 'created_by' => 1,
                 'updated_by' => 1,
