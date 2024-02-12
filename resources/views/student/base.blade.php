@@ -594,7 +594,6 @@
   @if(Route::current()->getName() == 'student.exam.performance' || Route::current()->getName() == 'student.performance')
   <script src="{{ asset('assets/bundles/apexcharts.bundle.js') }}"></script>
   <script src="{{ asset('assets/js/chart.js') }}"></script>
-  <script src="{{ asset('admin-assets/js/acharya-charts.js') }}"></script>
   @endif
   @if(Route::current()->getName() == 'student.videos')
   <script src="{{ asset('assets/plugin/magnific-popup/jquery.magnific-popup.js') }}"></script>
