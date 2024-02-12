@@ -4,13 +4,13 @@ $(function () {
   var type = $("#student_exam_type").val();
   var ctx1 = document.getElementById("studentPerformanceChart");
   $.getJSON('/studentperfchart/' + seid + '/' + type, function (response) {
+    console.log(response);
     var cor = []; var wro = []; var sub = [];
     for (var i = 0; i < response.length; i++) {
       cor.push(response[i]['correct']);
       wro.push(response[i]['wrong']);
       sub.push(response[i]['sname']);
     }
-    console.log(cor);
     new Chart(ctx1, {
       type: "bar",
       data: {
