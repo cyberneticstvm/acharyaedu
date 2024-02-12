@@ -616,9 +616,9 @@
   </script>
   <script>
     $(document).ready(function() {
-      $('body').bind('cut copy paste', function(event) {
+      /*$('body').bind('cut copy paste', function(event) {
         event.preventDefault();
-      });
+      });*/
     });
   </script>
   <!-- Github buttons -->
