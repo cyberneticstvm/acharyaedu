@@ -17,7 +17,7 @@
                     {{ session()->get('error') }}
                 </div>
                 @endif
-                <form role="form" method="put" action="{{ route('student.offline.exams.update') }}">
+                <form role="form" method="put" action="{{ route('student.offline.exams.update', $exam->id) }}">
                     @csrf
                     <input type="hidden" name="exam_id" value="{{ $exam->id }}" />
                     <input type="hidden" name="student_exam_id" value="{{ $studentexam->id }}" />
