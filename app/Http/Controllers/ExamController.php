@@ -224,22 +224,24 @@ class ExamController extends Controller
         try {
             $exam = OfflineExam::create($input);
             $data = [];
-            foreach ($students as $key => $student) :
-                $data[] = [
-                    'exam_id' => $exam->id,
-                    'student_id' => $student->id,
-                    'correct_answer_count' => 0,
-                    'wrong_answer_count' => 0,
-                    'unattended_count' => 0,
-                    'total_mark' => $exam->total_mark,
-                    'cutoff_mark' => $exam->cutoff_mark,
-                    'total_mark_after_cutoff' => 0,
-                    'grade' => $exam->grade,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now(),
-                ];
-            endforeach;
-            StudentOfflineExam::insert($data);
+            if ($students) :
+                foreach ($students as $key => $student) :
+                    $data[] = [
+                        'exam_id' => $exam->id,
+                        'student_id' => $student->id,
+                        'correct_answer_count' => 0,
+                        'wrong_answer_count' => 0,
+                        'unattended_count' => 0,
+                        'total_mark' => $exam->total_mark,
+                        'cutoff_mark' => $exam->cutoff_mark,
+                        'total_mark_after_cutoff' => 0,
+                        'grade' => $exam->grade,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                endforeach;
+                StudentOfflineExam::insert($data);
+            endif;
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
