@@ -47,7 +47,7 @@
                                 <td>{{ $exam->correct_answer_count }}</td>
                                 <td>{{ $exam->wrong_answer_count }}</td>
                                 <td>{{ $exam->unattended_count }}</td>
-                                <td>{{ $exam->total_mark_after_cutoff: 0 }}</td>
+                                <td>{{ $exam->total_mark_after_cutoff }}</td>
                                 <td>{{ $exam->grade }}</td>
                             </tr>
                             @empty
