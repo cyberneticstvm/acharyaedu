@@ -228,7 +228,7 @@ class ExamController extends Controller
             if ($students) :
                 foreach ($students as $key => $student) :
                     $stud = Student::find($student->id);
-                    if ($stud->id) :
+                    if ($stud && $stud->id > 0) :
                         $data[] = [
                             'exam_id' => $exam->id,
                             'student_id' => $stud->id,
