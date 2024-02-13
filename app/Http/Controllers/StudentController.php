@@ -708,7 +708,7 @@ class StudentController extends Controller
     public function offlineExams()
     {
         $student = Student::where('email', Auth::user()->email)->first();
-        $exams = OfflineExam::whereIn('student_id', $student->id)->where('status', 1)->latest()->get();
+        $exams = OfflineExam::where('student_id', $student->id)->where('status', 1)->latest()->get();
         return view('student.offline-exams', compact('exams', 'student'));
     }
 }
