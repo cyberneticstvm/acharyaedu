@@ -717,7 +717,7 @@ class StudentController extends Controller
     {
         $studentexam = StudentOfflineExam::findOrFail($id);
         $exam = OfflineExam::findOrFail($studentexam->exam_id);
-        return view('student.edit-offline-exams', compact('exam', 'studentexam'));
+        return view('student.edit-offline-exam', compact('exam', 'studentexam'));
     }
 
     public function updateOfflineExams(Request $request, string $id)
@@ -735,6 +735,6 @@ class StudentController extends Controller
             'cutoff_mark' => cutoffMark($request->wrong_answer),
             'total_mark_after_cutoff' => $request->correct_answer - cutoffMark($request->wrong_answer),
         ]);
-        return redirect()->back()->with('success', 'Score updated successfully');
+        return redirect()->route('student.offline.exams')->with('success', 'Score updated successfully');
     }
 }
