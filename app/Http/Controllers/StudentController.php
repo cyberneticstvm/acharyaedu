@@ -712,4 +712,29 @@ class StudentController extends Controller
         $exams = StudentOfflineExam::leftJoin('offline_exams as e', 'e.id', 'student_offline_exams.exam_id')->selectRaw("student_offline_exams.*")->where('student_id', $student->id)->where('e.status', 1)->latest()->get();
         return view('student.offline-exams', compact('exams', 'student'));
     }
+
+    public function editOfflineExams(string $id)
+    {
+        $studentexam = StudentOfflineExam::findOrFail($id);
+        $exam = OfflineExam::findOrFail($studentexam->exam_id);
+        return view('student.edit-offline-exams', compact('exam', 'studentexam'));
+    }
+
+    public function updateOfflineExams(Request $request, string $id)
+    {
+        $this->validate($request, [
+            'correct_answer' => 'required|numeric',
+            'wrong_answer' => 'required|numeric'
+        ]);
+        $exam = OfflineExam::findOrFail($request->exam_id);
+        $studentexam = StudentOfflineExam::findOrFail($request->student_exam_id);
+        $studentexam->update([
+            'correct_answer_count' => $request->correct_answer,
+            'wrong_answer_count' => $request->wrong_answer,
+            'unattended_count' => $exam->total_mark - ($request->correct_answer + $request->wrong_answer),
+            'cutoff_mark' => cutoffMark($request->wrong_answer),
+            'total_mark_after_cutoff' => $request->correct_answer - cutoffMark($request->wrong_answer),
+        ]);
+        return redirect()->back()->with('success', 'Score updated successfully');
+    }
 }

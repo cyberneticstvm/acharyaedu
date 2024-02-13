@@ -10,10 +10,12 @@ use App\Models\ExamType;
 use App\Models\Expense;
 use App\Models\Fee;
 use App\Models\Income;
+use App\Models\OfflineExam;
 use App\Models\Question;
 use App\Models\Student;
 use App\Models\StudentBatch;
 use App\Models\StudentExam;
+use App\Models\StudentOfflineExam;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -33,6 +35,16 @@ class Kernel extends ConsoleKernel
                 $studentexams = StudentExam::where('exam_id', $exam->id)->orderByDesc('total_mark_after_cutoff')->get();
                 foreach ($studentexams as $key1 => $sxam) :
                     StudentExam::where('id', $sxam->id)->update(['grade' => $key1 + 1]);
+                endforeach;
+            endforeach;
+        })->dailyAt('23:30');
+
+        $schedule->call(function () {
+            $exams = OfflineExam::whereDate('exam_date', Carbon::today())->get();
+            foreach ($exams as $key => $exam) :
+                $studentexams = StudentOfflineExam::where('exam_id', $exam->id)->orderByDesc('total_mark_after_cutoff')->get();
+                foreach ($studentexams as $key1 => $sxam) :
+                    StudentOfflineExam::where('id', $sxam->id)->update(['grade' => $key1 + 1]);
                 endforeach;
             endforeach;
         })->dailyAt('23:30');
