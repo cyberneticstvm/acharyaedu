@@ -726,6 +726,8 @@ class StudentController extends Controller
             'correct_answer' => 'required|numeric',
             'wrong_answer' => 'required|numeric'
         ]);
+        dd($request);
+        die;
         try {
             $exam = OfflineExam::findOrFail($request->exam_id);
             $studentexam = StudentOfflineExam::findOrFail($id);
