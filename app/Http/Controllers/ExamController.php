@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student
 use App\Models\Batch;
 use App\Models\Exam;
 use App\Models\ExamQuestion;
@@ -226,9 +227,10 @@ class ExamController extends Controller
             $data = [];
             if ($students) :
                 foreach ($students as $key => $student) :
+                    $stud = Student::findOrFail($student->id);
                     $data[] = [
                         'exam_id' => $exam->id,
-                        'student_id' => $student->id,
+                        'student_id' => $stud->id,
                         'correct_answer_count' => 0,
                         'wrong_answer_count' => 0,
                         'unattended_count' => 0,
