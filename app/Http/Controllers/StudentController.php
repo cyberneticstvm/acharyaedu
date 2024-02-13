@@ -727,7 +727,7 @@ class StudentController extends Controller
             'wrong_answer' => 'required|numeric'
         ]);
         $exam = OfflineExam::findOrFail($request->exam_id);
-        $studentexam = StudentOfflineExam::findOrFail($request->student_exam_id);
+        $studentexam = StudentOfflineExam::findOrFail($id);
         $studentexam->update([
             'correct_answer_count' => $request->correct_answer,
             'wrong_answer_count' => $request->wrong_answer,
