@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student
+use App\Models\Student;
 use App\Models\Batch;
 use App\Models\Exam;
 use App\Models\ExamQuestion;
