@@ -44,7 +44,7 @@
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $exam->name }}</td>
                                 <td>{{ $exam->batch?->name }}</td>
-                                <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
+                                <td>{{ $exam->exam->exam_date->format('d/M/Y') }}</td>
                                 <td>{{ $exam->correct_answer_count }}</td>
                                 <td>{{ $exam->wrong_answer_count }}</td>
                                 <td>{{ $exam->unattended_count }}</td>

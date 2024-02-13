@@ -15,6 +15,6 @@ class OfflineExam extends Model
 
     public function batch()
     {
-        return $this->hasOne(Batch::class, 'id', 'batch_id');
+        return $this->hasOne(Batch::class, 'batch_id', 'id');
     }
 }
