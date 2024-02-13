@@ -720,7 +720,7 @@ class StudentController extends Controller
         return view('student.edit-offline-exam', compact('exam', 'studentexam'));
     }
 
-    public function updateOfflineExams(Request $request, string $id)
+    public function updateOfflineExams(Request $request)
     {
         $this->validate($request, [
             'correct_answer' => 'required|numeric',
