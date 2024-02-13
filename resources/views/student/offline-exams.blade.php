@@ -44,11 +44,11 @@
                                 <td>{{ $exam->name }}</td>
                                 <td>{{ $exam->batch->name }}</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
-                                <td>{{ $exam->correct_answer_count : 0 }}</td>
-                                <td>{{ $exam->wrong_answer_count : 0 }}</td>
-                                <td>{{ $exam->unattended_count : 0 }}</td>
+                                <td>{{ $exam->correct_answer_count }}</td>
+                                <td>{{ $exam->wrong_answer_count }}</td>
+                                <td>{{ $exam->unattended_count }}</td>
                                 <td>{{ $exam->total_mark_after_cutoff: 0 }}</td>
-                                <td>{{ $exam->grade : 0 }}</td>
+                                <td>{{ $exam->grade }}</td>
                             </tr>
                             @empty
                             @endforelse
