@@ -726,15 +726,20 @@ class StudentController extends Controller
             'correct_answer' => 'required|numeric',
             'wrong_answer' => 'required|numeric'
         ]);
-        $exam = OfflineExam::findOrFail($request->exam_id);
-        $studentexam = StudentOfflineExam::findOrFail($id);
-        $studentexam->update([
-            'correct_answer_count' => $request->correct_answer,
-            'wrong_answer_count' => $request->wrong_answer,
-            'unattended_count' => $exam->total_mark - ($request->correct_answer + $request->wrong_answer),
-            'cutoff_mark' => cutoffMark($request->wrong_answer),
-            'total_mark_after_cutoff' => $request->correct_answer - cutoffMark($request->wrong_answer),
-        ]);
+        try {
+            $exam = OfflineExam::findOrFail($request->exam_id);
+            $studentexam = StudentOfflineExam::findOrFail($id);
+            $studentexam->update([
+                'correct_answer_count' => $request->correct_answer,
+                'wrong_answer_count' => $request->wrong_answer,
+                'unattended_count' => $exam->total_mark - ($request->correct_answer + $request->wrong_answer),
+                'cutoff_mark' => cutoffMark($request->wrong_answer),
+                'total_mark_after_cutoff' => $request->correct_answer - cutoffMark($request->wrong_answer),
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        }
+
         return redirect()->route('student.offline.exams')->with('success', 'Score updated successfully');
     }
 }
