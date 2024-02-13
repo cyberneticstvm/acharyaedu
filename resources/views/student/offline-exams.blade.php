@@ -50,7 +50,11 @@
                                 <td>{{ $exam->unattended_count }}</td>
                                 <td>{{ $exam->total_mark_after_cutoff }}</td>
                                 <td>{{ $exam->grade }}</td>
+                                @if($exam->total_mark_after_cutoff > 0)
+                                <td></td>
+                                @else
                                 <td><a href="{{ route('student.offline.exams.edit', $exam->id) }}">Update</a></td>
+                                @endif
                             </tr>
                             @empty
                             @endforelse
