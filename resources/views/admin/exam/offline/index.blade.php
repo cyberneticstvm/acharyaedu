@@ -52,6 +52,7 @@
                                 <th>Duration</th>
                                 <th>Exam Date</th>
                                 <th>Status</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,6 +66,13 @@
                                 <td>{{ $exam->duration }} Minutes</td>
                                 <td>{{ $exam->exam_date->format('d/M/Y') }}</td>
                                 <td>{{ ($exam->status == 0) ? 'Draft' : 'Published' }}</td>
+                                <td class="text-center">
+                                    <form method="post" action="{{ route('admin.offline.exam.delete', $exam->id) }}">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="border no-border" onclick="javascript: return confirm('Are you sure want to delete this record?');"><i class="fa fa-trash text-danger"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                             @empty
                             @endforelse

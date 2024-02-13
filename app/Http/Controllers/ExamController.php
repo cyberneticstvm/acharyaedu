@@ -245,4 +245,10 @@ class ExamController extends Controller
         }
         return redirect()->route('admin.offline.exam.register')->with('success', 'Exam Created Successfully!');
     }
+
+    public function offlineExamDelete(string $id)
+    {
+        OfflineExam::find($id)->delete();
+        return redirect()->route('admin.offline.exam.register')->with('success', 'Exam Deleted Successfully!');
+    }
 }
