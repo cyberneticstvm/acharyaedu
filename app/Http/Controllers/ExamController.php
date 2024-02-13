@@ -236,9 +236,9 @@ class ExamController extends Controller
                             'wrong_answer_count' => 0,
                             'unattended_count' => 0,
                             'total_mark' => $exam->total_mark,
-                            'cutoff_mark' => $exam->cutoff_mark,
+                            'cutoff_mark' => $exam->cut_off_mark,
                             'total_mark_after_cutoff' => 0,
-                            'grade' => $exam->grade,
+                            'grade' => 0,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ];
