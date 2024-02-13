@@ -81,6 +81,7 @@ Route::get('/resetpassword/{email}', [StudentController::class, 'resetpassword']
 Route::post('/updatepassword', [StudentController::class, 'updatepassword'])->name('updatepassword');
 
 Route::group(['middleware' => ['web', 'auth', 'student']], function () {
+    Route::get('/student/offline-exams', [StudentController::class, 'offlineExams'])->name('student.offline.exams');
     Route::get('/student/active-exams/{type}', [StudentController::class, 'activeexams'])->name('student.active.exams');
     Route::get('/student/exam/{id}/{type}', [StudentController::class, 'exam'])->name('student.exam');
     Route::post('/student/exam/{id}/{type}', [StudentController::class, 'saveexam'])->name('student.exam.save');

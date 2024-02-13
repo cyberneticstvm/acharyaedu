@@ -176,6 +176,12 @@
           <div class="collapse" id="exam">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
+                <a class="nav-link text-white " href="/student/offline-exams">
+                  <i class='fa fa-book sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">General Exams</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/student/active-exams/1">
                   <i class='fa fa-book sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">General Exams</span>

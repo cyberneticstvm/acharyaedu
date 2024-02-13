@@ -18,6 +18,7 @@ use App\Models\FreeStudentExam;
 use App\Models\GeneralQuestion;
 use App\Models\Month;
 use App\Models\MultiOptionQuestion;
+use App\Models\OfflineExam;
 use App\Models\PaymentMode;
 use App\Models\PscUpdate;
 use App\Models\Question;
@@ -702,5 +703,12 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $questions = MultiOptionQuestion::leftJoin('multi_option_question_batches as moqb', 'multi_option_questions.id', 'moqb.question_id')->selectRaw("multi_option_questions.*")->where('multi_option_questions.subject_id', $id)->whereIn('moqb.batch_id', $student->batches->pluck('batch'))->groupBy('multi_option_questions.id')->latest()->paginate(1);
         return view('student.question-multi-options-subject', compact('questions'));
+    }
+
+    public function offlineExams()
+    {
+        $student = Student::where('email', Auth::user()->email)->first();
+        $exams = OfflineExam::whereIn('student_id', $student->id)->where('status', 1)->latest()->get();
+        return view('student.offline-exams', compact('exams', 'student'));
     }
 }
