@@ -33,6 +33,7 @@ use App\Models\StudentExam;
 use App\Models\StudentExamScore;
 use App\Models\StudentFeedback;
 use App\Models\StudentInactiveReason;
+use App\Models\StudentOfflineExam;
 use App\Models\Subject;
 use App\Models\Topic;
 use App\Models\User;
@@ -708,7 +709,7 @@ class StudentController extends Controller
     public function offlineExams()
     {
         $student = Student::where('email', Auth::user()->email)->first();
-        $exams = OfflineExam::where('student_id', $student->id)->where('status', 1)->latest()->get();
+        $exams = StudentOfflineExam::leftJoin('offline_exams as e', 'e.id', 'student_offline_exams.exam_id')->selectRaw("student_offline_exams.*")->where('student_id', $student->id)->where('e.status', 1)->latest()->get();
         return view('student.offline-exams', compact('exams', 'student'));
     }
 }
