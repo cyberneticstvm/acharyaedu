@@ -585,11 +585,11 @@
       s -= 1;
     }, 1000);
   </script>
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
     window.onbeforeunload = function() {
       return "Dude, are you sure you want to leave? Think of the kittens!";
     }
-  </script>
+  </script>-->
   @endif
   @if(Route::current()->getName() == 'student.exam.performance' || Route::current()->getName() == 'student.performance')
   <script src="{{ asset('admin-assets/js/plugins/chartjs.min.js') }}"></script>
@@ -628,7 +628,7 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-  <script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
+  <!--<script src="{{ asset('assets/plugin/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>-->
 </body>
 
 </html>

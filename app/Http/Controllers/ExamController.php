@@ -6,6 +6,9 @@ use App\Models\Batch;
 use App\Models\Exam;
 use App\Models\ExamQuestion;
 use App\Models\ExamType;
+use App\Models\OfflineExam;
+use App\Models\StudentBatch;
+use App\Models\StudentOfflineExam;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -189,5 +192,57 @@ class ExamController extends Controller
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
         return redirect()->route('admin.exam.setting')->with('success', 'Exam Settings Updated Successfully!');
+    }
+
+    public function offlineExamRegister()
+    {
+        $exams = OfflineExam::latest()->get();
+        $batches = Batch::where('status', 1)->get();
+        return view('admin.exam.offline.index', compact('exams', 'batches'));
+    }
+
+    public function offlineExamForm()
+    {
+        $batches = Batch::where('status', 1)->get();
+        return view('admin.exam.offline.create', compact('batches'));
+    }
+
+    public function offlineExamSave(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'batch_id' => 'required',
+            'total_mark' => 'required',
+            'cut_off_mark' => 'required',
+            'question_count' => 'required',
+            'exam_date' => 'required',
+            'duration' => 'required',
+            'status' => 'required',
+        ]);
+        $input = $request->all();
+        $students = StudentBatch::where('batch', $request->batch_id)->where('cancelled', 0)->get();
+        try {
+            $exam = OfflineExam::create($input);
+            $data = [];
+            foreach ($students as $key => $student) :
+                $data[] = [
+                    'exam_id' => $exam->id,
+                    'student_id' => $student->id,
+                    'correct_answer_count' => 0,
+                    'wrong_answer_count' => 0,
+                    'unattended_count' => 0,
+                    'total_mark' => $exam->total_mark,
+                    'cutoff_mark' => $exam->cutoff_mark,
+                    'total_mark_after_cutoff' => $exam->total_mark_after_cutoff,
+                    'grade' => $exam->grade,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ];
+            endforeach;
+            StudentOfflineExam::insert($data);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        }
+        return redirect()->route('admin.offline.exam.register')->with('success', 'Exam Created Successfully!');
     }
 }

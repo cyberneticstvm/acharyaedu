@@ -453,6 +453,12 @@
           <div class="collapse" id="exam">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
+                <a class="nav-link text-white " href="/admin/offline/exam">
+                  <i class='fa fa-file-text-o sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Offline Exam Register</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/admin/exam">
                   <i class='fa fa-file-text-o sidenav-mini-icon'></i>
                   <span class="sidenav-normal ms-2 ps-1">Exam Register</span>

@@ -318,7 +318,10 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::put('/admin/caffairquestion/edit/{id}', [CurrentAffairQuestionController::class, 'update'])->name('caffairquestion.update');
     Route::delete('/admin/caffairquestion/{id}', [CurrentAffairQuestionController::class, 'destroy'])->name('caffairquestion.delete');
 
-    Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
+    Route::get('/admin/offline/exam', [ExamController::class, 'offlineExamRegister'])->name('admin.offline.exam.register');
+    Route::get('/admin/offline/exam/create', [ExamController::class, 'offlineExamForm'])->name('admin.offline.exam.create');
+    Route::post('/admin/offline/exam/save', [ExamController::class, 'offlineExamSave'])->name('admin.offline.exam.save');
+
     Route::get('/admin/exam', [ExamController::class, 'index'])->name('exam');
     Route::get('/admin/exam/create', [ExamController::class, 'create'])->name('exam.create');
     Route::post('/admin/exam/create', [ExamController::class, 'store'])->name('exam.save');
