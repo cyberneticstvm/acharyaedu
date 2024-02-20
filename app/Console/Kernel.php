@@ -30,6 +30,44 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
+            $batches = Batch::where('status', 1)->get();
+            foreach ($batches as $key => $batch) :
+                $exam = OfflineExam::create([
+                    'name' => 'Offline Exam for ' . $batch->name . ' on - ' . Carbon::today()->format('d, M Y'),
+                    'batch_id' => $batch->id,
+                    'total_mark' => 100,
+                    'cut_off_mark' => 40,
+                    'question_count' => 100,
+                    'duration' => 60,
+                    'exam_date' => Carbon::today(),
+                    'status' => 1,
+                    'created_at' => Carbon::today(),
+                    'updated_at' => Carbon::today(),
+                ]);
+                $students = StudentBatch::where('batch', $batch->id)->where('cancelled', 0)->get();
+                $data = [];
+                if ($students) :
+                    foreach ($students as $key => $student) :
+                        $data[] = [
+                            'exam_id' => $exam->id,
+                            'student_id' => $student->student,
+                            'correct_answer_count' => 0,
+                            'wrong_answer_count' => 0,
+                            'unattended_count' => 0,
+                            'total_mark' => 100,
+                            'cutoff_mark' => 40,
+                            'total_mark_after_cutoff' => 0,
+                            'grade' => 0,
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now(),
+                        ];
+                    endforeach;
+                    StudentOfflineExam::insert($data);
+                endif;
+            endforeach;
+        })->dailyAt('1:00');
+
+        $schedule->call(function () {
             $exams = Exam::whereDate('exam_date', Carbon::today())->get();
             foreach ($exams as $key => $exam) :
                 $studentexams = StudentExam::where('exam_id', $exam->id)->orderByDesc('total_mark_after_cutoff')->get();
