@@ -60,7 +60,7 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $exam->name }}</td>
-                                <td>{{ $exam->batch->name }}</td>
+                                <td>{{ $exam->batch?->name }}</td>
                                 <td>{{ $exam->cut_off_mark }}</td>
                                 <td>{{ $exam->question_count }}</td>
                                 <td>{{ $exam->duration }} Minutes</td>
