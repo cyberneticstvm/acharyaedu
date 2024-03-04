@@ -106,10 +106,10 @@ class AdminController extends Controller
 
     public function studentfeechart()
     {
-        $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
-        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
-        $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
-        $expenses = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+        $afee = Student::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->sum('fee');
+        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->whereYear('paid_date', Carbon::now()->year)->sum('fee');
+        $income = Income::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
+        $expenses = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
         return array('afee' => $afee, 'bfee' => $bfee, 'income' => $income, 'expense' => $expenses);
     }
 
