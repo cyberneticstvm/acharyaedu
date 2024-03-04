@@ -22,11 +22,11 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->role == 'Admin') :
-            $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('admission_fee_advance');
-            $afeeb = AdmissionFee::whereMonth('created_at', Carbon::now()->month)->sum('amount');
-            $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee_advance');
-            $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
-            $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+            $afee = Student::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->sum('admission_fee_advance');
+            $afeeb = AdmissionFee::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->sum('amount');
+            $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->whereYear('paid_date', Carbon::now()->year)->sum('fee_advance');
+            $income = Income::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
+            $expense = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
             $income = $afee + $afeeb + $bfee + $income;
             $profit = $income - $expense;
             return view('admin.admin-dash-demo', compact('income', 'expense', 'profit'));
@@ -41,11 +41,11 @@ class AdminController extends Controller
 
     public function dashdemo()
     {
-        $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('admission_fee_advance');
-        $afeeb = AdmissionFee::whereMonth('created_at', Carbon::now()->month)->sum('amount');
-        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee_advance');
-        $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
-        $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+        $afee = Student::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->sum('admission_fee_advance');
+        $afeeb = AdmissionFee::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->sum('amount');
+        $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->whereYear('paid_date', Carbon::now()->year)->sum('fee_advance');
+        $income = Income::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
+        $expense = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
         $income = $afee + $afeeb + $bfee + $income;
         $profit = $income - $expense;
         return view('admin.admin-dash', compact('income', 'expense', 'profit'));
