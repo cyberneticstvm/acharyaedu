@@ -15,7 +15,7 @@ class OfflineExamPerformanceController extends Controller
     public function index()
     {
         //$oeps = OfflineExampPerformance::latest()->get();
-        $oeps = StudentOfflineExam::latest()->limit(500)->get();
+        $oeps = StudentOfflineExam::latest()->limit(1000)->get();
         return view('admin.oep.index', compact('oeps'));
     }
 
