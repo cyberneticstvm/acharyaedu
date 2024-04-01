@@ -35,9 +35,6 @@ class StudentOfflineExam extends Model
             case $percentage >= 50 && $percentage < 60:
                 $performance = "Above Average";
                 break;
-            case $percentage >= 50 && $percentage < 60:
-                $performance = "Above Average";
-                break;
             case $percentage >= 60 && $percentage < 75:
                 $performance = "Good";
                 break;
