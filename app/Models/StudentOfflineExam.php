@@ -15,4 +15,9 @@ class StudentOfflineExam extends Model
     {
         return $this->belongsTo(OfflineExam::class, 'exam_id', 'id');
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'id');
+    }
 }

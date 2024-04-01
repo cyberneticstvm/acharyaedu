@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Batch;
 use App\Models\OfflineExampPerformance;
+use App\Models\StudentOfflineExam;
 use Illuminate\Http\Request;
 
 class OfflineExamPerformanceController extends Controller
@@ -13,7 +14,8 @@ class OfflineExamPerformanceController extends Controller
      */
     public function index()
     {
-        $oeps = OfflineExampPerformance::latest()->get();
+        //$oeps = OfflineExampPerformance::latest()->get();
+        $oeps = StudentOfflineExam::latest()->get();
         return view('admin.oep.index', compact('oeps'));
     }
 

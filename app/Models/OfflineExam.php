@@ -17,4 +17,9 @@ class OfflineExam extends Model
     {
         return $this->belongsTo(Batch::class, 'batch_id', 'id');
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'id');
+    }
 }
