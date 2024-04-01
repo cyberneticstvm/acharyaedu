@@ -8,6 +8,9 @@
                     <div class="col">
                         <h3 class="font-weight-bolder text-primary text-gradient">Dashboard - Admin</h3>
                     </div>
+                    <div class="col">
+                        <h3 class="font-weight-bolder text-primary text-gradient text-end">Active Students Count: {{ $students_active }}</h3>
+                    </div>
                 </div>
                 @if(session()->has('success'))
                 <div class="alert alert-success text-white">
@@ -60,9 +63,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 card">                        
+                    <div class="col-md-2 card">
                         <div class="card-header p-3 pb-0">
-                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Income Current Month</p>                           
+                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Income Current Month</p>
                         </div>
                         <div class="card-body mt-1">
                             <div class="numbers text-center">
@@ -70,9 +73,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 card">                        
+                    <div class="col-md-2 card">
                         <div class="card-header p-3 pb-0">
-                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Expense Current Month</p>                           
+                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Expense Current Month</p>
                         </div>
                         <div class="card-body mt-1">
                             <div class="numbers text-center">
@@ -80,9 +83,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 card">                        
+                    <div class="col-md-2 card">
                         <div class="card-header p-3 pb-0">
-                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Net Profit Current Month</p>                           
+                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Net Profit Current Month</p>
                         </div>
                         <div class="card-body mt-1">
                             <div class="numbers text-center">

@@ -10,6 +10,7 @@ use App\Models\Income;
 use App\Models\ModuleCompleteStatus;
 use App\Models\Settings;
 use App\Models\Student;
+use App\Models\StudentBatch;
 use App\Models\Syllabus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class AdminController extends Controller
             $expense = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
             $income = $afee + $afeeb + $bfee + $income;
             $profit = $income - $expense;
-            return view('admin.admin-dash-demo', compact('income', 'expense', 'profit'));
+            $students_active = StudentBatch::where('cancelled', 0)->count();
+            return view('admin.admin-dash-demo', compact('income', 'expense', 'profit', 'students_active'));
         elseif ($user->role == 'Staff') :
             return view('admin.staff-dash');
         //return redirect()->route('staff.dash')->with("success", "User logged in successfully!");
@@ -48,7 +50,8 @@ class AdminController extends Controller
         $expense = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
         $income = $afee + $afeeb + $bfee + $income;
         $profit = $income - $expense;
-        return view('admin.admin-dash', compact('income', 'expense', 'profit'));
+        $students_active = StudentBatch::where('cancelled', 0)->count();
+        return view('admin.admin-dash', compact('income', 'expense', 'profit', 'students_active'));
     }
 
     public function show()
