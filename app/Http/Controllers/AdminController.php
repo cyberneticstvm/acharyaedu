@@ -30,7 +30,7 @@ class AdminController extends Controller
             $expense = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
             $income = $afee + $afeeb + $bfee + $income;
             $profit = $income - $expense;
-            $students_active = StudentBatch::where('cancelled', 0)->count();
+            $students_active = StudentBatch::where('cancelled', 0)->groupBy('student')->count();
             return view('admin.admin-dash-demo', compact('income', 'expense', 'profit', 'students_active'));
         elseif ($user->role == 'Staff') :
             return view('admin.staff-dash');
@@ -50,7 +50,7 @@ class AdminController extends Controller
         $expense = Expense::whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->sum('amount');
         $income = $afee + $afeeb + $bfee + $income;
         $profit = $income - $expense;
-        $students_active = StudentBatch::where('cancelled', 0)->count();
+        $students_active = StudentBatch::where('cancelled', 0)->groupBy('student')->count();
         return view('admin.admin-dash', compact('income', 'expense', 'profit', 'students_active'));
     }
 
