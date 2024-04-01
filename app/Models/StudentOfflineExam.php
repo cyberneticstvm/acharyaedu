@@ -24,7 +24,7 @@ class StudentOfflineExam extends Model
     public function getPerformance()
     {
         $performance = "";
-        $percentage = $this->performance;
+        $percentage = ($this->total_mark_after_cutoff / $this->total_mark) * 100;
         switch ($percentage):
             case $percentage < 40:
                 $performance = "Below Average";
