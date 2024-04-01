@@ -689,7 +689,7 @@ class StudentController extends Controller
         $student = Student::find(Auth::user()->student->id);
         $courses = Course::all();
         $course = Batch::whereIn('id', $student->batches()->pluck('batch'))->where('status', 1)->pluck('course');
-        $questions = GeneralQuestion::join('general_question_courses as gqc', 'general_questions.id', 'gqc.question_id')->whereIn("gqc.course_id", $course)->groupBy('general_questions.id')->latest()->paginate(1);
+        $questions = GeneralQuestion::join('general_question_courses as gqc', 'general_questions.id', 'gqc.question_id')->whereIn("gqc.course_id", $course)->inRandomOrder()->groupBy('general_questions.id')->latest()->paginate(1);
         return view('student.question-general', compact('questions', 'courses'));
     }
 
@@ -702,7 +702,7 @@ class StudentController extends Controller
     public function multiOptionsQuestionsSubject($id)
     {
         $student = Student::find(Auth::user()->student->id);
-        $questions = MultiOptionQuestion::leftJoin('multi_option_question_batches as moqb', 'multi_option_questions.id', 'moqb.question_id')->selectRaw("multi_option_questions.*")->where('multi_option_questions.subject_id', $id)->whereIn('moqb.batch_id', $student->batches->pluck('batch'))->groupBy('multi_option_questions.id')->latest()->paginate(1);
+        $questions = MultiOptionQuestion::leftJoin('multi_option_question_batches as moqb', 'multi_option_questions.id', 'moqb.question_id')->selectRaw("multi_option_questions.*")->where('multi_option_questions.subject_id', $id)->whereIn('moqb.batch_id', $student->batches->pluck('batch'))->inRandomOrder()->groupBy('multi_option_questions.id')->latest()->paginate(1);
         return view('student.question-multi-options-subject', compact('questions'));
     }
 
