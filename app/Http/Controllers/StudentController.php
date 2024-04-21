@@ -753,6 +753,6 @@ class StudentController extends Controller
     {
         $student = Student::find(Auth::user()->student->id);
         $questions = Question::where('subject_id', $id)->inRandomOrder()->latest()->paginate(1);
-        return view('student.question-multi-options-subject', compact('questions'));
+        return view('student.scert-and-general-question', compact('questions'));
     }
 }
