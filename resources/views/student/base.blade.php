@@ -407,6 +407,18 @@
                   <span class="sidenav-normal ms-2 ps-1">Multiple Choice Questions</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/scert-and-general/questions/2">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">SCERT</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/student/scert-and-general/questions/1">
+                  <i class="fa fa-id-card-o sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">GENERAL</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>

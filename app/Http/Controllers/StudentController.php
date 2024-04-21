@@ -742,4 +742,10 @@ class StudentController extends Controller
 
         return redirect()->route('student.offline.exams')->with('success', 'Score updated successfully');
     }
+
+    public function scertAndGeneralQuestions($id)
+    {
+        $subjects = Subject::where('exam_type', $id)->get();
+        return view('scert-and-general-question-subjects.blade', compact('subjects'));
+    }
 }
