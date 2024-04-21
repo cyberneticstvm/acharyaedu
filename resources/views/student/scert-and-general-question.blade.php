@@ -16,7 +16,7 @@
                 <p>Subject: {{ $question->subject->name }}</p>
                 <br />
                 @forelse($question->options as $key1 => $item)
-                <p><input class="moqr" type="radio" name="moqr" value="" data-ans="{{ albhabets()[$item->option_id] }}" /> Option A: {!! $item->option_name !!}</p>
+                <p><input class="moqr" type="radio" name="moqr" value="" data-ans="{{ albhabets()[$item->option_id] }}" /> Option {{ albhabets()[$item->option_id] }}: {!! $item->option_name !!}</p>
                 @empty
                 @endforelse
                 <br />
