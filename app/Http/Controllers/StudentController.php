@@ -746,6 +746,6 @@ class StudentController extends Controller
     public function scertAndGeneralQuestions($id)
     {
         $subjects = Subject::where('exam_type', $id)->get();
-        return view('scert-and-general-question-subjects.blade', compact('subjects'));
+        return view('scert-and-general-question-subjects', compact('subjects'));
     }
 }
