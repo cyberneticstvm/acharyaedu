@@ -748,4 +748,11 @@ class StudentController extends Controller
         $subjects = Subject::where('exam_type', $id)->get();
         return view('student.scert-and-general-question-subjects', compact('subjects'));
     }
+
+    public function scertAndGeneralQuestionsBySubject($id)
+    {
+        $student = Student::find(Auth::user()->student->id);
+        $questions = Question::where('subject_id', $id)->inRandomOrder()->latest()->paginate(1);
+        return view('student.question-multi-options-subject', compact('questions'));
+    }
 }

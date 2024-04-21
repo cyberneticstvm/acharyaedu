@@ -118,6 +118,7 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function () {
     Route::get('/student/multi-options/subject/question/{id}', [StudentController::class, 'multiOptionsQuestionsSubject'])->name('student.multi.options.question.subject');
 
     Route::get('/student/scert-and-general/questions/{id}', [StudentController::class, 'scertAndGeneralQuestions'])->name('student.scert.general.questions');
+    Route::get('/student/scert-and-general/options/{id}', [StudentController::class, 'scertAndGeneralQuestionsBySubject'])->name('student.scert.general.questions.by.subject');
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
