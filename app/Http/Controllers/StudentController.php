@@ -326,7 +326,6 @@ class StudentController extends Controller
         try {
             DB::transaction(function () use ($input, $student, $user, $request) {
                 $student->update($input);
-                $input['status'] = $request->status;
                 $user->update($input);
             });
         } catch (Exception $e) {

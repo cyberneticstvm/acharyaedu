@@ -161,7 +161,7 @@
                             <div class="form-group">
                                 <label class="req">Admission Fee</label>
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" name="fee" min="1" step="1" value="{{ $student->fee }}" placeholder="0.00" />
+                                    <input type="number" class="form-control" name="fee" min="0" step="any" value="{{ $student->fee }}" placeholder="0.00" />
                                 </div>
                                 @error('fee')
                                 <small class="text-danger">{{ $errors->first('fee') }}</small>
