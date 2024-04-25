@@ -324,8 +324,9 @@ class StudentController extends Controller
         endif;
         $input['updated_by'] = Auth::user()->id;
         try {
-            DB::transaction(function () use ($input, $student, $user) {
+            DB::transaction(function () use ($input, $student, $user, $request) {
                 $student->update($input);
+                $input['status'] = $request->status;
                 $user->update($input);
             });
         } catch (Exception $e) {
