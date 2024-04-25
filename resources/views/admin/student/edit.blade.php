@@ -138,8 +138,8 @@
                                     <option value="active" {{ ($student->status == 'active') ? 'selected' : '' }}>Active</option>
                                     <option value="inactive" {{ ($student->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
                                 </select>
-                                @error('type')
-                                <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @error('status')
+                                <small class="text-danger">{{ $errors->first('status') }}</small>
                                 @enderror
                             </div>
                         </div>
