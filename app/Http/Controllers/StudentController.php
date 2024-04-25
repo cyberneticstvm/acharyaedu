@@ -307,7 +307,6 @@ class StudentController extends Controller
             'name' => 'required',
             'email' => 'required|email:filter|unique:students,email,' . $id,
             'mobile' => 'required|numeric|digits:10',
-            'admission_date' => 'required',
             'address' => 'required',
             'fee' => 'required',
             'status' => 'required',

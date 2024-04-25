@@ -172,7 +172,7 @@
                             <div class="form-group">
                                 <label class="req">Admission Fee Advance</label>
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" name="admission_fee_advance" min="1" step="1" value="{{ $student->admission_fee_advance }}" placeholder="0.00" />
+                                    <input type="number" class="form-control" name="admission_fee_advance" min="0" step="any" value="{{ $student->admission_fee_advance }}" placeholder="0.00" />
                                 </div>
                                 @error('admission_fee_advance')
                                 <small class="text-danger">{{ $errors->first('admission_fee_advance') }}</small>
