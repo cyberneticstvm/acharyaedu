@@ -134,7 +134,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label class="req">Status</label>
-                                <select class="form-control" name="type">
+                                <select class="form-control" name="status">
                                     <option value="active" {{ ($student->status == 'active') ? 'selected' : '' }}>Active</option>
                                     <option value="inactive" {{ ($student->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
                                 </select>
