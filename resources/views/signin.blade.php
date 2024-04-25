@@ -16,26 +16,27 @@
                     </div>
                     @endif
                     @if(session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session()->get('error') }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
                     @endif
                 </div>
                 <form class="contact-form-contact" method="post" action="{{ route('signin') }}">
                     @csrf
+                    <input type="hidden" name="status" value="active" />
                     <div class="row">
                         <div class="col-md-6">
                             <label class="req">Email ID</label>
                             <input type="email" class="form-control form-control-sm" name="email" value="{{ old('email') }}" placeholder="Email ID">
                             @error('email')
-                                <small class="text-danger">{{ $errors->first('email') }}</small>
+                            <small class="text-danger">{{ $errors->first('email') }}</small>
                             @enderror
                         </div>
                         <div class="col-md-6">
                             <label class="req">Password</label>
-                            <input type="password" class="form-control form-control-sm" placeholder="******" name="password" >
+                            <input type="password" class="form-control form-control-sm" placeholder="******" name="password">
                             @error('password')
-                                <small class="text-danger">{{ $errors->first('password') }}</small>
+                            <small class="text-danger">{{ $errors->first('password') }}</small>
                             @enderror
                         </div>
                         <div class="col-12 mt-3">

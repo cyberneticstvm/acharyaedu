@@ -131,6 +131,18 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Status</label>
+                                <select class="form-control" name="type">
+                                    <option value="active" {{ ($student->status == 'active') ? 'selected' : '' }}>Active</option>
+                                    <option value="inactive" {{ ($student->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
+                                </select>
+                                @error('type')
+                                <small class="text-danger">{{ $errors->first('type') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="req">Address</label>

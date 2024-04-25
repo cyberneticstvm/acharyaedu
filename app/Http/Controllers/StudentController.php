@@ -202,13 +202,13 @@ class StudentController extends Controller
         if (Auth::attempt($credentials)) :
             $user = Auth::getProvider()->retrieveByCredentials($credentials);
             Auth::login($user, $request->get('remember'));
-            if (Auth::user()->role == 'Student') :
+            /*if (Auth::user()->role == 'Student') :
                 $student = Auth::user()->student;
                 $batches = Batch::whereIn('id', $student->batches()->pluck('batch'))->where('status', 1)->get();
                 if ($batches->isEmpty()) :
                     $this->logout();
                 endif;
-            endif;
+            endif;*/
             return redirect()->route('dash');
         endif;
         return redirect()->back()->with('error', 'Login details are not valid')->withInput($request->all());
@@ -310,6 +310,7 @@ class StudentController extends Controller
             'admission_date' => 'required',
             'address' => 'required',
             'fee' => 'required',
+            'status' => 'required',
             'branch' => 'required',
         ]);
         $input = $request->all();
