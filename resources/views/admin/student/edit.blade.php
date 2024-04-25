@@ -135,8 +135,8 @@
                             <div class="form-group">
                                 <label class="req">Status</label>
                                 <select class="form-control" name="status">
-                                    <option value="active" {{ ($student->status == 'active') ? 'selected' : '' }}>Active</option>
-                                    <option value="inactive" {{ ($student->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
+                                    <option value="active" {{ ($student->user->status == 'active') ? 'selected' : '' }}>Active</option>
+                                    <option value="inactive" {{ ($student->user->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
                                 </select>
                                 @error('status')
                                 <small class="text-danger">{{ $errors->first('status') }}</small>
