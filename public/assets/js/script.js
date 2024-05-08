@@ -69,7 +69,7 @@ $(function () {
             if (txt == $(this).find("." + cls).text()) {
                 $(this).show();
             } else {
-                $(this).hide();
+                $(this).remove();
             }
         });
     });
