@@ -6,7 +6,7 @@
             <div class="card-header pb-0 text-left bg-transparent">
                 <div class="row">
                     <div class="col">
-                        <h3 class="font-weight-bolder text-primary text-gradient">Student Register</h3>
+                        <h3 class="font-weight-bolder text-primary text-gradient">Student Register (Offline)</h3>
                     </div>
                     <div class="col text-end"><a href="/student/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CREATE</a></div>
                 </div>
