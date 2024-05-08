@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <div class="col-md-3">
+                    <!--<div class="col-md-3">
                         <div class="form-group">
                             <label class="req">Subject</label>
                             <div class="mb-3">
@@ -28,7 +28,7 @@
                             <small class="text-danger">{{ $errors->first('subject_id') }}</small>
                             @enderror
                         </div>
-                    </div>
+                    </div>-->
                     @php $slno = 1; @endphp
                     <table id="datatable-basic" class="table table-sm table-striped table-bordered tblFilter">
                         <thead>
