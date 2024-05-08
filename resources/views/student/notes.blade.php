@@ -35,10 +35,10 @@
                             <tr>
                                 <th>SL No</th>
                                 <th>Doc Type</th>
+                                <th>Attachment</th>
                                 <th>Title</th>
                                 <th>Subject</th>
                                 <th>Modules</th>
-                                <th>Attachment</th>
                                 <th>View</th>
                                 <th>Notes</th>
                             </tr>
@@ -48,10 +48,10 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->doctype->name }}</td>
+                                <td>{{ ($doc->attachment) ? ''  : asset($doc->attachment) }}</td>
                                 <td>{{ $doc->title }}</td>
                                 <td class="findVal">{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
-                                <td></td>
                                 <td class="text-center"><a href="/student/notes/view/{{encrypt($doc->id)}}">View</a></td>
                                 <td>{{ $doc->notes }}</td>
                             </tr>
