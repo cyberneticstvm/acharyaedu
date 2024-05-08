@@ -634,7 +634,7 @@ class StudentController extends Controller
     public function notes($subject)
     {
         $student = Student::find(Auth::user()->student->id);
-        $downloads = Download::leftJoin('download_batches', 'downloads.id', '=', 'download_batches.download_id')->selectRaw("downloads.*")->where('subject', $subject)->whereIn('download_batches.batch_id', $student->batches->pluck('batch'))->groupBy('downloads.title')->get();
+        $downloads = Download::leftJoin('download_batches', 'downloads.id', '=', 'download_batches.download_id')->selectRaw("downloads.*")->where('subject_id', $subject)->whereIn('download_batches.batch_id', $student->batches->pluck('batch'))->groupBy('downloads.title')->get();
         //->whereNotNull('description')
         return view('student.notes', compact('downloads', 'student'));
     }
