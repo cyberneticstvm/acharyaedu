@@ -5,18 +5,20 @@
         <div class="card">
             <div class="card-header pb-0 text-left bg-transparent">
                 <div class="row">
-                    <div class="col"><h3 class="font-weight-bolder text-primary text-gradient">Student Register</h3></div>
-                    <div class="col text-end"><a href="/student/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CREATE</a></div>
-                </div>                
-                @if(session()->has('success'))
-                    <div class="alert alert-success text-white">
-                        {{ session()->get('success') }}
+                    <div class="col">
+                        <h3 class="font-weight-bolder text-primary text-gradient">Student Register</h3>
                     </div>
+                    <div class="col text-end"><a href="/student/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CREATE</a></div>
+                </div>
+                @if(session()->has('success'))
+                <div class="alert alert-success text-white">
+                    {{ session()->get('success') }}
+                </div>
                 @endif
                 @if(session()->has('error'))
-                    <div class="alert alert-danger text-white">
-                        {{ session()->get('error') }}
-                    </div>
+                <div class="alert alert-danger text-white">
+                    {{ session()->get('error') }}
+                </div>
                 @endif
             </div>
             <div class="card-body">
@@ -25,7 +27,21 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Receipt</th><th>Send</th><th>Assign</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Branch</th><th>Edit</th></tr>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Student ID</th>
+                                    <th>Student Name</th>
+                                    <th>Status</th>
+                                    <th>Receipt</th>
+                                    <th>Send</th>
+                                    <th>Assign</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Address</th>
+                                    <th>Photo</th>
+                                    <th>Branch</th>
+                                    <th>Edit</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
@@ -34,6 +50,7 @@
                                     <td>{{ $slno++ }}</td>
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
+                                    <td></td>
                                     <td class="text-center"><a href="/pdf/admission-fee/{{ $student->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
                                     <td class="text-center"><a href="/email/admission-fee/{{ $student->id }}"><i class="fa fa-envelope text-success"></i></a></td>
                                     <td class="text-center"><input type="checkbox" name="students[]" value="{{ $student->id }}" /></td>
@@ -41,9 +58,9 @@
                                     <td>{{ $student->mobile }}</td>
                                     <td>{{ $student->address }}</td>
                                     <td class="text-center"><a href="/storage/student-photos/{{ $student->id }}/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>
-                                    <td>{{ $student->branch()->find($student->branch)->name }}</td>                                                                    
+                                    <td>{{ $student->branch()->find($student->branch)->name }}</td>
                                     <td class="text-center"><a href="/student/edit/{{ $student->id }}"><i class="fa fa-edit text-warning"></i></a></td>
-                                    
+
                                 </tr>
                                 @empty
                                 @endforelse
@@ -52,7 +69,7 @@
                     </div>
                     <div class="row mt-5">
                         @error('students')
-                            <small class="text-danger">{{ $errors->first('students') }}</small>
+                        <small class="text-danger">{{ $errors->first('students') }}</small>
                         @enderror
                         <div class="col-md-2">
                             <div class="form-group">
@@ -69,13 +86,13 @@
                                     <select class="form-control" name="batch">
                                         <option value="">Select</option>
                                         @forelse($batches as $key => $batch)
-                                            <option value="{{ $batch->id }}">{{ $batch->name }}</option>
+                                        <option value="{{ $batch->id }}">{{ $batch->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
                                 </div>
                                 @error('batch')
-                                    <small class="text-danger">{{ $errors->first('batch') }}</small>
+                                <small class="text-danger">{{ $errors->first('batch') }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -86,13 +103,13 @@
                                     <select class="form-control" name="status">
                                         <option value="">Select</option>
                                         @forelse($status as $key => $stat)
-                                            <option value="{{ $stat->name }}">{{ $stat->name }}</option>
+                                        <option value="{{ $stat->name }}">{{ $stat->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
                                 </div>
                                 @error('status')
-                                    <small class="text-danger">{{ $errors->first('status') }}</small>
+                                <small class="text-danger">{{ $errors->first('status') }}</small>
                                 @enderror
                             </div>
                         </div>
