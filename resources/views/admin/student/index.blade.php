@@ -49,7 +49,7 @@
                                     <td>{{ $slno++ }}</td>
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
-                                    <td>{{ $student->user->status }}</td>
+                                    <td>{!! $student->status() !!}</td>
                                     <td class="text-center"><a href="/pdf/admission-fee/{{ $student->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
                                     <td class="text-center"><a href="/email/admission-fee/{{ $student->id }}"><i class="fa fa-envelope text-success"></i></a></td>
                                     <td class="text-center"><input type="checkbox" name="students[]" value="{{ $student->id }}" /></td>
