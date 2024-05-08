@@ -48,7 +48,7 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $doc->doctype->name }}</td>
-                                <td>{{ ($doc->attachment) ? ''  : asset($doc->attachment) }}</td>
+                                <td>{{ ($doc->attachment) ? ''  : $doc->attachment }}</td>
                                 <td>{{ $doc->title }}</td>
                                 <td class="findVal">{{ $doc->subject->name }}</td>
                                 <td>{{ getAllModules()->whereIn('id', $doc->modules->pluck('module_id'))->pluck('name')->implode(',') }}</td>
