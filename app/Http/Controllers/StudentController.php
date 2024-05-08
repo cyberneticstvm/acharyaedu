@@ -625,13 +625,18 @@ class StudentController extends Controller
         return view('student.videos', compact('videos', 'student'));
     }
 
-    public function notes()
+    public function noteSubjects()
+    {
+        $subjects = Subject::where('exam_type', 6)->get();
+        return view('student.notes-subjects', compact('subjects'));
+    }
+
+    public function notes($subject)
     {
         $student = Student::find(Auth::user()->student->id);
-        $subjects = Subject::where('exam_type', 6)->get();
-        $downloads = Download::leftJoin('download_batches', 'downloads.id', '=', 'download_batches.download_id')->selectRaw("downloads.*")->whereIn('download_batches.batch_id', $student->batches->pluck('batch'))->groupBy('downloads.title')->get();
+        $downloads = Download::leftJoin('download_batches', 'downloads.id', '=', 'download_batches.download_id')->selectRaw("downloads.*")->where('subject', $subject)->whereIn('download_batches.batch_id', $student->batches->pluck('batch'))->groupBy('downloads.title')->get();
         //->whereNotNull('description')
-        return view('student.notes', compact('downloads', 'student', 'subjects'));
+        return view('student.notes', compact('downloads', 'student'));
     }
 
     public function viewnote($id)

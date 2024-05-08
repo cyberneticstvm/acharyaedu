@@ -108,7 +108,8 @@ Route::group(['middleware' => ['web', 'auth', 'student']], function () {
     Route::get('/student/downloads/{type}', [StudentController::class, 'downloads'])->name('student.downloads');
     Route::get('/student/updates', [StudentController::class, 'updates'])->name('student.updates');
     Route::get('/student/videos/{type}', [StudentController::class, 'videos'])->name('student.videos');
-    Route::get('/student/notes', [StudentController::class, 'notes'])->name('student.notes');
+    Route::get('/student/notes/subjects/all', [StudentController::class, 'noteSubjects'])->name('student.notes.subjects');
+    Route::get('/student/notes/{subject}', [StudentController::class, 'notes'])->name('student.notes');
     Route::get('/student/notes/view/{id}', [StudentController::class, 'viewnote'])->name('student.viewnote');
     Route::get('/student/caffair', [StudentController::class, 'caffair'])->name('student.caffair');
     Route::post('/student/caffair/fetch', [StudentController::class, 'caffairfetch'])->name('student.caffair.fetch');
