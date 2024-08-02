@@ -30,7 +30,7 @@
   <link href="{{ asset('admin-assets/css/nucleo-icons.css') }}" rel="stylesheet" />
   <!--<link href="{{ asset('admin-assets/css/nucleo-svg.css') }}" rel="stylesheet" />-->
   <!-- Font Awesome Icons -->
-  <link src="{{ asset('admin-assets/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('admin-assets/css/font-awesome.min.css') }}" rel="stylesheet">
   </link>
   <link href="{{ asset('admin-assets/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
