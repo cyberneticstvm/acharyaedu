@@ -69,6 +69,6 @@ class Student extends Model
 
     public function status()
     {
-        return ($this->user->status == 'Active') ? "<span class='text-success'>Active</span>" : "<span class='text-danger'>Inactive</span>";
+        return ($this->user->status == 'active') ? "<span class='text-success'>Active</span>" : "<span class='text-danger'>Inactive</span>";
     }
 }
