@@ -140,6 +140,8 @@ class ReportController extends Controller
         $years = DB::table('years')->get();
         $days = cal_days_in_month(CAL_GREGORIAN, $request->month, $request->year);
         $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->get();
+        dd($days);
+        die;
         return view('admin.reports.attendance', compact('records', 'batches', 'months', 'years', 'inputs', 'days'));
     }
 
