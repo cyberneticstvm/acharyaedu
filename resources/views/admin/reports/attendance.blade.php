@@ -17,7 +17,7 @@
                                     <select class="form-control" name="batch">
                                         <option value="">Select</option>
                                         @forelse($batches as $key => $batch)
-                                            <option value="{{ $batch->id }}" {{ ($inputs && $inputs[0] == $batch->id) ? 'selected' : '' }}>{{ $batch->name }}</option>
+                                        <option value="{{ $batch->id }}" {{ ($inputs && $inputs[0] == $batch->id) ? 'selected' : '' }}>{{ $batch->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -34,7 +34,7 @@
                                     <select class="form-control" name="month">
                                         <option value="">Select</option>
                                         @forelse($months as $key => $month)
-                                            <option value="{{ $month->id }}" {{ ($inputs && $inputs[1] == $month->id) ? 'selected' : '' }}>{{ $month->name }}</option>
+                                        <option value="{{ $month->id }}" {{ ($inputs && $inputs[1] == $month->id) ? 'selected' : '' }}>{{ $month->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -51,7 +51,7 @@
                                     <select class="form-control" name="year">
                                         <option value="">Select</option>
                                         @forelse($years as $key => $year)
-                                            <option value="{{ $year->year }}" {{ ($inputs && $inputs[2] == $year->year) ? 'selected' : '' }}>{{ $year->year }}</option>
+                                        <option value="{{ $year->year }}" {{ ($inputs && $inputs[2] == $year->year) ? 'selected' : '' }}>{{ $year->year }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -80,8 +80,8 @@
                                     <th class="text-danger">A</th>
                                     <th class="text-success">P</th>
                                     @for($i=1; $i<=$days; $i++)
-                                    <th>{{ $i }}</th>
-                                    @endfor                                    
+                                        <th>{{ $i }}</th>
+                                        @endfor
                                 </thead>
                                 <tbody class="att">
                                     @forelse($records as $key => $record)
@@ -92,9 +92,9 @@
                                         <td></td>
                                         <td></td>
                                         @for($i=1; $i<=$days; $i++)
-                                        @php $attendance = $record->studentname()->find($record->student)->attendances()->whereDay('date', $i)->whereMonth('date', $inputs[1])->whereYear('date', $inputs[2])->selectRaw("CASE WHEN present = 1 THEN 'P' WHEN `leave` = 1 THEN 'L' ELSE 'A' END AS atype") @endphp
-                                        <td class="text-center attTD fw-bold">{!! $attendance->value('atype') !!}</td>
-                                        @endfor                                        
+                                            @php $attendance=$record->studentname()->find($record->student)->attendances()->whereDay('date', $i)->whereMonth('date', $inputs[1])->whereYear('date', $inputs[2])->selectRaw("CASE WHEN present = 1 THEN 'P' WHEN `leave` = 1 THEN 'L' ELSE 'P' END AS atype") @endphp
+                                            <td class="text-center attTD fw-bold">{!! $attendance->value('atype') !!}</td>
+                                            @endfor
                                     </tr>
                                     @empty
                                     @endforelse
