@@ -92,7 +92,7 @@
                                         <td></td>
                                         <td></td>
                                         @for($i=1; $i<=$days; $i++)
-                                            @php $attendance=$record->studentname()->find($record->student)->attendances()->whereDay('date', $i)->whereMonth('date', $inputs[1])->whereYear('date', $inputs[2])->selectRaw("CASE WHEN present = 1 THEN 'P' WHEN `leave` = 1 THEN 'L' ELSE 'A' END AS atype") @endphp
+                                            @php $attendance=$record->studentname()->find($record->student)->attendances()->whereDay('date', str_pad($i, 2, '0', STR_PAD_LEFT))->whereMonth('date', $inputs[1])->whereYear('date', $inputs[2])->selectRaw("CASE WHEN present = 1 THEN 'P' WHEN `leave` = 1 THEN 'L' ELSE 'A' END AS atype") @endphp
                                             <td class="text-center attTD fw-bold">{!! $attendance->value('atype') !!}</td>
                                             @endfor
                                     </tr>
