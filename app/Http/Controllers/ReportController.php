@@ -139,12 +139,7 @@ class ReportController extends Controller
         $months = Month::all();
         $years = DB::table('years')->get();
         $days = cal_days_in_month(CAL_GREGORIAN, $request->month, $request->year);
-        $record = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->where('student', 384)->first();
-        //for ($i = 1; $i <= $days; $i++):
-        $records = $record->studentname->attendances()->where('batch', $request->batch)->whereDay('date', '26')->whereMonth('date', '9')->whereYear('date', '2024')->selectRaw("`present`, `student`, `batch`, `date`, `absent`, `leave`, CASE WHEN present = 1 THEN 'P' WHEN `leave` = 1 THEN 'L' ELSE 'A' END AS atype")->first();
-        dd($records);
-        //endfor;
-        die;
+        $records = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->get();
         return view('admin.reports.attendance', compact('records', 'batches', 'months', 'years', 'inputs', 'days'));
     }
 
