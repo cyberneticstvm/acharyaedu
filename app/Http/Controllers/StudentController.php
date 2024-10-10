@@ -120,7 +120,6 @@ class StudentController extends Controller
         $input['type'] = 'online';
         $input['branch'] = 1;
         $input['role'] = 'Student';
-        $input['status'] = 'Active';
         $input['password'] = Hash::make($request->password);
         try {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');

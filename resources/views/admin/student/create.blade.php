@@ -120,6 +120,18 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                                @error('status')
+                                <small class="text-danger">{{ $errors->first('status') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Address</label>
