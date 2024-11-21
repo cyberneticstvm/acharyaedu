@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('/user/auth')->controller(APIController::class)->group(function () {
-    Route::get('/', 'getAuthUser')->name('get.auth.user');
+Route::prefix('')->controller(APIController::class)->group(function () {
+    Route::get('/user/auth', 'getAuthUser')->name('get.auth.user');
 });
