@@ -10,7 +10,7 @@ class APIController extends Controller
     private $token;
     function __construct()
     {
-        $this->token = '[+919497273727]';
+        $this->token = '+919497273727';
     }
     function getAuthUser(Request $request)
     {
@@ -20,14 +20,14 @@ class APIController extends Controller
                 'status' => true,
                 'user' => $user,
                 'message' => 'success',
-                'token' => $request->header()['authorization'],
+                'token' => json_decode($request->header())['authorization'],
             ], 200);
         } else {
             return response()->json([
                 'status' => false,
                 'user' => null,
                 'message' => 'failed',
-                'token' => $request->header()['authorization'],
+                'token' => json_decode($request->header())['authorization'],
             ], 400);
         }
     }
