@@ -29,6 +29,8 @@ class APIController extends Controller
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
+                    'email' => $email,
+                    'pwd' => $pwd,
                 ], 404);
             endif;
         } else {
