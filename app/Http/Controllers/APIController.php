@@ -20,12 +20,14 @@ class APIController extends Controller
                 'status' => true,
                 'user' => $user,
                 'message' => 'success',
+                'token' => $request->header()['authorization'],
             ], 200);
         } else {
             return response()->json([
                 'status' => false,
                 'user' => null,
                 'message' => 'failed',
+                'token' => $request->header()['authorization'],
             ], 400);
         }
     }
