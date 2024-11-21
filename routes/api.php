@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('')->controller(APIController::class)->group(function () {
-    Route::get('/user/auth', 'getAuthUser')->name('get.auth.user');
+    Route::get('/user/auth/{email}/{pwd}', 'getAuthUser')->name('get.auth.user');
 });

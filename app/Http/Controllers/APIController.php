@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class APIController extends Controller
 {
@@ -12,11 +13,11 @@ class APIController extends Controller
     {
         $this->token = '+919497273727';
     }
-    function getAuthUser(Request $request)
+    function getAuthUser(Request $request, $email, $pwd)
     {
         $headers = $this->getHeader($request);
         if ($headers['authorization'] == $this->token) {
-            $user = User::find(1);
+            $user = User::where('email', $email)->where('password', Hash::make($pwd))->whereIn('status', ['Active', 'active'])->first();
             if ($user):
                 return response()->json([
                     'status' => true,
