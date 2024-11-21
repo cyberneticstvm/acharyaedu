@@ -21,6 +21,7 @@ class APIController extends Controller
                 'user' => $user,
                 'message' => 'success',
                 'token' => $request->header()['authorization'],
+                'mobile' => $this->token,
             ], 200);
         } else {
             return response()->json([
