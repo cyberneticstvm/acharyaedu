@@ -7,14 +7,26 @@ use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
+    private $token;
+    function __construct()
+    {
+        $this->token = '+919497273727';
+    }
     function getAuthUser(Request $request)
     {
-        $user = User::find(1);
-        return response()->json([
-            'status' => true,
-            'user' => $user,
-            'header' => $request->header(),
-            'token' => $request->header()['authorization'],
-        ], 200);
+        if ($request->header()['authorization'] == $this->token) {
+            $user = User::find(1);
+            return response()->json([
+                'status' => true,
+                'user' => $user,
+                'message' => 'success',
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'user' => null,
+                'message' => 'failed',
+            ], 400);
+        }
     }
 }
