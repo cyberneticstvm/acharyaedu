@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class APIController extends Controller
@@ -16,8 +17,12 @@ class APIController extends Controller
     function getAuthUser(Request $request, $email, $pwd)
     {
         $headers = $this->getHeader($request);
+        $user = null;
         if ($headers['authorization'] == $this->token) {
-            $user = User::where('email', $email)->where('password', Hash::make($pwd))->whereIn('status', ['Active', 'active'])->first();
+            $credentials = array('email' => $email, 'password' => $pwd, 'status' => 'active');
+            if (Auth::attempt($credentials)):
+                $user = Auth::getProvider()->retrieveByCredentials($credentials);
+            endif;
             if ($user):
                 return response()->json([
                     'status' => true,
@@ -36,7 +41,7 @@ class APIController extends Controller
         } else {
             return response()->json([
                 'status' => false,
-                'user' => null,
+                'user' => $user,
                 'message' => 'Invalid Authentication Token',
             ], 500);
         }
