@@ -17,17 +17,25 @@ class APIController extends Controller
         $headers = $this->getHeader($request);
         if ($headers['authorization'] == $this->token) {
             $user = User::find(1);
-            return response()->json([
-                'status' => true,
-                'user' => $user,
-                'message' => 'success',
-            ], 200);
+            if ($user):
+                return response()->json([
+                    'status' => true,
+                    'user' => $user,
+                    'message' => 'success',
+                ], 200);
+            else:
+                return response()->json([
+                    'status' => false,
+                    'user' => $user,
+                    'message' => 'Invalid Credentials',
+                ], 404);
+            endif;
         } else {
             return response()->json([
                 'status' => false,
                 'user' => null,
-                'message' => 'failed',
-            ], 400);
+                'message' => 'Invalid Authentication Token',
+            ], 500);
         }
     }
 
