@@ -20,7 +20,7 @@ class APIController extends Controller
                 'status' => true,
                 'user' => $user,
                 'message' => 'success',
-                'token' => $request->header()['authorization'],
+                'token' => json_decode($request->header())->authorization,
                 'mobile' => $this->token,
             ], 200);
         } else {
@@ -28,7 +28,7 @@ class APIController extends Controller
                 'status' => false,
                 'user' => null,
                 'message' => 'failed',
-                'token' => $request->header()['authorization'],
+                'token' => json_decode($request->header())->authorization,
                 'mobile' => $this->token,
             ], 400);
         }
