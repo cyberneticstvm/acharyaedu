@@ -13,6 +13,7 @@ class APIController extends Controller
         return response()->json([
             'status' => true,
             'user' => $user,
+            'header' => $request->header(),
         ], 200);
     }
 }
