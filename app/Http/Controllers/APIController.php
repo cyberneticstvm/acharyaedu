@@ -10,7 +10,7 @@ class APIController extends Controller
     private $token;
     function __construct()
     {
-        $this->token = '+919497273727';
+        $this->token = '[+919497273727]';
     }
     function getAuthUser(Request $request)
     {
