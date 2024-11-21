@@ -14,6 +14,7 @@ class APIController extends Controller
             'status' => true,
             'user' => $user,
             'header' => $request->header(),
+            'token' => $request->header()['authorization'],
         ], 200);
     }
 }
