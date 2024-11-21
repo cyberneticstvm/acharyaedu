@@ -22,12 +22,14 @@ class APIController extends Controller
                     'status' => true,
                     'user' => $user,
                     'message' => 'success',
+                    'email' => $request->email,
                 ], 200);
             else:
                 return response()->json([
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
+                    'email' => $request->email,
                 ], 404);
             endif;
         } else {
@@ -35,6 +37,7 @@ class APIController extends Controller
                 'status' => false,
                 'user' => null,
                 'message' => 'Invalid Authentication Token',
+                'email' => $request->email,
             ], 500);
         }
     }
