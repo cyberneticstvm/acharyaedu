@@ -14,24 +14,28 @@ class APIController extends Controller
     }
     function getAuthUser(Request $request)
     {
-        $headers = collect($request->header())->transform(function ($item) {
-            return $item[0];
-        });
+        $headers = $this->getHeader($request);
         if ($headers['authorization'] == $this->token) {
             $user = User::find(1);
             return response()->json([
                 'status' => true,
                 'user' => $user,
                 'message' => 'success',
-                'token' => $headers['authorization'],
             ], 200);
         } else {
             return response()->json([
                 'status' => false,
                 'user' => null,
                 'message' => 'failed',
-                'token' => $headers['authorization'],
             ], 400);
         }
+    }
+
+    function getHeader($request)
+    {
+        $headers = collect($request->header())->transform(function ($item) {
+            return $item[0];
+        });
+        return $headers;
     }
 }
