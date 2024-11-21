@@ -17,20 +17,20 @@ class APIController extends Controller
         $headers = collect($request->header())->transform(function ($item) {
             return $item[0];
         });
-        if ($request->header()['authorization'] == $this->token) {
+        if ($headers['authorization'] == $this->token) {
             $user = User::find(1);
             return response()->json([
                 'status' => true,
                 'user' => $user,
                 'message' => 'success',
-                'token' => $headers,
+                'token' => $headers['authorization'],
             ], 200);
         } else {
             return response()->json([
                 'status' => false,
                 'user' => null,
                 'message' => 'failed',
-                'token' => $headers,
+                'token' => $headers['authorization'],
             ], 400);
         }
     }
