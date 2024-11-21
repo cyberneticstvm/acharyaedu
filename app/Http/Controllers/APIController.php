@@ -28,6 +28,7 @@ class APIController extends Controller
                 'user' => null,
                 'message' => 'failed',
                 'token' => $request->header()['authorization'],
+                'mobile' => $this->token,
             ], 400);
         }
     }
