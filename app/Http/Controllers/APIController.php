@@ -34,6 +34,7 @@ class APIController extends Controller
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
+                    'email' => $request->email . 'dfg',
                 ], 404);
             endif;
         } else {
