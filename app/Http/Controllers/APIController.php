@@ -14,12 +14,12 @@ class APIController extends Controller
     {
         $this->token = '+919497273727';
     }
-    function getAuthUser(Request $request, $email, $pwd)
+    function getAuthUser(Request $request)
     {
         $headers = $this->getHeader($request);
         $user = null;
         if ($headers['authorization'] == $this->token) {
-            $credentials = array('email' => $email, 'password' => $pwd, 'status' => 'active');
+            $credentials = array('email' => $request->email, 'password' => $request->password, 'status' => 'active');
             if (Auth::attempt($credentials)):
                 $user = Auth::getProvider()->retrieveByCredentials($credentials);
             endif;
