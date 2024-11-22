@@ -34,7 +34,7 @@ class APIController extends Controller
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
-                    'email' => collect($request->getContent())->email,
+                    'email' => $request->input('email'),
                 ], 404);
             endif;
         } else {
