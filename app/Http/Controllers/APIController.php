@@ -19,7 +19,7 @@ class APIController extends Controller
         $headers = $this->getHeader($request);
         $user = null;
         if ($headers['authorization'] == $this->token) {
-            $credentials = array('email' => $request->email, 'password' => $request->password, 'status' => 'active');
+            $credentials = array('email' => $request->json('email'), 'password' => $request->json('password'), 'status' => 'active');
             if (Auth::attempt($credentials)):
                 $user = Auth::getProvider()->retrieveByCredentials($credentials);
             endif;
@@ -34,7 +34,6 @@ class APIController extends Controller
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
-                    'email' => $request->json('email'),
                 ], 404);
             endif;
         } else {
