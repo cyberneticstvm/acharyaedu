@@ -34,7 +34,7 @@ class APIController extends Controller
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
-                    'email' => $request->all(),
+                    'email' => $this->getContent($request),
                 ], 404);
             endif;
         } else {
@@ -52,5 +52,13 @@ class APIController extends Controller
             return $item[0];
         });
         return $headers;
+    }
+
+    function getContent($request)
+    {
+        $body = collect($request->getContent())->transform(function ($item) {
+            return $item[0];
+        });
+        return $body;
     }
 }
