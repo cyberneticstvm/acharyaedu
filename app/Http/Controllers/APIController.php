@@ -28,20 +28,20 @@ class APIController extends Controller
                     'status' => true,
                     'user' => $user,
                     'message' => 'success',
-                ], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+                ], 200);
             else:
                 return response()->json([
                     'status' => false,
                     'user' => $user,
                     'message' => 'Invalid Credentials',
-                ], 404, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+                ], 404);
             endif;
         } else {
             return response()->json([
                 'status' => false,
                 'user' => $user,
                 'message' => 'Invalid Authentication Token',
-            ], 500, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+            ], 500);
         }
     }
 
